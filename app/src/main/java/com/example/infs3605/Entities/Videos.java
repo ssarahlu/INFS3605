@@ -47,7 +47,7 @@ public class Videos {
     public static ArrayList<Videos> getVideos() {
         ArrayList<Videos> videos = new ArrayList<>();
 
-        videos.add(new Videos(1, "https://www.youtube.com/watch?v=pCuuRRrfOXo", 1));
+        videos.add(new Videos(0, "https://www.youtube.com/watch?v=pCuuRRrfOXo", 0));
 
         return videos;
     }

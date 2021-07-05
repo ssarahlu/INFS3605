@@ -58,9 +58,9 @@ public class Learnings {
     public static ArrayList<Learnings> getLearnings() {
         ArrayList<Learnings> learnings = new ArrayList<>();
 
-        learnings.add(new Learnings(1, "It has life-giving powers that send conception (fertility) spirits to all the watercourses, such as billabongs, rivers, creeks and lagoons as it is in control of producing rainfall.", R.drawable.rainbow_serpent_1, 1));
-        learnings.add(new Learnings(2, "The Rainbow Serpent is the protector of the land, its people, and the source of all life.", R.drawable.rainbow_serpent_1, 1 ));
-        learnings.add(new Learnings(3, "Aboriginals in the Kimberley regions believe that the Rainbow Serpent places spirit-children throughout waterholes in which women will become impregnated if they wade in the water.", R.drawable.rainbow_serpent_1, 1 ));
+        learnings.add(new Learnings(0, "It has life-giving powers that send conception (fertility) spirits to all the watercourses, such as billabongs, rivers, creeks and lagoons as it is in control of producing rainfall.", R.drawable.rainbow_serpent_1, 0));
+        learnings.add(new Learnings(1, "The Rainbow Serpent is the protector of the land, its people, and the source of all life.", R.drawable.rainbow_serpent_1, 0 ));
+        learnings.add(new Learnings(2, "Aboriginals in the Kimberley regions believe that the Rainbow Serpent places spirit-children throughout waterholes in which women will become impregnated if they wade in the water.", R.drawable.rainbow_serpent_1, 0 ));
 
         return learnings;
 

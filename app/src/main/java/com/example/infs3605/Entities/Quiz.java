@@ -89,9 +89,9 @@ public class Quiz {
 
     public static ArrayList<Quiz> getQuiz() {
         ArrayList<Quiz> quiz = new ArrayList<>();
-        quiz.add(new Quiz(1, "What is the rainbow serpent about?", "A rainbow serpent", "A black snake", "A green snake", "A koala", "A rainbow serpent", 1));
-        quiz.add(new Quiz(2, "Is the rainbow serpent a dreamtime story?", "No it's a myth", "Yes it's a dreamtime story", "No it's not real", "No it's fake", "Yes it's a dreamtime story", 1 ));
-        quiz.add(new Quiz(3, "Which values does the rainbow serpent teach?", "No values", "Lying is okay", "Peace and unity", "All the values", "Peace and unity", 1));
+        quiz.add(new Quiz(0, "What is the rainbow serpent about?", "A rainbow serpent", "A black snake", "A green snake", "A koala", "A rainbow serpent", 0));
+        quiz.add(new Quiz(1, "Is the rainbow serpent a dreamtime story?", "No it's a myth", "Yes it's a dreamtime story", "No it's not real", "No it's fake", "Yes it's a dreamtime story", 0));
+        quiz.add(new Quiz(2, "Which values does the rainbow serpent teach?", "No values", "Lying is okay", "Peace and unity", "All the values", "Peace and unity", 0));
 
         return quiz;
     }

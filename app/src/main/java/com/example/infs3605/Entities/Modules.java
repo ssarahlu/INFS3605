@@ -6,14 +6,18 @@ public class Modules {
     private int moduleId;
     private String moduleName;
     private int topicId;
+    private String moduleSubtitle;
+    private String moduleDescription;
 
     private Modules (){
 
     }
 
-    public Modules(int moduleId, String moduleName, int topicId) {
+    public Modules(int moduleId, String moduleName, String moduleSubtitle, String moduleDescription, int topicId) {
         this.moduleId = moduleId;
         this.moduleName = moduleName;
+        this.moduleSubtitle = moduleSubtitle;
+        this.moduleDescription = moduleDescription;
         this.topicId = topicId;
     }
 
@@ -42,11 +46,27 @@ public class Modules {
         this.topicId = topicId;
     }
 
+    public String getModuleSubtitle() {
+        return moduleSubtitle;
+    }
+
+    public void setModuleSubtitle(String moduleSubtitle) {
+        this.moduleSubtitle = moduleSubtitle;
+    }
+
+    public String getModuleDescription() {
+        return moduleDescription;
+    }
+
+    public void setModuleDescription(String moduleDescription) {
+        this.moduleDescription = moduleDescription;
+    }
 
     public static ArrayList<Modules> getModules() {
         ArrayList<Modules> modules = new ArrayList<>();
 
-        modules.add(new Modules(1, "The Rainbow Serpent", 1));
+        modules.add(new Modules(0, "The Rainbow Serpent", "The meaning of art","The Rainbow Serpent or Rainbow Snake is creator of human beings. It has life-giving powers that send conception (fertility) spirits to all the watercourses, such as billabongs, rivers, creeks and lagoons as it is in control of producing rainfall.", 0));
+        modules.add(new Modules(1, "Test 2 The Rainbow Serpent", "2 The meaning of art","Test description 2", 0));
 
         return modules;
     }

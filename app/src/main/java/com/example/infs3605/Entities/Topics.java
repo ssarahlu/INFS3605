@@ -36,7 +36,7 @@ public class Topics {
     public static ArrayList<Topics> getTopics() {
         ArrayList<Topics> topics = new ArrayList<>();
 
-        topics.add(new Topics(1, "Arts and Music"));
+        topics.add(new Topics(0, "Arts and Music"));
 
         return topics;
     }
