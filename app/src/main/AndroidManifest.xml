@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StoryActivity"></activity>
+        <activity android:name=".MeditateActivity"></activity>
+        <activity android:name=".StoryActivity" />
         <activity android:name=".VideoActivity" />
         <activity android:name=".ModuleSelection" />
         <activity android:name=".ModuleActivity" />
