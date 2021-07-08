@@ -41,8 +41,8 @@ public class ModuleActivity extends AppCompatActivity {
 
         }
 
-        if (intent.getStringExtra(MainActivity.TOPIC_ID) != null){
-            topicId = Integer.parseInt(intent.getStringExtra(MainActivity.TOPIC_ID));
+        if (intent.getStringExtra(HomeFragment.TOPIC_ID) != null){
+            topicId = Integer.parseInt(intent.getStringExtra(HomeFragment.TOPIC_ID));
             System.out.println(topicId);
             topic = mTopics.get(topicId);
 

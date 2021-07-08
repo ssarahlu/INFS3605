@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.infs3605.Entities.Modules;
 import com.example.infs3605.Entities.Story;
 
@@ -43,7 +44,8 @@ public class StoryActivity extends AppCompatActivity {
             if (s.getModuleId() == modId){
                 mSto = s;
                 storyTV.setText(mSto.getInformation());
-                storyImage.setImageResource(mSto.getImage());
+                Glide.with(this).load(mSto.getImage()).into(storyImage);
+
             }
 
         }

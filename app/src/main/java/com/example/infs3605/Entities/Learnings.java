@@ -7,14 +7,14 @@ import com.example.infs3605.R;
 public class Learnings {
     private int learningId;
     private String information;
-    private int image;
+    private String image;
     private int moduleId;
 
     public Learnings(){
 
     }
 
-    public Learnings(int learningId, String information, int image, int moduleId) {
+    public Learnings(int learningId, String information, String image, int moduleId) {
         this.learningId = learningId;
         this.information = information;
         this.image = image;
@@ -37,11 +37,11 @@ public class Learnings {
         this.information = information;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
@@ -58,9 +58,9 @@ public class Learnings {
     public static ArrayList<Learnings> getLearnings() {
         ArrayList<Learnings> learnings = new ArrayList<>();
 
-        learnings.add(new Learnings(0, "It has life-giving powers that send conception (fertility) spirits to all the watercourses, such as billabongs, rivers, creeks and lagoons as it is in control of producing rainfall.", R.drawable.rainbow_serpent_1, 0));
-        learnings.add(new Learnings(1, "The Rainbow Serpent is the protector of the land, its people, and the source of all life.", R.drawable.rainbow_serpent_1, 0 ));
-        learnings.add(new Learnings(2, "Aboriginals in the Kimberley regions believe that the Rainbow Serpent places spirit-children throughout waterholes in which women will become impregnated if they wade in the water.", R.drawable.rainbow_serpent_1, 0 ));
+        learnings.add(new Learnings(0, "It has life-giving powers that send conception (fertility) spirits to all the watercourses, such as billabongs, rivers, creeks and lagoons as it is in control of producing rainfall.", "https://www.kullillaart.com.au/assets/images/image12.jpg", 0));
+        learnings.add(new Learnings(1, "The Rainbow Serpent is the protector of the land, its people, and the source of all life.", "https://www.kullillaart.com.au/assets/images/image12.jpg", 0 ));
+        learnings.add(new Learnings(2, "Aboriginals in the Kimberley regions believe that the Rainbow Serpent places spirit-children throughout waterholes in which women will become impregnated if they wade in the water.", "https://www.kullillaart.com.au/assets/images/image12.jpg", 0 ));
 
         return learnings;
 

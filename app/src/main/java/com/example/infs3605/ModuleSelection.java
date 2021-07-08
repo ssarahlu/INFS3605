@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.infs3605.Entities.Modules;
 import com.example.infs3605.Entities.Topics;
 
@@ -38,19 +39,15 @@ public class ModuleSelection extends AppCompatActivity {
         setContentView(R.layout.activity_module_selection);
 
         Intent intent = getIntent();
-
         modName = intent.getStringExtra("Module");
         modDesc = intent.getStringExtra("Description");
         modId = Integer.parseInt(intent.getStringExtra("id"));
-//        System.out.println(modName);
-//        System.out.println(modDesc);
 
         moduleName = findViewById(R.id.moduleName);
         moduleDescription = findViewById(R.id.moduleDescription);
         videoButton = findViewById(R.id.videoButton);
         storyButton = findViewById(R.id.storyButton);
         closeButton = findViewById(R.id.closeButton);
-
         backgroundImage = findViewById(R.id.backgroundImage);
 
         moduleName.setText(modName);
@@ -59,7 +56,7 @@ public class ModuleSelection extends AppCompatActivity {
         for (Modules m : Modules.getModules()){
             if (m.getModuleId() == modId){
                 mMod = m;
-                backgroundImage.setImageResource(mMod.getModuleBackgroundImage());
+                Glide.with(this).load(m.getModuleBackgroundImage()).into(backgroundImage);
             }
 
         }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/page_1"
+        android:enabled="true"
+        android:icon="@drawable/home_inactive"
+        android:title="Home"/>
+    <item
+        android:id="@+id/page_2"
+        android:enabled="true"
+        android:icon="@drawable/social_inactive"
+        android:title="Social"/>
+
+    <item
+        android:id="@+id/page_3"
+        android:enabled="true"
+        android:icon="@drawable/reward_inactive"
+        android:title="Rewards"/>
+
+    <item
+        android:id="@+id/page_4"
+        android:enabled="true"
+        android:icon="@drawable/meditate_inactive"
+        android:title="Meditate"/>
+
+    <item
+        android:id="@+id/page_5"
+        android:enabled="true"
+        android:icon="@drawable/profile_inactive"
+        android:title="Profile"/>
+</menu>

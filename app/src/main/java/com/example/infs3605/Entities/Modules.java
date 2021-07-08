@@ -9,15 +9,13 @@ public class Modules {
     private int topicId;
     private String moduleSubtitle;
     private String moduleDescription;
-    private int moduleBackgroundImage;
-
-
+    private String moduleBackgroundImage;
 
     private Modules (){
 
     }
 
-    public Modules(int moduleId, String moduleName, String moduleSubtitle, String moduleDescription, int moduleBackgroundImage, int topicId) {
+    public Modules(int moduleId, String moduleName, String moduleSubtitle, String moduleDescription, String moduleBackgroundImage, int topicId) {
         this.moduleId = moduleId;
         this.moduleName = moduleName;
         this.moduleSubtitle = moduleSubtitle;
@@ -67,19 +65,19 @@ public class Modules {
         this.moduleDescription = moduleDescription;
     }
 
-    public int getModuleBackgroundImage() {
+    public String getModuleBackgroundImage() {
         return moduleBackgroundImage;
     }
 
-    public void setModuleBackgroundImage(int moduleBackgroundImage) {
+    public void setModuleBackgroundImage(String moduleBackgroundImage) {
         this.moduleBackgroundImage = moduleBackgroundImage;
     }
 
     public static ArrayList<Modules> getModules() {
         ArrayList<Modules> modules = new ArrayList<>();
 
-        modules.add(new Modules(0, "The Rainbow Serpent", "The meaning of art","The Rainbow Serpent or Rainbow Snake is creator of human beings. It has life-giving powers that send conception (fertility) spirits to all the watercourses, such as billabongs, rivers, creeks and lagoons as it is in control of producing rainfall.", R.drawable.rainbow_serpent_1, 0));
-        modules.add(new Modules(1, "Test 2 The Rainbow Serpent", "2 The meaning of art","Test description 2",  R.drawable.rainbow_serpent_1, 0));
+        modules.add(new Modules(0, "The Rainbow Serpent", "The meaning of art","The Rainbow Serpent or Rainbow Snake is creator of human beings. It has life-giving powers that send conception (fertility) spirits to all the watercourses, such as billabongs, rivers, creeks and lagoons as it is in control of producing rainfall.", "https://www.kullillaart.com.au/assets/images/image12.jpg", 0));
+        modules.add(new Modules(1, "Test 2 The Rainbow Serpent", "2 The meaning of art","Test description 2",  "https://www.kullillaart.com.au/assets/images/image12.jpg", 0));
 
         return modules;
     }

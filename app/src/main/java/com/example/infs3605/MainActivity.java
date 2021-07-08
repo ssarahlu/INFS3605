@@ -1,9 +1,13 @@
 package com.example.infs3605;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -11,60 +15,101 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.infs3605.Entities.Facts;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    //THIS IS THE HOME SCREEN
 
-    private TextView factTV;
-    private ArrayList<Facts> mFacts = new ArrayList<>();
-    private int factNumber;
-    private Facts fact;
-    private ImageButton artButton;
-    public static final String TOPIC_ID = "topic_id";
-
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.page_1:
+                    Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
+                    HomeFragment homeFragment = new HomeFragment();
+                    FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction1.replace(R.id.fragment_container, homeFragment, "FragmentName");
+                    fragmentTransaction1.commit();
+                    break;
+                case R.id.page_2:
+                    Toast.makeText(MainActivity.this, "Social", Toast.LENGTH_SHORT).show();
+                    break;
+                case R.id.page_3:
+                    Toast.makeText(MainActivity.this, "Rewards", Toast.LENGTH_SHORT).show();
+                    break;
+                case R.id.page_4:
+                    Toast.makeText(MainActivity.this, "Meditate", Toast.LENGTH_SHORT).show();
+                    MeditateFragment meditateFragment = new MeditateFragment();
+                    FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction2.replace(R.id.fragment_container, meditateFragment, "FragmentName");
+                    fragmentTransaction2.commit();
+                    break;
+                case R.id.page_5:
+                    Toast.makeText(MainActivity.this, "Profile", Toast.LENGTH_SHORT).show();
+                    break;
+            }
+            return true;
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        factTV = findViewById(R.id.factTV);
-        artButton = findViewById(R.id.artButton);
 
-        for (Facts f : Facts.getFacts()) {
-            mFacts.add(f);
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        bottomNav.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        }
+        HomeFragment hf = new HomeFragment();
+        FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction1.replace(R.id.fragment_container, hf, "FragmentName");
+        fragmentTransaction1.commit();
 
-        if (mFacts != null){
-            factNumber = (int)(Math.random() * mFacts.size() - 1) + 1;
-            System.out.println( "my random number is " + factNumber);
-            fact = mFacts.get(factNumber);
-            System.out.println(fact);
-            factTV.setText(fact.getFact());
+        //THIS IS THE HOME SCREEN
 
-        }
 
-        artButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ModuleActivity.class);
-                intent.putExtra(TOPIC_ID, "0");
-                startActivity(intent);
-                Toast.makeText(getApplicationContext(), "Art selected", Toast.LENGTH_SHORT).show();
 
-            }
-        });
-
+//        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                switch (item.getItemId()) {
+//                    case R.id.page_1:
+//                        Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
+//                        HomeFragment homeFragment = new HomeFragment();
+//                        FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
+//                        fragmentTransaction1.replace(R.id.fragment_container, homeFragment, "FragmentName");
+//                        fragmentTransaction1.commit();
+//                        break;
+//                    case R.id.page_2:
+//                        Toast.makeText(MainActivity.this, "Social", Toast.LENGTH_SHORT).show();
+//                        break;
+//                    case R.id.page_3:
+//                        Toast.makeText(MainActivity.this, "Rewards", Toast.LENGTH_SHORT).show();
+//                        break;
+//                    case R.id.page_4:
+//                        Toast.makeText(MainActivity.this, "Meditate", Toast.LENGTH_SHORT).show();
+//                        MeditateFragment meditateFragment = new MeditateFragment();
+//                        FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
+//                        fragmentTransaction2.replace(R.id.fragment_container, meditateFragment, "FragmentName");
+//                        fragmentTransaction2.commit();
+//                        break;
+//                    case R.id.page_5:
+//                        Toast.makeText(MainActivity.this, "Profile", Toast.LENGTH_SHORT).show();
+//                        break;
+//                }
+//                return true;
+//            }
+//        });
 
 
     }
-
-
-
-
-
 }
+
+
+
+
