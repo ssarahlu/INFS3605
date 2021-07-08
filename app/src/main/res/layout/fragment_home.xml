@@ -85,17 +85,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/artButton" />
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvList"
-        android:layout_width="370dp"
-        android:layout_height="616dp"
-        android:clipToPadding="false"
-        android:paddingBottom="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

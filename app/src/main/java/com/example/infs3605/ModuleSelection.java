@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.infs3605.Entities.Modules;
+import com.example.infs3605.Entities.Quiz;
 import com.example.infs3605.Entities.Topics;
 
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class ModuleSelection extends AppCompatActivity {
     public static final String MODULE_ID = "module_id";
     private String modName, modDesc;
     private TextView moduleName, moduleDescription;
-    private ImageButton videoButton, storyButton, closeButton;
+    private ImageButton videoButton, storyButton, closeButton, quizButton;
     private int modId;
     private ImageView backgroundImage;
     private Modules mMod;
@@ -49,6 +50,7 @@ public class ModuleSelection extends AppCompatActivity {
         storyButton = findViewById(R.id.storyButton);
         closeButton = findViewById(R.id.closeButton);
         backgroundImage = findViewById(R.id.backgroundImage);
+        quizButton = findViewById(R.id.quizButton);
 
         moduleName.setText(modName);
         moduleDescription.setText(modDesc);
@@ -95,15 +97,31 @@ public class ModuleSelection extends AppCompatActivity {
             }
         });
 
+        quizButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), QuizActivity.class);
+                intent.putExtra("id", String.valueOf(modId));
+                intent.putExtra("mod_name", modName);
+                startActivity(intent);
+                Toast.makeText(getApplicationContext(), "Quiz selected", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
 
         closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ModuleActivity.class);
-                intent.putExtra(TOPIC_ID, String.valueOf(topicIdFK));
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("id", String.valueOf(topicIdFK));
+                intent.putExtra("Check", "1");
+
                 System.out.println(topicIdFK);
                 startActivity(intent);
+
                 Toast.makeText(getApplicationContext(), "Back to list ", Toast.LENGTH_SHORT).show();
+
 
             }
         });

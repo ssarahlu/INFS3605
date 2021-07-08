@@ -4,12 +4,17 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.infs3605.Entities.Modules;
 import com.example.infs3605.Entities.Topics;
@@ -32,81 +37,47 @@ public class ModuleFragment extends Fragment {
     private Topics topic;
     public static final String EXTRA_MESSAGE = "module_id";
     private int topicId;
+    private ImageButton backButton;
 
-//    // TODO: Rename parameter arguments, choose names that match
-//    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-//    private static final String ARG_PARAM1 = "param1";
-//    private static final String ARG_PARAM2 = "param2";
-//
-//    // TODO: Rename and change types of parameters
-//    private String mParam1;
-//    private String mParam2;
 
     public ModuleFragment() {
         // Required empty public constructor
     }
 
-//    /**
-//     * Use this factory method to create a new instance of
-//     * this fragment using the provided parameters.
-//     *
-//     * @param param1 Parameter 1.
-//     * @param param2 Parameter 2.
-//     * @return A new instance of fragment ModuleFragment.
-//     */
-//    // TODO: Rename and change types and number of parameters
-//    public static ModuleFragment newInstance(String param1, String param2) {
-//        ModuleFragment fragment = new ModuleFragment();
-//        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
-//
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-//        }
-//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_module, container, false);
 
         mRecyclerView = view.findViewById(R.id.rvList);
         mRecyclerView.setHasFixedSize(true);
+        backButton = view.findViewById(R.id.backButton);
 
-        Intent intent = getActivity().getIntent();
 
-        for (Topics t: Topics.getTopics()){
+        for (Topics t : Topics.getTopics()) {
             mTopics.add(t);
-
         }
 
-        if (intent.getStringExtra(HomeFragment.TOPIC_ID) != null){
-            topicId = Integer.parseInt(intent.getStringExtra(HomeFragment.TOPIC_ID));
+        Bundle bundle = getArguments();
+
+        if (bundle.getString(HomeFragment.TOPIC_ID) != null) {
+            topicId = Integer.parseInt(bundle.getString(HomeFragment.TOPIC_ID));
             System.out.println(topicId);
             topic = mTopics.get(topicId);
 
             getActivity().setTitle(topic.getTopicName());
 
-            for (Modules m : Modules.getModules()){
+            for (Modules m : Modules.getModules()) {
                 System.out.println("Hello");
-                if (m.getTopicId() == topicId){
+                if (m.getTopicId() == topicId) {
                     mModules.add(m);
                     System.out.println("added modules");
-
                 }
 
             }
 
         }
-
 
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
@@ -119,8 +90,17 @@ public class ModuleFragment extends Fragment {
         mAdapter = new ModulesAdapter(mModules, listener);
         mRecyclerView.setAdapter(mAdapter);
 
-        return view;
 
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity().getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+                Toast.makeText(getActivity().getApplicationContext(), "Back to home ", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        return view;
 
     }
 
@@ -135,6 +115,7 @@ public class ModuleFragment extends Fragment {
         startActivity(intent);
 
     }
+
 
 }
 
