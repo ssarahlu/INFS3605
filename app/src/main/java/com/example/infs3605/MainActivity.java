@@ -64,50 +64,44 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        HomeFragment hf = new HomeFragment();
-        FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction1.replace(R.id.fragment_container, hf, "FragmentName");
-        fragmentTransaction1.commit();
+        Intent intent = getIntent();
 
-        //THIS IS THE HOME SCREEN
+        if (intent.getStringExtra("id") != null){
+
+            String s1 = intent.getStringExtra("Check");
+            int topicId = Integer.parseInt(intent.getStringExtra("id"));
+            if (s1.equals("1")){
+
+                s1 = "";
+                ModuleFragment fragment = new ModuleFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString(HomeFragment.TOPIC_ID, String.valueOf(topicId));
+                fragment.setArguments(bundle);
+
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.fragment_container, fragment).commit();
+
+                //or default
+            }
+        } else {
+
+            HomeFragment hf = new HomeFragment();
+            FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction1.replace(R.id.fragment_container, hf, "FragmentName");
+            fragmentTransaction1.commit();
+        }
 
 
 
-//        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
-//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                switch (item.getItemId()) {
-//                    case R.id.page_1:
-//                        Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
-//                        HomeFragment homeFragment = new HomeFragment();
-//                        FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
-//                        fragmentTransaction1.replace(R.id.fragment_container, homeFragment, "FragmentName");
-//                        fragmentTransaction1.commit();
-//                        break;
-//                    case R.id.page_2:
-//                        Toast.makeText(MainActivity.this, "Social", Toast.LENGTH_SHORT).show();
-//                        break;
-//                    case R.id.page_3:
-//                        Toast.makeText(MainActivity.this, "Rewards", Toast.LENGTH_SHORT).show();
-//                        break;
-//                    case R.id.page_4:
-//                        Toast.makeText(MainActivity.this, "Meditate", Toast.LENGTH_SHORT).show();
-//                        MeditateFragment meditateFragment = new MeditateFragment();
-//                        FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
-//                        fragmentTransaction2.replace(R.id.fragment_container, meditateFragment, "FragmentName");
-//                        fragmentTransaction2.commit();
-//                        break;
-//                    case R.id.page_5:
-//                        Toast.makeText(MainActivity.this, "Profile", Toast.LENGTH_SHORT).show();
-//                        break;
-//                }
-//                return true;
-//            }
-//        });
+
+
+
+
 
 
     }
+
+
 }
 
 

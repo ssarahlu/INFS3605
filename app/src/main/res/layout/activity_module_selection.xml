@@ -37,41 +37,58 @@
 
     <TextView
         android:id="@+id/moduleDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="360dp"
+        android:layout_height="146dp"
         android:text="Description"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.147"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.314" />
+        app:layout_constraintVertical_bias="0.256" />
 
     <ImageButton
         android:id="@+id/videoButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="361dp"
+        android:layout_height="66dp"
+        android:background="#00FFFFFF"
+        android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.14"
+        app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_slideshow" />
+        app:layout_constraintVertical_bias="0.499"
+        app:srcCompat="@drawable/sub_module_video" />
 
     <ImageButton
         android:id="@+id/storyButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_width="361dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="14dp"
+        android:background="#00FFFFFF"
+        android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.14"
+        app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/videoButton"
-        app:layout_constraintVertical_bias="0.004"
-        app:srcCompat="@android:drawable/ic_menu_sort_alphabetically" />
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/sub_module_story" />
+
+    <ImageButton
+        android:id="@+id/quizButton"
+        android:layout_width="361dp"
+        android:layout_height="66dp"
+        android:layout_marginBottom="84dp"
+        android:background="#00FFFFFF"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/sub_module_quiz" />
 
     <ImageButton
         android:id="@+id/closeButton"
@@ -84,6 +101,28 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.113"
         app:srcCompat="@android:drawable/btn_dialog" />
+
+    <ImageButton
+        android:id="@+id/learningsButton"
+        android:layout_width="361dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="14dp"
+        android:background="#00FFFFFF"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toTopOf="@+id/quizButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/storyButton"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/sub_module_learnings" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
