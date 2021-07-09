@@ -7,32 +7,17 @@
     tools:context=".StoryActivity">
 
 
-    <TextView
-        android:id="@+id/storyTV"
-        android:layout_width="349dp"
-        android:layout_height="372dp"
-        android:layout_marginBottom="24dp"
-        android:background="#799B9B9B"
-        android:scrollbars="vertical"
-        android:text="This is the story"
-        android:textColor="#070707"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.467"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <ImageView
         android:id="@+id/storyImage"
         android:layout_width="354dp"
         android:layout_height="212dp"
-        android:layout_marginBottom="44dp"
-        app:layout_constraintBottom_toTopOf="@+id/storyTV"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.421"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.159"
         app:srcCompat="@drawable/ic_launcher_foreground" />
 
     <ImageButton
@@ -46,6 +31,44 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023" />
+
+    <ScrollView
+        android:layout_width="369dp"
+        android:layout_height="340dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:scrollbarStyle="insideInset"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/storyImage"
+        app:layout_constraintVertical_bias="0.475">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/storyTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:background="#799B9B9B"
+                android:scrollbars="none"
+                android:text="This is the story"
+                android:textColor="#070707"
+                android:textSize="18sp" />
+
+            <ImageButton
+                android:id="@+id/learningsButton"
+                android:layout_width="356dp"
+                android:layout_height="62dp"
+                android:background="#00FFFFFF"
+                android:scaleType="fitStart"
+                android:src="@drawable/sub_module_learnings"
+                android:text="Learnings Button" />
+        </LinearLayout>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

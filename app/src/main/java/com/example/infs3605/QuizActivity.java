@@ -68,6 +68,7 @@ public class QuizActivity extends AppCompatActivity {
         position = findViewById(R.id.position);
         grp = findViewById(R.id.grp);
         fin = findViewById(R.id.finished);
+        cancel.setVisibility(View.VISIBLE);
 
         for (Quiz q: Quiz.getQuiz()){
             if (q.getModuleId() == modId){

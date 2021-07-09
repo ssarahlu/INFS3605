@@ -25,7 +25,7 @@ public class ModuleSelection extends AppCompatActivity {
     public static final String MODULE_ID = "module_id";
     private String modName, modDesc;
     private TextView moduleName, moduleDescription;
-    private ImageButton videoButton, storyButton, closeButton, quizButton;
+    private ImageButton videoButton, storyButton, closeButton, quizButton, learningsButton;
     private int modId;
     private ImageView backgroundImage;
     private Modules mMod;
@@ -51,6 +51,7 @@ public class ModuleSelection extends AppCompatActivity {
         closeButton = findViewById(R.id.closeButton);
         backgroundImage = findViewById(R.id.backgroundImage);
         quizButton = findViewById(R.id.quizButton);
+        learningsButton = findViewById(R.id.learningsButton);
 
         moduleName.setText(modName);
         moduleDescription.setText(modDesc);
@@ -97,6 +98,18 @@ public class ModuleSelection extends AppCompatActivity {
             }
         });
 
+        learningsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), LearningsActivity.class);
+                intent.putExtra("id", String.valueOf(modId));
+                intent.putExtra("mod_name", modName);
+                startActivity(intent);
+                Toast.makeText(getApplicationContext(), "Learnings selected", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
         quizButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,7 +121,6 @@ public class ModuleSelection extends AppCompatActivity {
 
             }
         });
-
 
         closeButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.infs3605.Entities.Modules;
@@ -21,7 +22,7 @@ public class StoryActivity extends AppCompatActivity {
     private String modName, modDesc;
     private Story mSto;
     private ImageView storyImage;
-    private ImageButton backButton;
+    private ImageButton backButton, learningButton;
     private Modules mMod;
 
     @Override
@@ -36,6 +37,7 @@ public class StoryActivity extends AppCompatActivity {
         storyTV = findViewById(R.id.storyTV);
         storyImage = findViewById(R.id.storyImage);
         backButton = findViewById(R.id.backButton);
+        learningButton = findViewById(R.id.learningsButton);
 
         storyTV.setMovementMethod(new ScrollingMovementMethod());
 
@@ -69,6 +71,18 @@ public class StoryActivity extends AppCompatActivity {
                 myIntent.putExtra("Module", modName);
                 myIntent.putExtra("Description", modDesc);
                 startActivity(myIntent);
+
+            }
+        });
+
+        learningButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), LearningsActivity.class);
+                intent.putExtra("id", String.valueOf(modId));
+                intent.putExtra("mod_name", modName);
+                startActivity(intent);
+                Toast.makeText(getApplicationContext(), "Story selected", Toast.LENGTH_SHORT).show();
 
             }
         });
