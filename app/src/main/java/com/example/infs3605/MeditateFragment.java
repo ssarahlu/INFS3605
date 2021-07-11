@@ -35,7 +35,7 @@ public class MeditateFragment extends Fragment {
         btnStart = view.findViewById(R.id.btnStart);
 
         timePicker.setMaxValue(10);
-        timePicker.setMinValue(0);
+        timePicker.setMinValue(1);
         timePicker.setValue(5);
 
         meditationTime = timePicker.getValue();

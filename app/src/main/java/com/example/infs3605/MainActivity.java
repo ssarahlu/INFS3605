@@ -103,16 +103,7 @@ public class MainActivity extends AppCompatActivity {
             } if (s1.equals("4")) {
 
                 s1 = "";
-                MeditateFragment fragment = new MeditateFragment();
-                /*
-                Bundle bundle = new Bundle();
-                bundle.putString(HomeFragment.TOPIC_ID, String.valueOf(topicId));
-                fragment.setArguments(bundle);
-
-                 */
-
-                getSupportFragmentManager().beginTransaction()
-                        .add(R.id.fragment_container, fragment).commit();
+                bottomNav.setSelectedItemId(R.id.page_4);
             }
         } else {
 

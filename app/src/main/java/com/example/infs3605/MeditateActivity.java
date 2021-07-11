@@ -98,7 +98,6 @@ public class MeditateActivity extends AppCompatActivity {
         intent.putExtra("id", "0");
         intent.putExtra("Check", "4");
         startActivity(intent);
-        Toast.makeText(getApplicationContext(), "Back to meditate ", Toast.LENGTH_SHORT).show();
     }
 
     private void startTimer() {
