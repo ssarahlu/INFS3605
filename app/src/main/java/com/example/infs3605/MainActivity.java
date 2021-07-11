@@ -31,24 +31,40 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
                     HomeFragment homeFragment = new HomeFragment();
                     FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction1.replace(R.id.fragment_container, homeFragment, "FragmentName");
+                    fragmentTransaction1.replace(R.id.fragment_container, homeFragment, "Home");
                     fragmentTransaction1.commit();
                     break;
                 case R.id.page_2:
-                    Toast.makeText(MainActivity.this, "Social", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Explore", Toast.LENGTH_SHORT).show();
+                    ExploreFragment exploreFragment = new ExploreFragment();
+                    FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction2.replace(R.id.fragment_container, exploreFragment, "Explore");
+                    fragmentTransaction2.commit();
+
                     break;
                 case R.id.page_3:
                     Toast.makeText(MainActivity.this, "Rewards", Toast.LENGTH_SHORT).show();
+                    RewardsFragment rewardsFragment = new RewardsFragment();
+                    FragmentTransaction fragmentTransaction3 = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction3.replace(R.id.fragment_container, rewardsFragment, "Rewards");
+                    fragmentTransaction3.commit();
+
                     break;
                 case R.id.page_4:
                     Toast.makeText(MainActivity.this, "Meditate", Toast.LENGTH_SHORT).show();
                     MeditateFragment meditateFragment = new MeditateFragment();
-                    FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction2.replace(R.id.fragment_container, meditateFragment, "FragmentName");
-                    fragmentTransaction2.commit();
+                    FragmentTransaction fragmentTransaction4 = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction4.replace(R.id.fragment_container, meditateFragment, "Meditate");
+                    fragmentTransaction4.commit();
                     break;
+
                 case R.id.page_5:
                     Toast.makeText(MainActivity.this, "Profile", Toast.LENGTH_SHORT).show();
+                    ProfileFragment profileFragment = new ProfileFragment();
+                    FragmentTransaction fragmentTransaction5 = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction5.replace(R.id.fragment_container, profileFragment, "Profile");
+                    fragmentTransaction5.commit();
+
                     break;
             }
             return true;

@@ -57,7 +57,7 @@
                 android:scrollbars="none"
                 android:text="This is the story"
                 android:textColor="#070707"
-                android:textSize="18sp" />
+                android:textSize="15sp" />
 
             <ImageButton
                 android:id="@+id/learningsButton"
