@@ -154,14 +154,6 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("Here");
         }
 
-
-
-
-
-
-
-
-
     }
 
     public void createProfile(){
