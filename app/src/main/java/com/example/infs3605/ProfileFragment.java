@@ -18,7 +18,6 @@ import com.google.android.gms.tasks.Task;
 
 public class ProfileFragment extends Fragment {
 
-    private TextView profile;
     private Button btSignOut;
 
     public ProfileFragment() {
@@ -31,10 +30,6 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
-
-        profile = view.findViewById(R.id.profile);
-
-        profile.setText("Profile Screen");
 
         btSignOut = view.findViewById(R.id.btSignOut);
 

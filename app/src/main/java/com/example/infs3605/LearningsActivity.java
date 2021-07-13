@@ -3,9 +3,11 @@ package com.example.infs3605;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
+import androidx.room.Room;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -19,6 +21,10 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.infs3605.Entities.Learnings;
 import com.example.infs3605.Entities.Modules;
+import com.example.infs3605.Entities.ProfileData;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
@@ -38,10 +44,19 @@ public class LearningsActivity extends AppCompatActivity {
     ConstraintSet constraintSet;
     ConstraintLayout constraintLayout;
 
+    MyDatabase myDb;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private String email;
+    ProfileData mProfileData = new ProfileData();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_learnings);
+
+        email = user.getEmail();
+
         Intent intent = getIntent();
         modId = Integer.parseInt(intent.getStringExtra("id"));
         modName = intent.getStringExtra("mod_name");
@@ -159,6 +174,9 @@ public class LearningsActivity extends AppCompatActivity {
             constraintSet.constrainWidth(R.id.previous, ConstraintLayout.LayoutParams.MATCH_PARENT);
             constraintSet.applyTo(constraintLayout);
 
+            //add learnings viewed task as true to database only once they reach the last page
+            new MyLearningsViewedTask().execute();
+
         } else if (i <= 0) {
             i = 1;
             Log.d(TAG, "onClick: line 170 displays index at " + i);
@@ -237,7 +255,7 @@ public class LearningsActivity extends AppCompatActivity {
         } else {
             i--;
             Log.d(TAG, "onClick: line 230 sets index at " + i);
-            if (i <= 0) {
+            if (i <= 0) { //on first page
                 previous.setVisibility(View.GONE);
                 check.setVisibility(View.GONE);
                 i = 0;
@@ -279,6 +297,34 @@ public class LearningsActivity extends AppCompatActivity {
         }
     }
 
+    //update learnings viewed to true
+    private class MyLearningsViewedTask extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            Log.d(TAG, "onPreExecute: LOADING");
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            myDb = Room.databaseBuilder(getApplicationContext(), MyDatabase.class, "my-db.db")
+                    .build();
+            myDb.profileDataDao().updateLearningsViewed(true, email , modId);
+
+            //check data added correctly
+            mProfileData = myDb.profileDataDao().getUserProfileData(email, modId);
+            System.out.println("check learnings viewed data is added " + mProfileData.isLearningsViewed());
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void v) {
+            super.onPostExecute(v);
+            Log.d(TAG, "onPostExecute: FINISHED");
+        }
+
+    }
 
 
 }

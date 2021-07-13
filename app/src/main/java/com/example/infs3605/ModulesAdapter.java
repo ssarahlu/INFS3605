@@ -8,8 +8,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import com.example.infs3605.Entities.Modules;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
@@ -19,11 +23,19 @@ public class ModulesAdapter extends RecyclerView.Adapter<ModulesAdapter.MyViewHo
     private RecyclerViewClickListener mListener;
     private Context context;
     private Modules mModule;
-    private static final String TAG = "MyAdapter";
+    private static final String TAG = "ModulesAdapter";
+    MyDatabase myDb;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private String email;
+
+    private boolean isVideoViewed, isStoryViewed, isLearningsViewed, isQuizViewed;
+
 
     public ModulesAdapter(ArrayList<Modules> modules, RecyclerViewClickListener listener){
         mModules = modules;
         mListener = listener;
+
     }
 
     public interface RecyclerViewClickListener {
@@ -34,7 +46,8 @@ public class ModulesAdapter extends RecyclerView.Adapter<ModulesAdapter.MyViewHo
     public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         //add textview for shit inside the cardview
 
-        public TextView module, moduleSubtitle;
+        public TextView module, moduleSubtitle, completed;
+        public ImageView tick;
 
         private RecyclerViewClickListener mListener;
 
@@ -46,6 +59,10 @@ public class ModulesAdapter extends RecyclerView.Adapter<ModulesAdapter.MyViewHo
 
             module = v.findViewById(R.id.module);
             moduleSubtitle = v.findViewById(R.id.moduleSubtitle);
+            tick = v.findViewById(R.id.tick);
+            completed = v.findViewById(R.id.completed);
+
+
 
         }
 
@@ -78,6 +95,47 @@ public class ModulesAdapter extends RecyclerView.Adapter<ModulesAdapter.MyViewHo
         mModule = mModules.get(position);
         holder.module.setText(mModule.getModuleName());
         holder.moduleSubtitle.setText(mModule.getModuleSubtitle());
+
+        int partsCompleted = 0;
+
+        email = user.getEmail();
+
+
+        //checks whether the user has completed the module i.e. viewed all 4 components
+        myDb = Room.databaseBuilder(context, MyDatabase.class, "my-db.db")
+                .allowMainThreadQueries()
+                .build();
+
+        isVideoViewed = myDb.profileDataDao().getVideoViewed(email, mModule.getModuleId());
+        isStoryViewed = myDb.profileDataDao().getStoryViewed(email, mModule.getModuleId());
+        isLearningsViewed = myDb.profileDataDao().getLearningsViewed(email, mModule.getModuleId());
+        isQuizViewed = myDb.profileDataDao().getQuizViewed(email, mModule.getModuleId());
+
+        if (isVideoViewed == true && isStoryViewed == true && isLearningsViewed == true && isQuizViewed == true){
+            holder.tick.setImageResource(R.drawable.viewed);
+            holder.completed.setText("");
+
+        } else if (isVideoViewed == true || isStoryViewed == true || isLearningsViewed == true || isQuizViewed == true){
+            holder.tick.setImageResource(R.drawable.in_progress);
+
+            if (isVideoViewed == true){
+                partsCompleted++;
+            }
+            if (isStoryViewed == true){
+                partsCompleted++;
+            }
+            if (isLearningsViewed == true){
+                partsCompleted++;
+            }
+            if (isQuizViewed == true){
+                partsCompleted++;
+            }
+
+            holder.completed.setText(partsCompleted + "/4");
+
+        } else {
+            holder.completed.setText("");
+        }
 
 
     }

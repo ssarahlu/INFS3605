@@ -37,6 +37,9 @@ public class Topics {
         ArrayList<Topics> topics = new ArrayList<>();
 
         topics.add(new Topics(0, "Arts and Music"));
+        topics.add(new Topics(1, "Spirituality"));
+        topics.add(new Topics(2, "Rituals and Ceremonies"));
+        topics.add(new Topics(3, "Language"));
 
         return topics;
     }

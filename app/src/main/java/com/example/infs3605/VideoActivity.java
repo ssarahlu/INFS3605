@@ -2,7 +2,9 @@ package com.example.infs3605;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -10,8 +12,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.room.Room;
+
 import com.bumptech.glide.Glide;
 import com.example.infs3605.Entities.Modules;
+import com.example.infs3605.Entities.ProfileData;
 import com.example.infs3605.Entities.Videos;
 
 
@@ -19,6 +24,9 @@ import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.InputStream;
 import java.net.URL;
@@ -37,8 +45,17 @@ public class VideoActivity extends YouTubeBaseActivity {
     private String modDesc;
     private ImageButton backButton;
     private Button storyButton;
+    MyDatabase myDb;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private String email;
+    ProfileData mProfileData = new ProfileData();
 
     private String videoDescription;
+    private static final String TAG = "VideoActivity";
+
+
+    private boolean videoViewed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +73,8 @@ public class VideoActivity extends YouTubeBaseActivity {
 
         videoDescription =  "Here is a video of " +  modName + ". Please watch the video.";
         videoDesc.setText(videoDescription);
+
+        email = user.getEmail();
 
         setTitle(modName);
 
@@ -105,6 +124,9 @@ public class VideoActivity extends YouTubeBaseActivity {
             }
         });
 
+
+        new MyVideoViewedTask().execute();
+
     }
 
 
@@ -126,5 +148,36 @@ public class VideoActivity extends YouTubeBaseActivity {
                 }
             });
     }
+
+
+    //update video viewed to true
+    private class MyVideoViewedTask extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            Log.d(TAG, "onPreExecute: LOADING");
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            myDb = Room.databaseBuilder(getApplicationContext(), MyDatabase.class, "my-db.db")
+                    .build();
+            myDb.profileDataDao().updateVideoViewed(true, email , modId);
+
+            //check data added correctly
+            mProfileData = myDb.profileDataDao().getUserProfileData(email, modId);
+            System.out.println("check video viewed data is added " + mProfileData.isVideoViewed());
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void v) {
+            super.onPostExecute(v);
+            Log.d(TAG, "onPostExecute: FINISHED");
+        }
+
+    }
+
 
 }

@@ -1,9 +1,12 @@
 package com.example.infs3605;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -13,8 +16,16 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.infs3605.Entities.Modules;
+import com.example.infs3605.Entities.Profile;
+import com.example.infs3605.Entities.ProfileData;
 import com.example.infs3605.Entities.Quiz;
 import com.example.infs3605.Entities.Topics;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
@@ -32,6 +43,15 @@ public class ModuleSelection extends AppCompatActivity {
     public static final String TOPIC_ID = "topic_id";
     private Topics mTop;
     private int topicIdFK;
+    private ImageView videoViewed, storyViewed, learningsViewed, quizViewed;
+    
+    private static final String TAG = "TopicQuestionActivity";
+    MyDatabase myDb;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private String email;
+    
+    private boolean isVideoViewed, isStoryViewed, isLearningsViewed, isQuizViewed; 
 
 
     @Override
@@ -52,9 +72,21 @@ public class ModuleSelection extends AppCompatActivity {
         backgroundImage = findViewById(R.id.backgroundImage);
         quizButton = findViewById(R.id.quizButton);
         learningsButton = findViewById(R.id.learningsButton);
-
+        
+        videoViewed = findViewById(R.id.videoViewed);
+        storyViewed = findViewById(R.id.storyViewed);
+        learningsViewed = findViewById(R.id.learningsViewed);
+        quizViewed = findViewById(R.id.quizViewed);
+        
+        videoViewed.setVisibility(View.INVISIBLE);
+        storyViewed.setVisibility(View.INVISIBLE);
+        learningsViewed.setVisibility(View.INVISIBLE);
+        quizViewed.setVisibility(View.INVISIBLE);
+        
         moduleName.setText(modName);
         moduleDescription.setText(modDesc);
+        
+        email = user.getEmail();
 
         for (Modules m : Modules.getModules()){
             if (m.getModuleId() == modId){
@@ -71,7 +103,8 @@ public class ModuleSelection extends AppCompatActivity {
             }
         }
 
-
+        //execute inserting that user has accessed module into local database
+        insertData();
 
         videoButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,6 +171,69 @@ public class ModuleSelection extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void insertData(){
+        new MyViewedTask().execute();
+    }
+
+    private class MyViewedTask extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            Log.d(TAG, "onPreExecute: LOADING");
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            myDb = Room.databaseBuilder(getApplicationContext(), MyDatabase.class, "my-db.db")
+                    .build();
+            //get email
+            myDb.profileDataDao().insertSingleResult(modId, email, false, false, false, false, 0, topicIdFK);
+            Log.d(TAG, "onSuccess: " + email + modId + topicIdFK);
+            
+            isVideoViewed = myDb.profileDataDao().getVideoViewed(email, modId);
+            isStoryViewed = myDb.profileDataDao().getStoryViewed(email, modId);
+            isLearningsViewed = myDb.profileDataDao().getLearningsViewed(email, modId);
+            isQuizViewed = myDb.profileDataDao().getQuizViewed(email, modId);
+            
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void v) {
+            super.onPostExecute(v);
+            updateViewedData();
+            Log.d(TAG, "onPostExecute: FINISHED");
+            
+        }
 
     }
+    
+    private void updateViewedData(){
+        if (isVideoViewed == true){
+            videoViewed.setVisibility(View.VISIBLE);
+        }
+        
+        if (isStoryViewed == true){
+            storyViewed.setVisibility(View.VISIBLE);
+        }
+        
+        if (isLearningsViewed == true){
+            learningsViewed.setVisibility(View.VISIBLE);
+
+        }
+        
+        if (isQuizViewed == true){
+            quizViewed.setVisibility(View.VISIBLE);
+        }
+
+        Log.d(TAG, "updateViewedData: Finished updating the views");
+        
+    }
+
+    
+
+
+
 }
