@@ -1,9 +1,13 @@
 package com.example.infs3605;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
+import androidx.room.Update;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,9 +20,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.infs3605.Entities.Modules;
+import com.example.infs3605.Entities.ProfileData;
 import com.example.infs3605.Entities.Quiz;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class QuizActivity extends AppCompatActivity {
     private int modId, i, quizId, stars;
@@ -27,8 +42,8 @@ public class QuizActivity extends AppCompatActivity {
     private RadioGroup grp;
     private TextView question, position, fin;
     private Button next, check, again;
-    private ImageButton cancel;
-    private ImageView img1, img2, img3, img4;
+    private ImageButton cancel, returnHome;
+    private ImageView img1, img2, img3, img4, imageComplete;
     private ArrayList<Quiz> mQuiz = new ArrayList<>();
     private ArrayList<Modules> mMod = new ArrayList<>();
     private Quiz q;
@@ -37,6 +52,16 @@ public class QuizActivity extends AppCompatActivity {
     MediaPlayer mpWrong;
     MediaPlayer mpRight;
     private static final String TAG = "QuizActivity";
+    private int addedStars, mStars;
+    private int firebaseStars;
+
+
+    MyDatabase myDb;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private String email;
+    ProfileData mProfileData = new ProfileData();
+    private DocumentReference userRef = db.collection("profiles").document(user.getUid());
 
 
     @Override
@@ -44,6 +69,8 @@ public class QuizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
         setTitle("Quiz");
+
+        email = user.getEmail();
 
         Intent intent = getIntent();
         modId = Integer.parseInt(intent.getStringExtra("id"));
@@ -69,6 +96,10 @@ public class QuizActivity extends AppCompatActivity {
         grp = findViewById(R.id.grp);
         fin = findViewById(R.id.finished);
         cancel.setVisibility(View.VISIBLE);
+        imageComplete = findViewById(R.id.imageComplete);
+        imageComplete.setVisibility(View.GONE);
+        returnHome = findViewById(R.id.returnHome);
+        returnHome.setVisibility(View.INVISIBLE);
 
         for (Quiz q: Quiz.getQuiz()){
             if (q.getModuleId() == modId){
@@ -97,7 +128,7 @@ public class QuizActivity extends AppCompatActivity {
             opt4.setText(q.getOp4());
             answer = q.getAnswer();
             quizId = q.getId();
-            position.setText(i + 1 + "/" + mQuiz.size());
+            position.setText("Question " + (i + 1) + "/" + mQuiz.size());
             next.setVisibility(View.GONE);
             img1.setImageResource(android.R.color.transparent);
             img2.setImageResource(android.R.color.transparent);
@@ -113,7 +144,6 @@ public class QuizActivity extends AppCompatActivity {
         check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO - check if null
                 img1.setImageResource(android.R.color.transparent);
                 img2.setImageResource(android.R.color.transparent);
                 img3.setImageResource(android.R.color.transparent);
@@ -154,6 +184,15 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
+        returnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
         again.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -169,7 +208,7 @@ public class QuizActivity extends AppCompatActivity {
                     opt4.setText(q.getOp4());
                     answer = q.getAnswer();
                     quizId = q.getId();
-                    position.setText(i + 1 + "/" + mQuiz.size());
+                    position.setText("Question " + i + 1 + "/" + mQuiz.size());
                     next.setVisibility(View.GONE);
                     img1.setImageResource(android.R.color.transparent);
                     img2.setImageResource(android.R.color.transparent);
@@ -274,14 +313,18 @@ public class QuizActivity extends AppCompatActivity {
 
 
     private void next() {
+//        mpRight.stop();
+//        mpWrong.stop();
         img1.setImageResource(android.R.color.transparent);
         img2.setImageResource(android.R.color.transparent);
         img3.setImageResource(android.R.color.transparent);
         img4.setImageResource(android.R.color.transparent);
         grp.clearCheck();
+
+        //if the quiz has finished
         if (i >= mQuiz.size()) {
-//            new MyViewedTask().execute();
-//            new GetStarsTask().execute();
+            new MyQuizViewedTask().execute();
+            new GetStarsTask().execute();
 //            tr = new TopicResult(topicId, email, stars, true);
 //            new UpdateStarsTask().execute();
             next.setVisibility(View.GONE);
@@ -291,8 +334,8 @@ public class QuizActivity extends AppCompatActivity {
             //displays stars earnt in the mini quiz
 
             i = mQuiz.size();
-            updateUi();
 
+            new UpdateStarsTask().execute();
 
 
         } else if (i <= 0) {
@@ -309,7 +352,7 @@ public class QuizActivity extends AppCompatActivity {
             opt4.setText(q.getOp4());
             answer = q.getAnswer();
             quizId = q.getId();
-            position.setText(i + 1 + "/" + mQuiz.size());
+            position.setText("Question " + (i + 1) + "/" + mQuiz.size());
         } else {
             i++;
             Log.d(TAG, "onClick: line 187 displays index at " + i);
@@ -324,7 +367,7 @@ public class QuizActivity extends AppCompatActivity {
             opt4.setText(q.getOp4());
             answer = q.getAnswer();
             quizId = q.getId();
-            position.setText(i + 1 + "/" + mQuiz.size());
+            position.setText("Question " + (i + 1) + "/" + mQuiz.size());
 
             if (i == (mQuiz.size() - 1)) {
                 i++;
@@ -361,7 +404,190 @@ public class QuizActivity extends AppCompatActivity {
 //                imgquest.setImageResource(R.drawable.tick);
 //        }
         question.setText("You have finished this topic's knowledge check. Your result is " + stars + "/" + mQuiz.size() + "");
-        position.setText("");
+        position.setText("Quiz complete!");
         fin.setText(finished);
+        returnHome.setVisibility(View.VISIBLE);
+        imageComplete.setVisibility(View.VISIBLE);
+
     }
+
+    //update quiz viewed to true
+    private class MyQuizViewedTask extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            Log.d(TAG, "onPreExecute: LOADING");
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            myDb = Room.databaseBuilder(getApplicationContext(), MyDatabase.class, "my-db.db")
+                    .build();
+            myDb.profileDataDao().updateQuizViewed(true, email , modId);
+
+            //check data added correctly
+            mProfileData = myDb.profileDataDao().getUserProfileData(email, modId);
+            System.out.println("check quiz viewed data is added " + mProfileData.isQuizViewed());
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void v) {
+            super.onPostExecute(v);
+            Log.d(TAG, "onPostExecute: FINISHED");
+        }
+
+    }
+
+
+    private class GetStarsTask extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected Void doInBackground(Void... voids) {
+            myDb = Room.databaseBuilder(getApplicationContext(), MyDatabase.class, "my-db.db")
+                    .build();
+            mStars = myDb.profileDataDao().getQuizStars(email, modId);
+            Log.d(TAG, "doInBackground: Current stars for this topic are:  " + mStars);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void v) {
+            super.onPostExecute(v);
+            Log.d(TAG, "onPostExecute: FINISHED");
+
+        }
+
+    }
+
+    private class UpdateStarsTask extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            Log.d(TAG, "onPreExecute: LOADING");
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            myDb = Room.databaseBuilder(getApplicationContext(), MyDatabase.class, "my-db.db")
+                    .build();
+            Log.d(TAG, "doInBackground: The stars before updating are " + mStars);
+
+            //if my stars is maxed out
+            if (mStars >= mQuiz.size()) {
+                addedStars = 0;
+                finished = "You have already achieved the maximum stars for this topic. You currently have a total of " + mStars + "/" + mQuiz.size() + " stars for this topic so you cannot earn any more stars.";
+                Log.d(TAG, "doInBackground: " + finished);
+                Log.d(TAG, "doInBackground: if one" );
+
+                //if the stars you earned from this quiz plus past quizzes is greater than the maximum value
+            } else if ((mStars + stars) > mQuiz.size()) {
+                if (stars == mQuiz.size()){ //if user gets full marks, give them all the stars left
+                    addedStars = mQuiz.size()-mStars;
+                    System.out.println("Inside added stars ");
+                    System.out.println(addedStars);
+                } else {
+                    addedStars = (mStars + stars) - mQuiz.size();
+                }
+
+                //the addedStars == 1 statements are just so that i can change the text inside textview from star to starS - basically just for grammar
+                if (addedStars == 1) {
+                    finished = "You will get an additional " + addedStars + " star. Your new total is " + (addedStars + mStars) + "/" + mQuiz.size() + " stars for this topic";
+                    Log.d(TAG, "doInBackground: " + finished);
+                } else {
+                    finished = "You will get an additional " + addedStars + " stars. Your new total is " + (addedStars + mStars) + "/" + mQuiz.size() + " stars for this topic";
+                    Log.d(TAG, "doInBackground: " + finished);
+                }
+
+                Log.d(TAG, "doInBackground: if two");
+
+                //if your current recorded number is 0 (haven't attempted quiz or haven't gotten anything right in past attempts)
+            } else if (mStars == 0) {
+                addedStars = stars;
+
+                //the addedStars == 1 statements are just so that i can change the text inside textview from star to starS - basically just for grammar
+                if (addedStars == 1) {
+                    finished = "You have earned " + addedStars + " star. Your new total is " + (addedStars + mStars) + "/" + mQuiz.size() + " stars for this topic";
+                    Log.d(TAG, "doInBackground: " + finished);
+                } else {
+                    finished = "You have earned " + addedStars + " stars. Your new total is " + (addedStars + mStars) + "/" + mQuiz.size() + " stars for this topic";
+                    Log.d(TAG, "doInBackground: " + finished);
+                }
+
+                Log.d(TAG, "doInBackground:  if three" );
+                
+                //if there's room to add more stars
+            } else {
+                addedStars = stars;
+
+                //the addedStars == 1 statements are just so that i can change the text inside textview from star to starS - basically just for grammar
+                if (addedStars == 1) {
+                    finished = "You will get an additional " + addedStars + " star. Your new total is " + (addedStars + mStars) + "/" + mQuiz.size() + " stars for this topic";
+                    Log.d(TAG, "doInBackground: " + finished);
+                } else {
+                    finished = "You will get an additional " + addedStars + " stars. Your new total is " + (addedStars + mStars) + "/" + mQuiz.size() + " stars for this topic";
+                    Log.d(TAG, "doInBackground: " + finished);
+                }
+
+                Log.d(TAG, "doInBackground: if four");
+            }
+            myDb.profileDataDao().updateQuizStars((mStars + addedStars), email, modId);
+            mStars = myDb.profileDataDao().getQuizStars(email, modId);
+            Log.d(TAG, "onPostExecute: my new total stars " + mStars);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void v) {
+            super.onPostExecute(v);
+            Log.d(TAG, "onPostExecute: FINISHED");
+
+            myDb.close();
+            updateUi();
+            updateFirebase();
+
+        }
+
+    }
+
+
+    //basically use added stars to add shit to the db
+
+    private void updateFirebase(){
+        userRef.get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()){
+                            firebaseStars = Integer.parseInt("" + documentSnapshot.get("stars"));
+                            Map<String, Object> stars = new HashMap<>();
+
+                            //add their current stars plus the new ones they got from the quiz
+                            stars.put("stars", (addedStars + firebaseStars));
+                            userRef.set(stars, SetOptions.merge())
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            Log.d(TAG, firebaseStars + " stars saved to database");
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(QuizActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                                            Log.d(TAG, e.toString());
+                                        }
+                                    });
+
+
+                        }
+                    }
+                });
+
+
+    }
+
+
+
+
 }

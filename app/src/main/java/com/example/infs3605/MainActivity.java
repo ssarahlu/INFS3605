@@ -92,8 +92,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main);
-
         userRef.get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
@@ -117,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+        setContentView(R.layout.activity_main);
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -161,12 +160,20 @@ public class MainActivity extends AppCompatActivity {
         String name = user.getDisplayName();
         String email = user.getEmail();
         int stars = 0;
+        String[] nameArr = user.getDisplayName().split(" ");
+
+        String fname = nameArr[0];
+        String lname = nameArr[1];
+
+
 
         // Create a Hash Map with the desired values
         Map<String, Object> profile = new HashMap<>();
         profile.put("name", name);
         profile.put("email", email);
         profile.put("stars", stars);
+        profile.put("fname", fname);
+        profile.put("lname", lname);
 
         // Create a document with UID as the reference
         userRef.set(profile)
