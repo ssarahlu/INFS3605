@@ -19,7 +19,7 @@ import com.google.android.gms.tasks.Task;
 public class ProfileFragment extends Fragment {
 
     private TextView profile;
-    private Button btSignOut;
+    private Button btSignOut, btLeaderboard;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -42,6 +42,16 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 signOut();
+            }
+        });
+
+        btLeaderboard = view.findViewById(R.id.btLeaderboard);
+
+        btLeaderboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), LeaderboardActivity.class);
+                startActivity(intent);
             }
         });
 

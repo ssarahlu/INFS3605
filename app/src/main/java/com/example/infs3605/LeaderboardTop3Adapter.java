@@ -15,47 +15,42 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.LeaderboardViewHolder> {
+public class LeaderboardTop3Adapter extends RecyclerView.Adapter<LeaderboardTop3Adapter.LeaderboardViewHolder> {
     private List<Profile> mProfiles;
 
-    public LeaderboardAdapter(List<Profile> profiles) {
+    public LeaderboardTop3Adapter(List<Profile> profiles) {
         mProfiles = profiles;
     }
 
 
     @NonNull
     @Override
-    public LeaderboardAdapter.LeaderboardViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.leaderboard_item, parent, false);
+    public LeaderboardTop3Adapter.LeaderboardViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.leaderboard_top3_item, parent, false);
         return new LeaderboardViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull LeaderboardAdapter.LeaderboardViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull LeaderboardTop3Adapter.LeaderboardViewHolder holder, int position) {
         Profile profile = mProfiles.get(position);
 
         holder.tvName.setText(profile.getDisplayName());
-        holder.tvAnimal.setText(profile.getLevelAnimal());
-        holder.tvLevel.setText(" | Level " + profile.getLevel());
-        holder.tvStars.setText(Integer.toString(profile.getStars()));
+
         holder.ivAvatar.setImageResource(Integer.parseInt(profile.getLevelAnimalIcon()));
 
         if (position == 0) {
             holder.tvRank.setText("1st");
         } else if (position == 1) {
             holder.tvRank.setText("2nd");
-        } else if (position == 2) {
-            holder.tvRank.setText("3rd");
         } else {
-            holder.tvRank.setText((position + 1) + "th");
+            holder.tvRank.setText("3rd");
         }
-
 
     }
 
     @Override
     public int getItemCount() {
-        return mProfiles.size();
+        return 3;
     }
 
     public class LeaderboardViewHolder extends RecyclerView.ViewHolder {
@@ -65,9 +60,6 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
             super(itemView);
             tvRank = itemView.findViewById(R.id.tvRank);
             tvName = itemView.findViewById(R.id.tvName);
-            tvAnimal = itemView.findViewById(R.id.tvAnimal);
-            tvLevel = itemView.findViewById(R.id.tvLevel);
-            tvStars = itemView.findViewById(R.id.tvStars);
             ivAvatar = itemView.findViewById(R.id.ivAvatar);
 
         }

@@ -142,7 +142,10 @@ public class MainActivity extends AppCompatActivity {
 
                 s1 = "";
                 bottomNav.setSelectedItemId(R.id.page_4);
+            } if (s1.equals("5")) {
+                bottomNav.setSelectedItemId(R.id.page_5);
             }
+
         } else {
 
             HomeFragment hf = new HomeFragment();
@@ -174,6 +177,8 @@ public class MainActivity extends AppCompatActivity {
         profile.put("stars", stars);
         profile.put("fname", fname);
         profile.put("lname", lname);
+        profile.put("levelAnimal", "joey");
+        profile.put("level", 1);
 
         // Create a document with UID as the reference
         userRef.set(profile)
@@ -189,6 +194,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.w(TAG, "Error writing document", e);
                     }
                 });
+
 
 
 
