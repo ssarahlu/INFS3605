@@ -39,11 +39,11 @@ public class LeaderboardTop3Adapter extends RecyclerView.Adapter<LeaderboardTop3
         holder.ivAvatar.setImageResource(Integer.parseInt(profile.getLevelAnimalIcon()));
 
         if (position == 0) {
-            holder.tvRank.setText("1st");
+            holder.ivRank.setImageResource(R.drawable.rank1);
         } else if (position == 1) {
-            holder.tvRank.setText("2nd");
+            holder.ivRank.setImageResource(R.drawable.rank2);
         } else {
-            holder.tvRank.setText("3rd");
+            holder.ivRank.setImageResource(R.drawable.rank3);
         }
 
     }
@@ -54,11 +54,11 @@ public class LeaderboardTop3Adapter extends RecyclerView.Adapter<LeaderboardTop3
     }
 
     public class LeaderboardViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvRank, tvName, tvAnimal, tvLevel, tvStars;
-        private ImageView ivAvatar;
+        private TextView  tvName, tvAnimal, tvLevel, tvStars;
+        private ImageView ivAvatar, ivRank;
         public LeaderboardViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvRank = itemView.findViewById(R.id.tvRank);
+            ivRank = itemView.findViewById(R.id.ivRank);
             tvName = itemView.findViewById(R.id.tvName);
             ivAvatar = itemView.findViewById(R.id.ivAvatar);
 
