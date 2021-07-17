@@ -1,0 +1,52 @@
+Index: app/src/main/res/layout/leaderboard_item.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"wrap_content\"\n    android:background=\"@drawable/recyclerviewbackground\"\n   >\n\n    <ImageView\n        android:id=\"@+id/ivStars\"\n        android:layout_width=\"30dp\"\n        android:layout_height=\"30dp\"\n\n        android:layout_marginStart=\"180dp\"\n        android:layout_marginLeft=\"180dp\"\n        android:layout_marginEnd=\"13dp\"\n        android:layout_marginRight=\"13dp\"\n        app:layout_constraintBottom_toBottomOf=\"@+id/ivAvatar\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintHorizontal_bias=\"0.47\"\n        app:layout_constraintStart_toEndOf=\"@+id/ivAvatar\"\n        app:layout_constraintTop_toTopOf=\"@+id/ivAvatar\"\n        app:layout_constraintVertical_bias=\"0.478\"\n        app:srcCompat=\"@drawable/stars\" />\n\n    <ImageView\n        android:id=\"@+id/ivAvatar\"\n        android:layout_width=\"60dp\"\n        android:layout_height=\"60dp\"\n\n        android:layout_marginStart=\"5dp\"\n        android:layout_marginLeft=\"5dp\"\n        android:layout_marginTop=\"20dp\"\n        android:layout_marginBottom=\"20dp\"\n        app:layout_constraintBottom_toBottomOf=\"parent\"\n        app:layout_constraintStart_toEndOf=\"@+id/tvRank\"\n        app:layout_constraintTop_toTopOf=\"parent\"\n        app:layout_constraintVertical_bias=\"1.0\"\n        tools:srcCompat=\"@tools:sample/avatars\" />\n\n    <TextView\n        android:id=\"@+id/tvName\"\n        android:layout_width=\"130dp\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginStart=\"12dp\"\n        android:layout_marginLeft=\"12dp\"\n        android:text=\"Name\"\n        android:textSize=\"18sp\"\n        android:textStyle=\"bold\"\n        app:layout_constraintStart_toEndOf=\"@+id/ivAvatar\"\n        app:layout_constraintTop_toTopOf=\"@+id/ivAvatar\" />\n\n    <TextView\n        android:id=\"@+id/tvAnimal\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginStart=\"12dp\"\n        android:layout_marginLeft=\"12dp\"\n        android:layout_marginTop=\"10dp\"\n        android:text=\"Animal\"\n        android:textSize=\"14sp\"\n        android:textStyle=\"bold\"\n        app:layout_constraintBottom_toBottomOf=\"@+id/ivAvatar\"\n        app:layout_constraintStart_toEndOf=\"@+id/ivAvatar\"\n        app:layout_constraintTop_toBottomOf=\"@+id/tvName\"\n        app:layout_constraintVertical_bias=\"0.0\" />\n\n    <TextView\n        android:id=\"@+id/tvLevel\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:text=\"| Level\"\n        android:textSize=\"14sp\"\n        android:textStyle=\"bold\"\n        app:layout_constraintBottom_toBottomOf=\"@+id/tvAnimal\"\n        app:layout_constraintStart_toEndOf=\"@+id/tvAnimal\"\n        app:layout_constraintTop_toTopOf=\"@+id/tvAnimal\" />\n\n    <TextView\n        android:id=\"@+id/tvStars\"\n        android:layout_width=\"37dp\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginStart=\"5dp\"\n        android:layout_marginLeft=\"5dp\"\n        android:text=\"TextView\"\n        app:layout_constraintBottom_toBottomOf=\"@+id/ivStars\"\n        app:layout_constraintStart_toEndOf=\"@+id/ivStars\"\n        app:layout_constraintTop_toTopOf=\"@+id/ivStars\" />\n\n    <TextView\n        android:id=\"@+id/tvRank\"\n        android:layout_width=\"40dp\"\n        android:layout_height=\"21dp\"\n        android:layout_marginStart=\"15dp\"\n        android:layout_marginLeft=\"15dp\"\n        android:text=\"TextView\"\n        app:layout_constraintBottom_toBottomOf=\"parent\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toTopOf=\"parent\" />\n\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/leaderboard_item.xml	(revision 509b73a9fdd227218ad04a99a189d2bf97e67916)
++++ app/src/main/res/layout/leaderboard_item.xml	(date 1626419220000)
+@@ -72,7 +72,6 @@
+         android:layout_height="wrap_content"
+         android:text="| Level"
+         android:textSize="14sp"
+-        android:textStyle="bold"
+         app:layout_constraintBottom_toBottomOf="@+id/tvAnimal"
+         app:layout_constraintStart_toEndOf="@+id/tvAnimal"
+         app:layout_constraintTop_toTopOf="@+id/tvAnimal" />
+@@ -95,6 +94,7 @@
+         android:layout_marginStart="15dp"
+         android:layout_marginLeft="15dp"
+         android:text="TextView"
++        android:textStyle="bold"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent" />
+Index: app/src/main/res/layout/activity_leaderboard.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    tools:context=\".LeaderboardActivity\">\n\n    <ImageButton\n        android:id=\"@+id/backButton\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:src=\"?attr/homeAsUpIndicator\"\n        app:layout_constraintBottom_toBottomOf=\"parent\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintHorizontal_bias=\"0.044\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toTopOf=\"parent\"\n        app:layout_constraintVertical_bias=\"0.01\" />\n\n    <androidx.recyclerview.widget.RecyclerView\n        android:id=\"@+id/rvLeaderBoard\"\n        android:layout_width=\"361dp\"\n        android:layout_height=\"379dp\"\n        android:layout_marginTop=\"15dp\"\n        app:layout_constraintBottom_toBottomOf=\"parent\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintHorizontal_bias=\"0.495\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toTopOf=\"parent\"\n        app:layout_constraintVertical_bias=\"1.0\" />\n\n    <TextView\n        android:id=\"@+id/tvLeaderboard\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginStart=\"32dp\"\n        android:layout_marginLeft=\"32dp\"\n        android:layout_marginTop=\"100dp\"\n        android:layout_marginBottom=\"15dp\"\n        android:text=\"Leaderboard\"\n        app:layout_constraintBottom_toTopOf=\"@+id/rvLeaderBoard\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@+id/tvChampions\"\n        app:layout_constraintVertical_bias=\"0.949\" />\n\n    <TextView\n        android:id=\"@+id/tvChampions\"\n        android:layout_width=\"wrap_content\"\n        android:layout_height=\"wrap_content\"\n        android:layout_marginStart=\"32dp\"\n        android:layout_marginLeft=\"32dp\"\n        android:layout_marginTop=\"10dp\"\n        android:text=\"Champions\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@+id/backButton\" />\n\n    <androidx.recyclerview.widget.RecyclerView\n        android:id=\"@+id/rvLeaderBoard2\"\n        android:layout_width=\"361dp\"\n        android:layout_height=\"161dp\"\n        android:layout_marginStart=\"5dp\"\n        android:layout_marginLeft=\"5dp\"\n        android:layout_marginTop=\"5dp\"\n        android:layout_marginEnd=\"5dp\"\n        android:layout_marginRight=\"5dp\"\n        android:orientation=\"horizontal\"\n        app:layoutManager=\"androidx.recyclerview.widget.LinearLayoutManager\"\n        app:layout_constraintBottom_toTopOf=\"@+id/tvLeaderboard\"\n        app:layout_constraintEnd_toEndOf=\"@+id/rvLeaderBoard\"\n        app:layout_constraintHorizontal_bias=\"0.529\"\n        app:layout_constraintStart_toStartOf=\"@+id/rvLeaderBoard\"\n        app:layout_constraintTop_toBottomOf=\"@+id/tvChampions\"\n        app:layout_constraintVertical_bias=\"0.636\" />\n\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_leaderboard.xml	(revision 509b73a9fdd227218ad04a99a189d2bf97e67916)
++++ app/src/main/res/layout/activity_leaderboard.xml	(date 1626419183000)
+@@ -39,6 +39,8 @@
+         android:layout_marginTop="100dp"
+         android:layout_marginBottom="15dp"
+         android:text="Leaderboard"
++        android:textSize="16sp"
++        android:textStyle="bold"
+         app:layout_constraintBottom_toTopOf="@+id/rvLeaderBoard"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/tvChampions"
+@@ -52,6 +54,8 @@
+         android:layout_marginLeft="32dp"
+         android:layout_marginTop="10dp"
+         android:text="Champions"
++        android:textSize="16sp"
++        android:textStyle="bold"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/backButton" />
+ 
