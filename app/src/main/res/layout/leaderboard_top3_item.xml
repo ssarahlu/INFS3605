@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="120sp"
-    android:layout_height="wrap_content"
-    android:background="@drawable/recyclerviewbackground">
+    android:layout_width="116sp"
+    android:layout_height="131sp"
+    android:background="@drawable/top3_bg">
 
     <ImageView
         android:id="@+id/ivAvatar"
@@ -26,19 +26,19 @@
 
     <TextView
         android:id="@+id/tvName"
+        style="@style/top3name"
         android:layout_width="wrap_content"
         android:layout_height="27dp"
         android:layout_marginTop="10dp"
         android:gravity="center"
         android:text="Name"
-        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/ivAvatar"
         app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="@+id/ivAvatar"
         app:layout_constraintTop_toBottomOf="@+id/ivAvatar"
-        app:layout_constraintVertical_bias="0.205" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/imageView2"

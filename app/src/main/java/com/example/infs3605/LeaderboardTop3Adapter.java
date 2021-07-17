@@ -1,5 +1,6 @@
 package com.example.infs3605;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.infs3605.Entities.Profile;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -21,6 +24,7 @@ public class LeaderboardTop3Adapter extends RecyclerView.Adapter<LeaderboardTop3
     public LeaderboardTop3Adapter(List<Profile> profiles) {
         mProfiles = profiles;
     }
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
 
     @NonNull
@@ -34,7 +38,13 @@ public class LeaderboardTop3Adapter extends RecyclerView.Adapter<LeaderboardTop3
     public void onBindViewHolder(@NonNull LeaderboardTop3Adapter.LeaderboardViewHolder holder, int position) {
         Profile profile = mProfiles.get(position);
 
-        holder.tvName.setText(profile.getDisplayName());
+        if(profile.getEmail().equals(user.getEmail())){
+            holder.tvName.setText("You");
+            holder.tvName.setTextColor(Color.parseColor("#71C453"));
+        } else {
+            holder.tvName.setText(profile.getDisplayName());
+        }
+
 
         holder.ivAvatar.setImageResource(Integer.parseInt(profile.getLevelAnimalIcon()));
 

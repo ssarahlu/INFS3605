@@ -8,4 +8,126 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="account">
+
+        <item name="android:textSize">
+            17sp
+        </item>
+
+        <item name="android:textColor">
+            #3F3F3F
+        </item>
+
+    </style>
+
+    <style name="g_joukhadar">
+
+        <item name="android:textSize">
+            15sp
+        </item>
+
+        <item name="android:textColor">
+            #424242
+        </item>
+
+    </style>
+
+    <style name="champions">
+
+        <item name="android:textSize">
+            17sp
+        </item>
+
+        <item name="android:textColor">
+            #3F3F3F
+        </item>
+
+    </style>
+
+    <style name="leaderboard">
+
+        <item name="android:textSize">
+            17sp
+        </item>
+
+        <item name="android:textColor">
+            #3F3F3F
+        </item>
+
+    </style>
+
+    <style name="top3name">
+
+        <item name="android:textSize">
+            15sp
+        </item>
+
+        <item name="android:textColor">
+            #424242
+        </item>
+
+    </style>
+
+    <style name="prof_name">
+
+        <item name="android:textSize">
+            15sp
+        </item>
+
+        <item name="android:textColor">
+            #424242
+        </item>
+
+    </style>
+
+
+    <style name="levelanimal">
+
+        <item name="android:textSize">
+            13sp
+        </item>
+
+        <item name="android:textColor">
+            #424242
+        </item>
+
+    </style>
+
+    <style name="prof_star">
+
+        <item name="android:textSize">
+            13sp
+        </item>
+
+        <item name="android:textColor">
+            #424242
+        </item>
+
+    </style>
+
+    <style name="prof_email">
+
+        <item name="android:textSize">
+            15sp
+        </item>
+
+        <item name="android:textColor">
+            #424242
+        </item>
+
+    </style>
+
+
+    <style name="leaderboardname">
+
+        <item name="android:textSize">
+            15sp
+        </item>
+
+        <item name="android:textColor">
+            #424242
+        </item>
+
+    </style>
+
 </resources>

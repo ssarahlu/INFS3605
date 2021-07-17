@@ -14,7 +14,10 @@ import android.widget.TextView;
 import com.example.infs3605.Entities.Profile;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -26,6 +29,7 @@ public class LeaderboardActivity extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference profilesRef = db.collection("profiles");
 
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     private LeaderboardAdapter mAdapter;
     private LeaderboardTop3Adapter mAdapter2;
@@ -38,6 +42,7 @@ public class LeaderboardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leaderboard);
+        getSupportActionBar().hide();
         mRecyclerView = findViewById(R.id.rvLeaderBoard);
         mRecyclerView.setHasFixedSize(false);
 
@@ -65,17 +70,20 @@ public class LeaderboardActivity extends AppCompatActivity {
                             for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
 //                               //email, String displayName, String fname, String lname,
 //                               String levelAnimal, String levelAnimalIcon, int stars, int level
-                                String levelAnimal = "Joey";
+                                String levelAnimal = "";
                                 String levelAnimalIcon = "" + R.drawable.joey;
                                 int level = 1;
-                                profiles.add(new Profile(documentSnapshot.get("email").toString(),
-                                        documentSnapshot.get("name").toString(),
-                                        documentSnapshot.getString("fname"),
-                                        documentSnapshot.getString("lname"),
-                                        levelAnimal,
-                                        levelAnimalIcon,
-                                        Integer.parseInt(documentSnapshot.get("stars").toString()),
-                                        level));
+
+                                    profiles.add(new Profile(documentSnapshot.get("email").toString(),
+                                            documentSnapshot.get("name").toString(),
+                                            documentSnapshot.getString("fname"),
+                                            documentSnapshot.getString("lname"),
+                                            levelAnimal,
+                                            levelAnimalIcon,
+                                            Integer.parseInt(documentSnapshot.get("stars").toString()),
+                                            level));
+
+
 
 
                             }
