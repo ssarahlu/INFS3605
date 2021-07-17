@@ -70,7 +70,15 @@ public class DiscussionFragment extends Fragment {
 
                             mLayoutManager = new LinearLayoutManager(getActivity());
                             mRecyclerView.setLayoutManager(mLayoutManager);
-                            mAdapter = new DiscussionThreadAdapter(discussionThreads);
+
+                            DiscussionThreadAdapter.RecyclerViewClickListener discussionListener = new DiscussionThreadAdapter.RecyclerViewClickListener() {
+                                @Override
+                                public void onClick(View view, int position) {
+                                }
+                            };
+
+
+                            mAdapter = new DiscussionThreadAdapter(discussionThreads, discussionListener);
                             mRecyclerView.setAdapter(mAdapter);
 
                         }
