@@ -54,7 +54,7 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
 
         holder.tvAnimal.setText(Html.fromHtml(animalString));
         holder.tvStars.setText(Integer.toString(profile.getStars()));
-        holder.ivAvatar.setImageResource(Integer.parseInt(profile.getLevelAnimalIcon()));
+        holder.ivAvatar.setImageResource(Levels.getAvatar(Levels.getLevel(profile.getStars())));
 
         if (position == 0) {
             holder.tvRank.setText("1st");

@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.infs3605.Entities.Levels;
 import com.example.infs3605.Entities.Profile;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -71,7 +72,7 @@ public class LeaderboardActivity extends AppCompatActivity {
 //                               //email, String displayName, String fname, String lname,
 //                               String levelAnimal, String levelAnimalIcon, int stars, int level
                                 String levelAnimal = "";
-                                String levelAnimalIcon = "" + R.drawable.joey;
+                                String levelAnimalIcon = "" ;
                                 int level = 1;
 
                                     profiles.add(new Profile(documentSnapshot.get("email").toString(),

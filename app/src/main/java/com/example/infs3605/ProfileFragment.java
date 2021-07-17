@@ -85,8 +85,7 @@ public class ProfileFragment extends Fragment {
                             animalLevelString = "<b>" + Levels.getAnimal(numLevel) + "</b> " + " | Level " + numLevel;
                             animal.setText(Html.fromHtml(animalLevelString));
 
-                            //TODO - SET ICONS AS PROPER ANIMALS
-                            avatar.setImageResource(R.drawable.joey);
+                            avatar.setImageResource(Levels.getAvatar(Levels.getLevel(numStars)));
 
                         }
                     }
