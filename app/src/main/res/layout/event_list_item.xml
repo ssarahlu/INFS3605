@@ -18,7 +18,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/ivShoppingImage"
+                android:id="@+id/ivEventListImage"
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
                 android:scaleType="centerCrop"
@@ -26,12 +26,12 @@
                 android:src="@drawable/med_background"/>
 
             <TextView
-                android:id="@+id/tvShoppingName"
+                android:id="@+id/tvEventListName"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:text="Yes We Can"
-                android:layout_below="@id/ivShoppingImage"
-                android:layout_alignLeft="@id/ivShoppingImage"
+                android:layout_below="@id/ivEventListImage"
+                android:layout_alignLeft="@id/ivEventListImage"
                 android:gravity="center"
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="5dp"
@@ -42,30 +42,18 @@
 
 
             <TextView
-                android:id="@+id/tvShoppingPrice"
+                android:id="@+id/tvEventListDate"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:text="No we cannot"
-                android:layout_below="@id/tvShoppingName"
-                android:layout_alignLeft="@id/tvShoppingName"
+                android:layout_below="@id/tvEventListName"
+                android:layout_alignLeft="@id/tvEventListName"
                 android:gravity="center"
                 android:textColor="#A9000000"
                 android:autoSizeTextType="uniform"
                 android:autoSizeMinTextSize="10sp"
                 android:autoSizeMaxTextSize="20sp"/>
 
-            <TextView
-                android:id="@+id/tvAttendance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvShoppingName"
-                android:layout_alignRight="@id/ivShoppingImage"
-                android:layout_marginRight="5dp"
-                android:layout_marginBottom="1dp"
-                android:padding="2dp"
-                android:text="Not Going"
-                android:textColor="#FFFFFF"
-                android:background="@drawable/event_not_going_background"/>
 
         </RelativeLayout>
 

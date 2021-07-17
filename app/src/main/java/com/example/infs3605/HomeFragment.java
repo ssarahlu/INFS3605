@@ -169,6 +169,7 @@ public class HomeFragment extends Fragment {
     }
 
 
+
     private class MyViewedTask extends AsyncTask<Void, Void, Void> {
         @Override
         protected void onPreExecute() {

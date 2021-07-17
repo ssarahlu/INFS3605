@@ -22,6 +22,29 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/tvSavedEventsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="16dp"
+                android:text="Saved Events"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSavedEvents"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvSavedEventsTitle"
+                app:layout_constraintTop_toBottomOf="@+id/tvSavedEventsTitle" />
+
+            <TextView
                 android:id="@+id/tvEventsTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -31,7 +54,7 @@
                 android:text="Events"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/rvSavedEvents" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvEvents"
@@ -68,27 +91,24 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvSocialTitle" />
 
             <TextView
-                android:id="@+id/tvShoppingTitle"
+                android:id="@+id/tvAllEvents"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="16dp"
-                android:text="Shopping"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rvSocial" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvShopping"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/tvShoppingTitle"
-                app:layout_constraintTop_toBottomOf="@+id/tvShoppingTitle" />
+                android:text="See all"
+                app:layout_constraintEnd_toEndOf="@+id/rvEvents"
+                app:layout_constraintTop_toTopOf="@+id/tvEventsTitle" />
+
+            <TextView
+                android:id="@+id/tvAllSocials"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:text="See all"
+                app:layout_constraintEnd_toEndOf="@+id/rvSocial"
+                app:layout_constraintTop_toTopOf="@+id/tvSocialTitle" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

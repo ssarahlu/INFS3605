@@ -138,11 +138,16 @@ public class MainActivity extends AppCompatActivity {
                         .add(R.id.fragment_container, fragment).commit();
 
                 //or default
-            } if (s1.equals("4")) {
+            } else if (s1.equals("4")) {
 
                 s1 = "";
                 bottomNav.setSelectedItemId(R.id.page_4);
+            } else if (s1.equals("2")) {
+
+                s1 = "";
+                bottomNav.setSelectedItemId(R.id.page_2);
             }
+
         } else {
 
             HomeFragment hf = new HomeFragment();

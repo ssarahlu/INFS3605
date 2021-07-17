@@ -1,27 +1,56 @@
 package com.example.infs3605;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.infs3605.Entities.Event;
-import com.example.infs3605.Entities.Shopping;
+import com.example.infs3605.Entities.SavedEventData;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ExploreFragment extends Fragment {
 
+    private static final String TAG = "ExploreFragment";
+
     //event
+
+
+    //saved
+    private RecyclerView savedEventRecyclerView;
+    private RecyclerView.Adapter savedEventAdapter;
+    private RecyclerView.LayoutManager savedEventLayoutManager;
+
+    private List<SavedEventData> savedEventList;
+
+
+    //not saved
     private RecyclerView eventRecyclerView;
     private RecyclerView.Adapter eventAdapter;
     private RecyclerView.LayoutManager eventLayoutManager;
+
+    private ArrayList<Event> eventList;
+
+    public static SavedEventDatabase myDb;
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private String email;
+
+    private TextView tvAllEvents;
+
 
 
     //social
@@ -29,12 +58,10 @@ public class ExploreFragment extends Fragment {
     private RecyclerView.Adapter socialAdapter;
     private RecyclerView.LayoutManager socialLayoutManager;
 
-    private ArrayList<Integer> mImageUrls = new ArrayList<>();
+    private TextView tvAllSocials;
 
-    //shopping
-    private RecyclerView shoppingRecyclerView;
-    private RecyclerView.Adapter shoppingAdapter;
-    private RecyclerView.LayoutManager shoppingLayoutManager;
+    //to be changed to instagram API
+    private ArrayList<Integer> mImageUrls = new ArrayList<>();
 
 
 
@@ -51,7 +78,57 @@ public class ExploreFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_explore, container, false);
 
 
-        //events
+
+        email = user.getEmail();
+
+
+        //saved events
+
+        myDb = Room.databaseBuilder(getActivity().getApplicationContext(), SavedEventDatabase.class, "myDb")
+                .allowMainThreadQueries()
+                .build();
+
+        Log.d(TAG, "doInBackground: " + email);
+
+        savedEventList = myDb.savedEventDataDao().getUserSavedEvents(email);
+        Log.d(TAG, "doInBackground: updating savedEventList | size = " + savedEventList.size());
+
+        for (SavedEventData event : savedEventList) {
+            System.out.println(event.getEmail() + " | " + event.getEventId());
+        }
+
+
+
+        savedEventRecyclerView = view.findViewById(R.id.rvSavedEvents);
+        savedEventRecyclerView.setHasFixedSize(true);
+
+        savedEventLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL,false);
+        savedEventRecyclerView.setLayoutManager(savedEventLayoutManager);
+
+        SavedEventAdapter.RecyclerViewClickListener savedEventListener = new SavedEventAdapter.RecyclerViewClickListener() {
+            @Override
+            public void onClick(View view, int eventId) {
+                launchEventActivity(eventId);
+            }
+        };
+
+        savedEventAdapter = new SavedEventAdapter(savedEventList,savedEventListener);
+        savedEventRecyclerView.setAdapter(savedEventAdapter);
+
+
+        //not saved
+
+        tvAllEvents = view.findViewById(R.id.tvAllEvents);
+
+        tvAllEvents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchAllEventsActivity();
+            }
+        });
+
+        eventList = Event.getEventList();
+
         eventRecyclerView = view.findViewById(R.id.rvEvents);
         eventRecyclerView.setHasFixedSize(true);
 
@@ -61,21 +138,35 @@ public class ExploreFragment extends Fragment {
 
         EventAdapter.RecyclerViewClickListener eventListener = new EventAdapter.RecyclerViewClickListener() {
             @Override
-            public void onClick(View view, int position) {
-                launchEventActivity();
+            public void onClick(View view, int eventId) {
+                launchEventActivity(eventId);
             }
         };
 
-        eventAdapter = new EventAdapter(Event.getEventList(), eventListener);
+        eventAdapter = new EventAdapter(eventList, eventListener);
         eventRecyclerView.setAdapter(eventAdapter);
+
+
+
+
+
 
         //social
         getImages();
 
+        tvAllSocials = view.findViewById(R.id.tvAllSocials);
+
+        tvAllSocials.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchAllSocialsActivity();
+            }
+        });
+
         socialRecyclerView = view.findViewById(R.id.rvSocial);
         socialRecyclerView.setHasFixedSize(true);
 
-        socialLayoutManager = new GridLayoutManager(getActivity(), 2, GridLayoutManager.HORIZONTAL, false);
+        socialLayoutManager = new GridLayoutManager(getActivity(), 3, GridLayoutManager.HORIZONTAL, false);
         socialRecyclerView.setLayoutManager(socialLayoutManager);
 
         SocialAdapter.RecyclerViewClickListener socialListener = new SocialAdapter.RecyclerViewClickListener() {
@@ -88,26 +179,21 @@ public class ExploreFragment extends Fragment {
         socialAdapter = new SocialAdapter(mImageUrls, socialListener);
         socialRecyclerView.setAdapter(socialAdapter);
 
-        //shopping
-        shoppingRecyclerView = view.findViewById(R.id.rvShopping);
-        shoppingRecyclerView.setHasFixedSize(true);
-
-
-        shoppingLayoutManager = new GridLayoutManager(getActivity(), 2, GridLayoutManager.HORIZONTAL,false);
-        shoppingRecyclerView.setLayoutManager(shoppingLayoutManager);
-
-        ShoppingAdapter.RecyclerViewClickListener shoppingListener = new ShoppingAdapter.RecyclerViewClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                launchShoppingActivity();
-            }
-        };
-
-        shoppingAdapter = new ShoppingAdapter(Shopping.getShoppingList(), shoppingListener);
-        shoppingRecyclerView.setAdapter(shoppingAdapter);
-
         return view;
     }
+
+
+    private void launchAllEventsActivity() {
+
+        Intent intent = new Intent(getActivity().getApplicationContext(), AllEventsActivity.class);
+        startActivity(intent);
+
+    }
+
+    private void launchAllSocialsActivity() {
+
+    }
+
 
     private void getImages() {
         mImageUrls.add(R.drawable.event1);
@@ -119,18 +205,38 @@ public class ExploreFragment extends Fragment {
         mImageUrls.add(R.drawable.event2);
         mImageUrls.add(R.drawable.event3);
         mImageUrls.add(R.drawable.event4);
+        mImageUrls.add(R.drawable.event1);
+        mImageUrls.add(R.drawable.event2);
+        mImageUrls.add(R.drawable.event3);
+        mImageUrls.add(R.drawable.event4);
+        mImageUrls.add(R.drawable.event5);
+        mImageUrls.add(R.drawable.event1);
+        mImageUrls.add(R.drawable.event2);
+        mImageUrls.add(R.drawable.event3);
+        mImageUrls.add(R.drawable.event4);
+        mImageUrls.add(R.drawable.event1);
+        mImageUrls.add(R.drawable.event2);
+        mImageUrls.add(R.drawable.event3);
+        mImageUrls.add(R.drawable.event4);
+        mImageUrls.add(R.drawable.event5);
+        mImageUrls.add(R.drawable.event1);
+        mImageUrls.add(R.drawable.event2);
+        mImageUrls.add(R.drawable.event3);
+        mImageUrls.add(R.drawable.event4);
     }
 
-    private void launchEventActivity() {
+    private void launchEventActivity(int eventId) {
 
+        Intent intent = new Intent(getActivity(), EventActivity.class);
+        intent.putExtra("eventId",eventId);
+        startActivity(intent);
     }
+
+
 
     private void launchSocialActivity() {
 
     }
 
-    private void launchShoppingActivity() {
-
-    }
 
 }
