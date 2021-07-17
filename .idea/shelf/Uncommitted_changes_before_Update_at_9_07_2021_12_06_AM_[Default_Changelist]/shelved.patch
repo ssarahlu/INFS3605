@@ -1,0 +1,1491 @@
+Index: app/src/main/res/layout/fragment_home.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n\r\n    android:layout_height=\"match_parent\">\r\n\r\n    <TextView\r\n        android:id=\"@+id/name\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"Hey *insert name*\"\r\n        android:textColor=\"#000000\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.07\"\r\n        app:layout_constraintLeft_toLeftOf=\"parent\"\r\n        app:layout_constraintRight_toRightOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.063\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/factTV\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"Fact\"\r\n        android:textColor=\"#000000\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.078\"\r\n        app:layout_constraintLeft_toLeftOf=\"parent\"\r\n        app:layout_constraintRight_toRightOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.262\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/didyouknow\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"Did you know?\"\r\n        android:textColor=\"#000000\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.065\"\r\n        app:layout_constraintLeft_toLeftOf=\"parent\"\r\n        app:layout_constraintRight_toRightOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.158\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/learn\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"20dp\"\r\n        android:layout_marginLeft=\"20dp\"\r\n        android:text=\"What would you like to learn today?\"\r\n        android:textColor=\"#000000\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.05\"\r\n        app:layout_constraintLeft_toLeftOf=\"parent\"\r\n        app:layout_constraintRight_toRightOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.401\" />\r\n\r\n    <ImageButton\r\n        android:id=\"@+id/artButton\"\r\n        android:layout_width=\"85dp\"\r\n        android:layout_height=\"56dp\"\r\n        android:layout_marginTop=\"32dp\"\r\n        android:background=\"#FFFFFF\"\r\n        android:scaleType=\"centerInside\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.126\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/learn\"\r\n        app:srcCompat=\"@drawable/rainbow_serpent_1\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/art\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"68dp\"\r\n        android:layout_marginLeft=\"68dp\"\r\n        android:layout_marginTop=\"72dp\"\r\n        android:text=\"Art\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"@+id/artButton\" />\r\n\r\n\r\n    <androidx.recyclerview.widget.RecyclerView\r\n        android:id=\"@+id/rvList\"\r\n        android:layout_width=\"370dp\"\r\n        android:layout_height=\"616dp\"\r\n        android:clipToPadding=\"false\"\r\n        android:paddingBottom=\"60dp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.487\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/fragment_home.xml	(revision 0ec6357e7b370023753bdf5aa4aa64f28a11cb84)
++++ app/src/main/res/layout/fragment_home.xml	(date 1625752754586)
+@@ -85,17 +85,4 @@
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="@+id/artButton" />
+ 
+-
+-    <androidx.recyclerview.widget.RecyclerView
+-        android:id="@+id/rvList"
+-        android:layout_width="370dp"
+-        android:layout_height="616dp"
+-        android:clipToPadding="false"
+-        android:paddingBottom="60dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.487"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent" />
+-
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/java/com/example/infs3605/HomeFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.infs3605;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\n\r\nimport androidx.fragment.app.Fragment;\r\nimport androidx.fragment.app.FragmentTransaction;\r\nimport androidx.recyclerview.widget.LinearLayoutManager;\r\nimport androidx.recyclerview.widget.RecyclerView;\r\n\r\nimport android.view.LayoutInflater;\r\nimport android.view.View;\r\nimport android.view.ViewGroup;\r\nimport android.widget.ImageButton;\r\nimport android.widget.TextView;\r\nimport android.widget.Toast;\r\n\r\nimport com.example.infs3605.Entities.Facts;\r\nimport com.example.infs3605.Entities.Modules;\r\nimport com.example.infs3605.Entities.Topics;\r\n\r\nimport java.util.ArrayList;\r\n\r\n/**\r\n * A simple {@link Fragment} subclass.\r\n * Use the {@link HomeFragment#} factory method to\r\n * create an instance of this fragment.\r\n */\r\npublic class HomeFragment extends Fragment {\r\n\r\n    private TextView factTV, name, didyouknow, learn, art;\r\n    private ArrayList<Facts> mFacts = new ArrayList<>();\r\n    private int factNumber;\r\n    private Facts fact;\r\n    private ImageButton artButton;\r\n    public static final String TOPIC_ID = \"topic_id\";\r\n\r\n\r\n    //extra\r\n    private RecyclerView mRecyclerView;\r\n    private RecyclerView.Adapter mAdapter;\r\n    private RecyclerView.LayoutManager mLayoutManager;\r\n    private ArrayList<Modules> mModules = new ArrayList<>();\r\n    private ArrayList<Topics> mTopics = new ArrayList<>();\r\n    private Topics topic;\r\n    public static final String EXTRA_MESSAGE = \"module_id\";\r\n    private int topicId;\r\n\r\n\r\n\r\n    public HomeFragment() {\r\n        // Required empty public constructor\r\n    }\r\n\r\n\r\n    @Override\r\n    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {\r\n        // Inflate the layout for this fragment\r\n\r\n        View view = inflater.inflate(R.layout.fragment_home, container, false);\r\n\r\n        factTV = view.findViewById(R.id.factTV);\r\n        artButton = view.findViewById(R.id.artButton);\r\n        name = view.findViewById(R.id.name);\r\n        learn = view.findViewById(R.id.learn);\r\n        didyouknow = view.findViewById(R.id.didyouknow);\r\n        art = view.findViewById(R.id.art);\r\n\r\n        mRecyclerView = view.findViewById(R.id.rvList);\r\n        mRecyclerView.setVisibility(View.INVISIBLE);\r\n        factTV.setVisibility(View.VISIBLE);\r\n        artButton.setVisibility(View.VISIBLE);\r\n        name.setVisibility(View.VISIBLE);\r\n        didyouknow.setVisibility(View.VISIBLE);\r\n        learn.setVisibility(View.VISIBLE);\r\n        art.setVisibility(View.VISIBLE);\r\n        mRecyclerView.setHasFixedSize(true);\r\n\r\n        for (Facts f : Facts.getFacts()) {\r\n            mFacts.add(f);\r\n\r\n        }\r\n\r\n        if (mFacts != null){\r\n            factNumber = (int)(Math.random() * mFacts.size() - 1) + 1;\r\n            System.out.println( \"my random number is \" + factNumber);\r\n            fact = mFacts.get(factNumber);\r\n            System.out.println(fact);\r\n            factTV.setText(fact.getFact());\r\n\r\n        }\r\n\r\n        Intent intent = new Intent(getActivity(), MainActivity.class);\r\n        for (Topics t: Topics.getTopics()){\r\n            mTopics.add(t);\r\n\r\n        }\r\n\r\n        if (intent.getStringExtra(HomeFragment.TOPIC_ID) != null){\r\n            topicId = Integer.parseInt(intent.getStringExtra(HomeFragment.TOPIC_ID));\r\n            System.out.println(topicId);\r\n            topic = mTopics.get(topicId);\r\n\r\n            getActivity().setTitle(topic.getTopicName());\r\n\r\n            for (Modules m : Modules.getModules()){\r\n                System.out.println(\"Hello\");\r\n                if (m.getTopicId() == topicId){\r\n                    mModules.add(m);\r\n                    System.out.println(\"added modules\");\r\n                }\r\n            }\r\n        }\r\n\r\n        mLayoutManager = new LinearLayoutManager(getActivity());\r\n        mRecyclerView.setLayoutManager(mLayoutManager);\r\n        ModulesAdapter.RecyclerViewClickListener listener = new ModulesAdapter.RecyclerViewClickListener() {\r\n            public void onClick(View view, int position) {\r\n                launchModules(position);\r\n                Modules mod = mModules.get(position);\r\n            }\r\n        };\r\n        mAdapter = new ModulesAdapter(mModules, listener);\r\n        mRecyclerView.setAdapter(mAdapter);\r\n\r\n\r\n\r\n        artButton.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                Intent intent = new Intent(getActivity(), MainActivity.class);\r\n//                intent.putExtra(TOPIC_ID, \"0\");\r\n//                startActivity(intent);\r\n                Toast.makeText(getActivity(), \"Art selected\", Toast.LENGTH_SHORT).show();\r\n\r\n                mRecyclerView.setVisibility(View.VISIBLE);\r\n\r\n                factTV.setVisibility(View.INVISIBLE);\r\n                artButton.setVisibility(View.INVISIBLE);\r\n                name.setVisibility(View.INVISIBLE);\r\n                didyouknow.setVisibility(View.INVISIBLE);\r\n                learn.setVisibility(View.INVISIBLE);\r\n                art.setVisibility(View.INVISIBLE);\r\n\r\n\r\n//                ModuleFragment moduleFragment = new ModuleFragment();\r\n//                FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();\r\n//                fragmentTransaction1.replace(R.id.fragment_container, moduleFragment, \"FragmentName\");\r\n//                fragmentTransaction1.commit();\r\n\r\n                for (Topics t: Topics.getTopics()){\r\n\r\n                    if (t.getTopicId() == 0 ){\r\n                        mTopics.add(t);\r\n                        System.out.println(\"hi\");\r\n                        System.out.println(t.getTopicId());\r\n                    }\r\n\r\n                }\r\n\r\n                    topicId = 0;\r\n                    System.out.println(topicId);\r\n                    topic = mTopics.get(topicId);\r\n\r\n                    getActivity().setTitle(topic.getTopicName());\r\n\r\n                    for (Modules m : Modules.getModules()){\r\n                        System.out.println(\"Hello\");\r\n                        if (m.getTopicId() == topicId){\r\n                            mModules.add(m);\r\n                            System.out.println(\"added modules\");\r\n                        }\r\n                    }\r\n\r\n\r\n                mLayoutManager = new LinearLayoutManager(getActivity());\r\n                mRecyclerView.setLayoutManager(mLayoutManager);\r\n                ModulesAdapter.RecyclerViewClickListener listener = new ModulesAdapter.RecyclerViewClickListener() {\r\n                    public void onClick(View view, int position) {\r\n                        launchModules(position);\r\n                        Modules mod = mModules.get(position);\r\n                    }\r\n                };\r\n                mAdapter = new ModulesAdapter(mModules, listener);\r\n                mRecyclerView.setAdapter(mAdapter);\r\n\r\n\r\n\r\n            }\r\n        });\r\n\r\n        return view;\r\n    }\r\n\r\n    private void updateUi(){\r\n\r\n    }\r\n\r\n    private void launchModules(int position) {\r\n        Modules mod = mModules.get(position);\r\n        Intent intent = new Intent(getActivity(), ModuleSelection.class);\r\n        intent.putExtra(EXTRA_MESSAGE, position);\r\n        intent.putExtra(\"Module\", mod.getModuleName());\r\n        intent.putExtra(\"Description\", mod.getModuleDescription());\r\n        intent.putExtra(\"id\", String.valueOf(mod.getModuleId()));\r\n        startActivity(intent);\r\n\r\n    }\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/infs3605/HomeFragment.java	(revision 0ec6357e7b370023753bdf5aa4aa64f28a11cb84)
++++ app/src/main/java/com/example/infs3605/HomeFragment.java	(date 1625752754570)
+@@ -1,11 +1,8 @@
+ package com.example.infs3605;
+ 
+-import android.content.Intent;
+ import android.os.Bundle;
+ 
+ import androidx.fragment.app.Fragment;
+-import androidx.fragment.app.FragmentTransaction;
+-import androidx.recyclerview.widget.LinearLayoutManager;
+ import androidx.recyclerview.widget.RecyclerView;
+ 
+ import android.view.LayoutInflater;
+@@ -21,11 +18,6 @@
+ 
+ import java.util.ArrayList;
+ 
+-/**
+- * A simple {@link Fragment} subclass.
+- * Use the {@link HomeFragment#} factory method to
+- * create an instance of this fragment.
+- */
+ public class HomeFragment extends Fragment {
+ 
+     private TextView factTV, name, didyouknow, learn, art;
+@@ -35,24 +27,10 @@
+     private ImageButton artButton;
+     public static final String TOPIC_ID = "topic_id";
+ 
+-
+-    //extra
+-    private RecyclerView mRecyclerView;
+-    private RecyclerView.Adapter mAdapter;
+-    private RecyclerView.LayoutManager mLayoutManager;
+-    private ArrayList<Modules> mModules = new ArrayList<>();
+-    private ArrayList<Topics> mTopics = new ArrayList<>();
+-    private Topics topic;
+-    public static final String EXTRA_MESSAGE = "module_id";
+-    private int topicId;
+-
+-
+-
+     public HomeFragment() {
+         // Required empty public constructor
+     }
+ 
+-
+     @Override
+     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+         // Inflate the layout for this fragment
+@@ -66,16 +44,6 @@
+         didyouknow = view.findViewById(R.id.didyouknow);
+         art = view.findViewById(R.id.art);
+ 
+-        mRecyclerView = view.findViewById(R.id.rvList);
+-        mRecyclerView.setVisibility(View.INVISIBLE);
+-        factTV.setVisibility(View.VISIBLE);
+-        artButton.setVisibility(View.VISIBLE);
+-        name.setVisibility(View.VISIBLE);
+-        didyouknow.setVisibility(View.VISIBLE);
+-        learn.setVisibility(View.VISIBLE);
+-        art.setVisibility(View.VISIBLE);
+-        mRecyclerView.setHasFixedSize(true);
+-
+         for (Facts f : Facts.getFacts()) {
+             mFacts.add(f);
+ 
+@@ -90,51 +58,12 @@
+ 
+         }
+ 
+-        Intent intent = new Intent(getActivity(), MainActivity.class);
+-        for (Topics t: Topics.getTopics()){
+-            mTopics.add(t);
+-
+-        }
+-
+-        if (intent.getStringExtra(HomeFragment.TOPIC_ID) != null){
+-            topicId = Integer.parseInt(intent.getStringExtra(HomeFragment.TOPIC_ID));
+-            System.out.println(topicId);
+-            topic = mTopics.get(topicId);
+-
+-            getActivity().setTitle(topic.getTopicName());
+-
+-            for (Modules m : Modules.getModules()){
+-                System.out.println("Hello");
+-                if (m.getTopicId() == topicId){
+-                    mModules.add(m);
+-                    System.out.println("added modules");
+-                }
+-            }
+-        }
+-
+-        mLayoutManager = new LinearLayoutManager(getActivity());
+-        mRecyclerView.setLayoutManager(mLayoutManager);
+-        ModulesAdapter.RecyclerViewClickListener listener = new ModulesAdapter.RecyclerViewClickListener() {
+-            public void onClick(View view, int position) {
+-                launchModules(position);
+-                Modules mod = mModules.get(position);
+-            }
+-        };
+-        mAdapter = new ModulesAdapter(mModules, listener);
+-        mRecyclerView.setAdapter(mAdapter);
+-
+-
+-
+         artButton.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+-                Intent intent = new Intent(getActivity(), MainActivity.class);
+-//                intent.putExtra(TOPIC_ID, "0");
+-//                startActivity(intent);
++
+                 Toast.makeText(getActivity(), "Art selected", Toast.LENGTH_SHORT).show();
+ 
+-                mRecyclerView.setVisibility(View.VISIBLE);
+-
+                 factTV.setVisibility(View.INVISIBLE);
+                 artButton.setVisibility(View.INVISIBLE);
+                 name.setVisibility(View.INVISIBLE);
+@@ -142,49 +71,13 @@
+                 learn.setVisibility(View.INVISIBLE);
+                 art.setVisibility(View.INVISIBLE);
+ 
+-
+-//                ModuleFragment moduleFragment = new ModuleFragment();
+-//                FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
+-//                fragmentTransaction1.replace(R.id.fragment_container, moduleFragment, "FragmentName");
+-//                fragmentTransaction1.commit();
+-
+-                for (Topics t: Topics.getTopics()){
+-
+-                    if (t.getTopicId() == 0 ){
+-                        mTopics.add(t);
+-                        System.out.println("hi");
+-                        System.out.println(t.getTopicId());
+-                    }
+-
+-                }
+-
+-                    topicId = 0;
+-                    System.out.println(topicId);
+-                    topic = mTopics.get(topicId);
+-
+-                    getActivity().setTitle(topic.getTopicName());
++                ModuleFragment fragment = new ModuleFragment();
++                Bundle bundle = new Bundle();
++                bundle.putString(HomeFragment.TOPIC_ID, "0");
++                fragment.setArguments(bundle);
+ 
+-                    for (Modules m : Modules.getModules()){
+-                        System.out.println("Hello");
+-                        if (m.getTopicId() == topicId){
+-                            mModules.add(m);
+-                            System.out.println("added modules");
+-                        }
+-                    }
+-
+-
+-                mLayoutManager = new LinearLayoutManager(getActivity());
+-                mRecyclerView.setLayoutManager(mLayoutManager);
+-                ModulesAdapter.RecyclerViewClickListener listener = new ModulesAdapter.RecyclerViewClickListener() {
+-                    public void onClick(View view, int position) {
+-                        launchModules(position);
+-                        Modules mod = mModules.get(position);
+-                    }
+-                };
+-                mAdapter = new ModulesAdapter(mModules, listener);
+-                mRecyclerView.setAdapter(mAdapter);
+-
+-
++                getParentFragmentManager().beginTransaction()
++                        .add(R.id.fragment_container, fragment).commit();
+ 
+             }
+         });
+@@ -192,19 +85,7 @@
+         return view;
+     }
+ 
+-    private void updateUi(){
+ 
+-    }
+ 
+-    private void launchModules(int position) {
+-        Modules mod = mModules.get(position);
+-        Intent intent = new Intent(getActivity(), ModuleSelection.class);
+-        intent.putExtra(EXTRA_MESSAGE, position);
+-        intent.putExtra("Module", mod.getModuleName());
+-        intent.putExtra("Description", mod.getModuleDescription());
+-        intent.putExtra("id", String.valueOf(mod.getModuleId()));
+-        startActivity(intent);
+-
+-    }
+ 
+ }
+\ No newline at end of file
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    package=\"com.example.infs3605\">\r\n\r\n    <uses-permission android:name=\"android.permission.INTERNET\" />\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/AppTheme\">\r\n        <activity android:name=\".MeditateActivity\"></activity>\r\n        <activity android:name=\".StoryActivity\" />\r\n        <activity android:name=\".VideoActivity\" />\r\n        <activity android:name=\".ModuleSelection\" />\r\n        <activity android:name=\".ModuleActivity\" />\r\n        <activity android:name=\".MainActivity\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/AndroidManifest.xml	(revision 0ec6357e7b370023753bdf5aa4aa64f28a11cb84)
++++ app/src/main/AndroidManifest.xml	(date 1625753045163)
+@@ -13,9 +13,9 @@
+         android:theme="@style/AppTheme">
+         <activity android:name=".MeditateActivity"></activity>
+         <activity android:name=".StoryActivity" />
++        <activity android:name=".QuizActivity"></activity>
+         <activity android:name=".VideoActivity" />
+         <activity android:name=".ModuleSelection" />
+-        <activity android:name=".ModuleActivity" />
+         <activity android:name=".MainActivity">
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
+Index: app/src/main/res/layout/activity_module_selection.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".ModuleSelection\">\r\n\r\n    <ImageView\r\n        android:id=\"@+id/backgroundImage\"\r\n        android:layout_width=\"409dp\"\r\n        android:layout_height=\"659dp\"\r\n        android:background=\"#000000\"\r\n        android:scaleType=\"centerCrop\"\r\n        android:tint=\"#BF000000\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"1.0\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.777\"\r\n        app:srcCompat=\"@drawable/rainbow_serpent_1\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/moduleName\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"Module Name\"\r\n        android:textColor=\"#FFFFFF\"\r\n        android:textSize=\"18sp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.086\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.13\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/moduleDescription\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:text=\"Description\"\r\n        android:textColor=\"#FFFFFF\"\r\n        android:textSize=\"18sp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.147\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.314\" />\r\n\r\n    <ImageButton\r\n        android:id=\"@+id/videoButton\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.14\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:srcCompat=\"@android:drawable/ic_menu_slideshow\" />\r\n\r\n    <ImageButton\r\n        android:id=\"@+id/storyButton\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"48dp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.14\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/videoButton\"\r\n        app:layout_constraintVertical_bias=\"0.004\"\r\n        app:srcCompat=\"@android:drawable/ic_menu_sort_alphabetically\" />\r\n\r\n    <ImageButton\r\n        android:id=\"@+id/closeButton\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.954\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.113\"\r\n        app:srcCompat=\"@android:drawable/btn_dialog\" />\r\n\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_module_selection.xml	(revision 0ec6357e7b370023753bdf5aa4aa64f28a11cb84)
++++ app/src/main/res/layout/activity_module_selection.xml	(date 1625752754586)
+@@ -37,41 +37,58 @@
+ 
+     <TextView
+         android:id="@+id/moduleDescription"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
++        android:layout_width="360dp"
++        android:layout_height="146dp"
+         android:text="Description"
+         android:textColor="#FFFFFF"
+         android:textSize="18sp"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.147"
++        app:layout_constraintHorizontal_bias="0.49"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent"
+-        app:layout_constraintVertical_bias="0.314" />
++        app:layout_constraintVertical_bias="0.256" />
+ 
+     <ImageButton
+         android:id="@+id/videoButton"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
++        android:layout_width="361dp"
++        android:layout_height="66dp"
++        android:background="#00FFFFFF"
++        android:scaleType="centerInside"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.14"
++        app:layout_constraintHorizontal_bias="0.52"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent"
+-        app:srcCompat="@android:drawable/ic_menu_slideshow" />
++        app:layout_constraintVertical_bias="0.499"
++        app:srcCompat="@drawable/sub_module_video" />
+ 
+     <ImageButton
+         android:id="@+id/storyButton"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:layout_marginTop="48dp"
++        android:layout_width="361dp"
++        android:layout_height="66dp"
++        android:layout_marginTop="14dp"
++        android:background="#00FFFFFF"
++        android:scaleType="centerInside"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.14"
++        app:layout_constraintHorizontal_bias="0.52"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/videoButton"
+-        app:layout_constraintVertical_bias="0.004"
+-        app:srcCompat="@android:drawable/ic_menu_sort_alphabetically" />
++        app:layout_constraintVertical_bias="0.0"
++        app:srcCompat="@drawable/sub_module_story" />
++
++    <ImageButton
++        android:id="@+id/quizButton"
++        android:layout_width="361dp"
++        android:layout_height="66dp"
++        android:layout_marginBottom="84dp"
++        android:background="#00FFFFFF"
++        android:scaleType="centerInside"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:srcCompat="@drawable/sub_module_quiz" />
+ 
+     <ImageButton
+         android:id="@+id/closeButton"
+@@ -85,5 +102,27 @@
+         app:layout_constraintVertical_bias="0.113"
+         app:srcCompat="@android:drawable/btn_dialog" />
+ 
++    <ImageButton
++        android:id="@+id/learningsButton"
++        android:layout_width="361dp"
++        android:layout_height="66dp"
++        android:layout_marginTop="20dp"
++        android:layout_marginBottom="14dp"
++        android:background="#00FFFFFF"
++        android:scaleType="centerInside"
++        app:layout_constraintBottom_toTopOf="@+id/quizButton"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/storyButton"
++        app:layout_constraintVertical_bias="0.0"
++        app:srcCompat="@drawable/sub_module_learnings" />
++
++    <androidx.constraintlayout.widget.Guideline
++        android:id="@+id/guideline"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:orientation="vertical"
++        app:layout_constraintGuide_begin="20dp" />
++
+ 
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/java/com/example/infs3605/ModuleSelection.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.infs3605;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\nimport android.widget.ImageButton;\r\nimport android.widget.ImageView;\r\nimport android.widget.TextView;\r\nimport android.widget.Toast;\r\n\r\nimport com.bumptech.glide.Glide;\r\nimport com.example.infs3605.Entities.Modules;\r\nimport com.example.infs3605.Entities.Topics;\r\n\r\nimport java.util.ArrayList;\r\n\r\n//page where user can view description, choose video, read story, look at learnings and quiz\r\npublic class ModuleSelection extends AppCompatActivity {\r\n\r\n    public static final String EXTRA_MESSAGE = \"topic_id\";\r\n    public static final String MODULE_ID = \"module_id\";\r\n    private String modName, modDesc;\r\n    private TextView moduleName, moduleDescription;\r\n    private ImageButton videoButton, storyButton, closeButton;\r\n    private int modId;\r\n    private ImageView backgroundImage;\r\n    private Modules mMod;\r\n    public static final String TOPIC_ID = \"topic_id\";\r\n    private Topics mTop;\r\n    private int topicIdFK;\r\n\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_module_selection);\r\n\r\n        Intent intent = getIntent();\r\n        modName = intent.getStringExtra(\"Module\");\r\n        modDesc = intent.getStringExtra(\"Description\");\r\n        modId = Integer.parseInt(intent.getStringExtra(\"id\"));\r\n\r\n        moduleName = findViewById(R.id.moduleName);\r\n        moduleDescription = findViewById(R.id.moduleDescription);\r\n        videoButton = findViewById(R.id.videoButton);\r\n        storyButton = findViewById(R.id.storyButton);\r\n        closeButton = findViewById(R.id.closeButton);\r\n        backgroundImage = findViewById(R.id.backgroundImage);\r\n\r\n        moduleName.setText(modName);\r\n        moduleDescription.setText(modDesc);\r\n\r\n        for (Modules m : Modules.getModules()){\r\n            if (m.getModuleId() == modId){\r\n                mMod = m;\r\n                Glide.with(this).load(m.getModuleBackgroundImage()).into(backgroundImage);\r\n            }\r\n\r\n        }\r\n\r\n        for (Topics t: Topics.getTopics()){\r\n            if (t.getTopicId() == mMod.getTopicId()){\r\n                mTop = t;\r\n                topicIdFK = mTop.getTopicId();\r\n            }\r\n        }\r\n\r\n\r\n\r\n        videoButton.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                Intent intent = new Intent(getApplicationContext(), VideoActivity.class);\r\n                intent.putExtra(\"id\", String.valueOf(modId));\r\n                intent.putExtra(\"mod_name\", modName);\r\n                startActivity(intent);\r\n                Toast.makeText(getApplicationContext(), \"Video selected\", Toast.LENGTH_SHORT).show();\r\n\r\n            }\r\n        });\r\n\r\n\r\n        storyButton.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                Intent intent = new Intent(getApplicationContext(), StoryActivity.class);\r\n                intent.putExtra(\"id\", String.valueOf(modId));\r\n                intent.putExtra(\"mod_name\", modName);\r\n                startActivity(intent);\r\n                Toast.makeText(getApplicationContext(), \"Story selected\", Toast.LENGTH_SHORT).show();\r\n\r\n            }\r\n        });\r\n\r\n\r\n        closeButton.setOnClickListener(new View.OnClickListener() {\r\n            @Override\r\n            public void onClick(View v) {\r\n                Intent intent = new Intent(getApplicationContext(), ModuleActivity.class);\r\n                intent.putExtra(TOPIC_ID, String.valueOf(topicIdFK));\r\n                System.out.println(topicIdFK);\r\n                startActivity(intent);\r\n                Toast.makeText(getApplicationContext(), \"Back to list \", Toast.LENGTH_SHORT).show();\r\n\r\n            }\r\n        });\r\n\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/infs3605/ModuleSelection.java	(revision 0ec6357e7b370023753bdf5aa4aa64f28a11cb84)
++++ app/src/main/java/com/example/infs3605/ModuleSelection.java	(date 1625752754570)
+@@ -13,6 +13,7 @@
+ 
+ import com.bumptech.glide.Glide;
+ import com.example.infs3605.Entities.Modules;
++import com.example.infs3605.Entities.Quiz;
+ import com.example.infs3605.Entities.Topics;
+ 
+ import java.util.ArrayList;
+@@ -24,7 +25,7 @@
+     public static final String MODULE_ID = "module_id";
+     private String modName, modDesc;
+     private TextView moduleName, moduleDescription;
+-    private ImageButton videoButton, storyButton, closeButton;
++    private ImageButton videoButton, storyButton, closeButton, quizButton;
+     private int modId;
+     private ImageView backgroundImage;
+     private Modules mMod;
+@@ -49,6 +50,7 @@
+         storyButton = findViewById(R.id.storyButton);
+         closeButton = findViewById(R.id.closeButton);
+         backgroundImage = findViewById(R.id.backgroundImage);
++        quizButton = findViewById(R.id.quizButton);
+ 
+         moduleName.setText(modName);
+         moduleDescription.setText(modDesc);
+@@ -95,16 +97,32 @@
+             }
+         });
+ 
++        quizButton.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++                Intent intent = new Intent(getApplicationContext(), QuizActivity.class);
++                intent.putExtra("id", String.valueOf(modId));
++                intent.putExtra("mod_name", modName);
++                startActivity(intent);
++                Toast.makeText(getApplicationContext(), "Quiz selected", Toast.LENGTH_SHORT).show();
++
++            }
++        });
++
+ 
+         closeButton.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+-                Intent intent = new Intent(getApplicationContext(), ModuleActivity.class);
+-                intent.putExtra(TOPIC_ID, String.valueOf(topicIdFK));
++                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
++                intent.putExtra("id", String.valueOf(topicIdFK));
++                intent.putExtra("Check", "1");
++
+                 System.out.println(topicIdFK);
+                 startActivity(intent);
++
+                 Toast.makeText(getApplicationContext(), "Back to list ", Toast.LENGTH_SHORT).show();
+ 
++
+             }
+         });
+ 
+Index: app/src/main/java/com/example/infs3605/ModuleActivity.java
+===================================================================
+--- app/src/main/java/com/example/infs3605/ModuleActivity.java	(revision 0ec6357e7b370023753bdf5aa4aa64f28a11cb84)
++++ app/src/main/java/com/example/infs3605/ModuleActivity.java	(revision 0ec6357e7b370023753bdf5aa4aa64f28a11cb84)
+@@ -1,91 +0,0 @@
+-package com.example.infs3605;
+-
+-import androidx.appcompat.app.AppCompatActivity;
+-import androidx.recyclerview.widget.LinearLayoutManager;
+-import androidx.recyclerview.widget.RecyclerView;
+-
+-import android.content.Intent;
+-import android.os.Bundle;
+-import android.view.View;
+-
+-import com.example.infs3605.Entities.Modules;
+-import com.example.infs3605.Entities.Topics;
+-
+-import java.util.ArrayList;
+-
+-//displays recyclerview of all the modules
+-public class ModuleActivity extends AppCompatActivity {
+-    private RecyclerView mRecyclerView;
+-    private RecyclerView.Adapter mAdapter;
+-    private RecyclerView.LayoutManager mLayoutManager;
+-    public static final String TOPIC_ID = "topic_id";
+-    private ArrayList<Modules> mModules = new ArrayList<>();
+-    private ArrayList<Topics> mTopics = new ArrayList<>();
+-    private Topics topic;
+-    public static final String EXTRA_MESSAGE = "module_id";
+-    private int topicId;
+-
+-
+-    @Override
+-    protected void onCreate(Bundle savedInstanceState) {
+-        super.onCreate(savedInstanceState);
+-        setContentView(R.layout.activity_module);
+-
+-        mRecyclerView = findViewById(R.id.rvList);
+-        mRecyclerView.setHasFixedSize(true);
+-
+-        Intent intent = getIntent();
+-
+-        for (Topics t: Topics.getTopics()){
+-            mTopics.add(t);
+-
+-        }
+-
+-        if (intent.getStringExtra(HomeFragment.TOPIC_ID) != null){
+-            topicId = Integer.parseInt(intent.getStringExtra(HomeFragment.TOPIC_ID));
+-            System.out.println(topicId);
+-            topic = mTopics.get(topicId);
+-
+-            setTitle(topic.getTopicName());
+-
+-            for (Modules m : Modules.getModules()){
+-                System.out.println("Hello");
+-                if (m.getTopicId() == topicId){
+-                    mModules.add(m);
+-                    System.out.println("added modules");
+-
+-                }
+-
+-            }
+-
+-        }
+-
+-
+-        mLayoutManager = new LinearLayoutManager(this);
+-        mRecyclerView.setLayoutManager(mLayoutManager);
+-        ModulesAdapter.RecyclerViewClickListener listener = new ModulesAdapter.RecyclerViewClickListener() {
+-            public void onClick(View view, int position) {
+-                launchModules(position);
+-                Modules mod = mModules.get(position);
+-            }
+-        };
+-        mAdapter = new ModulesAdapter(mModules, listener);
+-        mRecyclerView.setAdapter(mAdapter);
+-
+-
+-
+-    }
+-
+-
+-    private void launchModules(int position) {
+-        Modules mod = mModules.get(position);
+-        Intent intent = new Intent(this, ModuleSelection.class);
+-        intent.putExtra(EXTRA_MESSAGE, position);
+-        intent.putExtra("Module", mod.getModuleName());
+-        intent.putExtra("Description", mod.getModuleDescription());
+-        intent.putExtra("id", String.valueOf(mod.getModuleId()));
+-        startActivity(intent);
+-
+-    }
+-
+-}
+Index: app/src/main/res/layout/activity_module.xml
+===================================================================
+--- app/src/main/res/layout/activity_module.xml	(revision 0ec6357e7b370023753bdf5aa4aa64f28a11cb84)
++++ app/src/main/res/layout/activity_module.xml	(revision 0ec6357e7b370023753bdf5aa4aa64f28a11cb84)
+@@ -1,21 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent"
+-    tools:context=".ModuleActivity">
+-
+-    <androidx.recyclerview.widget.RecyclerView
+-        android:id="@+id/rvList"
+-        android:layout_width="370dp"
+-        android:layout_height="616dp"
+-        android:clipToPadding="false"
+-        android:paddingBottom="60dp"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.487"
+-        app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent" />
+-
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/fragment_module.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".ModuleActivity\">\r\n\r\n    <androidx.recyclerview.widget.RecyclerView\r\n        android:id=\"@+id/rvList\"\r\n        android:layout_width=\"370dp\"\r\n        android:layout_height=\"616dp\"\r\n        android:clipToPadding=\"false\"\r\n        android:paddingBottom=\"60dp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.487\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/fragment_module.xml	(revision 0ec6357e7b370023753bdf5aa4aa64f28a11cb84)
++++ app/src/main/res/layout/fragment_module.xml	(date 1625752754586)
+@@ -4,18 +4,31 @@
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+-    tools:context=".ModuleActivity">
++    tools:context=".MainActivity">
++
++    <ImageButton
++        android:id="@+id/backButton"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:src="?attr/homeAsUpIndicator"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.044"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.01" />
+ 
+     <androidx.recyclerview.widget.RecyclerView
+         android:id="@+id/rvList"
+-        android:layout_width="370dp"
+-        android:layout_height="616dp"
++        android:layout_width="368dp"
++        android:layout_height="625dp"
+         android:clipToPadding="false"
+         android:paddingBottom="60dp"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="0.487"
++        app:layout_constraintHorizontal_bias="0.372"
+         app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toTopOf="parent" />
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.849" />
+ 
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/java/com/example/infs3605/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.infs3605;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.appcompat.app.ActionBar;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport androidx.fragment.app.FragmentTransaction;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\nimport android.view.MenuItem;\r\nimport android.view.View;\r\nimport android.widget.Button;\r\nimport android.widget.ImageButton;\r\nimport android.widget.TextView;\r\nimport android.widget.Toast;\r\n\r\nimport com.example.infs3605.Entities.Facts;\r\nimport com.google.android.material.bottomnavigation.BottomNavigationView;\r\nimport com.google.android.material.navigation.NavigationView;\r\n\r\nimport java.util.ArrayList;\r\n\r\npublic class MainActivity extends AppCompatActivity {\r\n\r\n\r\n    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {\r\n        @Override\r\n        public boolean onNavigationItemSelected(@NonNull MenuItem item) {\r\n            switch (item.getItemId()) {\r\n                case R.id.page_1:\r\n                    Toast.makeText(MainActivity.this, \"Home\", Toast.LENGTH_SHORT).show();\r\n                    HomeFragment homeFragment = new HomeFragment();\r\n                    FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();\r\n                    fragmentTransaction1.replace(R.id.fragment_container, homeFragment, \"FragmentName\");\r\n                    fragmentTransaction1.commit();\r\n                    break;\r\n                case R.id.page_2:\r\n                    Toast.makeText(MainActivity.this, \"Social\", Toast.LENGTH_SHORT).show();\r\n                    break;\r\n                case R.id.page_3:\r\n                    Toast.makeText(MainActivity.this, \"Rewards\", Toast.LENGTH_SHORT).show();\r\n                    break;\r\n                case R.id.page_4:\r\n                    Toast.makeText(MainActivity.this, \"Meditate\", Toast.LENGTH_SHORT).show();\r\n                    MeditateFragment meditateFragment = new MeditateFragment();\r\n                    FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();\r\n                    fragmentTransaction2.replace(R.id.fragment_container, meditateFragment, \"FragmentName\");\r\n                    fragmentTransaction2.commit();\r\n                    break;\r\n                case R.id.page_5:\r\n                    Toast.makeText(MainActivity.this, \"Profile\", Toast.LENGTH_SHORT).show();\r\n                    break;\r\n            }\r\n            return true;\r\n        }\r\n    };\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n\r\n        setContentView(R.layout.activity_main);\r\n\r\n        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);\r\n        bottomNav.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);\r\n\r\n        HomeFragment hf = new HomeFragment();\r\n        FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();\r\n        fragmentTransaction1.replace(R.id.fragment_container, hf, \"FragmentName\");\r\n        fragmentTransaction1.commit();\r\n\r\n        //THIS IS THE HOME SCREEN\r\n\r\n\r\n\r\n//        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);\r\n//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {\r\n//            @Override\r\n//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {\r\n//                switch (item.getItemId()) {\r\n//                    case R.id.page_1:\r\n//                        Toast.makeText(MainActivity.this, \"Home\", Toast.LENGTH_SHORT).show();\r\n//                        HomeFragment homeFragment = new HomeFragment();\r\n//                        FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();\r\n//                        fragmentTransaction1.replace(R.id.fragment_container, homeFragment, \"FragmentName\");\r\n//                        fragmentTransaction1.commit();\r\n//                        break;\r\n//                    case R.id.page_2:\r\n//                        Toast.makeText(MainActivity.this, \"Social\", Toast.LENGTH_SHORT).show();\r\n//                        break;\r\n//                    case R.id.page_3:\r\n//                        Toast.makeText(MainActivity.this, \"Rewards\", Toast.LENGTH_SHORT).show();\r\n//                        break;\r\n//                    case R.id.page_4:\r\n//                        Toast.makeText(MainActivity.this, \"Meditate\", Toast.LENGTH_SHORT).show();\r\n//                        MeditateFragment meditateFragment = new MeditateFragment();\r\n//                        FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();\r\n//                        fragmentTransaction2.replace(R.id.fragment_container, meditateFragment, \"FragmentName\");\r\n//                        fragmentTransaction2.commit();\r\n//                        break;\r\n//                    case R.id.page_5:\r\n//                        Toast.makeText(MainActivity.this, \"Profile\", Toast.LENGTH_SHORT).show();\r\n//                        break;\r\n//                }\r\n//                return true;\r\n//            }\r\n//        });\r\n\r\n\r\n    }\r\n}\r\n\r\n\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/infs3605/MainActivity.java	(revision 0ec6357e7b370023753bdf5aa4aa64f28a11cb84)
++++ app/src/main/java/com/example/infs3605/MainActivity.java	(date 1625752754570)
+@@ -64,50 +64,44 @@
+         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+         bottomNav.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+ 
+-        HomeFragment hf = new HomeFragment();
+-        FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
+-        fragmentTransaction1.replace(R.id.fragment_container, hf, "FragmentName");
+-        fragmentTransaction1.commit();
++        Intent intent = getIntent();
++
++        if (intent.getStringExtra("id") != null){
++
++            String s1 = intent.getStringExtra("Check");
++            int topicId = Integer.parseInt(intent.getStringExtra("id"));
++            if (s1.equals("1")){
++
++                s1 = "";
++                ModuleFragment fragment = new ModuleFragment();
++                Bundle bundle = new Bundle();
++                bundle.putString(HomeFragment.TOPIC_ID, String.valueOf(topicId));
++                fragment.setArguments(bundle);
++
++                getSupportFragmentManager().beginTransaction()
++                        .add(R.id.fragment_container, fragment).commit();
++
++                //or default
++            }
++        } else {
++
++            HomeFragment hf = new HomeFragment();
++            FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
++            fragmentTransaction1.replace(R.id.fragment_container, hf, "FragmentName");
++            fragmentTransaction1.commit();
++        }
++
++
++
+ 
+-        //THIS IS THE HOME SCREEN
+ 
+ 
+ 
+-//        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+-//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+-//            @Override
+-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+-//                switch (item.getItemId()) {
+-//                    case R.id.page_1:
+-//                        Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
+-//                        HomeFragment homeFragment = new HomeFragment();
+-//                        FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
+-//                        fragmentTransaction1.replace(R.id.fragment_container, homeFragment, "FragmentName");
+-//                        fragmentTransaction1.commit();
+-//                        break;
+-//                    case R.id.page_2:
+-//                        Toast.makeText(MainActivity.this, "Social", Toast.LENGTH_SHORT).show();
+-//                        break;
+-//                    case R.id.page_3:
+-//                        Toast.makeText(MainActivity.this, "Rewards", Toast.LENGTH_SHORT).show();
+-//                        break;
+-//                    case R.id.page_4:
+-//                        Toast.makeText(MainActivity.this, "Meditate", Toast.LENGTH_SHORT).show();
+-//                        MeditateFragment meditateFragment = new MeditateFragment();
+-//                        FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
+-//                        fragmentTransaction2.replace(R.id.fragment_container, meditateFragment, "FragmentName");
+-//                        fragmentTransaction2.commit();
+-//                        break;
+-//                    case R.id.page_5:
+-//                        Toast.makeText(MainActivity.this, "Profile", Toast.LENGTH_SHORT).show();
+-//                        break;
+-//                }
+-//                return true;
+-//            }
+-//        });
+ 
+ 
+     }
++
++
+ }
+ 
+ 
+Index: app/src/main/res/layout/activity_quiz.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_quiz.xml	(date 1625752754586)
++++ app/src/main/res/layout/activity_quiz.xml	(date 1625752754586)
+@@ -0,0 +1,211 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    tools:context=".QuizActivity">
++    <ImageView
++        android:id="@+id/img1"
++        android:layout_width="30dp"
++        android:layout_height="30dp"
++        android:layout_marginStart="3dp"
++        android:layout_marginLeft="3dp"
++        android:layout_marginTop="20dp"
++        android:layout_marginEnd="32dp"
++        android:layout_marginRight="32dp"
++        android:scaleType="centerInside"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="1.0"
++        app:layout_constraintStart_toEndOf="@+id/grp"
++        app:layout_constraintTop_toTopOf="@+id/grp"
++        app:srcCompat="@drawable/correct" />
++
++    <ImageView
++        android:id="@+id/img4"
++        android:layout_width="30dp"
++        android:layout_height="30dp"
++        android:layout_marginTop="38dp"
++        android:scaleType="centerInside"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="@+id/img3"
++        app:layout_constraintStart_toStartOf="@+id/img3"
++        app:layout_constraintTop_toBottomOf="@+id/img3"
++        app:layout_constraintVertical_bias="0.0"
++        app:srcCompat="@drawable/wrong" />
++
++    <ImageView
++        android:id="@+id/img2"
++        android:layout_width="30dp"
++        android:layout_height="30dp"
++        android:layout_marginTop="38dp"
++        android:scaleType="centerInside"
++        app:layout_constraintEnd_toEndOf="@+id/img1"
++        app:layout_constraintStart_toStartOf="@+id/img1"
++        app:layout_constraintTop_toBottomOf="@+id/img1"
++        app:srcCompat="@drawable/wrong" />
++
++    <ImageView
++        android:id="@+id/img3"
++        android:layout_width="30dp"
++        android:layout_height="30dp"
++        android:layout_marginTop="38dp"
++        android:scaleType="centerInside"
++        app:layout_constraintEnd_toEndOf="@+id/img2"
++        app:layout_constraintStart_toStartOf="@+id/img2"
++        app:layout_constraintTop_toBottomOf="@+id/img2"
++        app:srcCompat="@drawable/wrong" />
++
++    <TextView
++        android:id="@+id/question"
++        android:layout_width="330dp"
++        android:layout_height="122dp"
++        android:layout_marginStart="45dp"
++        android:layout_marginLeft="45dp"
++        android:layout_marginTop="86dp"
++        android:layout_marginEnd="45dp"
++        android:layout_marginRight="45dp"
++        android:gravity="center"
++        android:text="TextView"
++        android:textSize="20sp"
++        app:layout_constraintBottom_toBottomOf="@+id/next"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.5"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.0" />
++
++    <ImageButton
++        android:id="@+id/cancel"
++        android:layout_width="20dp"
++        android:layout_height="20dp"
++        android:layout_alignParentLeft="true"
++        android:layout_alignParentTop="true"
++        android:layout_marginStart="16dp"
++        android:layout_marginLeft="16dp"
++        android:layout_marginEnd="323dp"
++        android:layout_marginRight="323dp"
++        android:background="#00FFFFFF"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="@+id/position"
++        app:layout_constraintHorizontal_bias="0.0"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.033"
++        tools:src="@android:drawable/ic_menu_close_clear_cancel" />
++
++    <TextView
++        android:id="@+id/finished"
++        android:layout_width="330dp"
++        android:layout_height="196dp"
++        android:layout_marginBottom="176dp"
++        android:gravity="center"
++        android:textSize="20sp"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.493"
++        app:layout_constraintStart_toStartOf="parent" />
++
++    <RadioGroup
++        android:id="@+id/grp"
++        android:layout_width="282dp"
++        android:layout_height="269dp"
++        android:layout_marginTop="250dp"
++        android:visibility="visible"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.39"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="0.32999998">
++
++        <RadioButton
++            android:id="@+id/opt1"
++            android:layout_width="match_parent"
++            android:layout_height="68dp"
++            android:buttonTint="#5EA4E9"
++            android:text="RadioButton"
++            android:textSize="16sp" />
++
++        <RadioButton
++            android:id="@+id/opt2"
++            android:layout_width="match_parent"
++            android:layout_height="68dp"
++            android:buttonTint="#5EA4E9"
++            android:text="RadioButton"
++            android:textSize="16sp" />
++
++        <RadioButton
++            android:id="@+id/opt3"
++            android:layout_width="match_parent"
++            android:layout_height="68dp"
++            android:buttonTint="#5EA4E9"
++            android:text="RadioButton"
++            android:textSize="16sp" />
++
++        <RadioButton
++            android:id="@+id/opt4"
++            android:layout_width="match_parent"
++            android:layout_height="68dp"
++            android:buttonTint="#5EA4E9"
++            android:text="RadioButton"
++            android:textSize="16sp" />
++
++    </RadioGroup>
++
++    <Button
++        android:id="@+id/next"
++        android:layout_width="0dp"
++        android:layout_height="63dp"
++        android:background="#2886E2"
++        android:text="NEXT"
++        android:textStyle="bold"
++        android:visibility="invisible"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.0"
++        app:layout_constraintStart_toStartOf="parent" />
++
++    <Button
++        android:id="@+id/check"
++        android:layout_width="0dp"
++        android:layout_height="63dp"
++        android:background="#48C4EF"
++        android:text="CHECK ANSWER"
++        android:textStyle="bold"
++        android:visibility="invisible"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.0"
++        app:layout_constraintStart_toStartOf="parent" />
++
++    <Button
++        android:id="@+id/again"
++        android:layout_width="0dp"
++        android:layout_height="63dp"
++        android:background="#2886E2"
++        android:text="TRY AGAIN"
++        android:textStyle="bold"
++        android:visibility="invisible"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.0"
++        app:layout_constraintStart_toStartOf="parent" />
++
++    <TextView
++        android:id="@+id/position"
++        android:layout_width="330dp"
++        android:layout_height="25dp"
++        android:layout_alignParentLeft="true"
++        android:layout_alignParentTop="true"
++        android:layout_marginTop="44dp"
++        android:layout_marginBottom="20dp"
++        android:gravity="center"
++        android:text="This is position"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.472"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:layout_constraintVertical_bias="1.0" />
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/values/colors.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<resources>\r\n    <color name=\"colorPrimary\">#6200EE</color>\r\n    <color name=\"colorPrimaryDark\">#3700B3</color>\r\n    <color name=\"colorAccent\">#03DAC5</color>\r\n    <color name = \"bottom_bar_active\"> #F2721C </color>\r\n</resources>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/colors.xml	(revision 0ec6357e7b370023753bdf5aa4aa64f28a11cb84)
++++ app/src/main/res/values/colors.xml	(date 1625752754602)
+@@ -1,7 +1,9 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <resources>
+-    <color name="colorPrimary">#6200EE</color>
++    <color name="colorPrimary">#F2721C</color>
+     <color name="colorPrimaryDark">#3700B3</color>
+     <color name="colorAccent">#03DAC5</color>
+     <color name = "bottom_bar_active"> #F2721C </color>
++    <color name = "bottom_bar_inactive"> #BABABA </color>
++
+ </resources>
+Index: app/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".MainActivity\">\r\n\r\n    <FrameLayout\r\n        android:id=\"@+id/fragment_container\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        android:layout_above=\"@id/bottom_navigation\"\r\n        app:layout_constraintBottom_toTopOf=\"@+id/bottom_navigation\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n\r\n    <com.google.android.material.bottomnavigation.BottomNavigationView\r\n        android:id=\"@+id/bottom_navigation\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_alignParentBottom=\"true\"\r\n        android:background=\"#FFFFFF\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:menu=\"@menu/bottom_navigation_menu\" />\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_main.xml	(revision 0ec6357e7b370023753bdf5aa4aa64f28a11cb84)
++++ app/src/main/res/layout/activity_main.xml	(date 1625752754586)
+@@ -23,7 +23,11 @@
+         android:layout_height="wrap_content"
+         android:layout_alignParentBottom="true"
+         android:background="#FFFFFF"
++        app:itemIconTint="@drawable/bottom_navigation_selector"
++        app:itemTextColor="@drawable/bottom_navigation_selector"
+         app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
+         app:menu="@menu/bottom_navigation_menu" />
+ 
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/drawable/bottom_navigation_selector.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/drawable/bottom_navigation_selector.xml	(date 1625752754586)
++++ app/src/main/res/drawable/bottom_navigation_selector.xml	(date 1625752754586)
+@@ -0,0 +1,5 @@
++<?xml version="1.0" encoding="utf-8"?>
++<selector xmlns:android="http://schemas.android.com/apk/res/android">
++    <item android:state_checked="true" android:color="@color/bottom_bar_active" />
++    <item android:color="@color/bottom_bar_inactive"  />
++</selector>
+\ No newline at end of file
+Index: app/src/main/java/com/example/infs3605/ModuleFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.infs3605;\r\n\r\nimport android.content.Intent;\r\nimport android.os.Bundle;\r\n\r\nimport androidx.fragment.app.Fragment;\r\nimport androidx.recyclerview.widget.LinearLayoutManager;\r\nimport androidx.recyclerview.widget.RecyclerView;\r\n\r\nimport android.view.LayoutInflater;\r\nimport android.view.View;\r\nimport android.view.ViewGroup;\r\n\r\nimport com.example.infs3605.Entities.Modules;\r\nimport com.example.infs3605.Entities.Topics;\r\n\r\nimport java.util.ArrayList;\r\n\r\n/**\r\n * A simple {@link Fragment} subclass.\r\n * Use the {@link ModuleFragment#} factory method to\r\n * create an instance of this fragment.\r\n */\r\npublic class ModuleFragment extends Fragment {\r\n\r\n    private RecyclerView mRecyclerView;\r\n    private RecyclerView.Adapter mAdapter;\r\n    private RecyclerView.LayoutManager mLayoutManager;\r\n    public static final String TOPIC_ID = \"topic_id\";\r\n    private ArrayList<Modules> mModules = new ArrayList<>();\r\n    private ArrayList<Topics> mTopics = new ArrayList<>();\r\n    private Topics topic;\r\n    public static final String EXTRA_MESSAGE = \"module_id\";\r\n    private int topicId;\r\n\r\n//    // TODO: Rename parameter arguments, choose names that match\r\n//    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER\r\n//    private static final String ARG_PARAM1 = \"param1\";\r\n//    private static final String ARG_PARAM2 = \"param2\";\r\n//\r\n//    // TODO: Rename and change types of parameters\r\n//    private String mParam1;\r\n//    private String mParam2;\r\n\r\n    public ModuleFragment() {\r\n        // Required empty public constructor\r\n    }\r\n\r\n//    /**\r\n//     * Use this factory method to create a new instance of\r\n//     * this fragment using the provided parameters.\r\n//     *\r\n//     * @param param1 Parameter 1.\r\n//     * @param param2 Parameter 2.\r\n//     * @return A new instance of fragment ModuleFragment.\r\n//     */\r\n//    // TODO: Rename and change types and number of parameters\r\n//    public static ModuleFragment newInstance(String param1, String param2) {\r\n//        ModuleFragment fragment = new ModuleFragment();\r\n//        Bundle args = new Bundle();\r\n//        args.putString(ARG_PARAM1, param1);\r\n//        args.putString(ARG_PARAM2, param2);\r\n//        fragment.setArguments(args);\r\n//        return fragment;\r\n//    }\r\n//\r\n//    @Override\r\n//    public void onCreate(Bundle savedInstanceState) {\r\n//        super.onCreate(savedInstanceState);\r\n//        if (getArguments() != null) {\r\n//            mParam1 = getArguments().getString(ARG_PARAM1);\r\n//            mParam2 = getArguments().getString(ARG_PARAM2);\r\n//        }\r\n//    }\r\n\r\n    @Override\r\n    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {\r\n        // Inflate the layout for this fragment\r\n        View view = inflater.inflate(R.layout.fragment_home, container, false);\r\n\r\n        mRecyclerView = view.findViewById(R.id.rvList);\r\n        mRecyclerView.setHasFixedSize(true);\r\n\r\n        Intent intent = getActivity().getIntent();\r\n\r\n        for (Topics t: Topics.getTopics()){\r\n            mTopics.add(t);\r\n\r\n        }\r\n\r\n        if (intent.getStringExtra(HomeFragment.TOPIC_ID) != null){\r\n            topicId = Integer.parseInt(intent.getStringExtra(HomeFragment.TOPIC_ID));\r\n            System.out.println(topicId);\r\n            topic = mTopics.get(topicId);\r\n\r\n            getActivity().setTitle(topic.getTopicName());\r\n\r\n            for (Modules m : Modules.getModules()){\r\n                System.out.println(\"Hello\");\r\n                if (m.getTopicId() == topicId){\r\n                    mModules.add(m);\r\n                    System.out.println(\"added modules\");\r\n\r\n                }\r\n\r\n            }\r\n\r\n        }\r\n\r\n\r\n        mLayoutManager = new LinearLayoutManager(getActivity());\r\n        mRecyclerView.setLayoutManager(mLayoutManager);\r\n        ModulesAdapter.RecyclerViewClickListener listener = new ModulesAdapter.RecyclerViewClickListener() {\r\n            public void onClick(View view, int position) {\r\n                launchModules(position);\r\n                Modules mod = mModules.get(position);\r\n            }\r\n        };\r\n        mAdapter = new ModulesAdapter(mModules, listener);\r\n        mRecyclerView.setAdapter(mAdapter);\r\n\r\n        return view;\r\n\r\n\r\n    }\r\n\r\n\r\n    private void launchModules(int position) {\r\n        Modules mod = mModules.get(position);\r\n        Intent intent = new Intent(getActivity(), ModuleSelection.class);\r\n        intent.putExtra(EXTRA_MESSAGE, position);\r\n        intent.putExtra(\"Module\", mod.getModuleName());\r\n        intent.putExtra(\"Description\", mod.getModuleDescription());\r\n        intent.putExtra(\"id\", String.valueOf(mod.getModuleId()));\r\n        startActivity(intent);\r\n\r\n    }\r\n\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/infs3605/ModuleFragment.java	(revision 0ec6357e7b370023753bdf5aa4aa64f28a11cb84)
++++ app/src/main/java/com/example/infs3605/ModuleFragment.java	(date 1625752754570)
+@@ -4,12 +4,17 @@
+ import android.os.Bundle;
+ 
+ import androidx.fragment.app.Fragment;
++import androidx.fragment.app.FragmentTransaction;
+ import androidx.recyclerview.widget.LinearLayoutManager;
+ import androidx.recyclerview.widget.RecyclerView;
+ 
+ import android.view.LayoutInflater;
++import android.view.MenuItem;
+ import android.view.View;
+ import android.view.ViewGroup;
++import android.widget.Button;
++import android.widget.ImageButton;
++import android.widget.Toast;
+ 
+ import com.example.infs3605.Entities.Modules;
+ import com.example.infs3605.Entities.Topics;
+@@ -32,81 +37,47 @@
+     private Topics topic;
+     public static final String EXTRA_MESSAGE = "module_id";
+     private int topicId;
++    private ImageButton backButton;
+ 
+-//    // TODO: Rename parameter arguments, choose names that match
+-//    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+-//    private static final String ARG_PARAM1 = "param1";
+-//    private static final String ARG_PARAM2 = "param2";
+-//
+-//    // TODO: Rename and change types of parameters
+-//    private String mParam1;
+-//    private String mParam2;
+ 
+     public ModuleFragment() {
+         // Required empty public constructor
+     }
+ 
+-//    /**
+-//     * Use this factory method to create a new instance of
+-//     * this fragment using the provided parameters.
+-//     *
+-//     * @param param1 Parameter 1.
+-//     * @param param2 Parameter 2.
+-//     * @return A new instance of fragment ModuleFragment.
+-//     */
+-//    // TODO: Rename and change types and number of parameters
+-//    public static ModuleFragment newInstance(String param1, String param2) {
+-//        ModuleFragment fragment = new ModuleFragment();
+-//        Bundle args = new Bundle();
+-//        args.putString(ARG_PARAM1, param1);
+-//        args.putString(ARG_PARAM2, param2);
+-//        fragment.setArguments(args);
+-//        return fragment;
+-//    }
+-//
+-//    @Override
+-//    public void onCreate(Bundle savedInstanceState) {
+-//        super.onCreate(savedInstanceState);
+-//        if (getArguments() != null) {
+-//            mParam1 = getArguments().getString(ARG_PARAM1);
+-//            mParam2 = getArguments().getString(ARG_PARAM2);
+-//        }
+-//    }
+ 
+     @Override
+     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+         // Inflate the layout for this fragment
+-        View view = inflater.inflate(R.layout.fragment_home, container, false);
++        View view = inflater.inflate(R.layout.fragment_module, container, false);
+ 
+         mRecyclerView = view.findViewById(R.id.rvList);
+         mRecyclerView.setHasFixedSize(true);
++        backButton = view.findViewById(R.id.backButton);
+ 
+-        Intent intent = getActivity().getIntent();
+ 
+-        for (Topics t: Topics.getTopics()){
++        for (Topics t : Topics.getTopics()) {
+             mTopics.add(t);
+-
+         }
+ 
+-        if (intent.getStringExtra(HomeFragment.TOPIC_ID) != null){
+-            topicId = Integer.parseInt(intent.getStringExtra(HomeFragment.TOPIC_ID));
++        Bundle bundle = getArguments();
++
++        if (bundle.getString(HomeFragment.TOPIC_ID) != null) {
++            topicId = Integer.parseInt(bundle.getString(HomeFragment.TOPIC_ID));
+             System.out.println(topicId);
+             topic = mTopics.get(topicId);
+ 
+             getActivity().setTitle(topic.getTopicName());
+ 
+-            for (Modules m : Modules.getModules()){
++            for (Modules m : Modules.getModules()) {
+                 System.out.println("Hello");
+-                if (m.getTopicId() == topicId){
++                if (m.getTopicId() == topicId) {
+                     mModules.add(m);
+                     System.out.println("added modules");
+-
+                 }
+ 
+             }
+ 
+         }
+-
+ 
+         mLayoutManager = new LinearLayoutManager(getActivity());
+         mRecyclerView.setLayoutManager(mLayoutManager);
+@@ -119,9 +90,18 @@
+         mAdapter = new ModulesAdapter(mModules, listener);
+         mRecyclerView.setAdapter(mAdapter);
+ 
++
++        backButton.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++                Intent intent = new Intent(getActivity().getApplicationContext(), MainActivity.class);
++                startActivity(intent);
++                Toast.makeText(getActivity().getApplicationContext(), "Back to home ", Toast.LENGTH_SHORT).show();
++            }
++        });
++
+         return view;
+ 
+-
+     }
+ 
+ 
+@@ -136,5 +116,6 @@
+ 
+     }
+ 
++
+ }
+ 
+Index: app/src/main/java/com/example/infs3605/QuizActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/infs3605/QuizActivity.java	(date 1625752754570)
++++ app/src/main/java/com/example/infs3605/QuizActivity.java	(date 1625752754570)
+@@ -0,0 +1,366 @@
++package com.example.infs3605;
++
++import androidx.appcompat.app.AppCompatActivity;
++
++import android.content.Intent;
++import android.media.MediaPlayer;
++import android.os.Bundle;
++import android.util.Log;
++import android.view.View;
++import android.widget.Button;
++import android.widget.ImageButton;
++import android.widget.ImageView;
++import android.widget.RadioButton;
++import android.widget.RadioGroup;
++import android.widget.TextView;
++import android.widget.Toast;
++
++import com.example.infs3605.Entities.Modules;
++import com.example.infs3605.Entities.Quiz;
++
++import java.util.ArrayList;
++
++public class QuizActivity extends AppCompatActivity {
++    private int modId, i, quizId, stars;
++    private String modName, modDesc, answer, selectedAnswer;
++    private RadioButton opt1, opt2, opt3, opt4;
++    private RadioGroup grp;
++    private TextView question, position, fin;
++    private Button next, check, again;
++    private ImageButton cancel;
++    private ImageView img1, img2, img3, img4;
++    private ArrayList<Quiz> mQuiz = new ArrayList<>();
++    private ArrayList<Modules> mMod = new ArrayList<>();
++    private Quiz q;
++    private boolean correct = false;
++    private String finished;
++    MediaPlayer mpWrong;
++    MediaPlayer mpRight;
++    private static final String TAG = "QuizActivity";
++
++
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        setContentView(R.layout.activity_quiz);
++        setTitle("Quiz");
++
++        Intent intent = getIntent();
++        modId = Integer.parseInt(intent.getStringExtra("id"));
++        modName = intent.getStringExtra("mod_name");
++
++        mpWrong = MediaPlayer.create(getApplicationContext(), R.raw.wrong);
++        mpRight = MediaPlayer.create(getApplicationContext(), R.raw.right);
++
++        opt1 = findViewById(R.id.opt1);
++        opt2 = findViewById(R.id.opt2);
++        opt3 = findViewById(R.id.opt3);
++        opt4 = findViewById(R.id.opt4);
++        question = findViewById(R.id.question);
++        again = findViewById(R.id.again);
++        next = findViewById(R.id.next);
++        check = findViewById(R.id.check);
++        cancel = findViewById(R.id.cancel);
++        img1 = findViewById(R.id.img1);
++        img2 = findViewById(R.id.img2);
++        img3 = findViewById(R.id.img3);
++        img4 = findViewById(R.id.img4);
++        position = findViewById(R.id.position);
++        grp = findViewById(R.id.grp);
++        fin = findViewById(R.id.finished);
++
++        for (Quiz q: Quiz.getQuiz()){
++            if (q.getModuleId() == modId){
++                mQuiz.add(q);
++            }
++
++        }
++
++
++        for (Modules m: Modules.getModules()){
++            if (m.getModuleId() == modId){
++                mMod.add(m);
++                modDesc = m.getModuleDescription();
++            }
++
++        }
++        setTitle(modName);
++
++        if (mQuiz != null) {
++            i = 0;
++            q = mQuiz.get(i);
++            question.setText(q.getQuestion());
++            opt1.setText(q.getOp1());
++            opt2.setText(q.getOp2());
++            opt3.setText(q.getOp3());
++            opt4.setText(q.getOp4());
++            answer = q.getAnswer();
++            quizId = q.getId();
++            position.setText(i + 1 + "/" + mQuiz.size());
++            next.setVisibility(View.GONE);
++            img1.setImageResource(android.R.color.transparent);
++            img2.setImageResource(android.R.color.transparent);
++            img3.setImageResource(android.R.color.transparent);
++            img4.setImageResource(android.R.color.transparent);
++            check.setVisibility(View.VISIBLE);
++            again.setVisibility(View.GONE);
++
++        } else {
++            question.setText("Module quiz not available. Please come back when the app updates.");
++        }
++
++        check.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++                //TODO - check if null
++                img1.setImageResource(android.R.color.transparent);
++                img2.setImageResource(android.R.color.transparent);
++                img3.setImageResource(android.R.color.transparent);
++                img4.setImageResource(android.R.color.transparent);
++                boolean answered = checkResult();
++                if (answered == true) {
++                    again.setVisibility(View.GONE);
++                    check.setVisibility(View.GONE);
++                    next.setVisibility(View.VISIBLE);
++                } else {
++                    again.setVisibility(View.GONE);
++                    check.setVisibility(View.VISIBLE);
++                    next.setVisibility(View.GONE);
++                }
++            }
++        });
++
++        next.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++                next();
++                next.setVisibility(View.GONE);
++
++            }
++
++        });
++
++
++        cancel.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++                Intent intent = new Intent(getApplicationContext(), ModuleSelection.class);
++                intent.putExtra("Module", modName);
++                intent.putExtra("id", String.valueOf(modId));
++                intent.putExtra("Description", modDesc);
++                startActivity(intent);
++
++            }
++        });
++
++        again.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View v) {
++                fin.setText("");
++                if (mQuiz != null) {
++                    i = 0;
++                    stars = 0;
++                    q = mQuiz.get(i);
++                    question.setText(q.getQuestion());
++                    opt1.setText(q.getOp1());
++                    opt2.setText(q.getOp2());
++                    opt3.setText(q.getOp3());
++                    opt4.setText(q.getOp4());
++                    answer = q.getAnswer();
++                    quizId = q.getId();
++                    position.setText(i + 1 + "/" + mQuiz.size());
++                    next.setVisibility(View.GONE);
++                    img1.setImageResource(android.R.color.transparent);
++                    img2.setImageResource(android.R.color.transparent);
++                    img3.setImageResource(android.R.color.transparent);
++                    img4.setImageResource(android.R.color.transparent);
++                    check.setVisibility(View.VISIBLE);
++                    again.setVisibility(View.GONE);
++                    grp.setVisibility(View.VISIBLE);
++
++                } else {
++                    question.setText("Nothing has been added yet. Please come back when the app updates.");
++                }
++
++            }
++        });
++
++
++    }
++
++    private boolean checkResult() {
++        if (opt1.isChecked()) {
++            selectedAnswer = opt1.getText().toString();
++            if (selectedAnswer.equals(answer)) {
++                img1.setImageResource(R.drawable.correct);
++                correct = true;
++                mpRight.start();
++                stars++;
++            } else {
++                img1.setImageResource(R.drawable.wrong);
++                displayTick();
++                correct = false;
++            }
++            return true;
++        } else if (opt2.isChecked()) {
++            selectedAnswer = opt2.getText().toString();
++            if (selectedAnswer.equals(answer)) {
++                img2.setImageResource(R.drawable.correct);
++                correct = true;
++                mpRight.start();
++                stars++;
++            } else {
++                img2.setImageResource(R.drawable.wrong);
++                displayTick();
++                correct = false;
++                mpWrong.start();
++            }
++            return true;
++        } else if (opt3.isChecked()) {
++            selectedAnswer = opt3.getText().toString();
++            if (selectedAnswer.equals(answer)) {
++                img3.setImageResource(R.drawable.correct);
++                correct = true;
++                mpRight.start();
++                stars++;
++            } else {
++                img3.setImageResource(R.drawable.wrong);
++                displayTick();
++                correct = false;
++                mpWrong.start();
++            }
++            return true;
++        } else if (opt4.isChecked()) {
++            selectedAnswer = opt4.getText().toString();
++            if (selectedAnswer.equals(answer)) {
++                img4.setImageResource(R.drawable.correct);
++                correct = true;
++                mpRight.start();
++                stars++;
++            } else {
++                img4.setImageResource(R.drawable.wrong);
++                displayTick();
++                correct = false;
++                mpWrong.start();
++            }
++            return true;
++
++        } else {
++            next.setVisibility(View.GONE);
++            Toast.makeText(getApplicationContext(), "Please select an answer", Toast.LENGTH_SHORT).show();
++            mpWrong.start();
++            return false;
++        }
++    }
++
++    //displays the correct answer if the user is wrong
++    public void displayTick() {
++        if (answer.equals(opt1.getText().toString())) {
++            img1.setImageResource(R.drawable.correct);
++        } else if (answer.equals(opt2.getText().toString())) {
++            img2.setImageResource(R.drawable.correct);
++        } else if (answer.equals(opt3.getText().toString())) {
++            img3.setImageResource(R.drawable.correct);
++        } else if (answer.equals(opt4.getText().toString())) {
++            img4.setImageResource(R.drawable.correct);
++        } else {
++            img1.setImageResource(android.R.color.transparent);
++            img2.setImageResource(android.R.color.transparent);
++            img3.setImageResource(android.R.color.transparent);
++            img4.setImageResource(android.R.color.transparent);
++        }
++    }
++
++
++    private void next() {
++        img1.setImageResource(android.R.color.transparent);
++        img2.setImageResource(android.R.color.transparent);
++        img3.setImageResource(android.R.color.transparent);
++        img4.setImageResource(android.R.color.transparent);
++        grp.clearCheck();
++        if (i >= mQuiz.size()) {
++//            new MyViewedTask().execute();
++//            new GetStarsTask().execute();
++//            tr = new TopicResult(topicId, email, stars, true);
++//            new UpdateStarsTask().execute();
++            next.setVisibility(View.GONE);
++            grp.setVisibility(View.GONE);
++            check.setVisibility(View.GONE);
++            again.setVisibility(View.VISIBLE);
++            //displays stars earnt in the mini quiz
++
++            i = mQuiz.size();
++            updateUi();
++
++
++
++        } else if (i <= 0) {
++            i = 1;
++            Log.d(TAG, "onClick: line 170 displays index at " + i);
++            next.setVisibility(View.VISIBLE);
++            check.setVisibility(View.VISIBLE);
++            again.setVisibility(View.GONE);
++            q = mQuiz.get(i);
++            question.setText(q.getQuestion());
++            opt1.setText(q.getOp1());
++            opt2.setText(q.getOp2());
++            opt3.setText(q.getOp3());
++            opt4.setText(q.getOp4());
++            answer = q.getAnswer();
++            quizId = q.getId();
++            position.setText(i + 1 + "/" + mQuiz.size());
++        } else {
++            i++;
++            Log.d(TAG, "onClick: line 187 displays index at " + i);
++            check.setVisibility(View.VISIBLE);
++            again.setVisibility(View.GONE);
++            next.setVisibility(View.VISIBLE);
++            q = mQuiz.get(i);
++            question.setText(q.getQuestion());
++            opt1.setText(q.getOp1());
++            opt2.setText(q.getOp2());
++            opt3.setText(q.getOp3());
++            opt4.setText(q.getOp4());
++            answer = q.getAnswer();
++            quizId = q.getId();
++            position.setText(i + 1 + "/" + mQuiz.size());
++
++            if (i == (mQuiz.size() - 1)) {
++                i++;
++            }
++        }
++
++    }
++
++
++    private void updateUi() {
++//        switch (stars) {
++//            case 1:
++//                imgquest.setImageResource(R.drawable.one_star);
++//                break;
++//            case 2:
++//                imgquest.setImageResource(R.drawable.two_star);
++//                break;
++//            case 3:
++//                imgquest.setImageResource(R.drawable.three_star);
++//                break;
++//            case 4:
++//                imgquest.setImageResource(R.drawable.four_star);
++//                break;
++//            case 5:
++//                imgquest.setImageResource(R.drawable.five_star);
++//                break;
++//            case 6:
++//                imgquest.setImageResource(R.drawable.six_star);
++//                break;
++//            case 0:
++//                imgquest.setImageResource(R.drawable.no_star);
++//                break;
++//            default:
++//                imgquest.setImageResource(R.drawable.tick);
++//        }
++        question.setText("You have finished this topic's knowledge check. Your result is " + stars + "/" + mQuiz.size() + "");
++        position.setText("");
++        fin.setText(finished);
++    }
++}
+\ No newline at end of file
