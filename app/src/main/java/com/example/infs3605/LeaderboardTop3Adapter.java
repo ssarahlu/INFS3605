@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.infs3605.Entities.Levels;
 import com.example.infs3605.Entities.Profile;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -45,8 +46,7 @@ public class LeaderboardTop3Adapter extends RecyclerView.Adapter<LeaderboardTop3
             holder.tvName.setText(profile.getDisplayName());
         }
 
-
-        holder.ivAvatar.setImageResource(Integer.parseInt(profile.getLevelAnimalIcon()));
+        holder.ivAvatar.setImageResource(Levels.getAvatar(Levels.getLevel(profile.getStars())));
 
         if (position == 0) {
             holder.ivRank.setImageResource(R.drawable.rank1);
