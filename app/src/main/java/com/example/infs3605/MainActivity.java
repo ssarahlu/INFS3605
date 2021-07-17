@@ -1,7 +1,6 @@
 package com.example.infs3605;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -9,24 +8,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.infs3605.Entities.Facts;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,10 +45,10 @@ public class MainActivity extends AppCompatActivity {
 
                     break;
                 case R.id.page_3:
-                    Toast.makeText(MainActivity.this, "Rewards", Toast.LENGTH_SHORT).show();
-                    RewardsFragment rewardsFragment = new RewardsFragment();
+                    Toast.makeText(MainActivity.this, "Discussion", Toast.LENGTH_SHORT).show();
+                    DiscussionFragment discussionFragment = new DiscussionFragment();
                     FragmentTransaction fragmentTransaction3 = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction3.replace(R.id.fragment_container, rewardsFragment, "FragmentName");
+                    fragmentTransaction3.replace(R.id.fragment_container, discussionFragment, "FragmentName");
                     fragmentTransaction3.commit();
 
                     break;

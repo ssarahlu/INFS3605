@@ -30,8 +30,6 @@ public class LeaderboardActivity extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference profilesRef = db.collection("profiles");
 
-    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
     private LeaderboardAdapter mAdapter;
     private LeaderboardTop3Adapter mAdapter2;
 
@@ -83,9 +81,6 @@ public class LeaderboardActivity extends AppCompatActivity {
                                             levelAnimalIcon,
                                             Integer.parseInt(documentSnapshot.get("stars").toString()),
                                             level));
-
-
-
 
                             }
 

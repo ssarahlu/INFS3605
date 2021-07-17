@@ -14,8 +14,8 @@
     <item
         android:id="@+id/page_3"
         android:enabled="true"
-        android:icon="@drawable/rewards_inactive"
-        android:title="Rewards"/>
+        android:icon="@android:drawable/stat_notify_chat"
+        android:title="Discussion" />
 
     <item
         android:id="@+id/page_4"
