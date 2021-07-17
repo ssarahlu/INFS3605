@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,49 +17,76 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class DiscussionThreadAdapter extends RecyclerView.Adapter<DiscussionThreadAdapter.DiscussionThreadViewHolder> {
+public class DiscussionThreadAdapter extends RecyclerView.Adapter<DiscussionThreadAdapter.ViewHolder> {
     private ArrayList<DiscussionThread> mDiscussionThreads;
     private DiscussionThread discussionThread;
+    private static final String TAG = "DiscussionThreadAdapter";
+    private RecyclerViewClickListener mListener;
+    private Context context;
 
-    public DiscussionThreadAdapter(ArrayList<DiscussionThread> discussionThreads) {
+    public DiscussionThreadAdapter(ArrayList<DiscussionThread> discussionThreads, RecyclerViewClickListener listener) {
         mDiscussionThreads = discussionThreads;
+        mListener = listener;
     }
 
-    public class DiscussionThreadViewHolder extends RecyclerView.ViewHolder {
+    public interface RecyclerViewClickListener {
+        void onClick(View view, int position);
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView tvTitle, tvAuthor, tvLastPost, tvReplies;
 
-        public DiscussionThreadViewHolder(@NonNull View itemView) {
+        private RecyclerViewClickListener mListener;
+
+        public ViewHolder(@NonNull View itemView, RecyclerViewClickListener listener) {
             super(itemView);
-            tvTitle = itemView.findViewById(R.id.tvName);
+            tvTitle = itemView.findViewById(R.id.tvTitle);
             tvAuthor = itemView.findViewById(R.id.tvAuthor);
             tvLastPost = itemView.findViewById(R.id.tvLastPost);
             tvReplies = itemView.findViewById(R.id.tvReplies);
+
+            mListener = listener;
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+
         }
     }
 
     @NonNull
     @Override
-    public DiscussionThreadAdapter.DiscussionThreadViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.discussion_thread_item, parent, false);
-        return new DiscussionThreadViewHolder(v);
+    public DiscussionThreadAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        context = parent.getContext();
+        View view = LayoutInflater.from(context).inflate(R.layout.discussion_thread_item, parent, false);
+        return new ViewHolder(view, mListener);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DiscussionThreadAdapter.DiscussionThreadViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         discussionThread = mDiscussionThreads.get(position);
 
-//        Log.d(TAG, "" + discussionThread.getTitle());
+        Log.d(TAG, "" + discussionThread.getTitle());
+        Log.d(TAG, "onBindViewHolder: DiscussionThreadAdapter ");
+//        holder.tvTitle.setText("Test");
         holder.tvTitle.setText(discussionThread.getTitle());
         holder.tvAuthor.setText(discussionThread.getAuthor());
         holder.tvLastPost.setText(discussionThread.getLastPostTime());
         holder.tvReplies.setText(Integer.toString(discussionThread.getNumberOfReplies()));
+
+
+
     }
 
     @Override
     public int getItemCount() {
         return mDiscussionThreads.size();
     }
+
+
 }
+
 
 //
 //public class DiscussionThreadAdapter extends RecyclerView.Adapter<DiscussionThreadAdapter.DiscussionThreadViewHolder> {
