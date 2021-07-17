@@ -75,8 +75,6 @@ public class ModulesAdapter extends RecyclerView.Adapter<ModulesAdapter.MyViewHo
 
 
 
-
-
     }
 
     @Override
