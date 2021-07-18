@@ -69,12 +69,11 @@ public class DiscussionThreadAdapter extends RecyclerView.Adapter<DiscussionThre
 
         Log.d(TAG, "" + discussionThread.getTitle());
         Log.d(TAG, "onBindViewHolder: DiscussionThreadAdapter ");
-//        holder.tvTitle.setText("Test");
+
         holder.tvTitle.setText(discussionThread.getTitle());
         holder.tvAuthor.setText(discussionThread.getAuthor());
         holder.tvLastPost.setText(discussionThread.getLastPostTime());
-        holder.tvReplies.setText(Integer.toString(discussionThread.getNumberOfReplies()));
-
+        holder.tvReplies.setText("" + (discussionThread.getNumberOfReplies()) + " Replies");
 
 
     }
@@ -87,53 +86,4 @@ public class DiscussionThreadAdapter extends RecyclerView.Adapter<DiscussionThre
 
 }
 
-
-//
-//public class DiscussionThreadAdapter extends RecyclerView.Adapter<DiscussionThreadAdapter.DiscussionThreadViewHolder> {
-//    private static final String TAG = "";
-//    private List<DiscussionThread> mDiscussionThreads;
-//    private DiscussionThread discussionThread;
-//
-//    public DiscussionThreadAdapter(List<DiscussionThread> discussionThreads) {
-//        mDiscussionThreads = discussionThreads;
-//
-//    }
-//
-//    public static class DiscussionThreadViewHolder extends RecyclerView.ViewHolder {
-//        public TextView tvTitle, tvAuthor, tvLastPost, tvReplies;
-//
-//        public DiscussionThreadViewHolder(View itemView) {
-//            super(itemView);
-//            tvTitle = itemView.findViewById(R.id.tvName);
-//            tvAuthor = itemView.findViewById(R.id.tvAuthor);
-//            tvLastPost = itemView.findViewById(R.id.tvLastPost);
-//            tvReplies = itemView.findViewById(R.id.tvReplies);
-//
-//        }
-//    }
-//    @Override
-//    public DiscussionThreadAdapter.DiscussionThreadViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-//        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.discussion_thread_item, parent, false);
-//        return new DiscussionThreadViewHolder(v);
-//    }
-//
-//    @Override
-//    public void onBindViewHolder(@NonNull DiscussionThreadAdapter.DiscussionThreadViewHolder holder, int position) {
-//        discussionThread = mDiscussionThreads.get(position);
-//
-//        Log.d(TAG, "" + discussionThread.getTitle());
-//        holder.tvTitle.setText(discussionThread.getTitle());
-//        holder.tvAuthor.setText(discussionThread.getAuthor());
-//        holder.tvLastPost.setText(discussionThread.getLastPostTime());
-//        holder.tvReplies.setText(Integer.toString(discussionThread.getNumberOfReplies()));
-//
-//    }
-//
-//    @Override
-//    public int getItemCount() {
-//        return mDiscussionThreads.size();
-//    }
-//
-//
-//}
 

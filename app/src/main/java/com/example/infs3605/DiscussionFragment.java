@@ -1,8 +1,10 @@
 package com.example.infs3605;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,9 +13,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.infs3605.Entities.DiscussionThread;
-import com.example.infs3605.Entities.Profile;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -39,6 +44,9 @@ public class DiscussionFragment extends Fragment {
     private DiscussionThreadAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private RecyclerView mRecyclerView;
+    private Button btAddThread;
+    private AlertDialog.Builder dialogBuilder;
+    private AlertDialog dialog;
 
     public DiscussionFragment() {
         // Required empty public constructor
@@ -52,6 +60,84 @@ public class DiscussionFragment extends Fragment {
         mRecyclerView = view.findViewById(R.id.rvDiscussionThreads);
         mRecyclerView.setHasFixedSize(false);
 
+        setData();
+
+        btAddThread = view.findViewById(R.id.btAddThread);
+        btAddThread.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                createNewNoteDialog();
+            }
+        });
+
+
+        return view;
+
+    }
+
+    public void createNewNoteDialog() {
+        dialogBuilder = new AlertDialog.Builder(getActivity());
+        EditText threadTitle;
+        Button btPost;
+        ImageButton btCancel;
+        final View addThreadPopup = getLayoutInflater().inflate(R.layout.add_thread, null);
+        threadTitle = addThreadPopup.findViewById(R.id.tvThreadTitle);
+        btPost = addThreadPopup.findViewById(R.id.btPost);
+        btCancel = addThreadPopup.findViewById(R.id.closeButton);
+
+        // Show the popup
+        dialogBuilder.setView(addThreadPopup);
+        dialog = dialogBuilder.create();
+        dialog.show();
+
+        // Set the save button to save the note
+        btPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // Get the user input and if either values are empty, display a Toast
+                String title = threadTitle.getText().toString();
+                if (title.matches("")) {
+                    Toast.makeText(getActivity(), "Please enter all fields", Toast.LENGTH_SHORT).show();
+                } else {
+
+                    // Store the note under an author and for a specific module
+                    Map<String, Object> thread = new HashMap<>();
+                    thread.put("title", threadTitle.getText().toString());
+                    thread.put("author", user.getDisplayName());
+                    thread.put("lastPostTIme", "");
+                    thread.put("numberOfReplies", 0);
+
+                    // Add the note to the Firestore database
+                    discussionThreadRef.document().set(thread)
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Log.d(TAG, "Thread Document successfully written!");
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.w(TAG, "Error writing document", e);
+                                }
+                            });
+                    // Close the popup
+                    dialog.dismiss();
+                    setData();
+                }
+            }
+        });
+
+        btCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+    }
+
+    public void setData(){
         ArrayList<DiscussionThread> discussionThreads = new ArrayList<>();
         discussionThreadRef.get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -87,34 +173,6 @@ public class DiscussionFragment extends Fragment {
 
                 });
 
-        return view;
 
-    }
-
-    public void createThread() {
-        String name = user.getDisplayName();
-
-        // Create a Hash Map with the desired values
-        Map<String, Object> thread = new HashMap<>();
-        thread.put("title", "Dyarubbin Exhibition");
-        thread.put("author", name);
-        thread.put("lastPostTime", "12/07/2021, 8:19 p.m.");
-        thread.put("numberOfReplies", 18);
-
-
-        // Create a document with UID as the reference
-        discussionThreadRef.document().set(thread)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d(TAG, "Thread Document successfully written!");
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error writing document", e);
-                    }
-                });
     }
 }
