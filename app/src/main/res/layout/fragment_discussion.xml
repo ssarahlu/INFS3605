@@ -8,17 +8,16 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvDiscussionThreads"
-        android:layout_width="362dp"
-        android:layout_height="588dp"
+        android:layout_width="361dp"
+        android:layout_height="463dp"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
         android:paddingLeft="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDiscussion"
-        app:layout_constraintVertical_bias="0.89" />
+        app:layout_constraintVertical_bias="0.087" />
 
     <TextView
         android:id="@+id/tvDiscussion"
@@ -31,5 +30,18 @@
         android:text="Discussion Forum"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btAddThread"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="72dp"
+        android:text="Add Thread"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvDiscussionThreads"
+        app:layout_constraintVertical_bias="0.952" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

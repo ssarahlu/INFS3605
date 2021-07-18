@@ -55,4 +55,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvReplies"
+        app:layout_constraintEnd_toStartOf="@+id/tvReplies"
+        app:layout_constraintTop_toTopOf="@+id/tvReplies"
+        app:layout_constraintVertical_bias="0.625"
+        app:srcCompat="@drawable/discussion" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
