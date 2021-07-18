@@ -29,10 +29,13 @@ public class SavedEventData {
     @ColumnInfo
     private String eventDesc;
 
+    @ColumnInfo
+    private String eventLoc;
+
     @Ignore
     public SavedEventData() {}
 
-    public SavedEventData(@NonNull String email, int eventId, String eventImage, String eventName, String eventDate, String eventLink, String eventDesc) {
+    public SavedEventData(@NonNull String email, int eventId, String eventImage, String eventName, String eventDate, String eventLink, String eventDesc, String eventLoc) {
         this.email = email;
         this.eventId = eventId;
         this.eventImage = eventImage;
@@ -40,6 +43,7 @@ public class SavedEventData {
         this.eventDate = eventDate;
         this.eventLink = eventLink;
         this.eventDesc = eventDesc;
+        this.eventLoc = eventLoc;
     }
 
     @NonNull
@@ -97,5 +101,13 @@ public class SavedEventData {
 
     public void setEventDesc(String eventDesc) {
         this.eventDesc = eventDesc;
+    }
+
+    public String getEventLoc() {
+        return eventLoc;
+    }
+
+    public void setEventLoc(String eventLoc) {
+        this.eventLoc = eventLoc;
     }
 }

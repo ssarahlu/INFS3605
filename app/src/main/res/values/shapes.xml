@@ -9,4 +9,19 @@
         <item name="cornerFamilyBottomRight">rounded</item>
     </style>
 
+    <style name="CornersRounded">
+
+        <item name="cornerSizeTopLeft">15dp</item>
+        <item name="cornerFamilyTopLeft">rounded</item>
+
+        <item name="cornerSizeTopRight">15dp</item>
+        <item name="cornerFamilyTopRight">rounded</item>
+
+        <item name="cornerSizeBottomLeft">15dp</item>
+        <item name="cornerFamilyBottomLeft">rounded</item>
+
+        <item name="cornerSizeBottomRight">15dp</item>
+        <item name="cornerFamilyBottomRight">rounded</item>
+    </style>
+
 </resources>

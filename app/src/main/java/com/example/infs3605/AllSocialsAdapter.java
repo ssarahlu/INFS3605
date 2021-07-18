@@ -5,23 +5,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.infs3605.Entities.Social;
 
 import java.util.ArrayList;
 
-public class SocialAdapter extends RecyclerView.Adapter<SocialAdapter.ViewHolder>{
+public class AllSocialsAdapter extends RecyclerView.Adapter<AllSocialsAdapter.ViewHolder>{
 
     private ArrayList<Social> mSocialList;
     private Social mSocial;
 
     private Context mContext;
 
-    public SocialAdapter(ArrayList<Social> mSocialList) {
+    public AllSocialsAdapter(ArrayList<Social> mSocialList) {
         this.mSocialList = mSocialList;
     }
 
@@ -29,19 +29,23 @@ public class SocialAdapter extends RecyclerView.Adapter<SocialAdapter.ViewHolder
 
     @NonNull
     @Override
-    public SocialAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AllSocialsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.social_list_item,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.all_socials_list_item,parent,false);
 
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SocialAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull AllSocialsAdapter.ViewHolder holder, int position) {
 
         mSocial = mSocialList.get(position);
 
+
+        holder.ivSocialIcon.setImageResource(mSocial.getSocialIcon());
         holder.ivSocialImage.setImageResource(mSocial.getSocialImage());
+        holder.tvSocialAccount.setText(mSocial.getSocialAccount());
+        holder.tvSocialDesc.setText(mSocial.getSocialDesc());
         holder.itemView.setTag(mSocial.getSocialId());
 
 
@@ -49,13 +53,18 @@ public class SocialAdapter extends RecyclerView.Adapter<SocialAdapter.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public ImageView ivSocialImage;
+        public ImageView ivSocialIcon, ivSocialImage;
+        public TextView tvSocialAccount, tvSocialDesc;
 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            ivSocialIcon = itemView.findViewById(R.id.ivSocialIcon);
             ivSocialImage = itemView.findViewById(R.id.ivSocialImage);
+
+            tvSocialAccount = itemView.findViewById(R.id.tvSocialAccount);
+            tvSocialDesc = itemView.findViewById(R.id.tvSocialDesc);
         }
 
     }

@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 import androidx.room.Room;
 
+import android.content.Context;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -29,6 +32,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.io.IOException;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,9 +48,9 @@ public class EventActivity extends FragmentActivity implements OnMapReadyCallbac
     private int eventId;
 
     private ImageView ivEventImage;
-    private TextView tvEventName, tvEventDate, tvEventDesc;
+    private TextView tvEventName, tvEventDate, tvEventDesc, tvEventLoc;
     private ImageButton btnSave, btnSearch;
-    private Button btnBack;
+    private ImageButton btnBack;
 
     private ArrayList<Event> mEventList;
     private Event mEvent;
@@ -66,6 +70,7 @@ public class EventActivity extends FragmentActivity implements OnMapReadyCallbac
         ivEventImage = findViewById(R.id.ivEventImage);
         tvEventName = findViewById(R.id.tvEventName);
         tvEventDate = findViewById(R.id.tvEventDate);
+        tvEventLoc = findViewById(R.id.tvEventLoc);
         tvEventDesc = findViewById(R.id.tvEventDesc);
         btnSave = findViewById(R.id.btnSave);
         btnSearch = findViewById(R.id.btnSearch);
@@ -91,6 +96,7 @@ public class EventActivity extends FragmentActivity implements OnMapReadyCallbac
         tvEventName.setText(mEvent.getEventName());
         tvEventDate.setText(mEvent.getEventDate());
         tvEventDesc.setText(mEvent.getEventDesc());
+        tvEventLoc.setText(mEvent.getEventLoc());
 
         if (myDb.savedEventDataDao().getSavedEvent(email,mEvent.getEventId()) != null) {
             btnSave.setBackgroundResource(R.drawable.saved_icon);
@@ -123,10 +129,11 @@ public class EventActivity extends FragmentActivity implements OnMapReadyCallbac
                 String mDate = mEvent.getEventDate();
                 String mLink = mEvent.getEventLink();
                 String mDesc = mEvent.getEventDesc();
+                String mLoc = mEvent.getEventLoc();
 
 
                 if (myDb.savedEventDataDao().getSavedEvent(mEmail,mId) == null) {
-                    myDb.savedEventDataDao().saveEvent(mEmail,mId,mImage,mName,mDate,mLink,mDesc);
+                    myDb.savedEventDataDao().saveEvent(mEmail,mId,mImage,mName,mDate,mLink,mDesc,mLoc);
 
                     list = myDb.savedEventDataDao().getAllSavedEvents();
 
@@ -179,10 +186,38 @@ public class EventActivity extends FragmentActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        String strAddress = mEvent.getEventLoc();
+
+        LatLng location = getLocationFromAddress(this,strAddress);
         // Add a marker in Sydney and move the camera
         LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        mMap.addMarker(new MarkerOptions().position(location).title(strAddress));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(17),200,null);
+    }
+
+    public LatLng getLocationFromAddress(Context context, String strAddress) {
+
+        Geocoder coder = new Geocoder(context);
+        List<Address> address;
+        LatLng p1 = null;
+
+        try {
+            // May throw an IOException
+            address = coder.getFromLocationName(strAddress, 5);
+            if (address == null) {
+                return null;
+            }
+
+            Address location = address.get(0);
+            p1 = new LatLng(location.getLatitude(), location.getLongitude() );
+
+        } catch (IOException ex) {
+
+            ex.printStackTrace();
+        }
+
+        return p1;
     }
 
     private void launchExploreFragment() {

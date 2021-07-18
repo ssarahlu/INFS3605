@@ -28,7 +28,7 @@ public class AllEventsActivity extends AppCompatActivity {
 
         mList = Event.getEventList();
 
-        mRecyclerView = findViewById(R.id.rvAllEvents);
+        mRecyclerView = findViewById(R.id.rvAllSocials);
         mRecyclerView.setHasFixedSize(true);
 
         mLayoutManager = new LinearLayoutManager(this);

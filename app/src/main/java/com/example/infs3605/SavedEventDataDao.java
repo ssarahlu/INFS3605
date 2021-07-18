@@ -21,8 +21,8 @@ public interface SavedEventDataDao {
     @Query("SELECT * FROM SavedEventData WHERE email == :email AND eventId == :eventId")
     SavedEventData getSavedEvent(String email, int eventId);
 
-    @Query("INSERT INTO SavedEventData VALUES (:email, :eventId, :eventImage, :eventName, :eventDate, :eventLink, :eventDesc)")
-    void saveEvent(String email, int eventId, String eventImage, String eventName, String eventDate, String eventLink, String eventDesc);
+    @Query("INSERT INTO SavedEventData VALUES (:email, :eventId, :eventImage, :eventName, :eventDate, :eventLink, :eventDesc, :eventLoc)")
+    void saveEvent(String email, int eventId, String eventImage, String eventName, String eventDate, String eventLink, String eventDesc, String eventLoc);
 
     @Query("DELETE FROM SavedEventData")
     void deleteAll();

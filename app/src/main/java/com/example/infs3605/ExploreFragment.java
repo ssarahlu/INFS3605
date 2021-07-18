@@ -1,5 +1,6 @@
 package com.example.infs3605;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -17,6 +18,7 @@ import android.widget.TextView;
 
 import com.example.infs3605.Entities.Event;
 import com.example.infs3605.Entities.SavedEventData;
+import com.example.infs3605.Entities.Social;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -52,7 +54,6 @@ public class ExploreFragment extends Fragment {
     private TextView tvAllEvents;
 
 
-
     //social
     private RecyclerView socialRecyclerView;
     private RecyclerView.Adapter socialAdapter;
@@ -61,7 +62,7 @@ public class ExploreFragment extends Fragment {
     private TextView tvAllSocials;
 
     //to be changed to instagram API
-    private ArrayList<Integer> mImageUrls = new ArrayList<>();
+    private ArrayList<Social> socialList;
 
 
 
@@ -76,7 +77,6 @@ public class ExploreFragment extends Fragment {
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_explore, container, false);
-
 
 
         email = user.getEmail();
@@ -147,12 +147,8 @@ public class ExploreFragment extends Fragment {
         eventRecyclerView.setAdapter(eventAdapter);
 
 
-
-
-
-
         //social
-        getImages();
+        socialList = Social.getSocialList();
 
         tvAllSocials = view.findViewById(R.id.tvAllSocials);
 
@@ -169,14 +165,8 @@ public class ExploreFragment extends Fragment {
         socialLayoutManager = new GridLayoutManager(getActivity(), 3, GridLayoutManager.HORIZONTAL, false);
         socialRecyclerView.setLayoutManager(socialLayoutManager);
 
-        SocialAdapter.RecyclerViewClickListener socialListener = new SocialAdapter.RecyclerViewClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                launchSocialActivity();
-            }
-        };
 
-        socialAdapter = new SocialAdapter(mImageUrls, socialListener);
+        socialAdapter = new SocialAdapter(socialList);
         socialRecyclerView.setAdapter(socialAdapter);
 
         return view;
@@ -191,39 +181,11 @@ public class ExploreFragment extends Fragment {
     }
 
     private void launchAllSocialsActivity() {
+        Intent intent = new Intent(getActivity().getApplicationContext(), AllSocialsActivity.class);
+        startActivity(intent);
 
     }
 
-
-    private void getImages() {
-        mImageUrls.add(R.drawable.event1);
-        mImageUrls.add(R.drawable.event2);
-        mImageUrls.add(R.drawable.event3);
-        mImageUrls.add(R.drawable.event4);
-        mImageUrls.add(R.drawable.event5);
-        mImageUrls.add(R.drawable.event1);
-        mImageUrls.add(R.drawable.event2);
-        mImageUrls.add(R.drawable.event3);
-        mImageUrls.add(R.drawable.event4);
-        mImageUrls.add(R.drawable.event1);
-        mImageUrls.add(R.drawable.event2);
-        mImageUrls.add(R.drawable.event3);
-        mImageUrls.add(R.drawable.event4);
-        mImageUrls.add(R.drawable.event5);
-        mImageUrls.add(R.drawable.event1);
-        mImageUrls.add(R.drawable.event2);
-        mImageUrls.add(R.drawable.event3);
-        mImageUrls.add(R.drawable.event4);
-        mImageUrls.add(R.drawable.event1);
-        mImageUrls.add(R.drawable.event2);
-        mImageUrls.add(R.drawable.event3);
-        mImageUrls.add(R.drawable.event4);
-        mImageUrls.add(R.drawable.event5);
-        mImageUrls.add(R.drawable.event1);
-        mImageUrls.add(R.drawable.event2);
-        mImageUrls.add(R.drawable.event3);
-        mImageUrls.add(R.drawable.event4);
-    }
 
     private void launchEventActivity(int eventId) {
 
@@ -232,11 +194,6 @@ public class ExploreFragment extends Fragment {
         startActivity(intent);
     }
 
-
-
-    private void launchSocialActivity() {
-
-    }
 
 
 }
