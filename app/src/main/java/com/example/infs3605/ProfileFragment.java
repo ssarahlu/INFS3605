@@ -66,9 +66,8 @@ public class ProfileFragment extends Fragment {
         feedback = view.findViewById(R.id.feedback);
 
         emailString = user.getEmail();
-
         email.setText(emailString);
-        name.setText(user.getDisplayName());
+//        name.setText(user.getDisplayName());
 
         //to set the Hey <name>
         userRef.get()
@@ -76,6 +75,8 @@ public class ProfileFragment extends Fragment {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()){
+
+                            name.setText(documentSnapshot.get("fname") + " " + documentSnapshot.get("lname") + "");
                             numStars = Integer.parseInt("" + documentSnapshot.get("stars"));
 
                             stars.setText(numStars + "");
@@ -86,6 +87,8 @@ public class ProfileFragment extends Fragment {
                             animal.setText(Html.fromHtml(animalLevelString));
 
                             avatar.setImageResource(Levels.getAvatar(Levels.getLevel(numStars)));
+
+
 
                         }
                     }

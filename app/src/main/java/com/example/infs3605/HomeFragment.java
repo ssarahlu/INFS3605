@@ -3,19 +3,23 @@ package com.example.infs3605;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.room.Room;
 
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.infs3605.Entities.Facts;
+import com.example.infs3605.Entities.Levels;
 import com.example.infs3605.Entities.Modules;
 import com.example.infs3605.Entities.ProfileData;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -30,16 +34,18 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
 
-    private TextView factTV, name, didyouknow, learn, starTV, artProgress;
+    private TextView factTV, name, didyouknow, learn, starTV, artProgress, level, levelTV;
     private ArrayList<Facts> mFacts = new ArrayList<>();
     private int factNumber, firebaseStars;
     private Facts fact;
     private ImageButton artButton;
+    private ImageView avatar, background, background2, background3;
     public static final String TOPIC_ID = "topic_id";
     private String fname, hiString;
     private ImageView starImage;
     private boolean isVideoViewed, isStoryViewed, isLearningsViewed, isQuizViewed;
     private int numArt, numSpirit, numRituals, numLang;
+    private ProgressBar starProgressBar;
 
 //    private List<ProfileData> artProfileProgress = new ArrayList<>();
 //    private List<ProfileData> spiritualityProfileProgress = new ArrayList<>();
@@ -51,11 +57,14 @@ public class HomeFragment extends Fragment {
 
     MyDatabase myDb;
 
-    private String email;
+    private String email, animalLevelString, toNextLevel;
+    private int numLevel, numStars, numToNext, numStarsOver;
     private static final String TAG = "HomeFragment";
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private DocumentReference userRef = db.collection("profiles").document(user.getUid());
+
+    private double percent;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -66,6 +75,7 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
 
         factTV = view.findViewById(R.id.factTV);
         artButton = view.findViewById(R.id.artButton);
@@ -75,6 +85,14 @@ public class HomeFragment extends Fragment {
         starTV = view.findViewById(R.id.starTV);
         starImage = view.findViewById(R.id.starImage);
         artProgress = view.findViewById(R.id.artProgress);
+        level = view.findViewById(R.id.level);
+        avatar = view.findViewById(R.id.avatar);
+        levelTV = view.findViewById(R.id.levelTV);
+        starProgressBar = view.findViewById(R.id.starProgressBar);
+        background = view.findViewById(R.id.background);
+        background2 = view.findViewById(R.id.background2);
+        background3 = view.findViewById(R.id.background3);
+
 
         artProfileProgress = 0;
         spiritualityProfileProgress = 0;
@@ -99,6 +117,24 @@ public class HomeFragment extends Fragment {
 
                             firebaseStars = Integer.parseInt("" + documentSnapshot.get("stars"));
                             starTV.setText(firebaseStars + "");
+
+                            numStars = Integer.parseInt("" + documentSnapshot.get("stars"));
+                            numLevel = Levels.getLevel(numStars);
+
+                            animalLevelString = "<b>" + Levels.getAnimal(numLevel) + "</b> " + " | Level " + numLevel;
+                            level.setText(Html.fromHtml(animalLevelString));
+
+                            avatar.setImageResource(Levels.getAvatar(numLevel));
+
+                            numStarsOver = numStars % 5;
+
+                            numToNext = ((numStarsOver * 100) / 5);
+
+                            toNextLevel = numToNext + "% to Level " + (numLevel + 1);
+
+                            levelTV.setText(toNextLevel);
+
+                            starProgressBar.setProgress(numToNext);
 
                         }
                     }
@@ -142,14 +178,23 @@ public class HomeFragment extends Fragment {
 
                 Toast.makeText(getActivity(), "Art selected", Toast.LENGTH_SHORT).show();
 
-                factTV.setVisibility(View.INVISIBLE);
-                artButton.setVisibility(View.INVISIBLE);
-                name.setVisibility(View.INVISIBLE);
-                didyouknow.setVisibility(View.INVISIBLE);
-                learn.setVisibility(View.INVISIBLE);
-                starTV.setVisibility(View.INVISIBLE);
-                starImage.setVisibility(View.INVISIBLE);
-                artProgress.setVisibility(View.INVISIBLE);
+//                factTV.setVisibility(View.INVISIBLE);
+//                artButton.setVisibility(View.INVISIBLE);
+//                name.setVisibility(View.INVISIBLE);
+//                didyouknow.setVisibility(View.INVISIBLE);
+//                learn.setVisibility(View.INVISIBLE);
+//                starTV.setVisibility(View.INVISIBLE);
+//                starImage.setVisibility(View.INVISIBLE);
+//                artProgress.setVisibility(View.INVISIBLE);
+//                avatar.setVisibility(View.INVISIBLE);
+//                levelTV.setVisibility(View.INVISIBLE);
+//                level.setVisibility(View.INVISIBLE);
+//                starProgressBar.setVisibility(View.INVISIBLE);
+//                background.setVisibility(View.INVISIBLE);
+//                background2.setVisibility(View.INVISIBLE);
+//                background3.setVisibility(View.INVISIBLE);
+
+
 
                 ModuleFragment fragment = new ModuleFragment();
                 Bundle bundle = new Bundle();

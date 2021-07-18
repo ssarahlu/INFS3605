@@ -6,12 +6,65 @@
 
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="412dp"
+        android:layout_height="125dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/home_profile_header" />
+
+    <ImageView
+        android:id="@+id/background2"
+        android:layout_width="361dp"
+        android:layout_height="93dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="12dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/didyouknow"
+        app:srcCompat="@drawable/home_fact_bg" />
+
+    <ImageView
+        android:id="@+id/background3"
+        android:layout_width="286dp"
+        android:layout_height="47dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="104dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/background"
+        app:srcCompat="@drawable/home_level_bg" />
+
+    <ImageView
+        android:id="@+id/avatar"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/apex"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/name"
+        style="@style/hey_george"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hey"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.059"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -21,13 +74,15 @@
 
     <TextView
         android:id="@+id/factTV"
-        android:layout_width="365dp"
-        android:layout_height="114dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="340dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="22dp"
+        android:gravity="center|left"
         android:text="Fact"
+        android:textAppearance="@style/did_you_know"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,24 +90,26 @@
 
     <TextView
         android:id="@+id/didyouknow"
+        style="@style/to_level_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Did you know?"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.068"
+        app:layout_constraintHorizontal_bias="0.08"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.146" />
+        app:layout_constraintVertical_bias="0.232" />
 
     <TextView
         android:id="@+id/learn"
+        style="@style/did_you_kno"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
         android:text="What would you like to learn today?"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -61,15 +118,15 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.401" />
+        app:layout_constraintVertical_bias="0.457" />
 
     <ImageButton
         android:id="@+id/artButton"
-        android:layout_width="395dp"
-        android:layout_height="77dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="361dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="12dp"
         android:background="#FFFFFF"
-        android:scaleType="centerInside"
+        android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/learn"
@@ -77,38 +134,73 @@
 
     <TextView
         android:id="@+id/starTV"
+        style="@style/some_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginLeft="84dp"
-        android:text="stars"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.08" />
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginBottom="19dp"
+        android:text="999"
+        app:layout_constraintBottom_toBottomOf="@+id/background3"
+        app:layout_constraintStart_toStartOf="@+id/background3" />
 
     <ImageView
         android:id="@+id/starImage"
         android:layout_width="27dp"
         android:layout_height="27dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="9dp"
         app:layout_constraintStart_toEndOf="@+id/starTV"
-        app:layout_constraintTop_toTopOf="@+id/starTV"
+        app:layout_constraintTop_toTopOf="@+id/background3"
         app:srcCompat="@drawable/stars" />
 
     <TextView
         android:id="@+id/artProgress"
+        style="@style/progress_te"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="28dp"
         android:text="Progress"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/artButton"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.518" />
+        app:layout_constraintBottom_toBottomOf="@+id/artButton"
+        app:layout_constraintEnd_toEndOf="@+id/artButton" />
+
+    <TextView
+        android:id="@+id/level"
+        style="@style/joey_level_"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Joey | Level 1"
+        app:layout_constraintStart_toStartOf="@+id/name"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
+
+    <TextView
+        android:id="@+id/levelTV"
+        style="@style/to_level_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="19dp"
+        android:text="99% to Level 10"
+        app:layout_constraintBottom_toBottomOf="@+id/background3"
+        app:layout_constraintEnd_toEndOf="@+id/background3" />
+
+    <ProgressBar
+        android:id="@+id/starProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="130dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="20dp"
+        android:width="135dp"
+        android:height="6dp"
+        android:progressDrawable="@drawable/star_progress"
+        app:layout_constraintStart_toEndOf="@+id/starImage"
+        app:layout_constraintTop_toTopOf="@+id/background3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -105,7 +105,7 @@ public class DiscussionFragment extends Fragment {
                     Map<String, Object> thread = new HashMap<>();
                     thread.put("title", threadTitle.getText().toString());
                     thread.put("author", user.getDisplayName());
-                    thread.put("lastPostTIme", "");
+                    thread.put("lastPostTime", "");
                     thread.put("numberOfReplies", 0);
 
                     // Add the note to the Firestore database
@@ -149,7 +149,7 @@ public class DiscussionFragment extends Fragment {
 
                                 discussionThreads.add(new DiscussionThread(documentSnapshot.getString("title"),
                                         documentSnapshot.getString("author"),
-                                        documentSnapshot.getString("lastPostTime"),
+                                        documentSnapshot.getString("lastPostTIme"),
                                         Integer.parseInt(documentSnapshot.get("numberOfReplies").toString())));
 
                             }

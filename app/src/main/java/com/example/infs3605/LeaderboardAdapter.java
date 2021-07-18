@@ -2,6 +2,7 @@ package com.example.infs3605;
 
 import android.graphics.Color;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ import java.util.List;
 
 public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.LeaderboardViewHolder> {
     private List<Profile> mProfiles;
+    private static final String TAG = "LeaderboardAdapter";
 
     public LeaderboardAdapter(List<Profile> profiles) {
         mProfiles = profiles;
@@ -44,8 +46,10 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
         if(profile.getEmail().equals(user.getEmail())){
             holder.tvName.setText("You");
             holder.tvName.setTextColor(Color.parseColor("#71C453"));
+            Log.d(TAG, "onBindViewHolder: colour " + profile.getEmail() + " " + user.getEmail());
         } else {
             holder.tvName.setText(profile.getDisplayName());
+            holder.tvName.setTextColor(Color.parseColor("#424242"));
         }
 
 
