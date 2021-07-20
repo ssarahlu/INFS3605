@@ -12,8 +12,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.infs3605.Entities.DiscussionThread;
+import com.example.infs3605.Entities.Profile;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 
@@ -30,7 +36,7 @@ public class DiscussionThreadAdapter extends RecyclerView.Adapter<DiscussionThre
     }
 
     public interface RecyclerViewClickListener {
-        void onClick(View view, int position);
+        void onClick(View v,String threadID, String title, String author, String authorID, Date lastPost, String post);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -51,6 +57,8 @@ public class DiscussionThreadAdapter extends RecyclerView.Adapter<DiscussionThre
 
         @Override
         public void onClick(View v) {
+            discussionThread = mDiscussionThreads.get(getAdapterPosition());
+            mListener.onClick(v,discussionThread.getThreadID(), discussionThread.getTitle(), discussionThread.getAuthor(), discussionThread.getAuthorID(), discussionThread.getLastPostTime(), discussionThread.getPost());
 
         }
     }
@@ -67,12 +75,11 @@ public class DiscussionThreadAdapter extends RecyclerView.Adapter<DiscussionThre
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         discussionThread = mDiscussionThreads.get(position);
 
-        Log.d(TAG, "" + discussionThread.getTitle());
-        Log.d(TAG, "onBindViewHolder: DiscussionThreadAdapter ");
-
         holder.tvTitle.setText(discussionThread.getTitle());
         holder.tvAuthor.setText(discussionThread.getAuthor());
-        holder.tvLastPost.setText(discussionThread.getLastPostTime());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm aaa");
+        String date = dateFormat.format(discussionThread.getLastPostTime());
+        holder.tvLastPost.setText("Last Post: " + date);
         holder.tvReplies.setText("" + (discussionThread.getNumberOfReplies()) + " Replies");
 
 
@@ -83,6 +90,17 @@ public class DiscussionThreadAdapter extends RecyclerView.Adapter<DiscussionThre
         return mDiscussionThreads.size();
     }
 
+    public void sort() {
+        Collections.sort(mDiscussionThreads, new Comparator<DiscussionThread>() {
+            @Override
+            public int compare(DiscussionThread o1, DiscussionThread o2) {
+                return(o2.getLastPostTime().compareTo(o1.getLastPostTime()));
+
+            }
+        });
+
+        notifyDataSetChanged();
+    }
 
 }
 
