@@ -3,6 +3,7 @@ package com.example.infs3605;
 import android.content.Intent;
 import android.os.Bundle;
 
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
@@ -30,7 +31,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -69,19 +75,18 @@ public class DiscussionFragment extends Fragment {
                 createNewNoteDialog();
             }
         });
-
-
         return view;
 
     }
 
     public void createNewNoteDialog() {
         dialogBuilder = new AlertDialog.Builder(getActivity());
-        EditText threadTitle;
+        EditText threadTitle, threadContent;
         Button btPost;
         ImageButton btCancel;
         final View addThreadPopup = getLayoutInflater().inflate(R.layout.add_thread, null);
         threadTitle = addThreadPopup.findViewById(R.id.tvThreadTitle);
+        threadContent = addThreadPopup.findViewById(R.id.tvThreadContent);
         btPost = addThreadPopup.findViewById(R.id.btPost);
         btCancel = addThreadPopup.findViewById(R.id.closeButton);
 
@@ -101,11 +106,15 @@ public class DiscussionFragment extends Fragment {
                     Toast.makeText(getActivity(), "Please enter all fields", Toast.LENGTH_SHORT).show();
                 } else {
 
+                    Calendar calendar = Calendar.getInstance();
+
                     // Store the note under an author and for a specific module
                     Map<String, Object> thread = new HashMap<>();
                     thread.put("title", threadTitle.getText().toString());
                     thread.put("author", user.getDisplayName());
-                    thread.put("lastPostTime", "");
+                    thread.put("authorID", user.getUid());
+                    thread.put("question", threadContent.getText().toString());
+                    thread.put("lastPostTime", calendar.getTime());
                     thread.put("numberOfReplies", 0);
 
                     // Add the note to the Firestore database
@@ -147,10 +156,13 @@ public class DiscussionFragment extends Fragment {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
 
-                                discussionThreads.add(new DiscussionThread(documentSnapshot.getString("title"),
+                                discussionThreads.add(new DiscussionThread(documentSnapshot.getId(),
+                                        documentSnapshot.getString("title"),
                                         documentSnapshot.getString("author"),
-                                        documentSnapshot.getString("lastPostTIme"),
-                                        Integer.parseInt(documentSnapshot.get("numberOfReplies").toString())));
+                                        documentSnapshot.getString("authorID"),
+                                        documentSnapshot.getDate("lastPostTime"),
+                                        Integer.parseInt(documentSnapshot.get("numberOfReplies").toString()),
+                                        documentSnapshot.getString("post")));
 
                             }
 
@@ -159,12 +171,21 @@ public class DiscussionFragment extends Fragment {
 
                             DiscussionThreadAdapter.RecyclerViewClickListener discussionListener = new DiscussionThreadAdapter.RecyclerViewClickListener() {
                                 @Override
-                                public void onClick(View view, int position) {
+                                public void onClick(View v, String threadID, String title, String author, String authorID, Date lastPost, String post) {
+                                    Intent intent = new Intent(getActivity(), PostsActivity.class);
+                                    intent.putExtra("threadID", threadID);
+                                    intent.putExtra("title", title);
+                                    intent.putExtra("author", author);
+                                    intent.putExtra("authorID", authorID);
+                                    intent.putExtra("lastPost", lastPost);
+                                    intent.putExtra("post", post);
+                                    startActivity(intent);
+
                                 }
                             };
 
-
                             mAdapter = new DiscussionThreadAdapter(discussionThreads, discussionListener);
+                            mAdapter.sort();
                             mRecyclerView.setAdapter(mAdapter);
 
                         }
