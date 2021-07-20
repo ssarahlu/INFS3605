@@ -44,8 +44,8 @@ public class HomeFragment extends Fragment {
     private String fname, hiString;
     private ImageView starImage;
     private boolean isVideoViewed, isStoryViewed, isLearningsViewed, isQuizViewed;
-    private int numArt, numSpirit, numRituals, numLang;
-    private ProgressBar starProgressBar;
+    private int numArt, numSpirit, numRituals, numLang, artProg;
+    private ProgressBar starProgressBar, artProgressBar;
 
 //    private List<ProfileData> artProfileProgress = new ArrayList<>();
 //    private List<ProfileData> spiritualityProfileProgress = new ArrayList<>();
@@ -92,7 +92,7 @@ public class HomeFragment extends Fragment {
         background = view.findViewById(R.id.background);
         background2 = view.findViewById(R.id.background2);
         background3 = view.findViewById(R.id.background3);
-
+        artProgressBar = view.findViewById(R.id.artProgressBar);
 
         artProfileProgress = 0;
         spiritualityProfileProgress = 0;
@@ -178,21 +178,22 @@ public class HomeFragment extends Fragment {
 
                 Toast.makeText(getActivity(), "Art selected", Toast.LENGTH_SHORT).show();
 
-//                factTV.setVisibility(View.INVISIBLE);
-//                artButton.setVisibility(View.INVISIBLE);
-//                name.setVisibility(View.INVISIBLE);
-//                didyouknow.setVisibility(View.INVISIBLE);
-//                learn.setVisibility(View.INVISIBLE);
-//                starTV.setVisibility(View.INVISIBLE);
-//                starImage.setVisibility(View.INVISIBLE);
-//                artProgress.setVisibility(View.INVISIBLE);
-//                avatar.setVisibility(View.INVISIBLE);
-//                levelTV.setVisibility(View.INVISIBLE);
-//                level.setVisibility(View.INVISIBLE);
-//                starProgressBar.setVisibility(View.INVISIBLE);
-//                background.setVisibility(View.INVISIBLE);
-//                background2.setVisibility(View.INVISIBLE);
-//                background3.setVisibility(View.INVISIBLE);
+                factTV.setVisibility(View.INVISIBLE);
+                artButton.setVisibility(View.INVISIBLE);
+                name.setVisibility(View.INVISIBLE);
+                didyouknow.setVisibility(View.INVISIBLE);
+                learn.setVisibility(View.INVISIBLE);
+                starTV.setVisibility(View.INVISIBLE);
+                starImage.setVisibility(View.INVISIBLE);
+                artProgress.setVisibility(View.INVISIBLE);
+                avatar.setVisibility(View.INVISIBLE);
+                levelTV.setVisibility(View.INVISIBLE);
+                level.setVisibility(View.INVISIBLE);
+                starProgressBar.setVisibility(View.INVISIBLE);
+                background.setVisibility(View.INVISIBLE);
+                background2.setVisibility(View.INVISIBLE);
+                background3.setVisibility(View.INVISIBLE);
+                artProgressBar.setVisibility(View.INVISIBLE);
 
 
 
@@ -253,6 +254,9 @@ public class HomeFragment extends Fragment {
         private void updateUi(){
 
             artProgress.setText( artProfileProgress + "/"+ numArt + " courses");
+            artProg = (artProfileProgress * 100) / numArt;
+
+            artProgressBar.setProgress(artProg);
 
         }
 

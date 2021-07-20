@@ -17,7 +17,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".PostsActivity"></activity>
+        <activity android:name=".QuizCompleteActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            >
+        </activity>
+
         <activity android:name=".SocialActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -45,12 +51,22 @@
         <activity android:name=".AllEventsActivity" />
         <activity android:name=".AllSocialsActivity" />
         <activity android:name=".EventActivity" />
-        <activity android:name=".LearningsActivity" />
+        <activity
+            android:name=".LearningsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".MeditateActivity" />
-        <activity android:name=".StoryActivity" />
-        <activity android:name=".QuizActivity" />
-        <activity android:name=".VideoActivity" />
-        <activity android:name=".ModuleSelection" />
+        <activity
+            android:name=".StoryActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".QuizActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".VideoActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ModuleSelection"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
