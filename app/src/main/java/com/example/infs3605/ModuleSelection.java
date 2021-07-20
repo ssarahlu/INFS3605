@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,7 +44,11 @@ public class ModuleSelection extends AppCompatActivity {
     public static final String TOPIC_ID = "topic_id";
     private Topics mTop;
     private int topicIdFK;
-    private ImageView videoViewed, storyViewed, learningsViewed, quizViewed;
+    private ImageView videoViewed, storyViewed, learningsViewed;
+    private ProgressBar quizBar;
+    private TextView quizMark;
+    private int numStars;
+    private ArrayList<Quiz> mQuiz = new ArrayList<>();
     
     private static final String TAG = "TopicQuestionActivity";
     MyDatabase myDb;
@@ -58,6 +63,9 @@ public class ModuleSelection extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_module_selection);
+
+//        getSupportActionBar().hide();
+//        getActionBar().hide();
 
         Intent intent = getIntent();
         modName = intent.getStringExtra("Module");
@@ -76,13 +84,16 @@ public class ModuleSelection extends AppCompatActivity {
         videoViewed = findViewById(R.id.videoViewed);
         storyViewed = findViewById(R.id.storyViewed);
         learningsViewed = findViewById(R.id.learningsViewed);
-        quizViewed = findViewById(R.id.quizViewed);
-        
+        quizBar = findViewById(R.id.quizBar);
+        quizMark = findViewById(R.id.quizMark);
+
         videoViewed.setVisibility(View.INVISIBLE);
         storyViewed.setVisibility(View.INVISIBLE);
         learningsViewed.setVisibility(View.INVISIBLE);
-        quizViewed.setVisibility(View.INVISIBLE);
-        
+        quizBar.setVisibility(View.INVISIBLE);
+        quizMark.setVisibility(View.INVISIBLE);
+
+
         moduleName.setText(modName);
         moduleDescription.setText(modDesc);
         
@@ -196,6 +207,7 @@ public class ModuleSelection extends AppCompatActivity {
             isStoryViewed = myDb.profileDataDao().getStoryViewed(email, modId);
             isLearningsViewed = myDb.profileDataDao().getLearningsViewed(email, modId);
             isQuizViewed = myDb.profileDataDao().getQuizViewed(email, modId);
+            numStars = myDb.profileDataDao().getQuizStars(email, modId);
             
             return null;
         }
@@ -223,10 +235,25 @@ public class ModuleSelection extends AppCompatActivity {
             learningsViewed.setVisibility(View.VISIBLE);
 
         }
-        
+
         if (isQuizViewed == true){
-            quizViewed.setVisibility(View.VISIBLE);
+
+            for (Quiz q: Quiz.getQuiz()){
+                if (q.getModuleId() == modId){
+                    mQuiz.add(q);
+                }
+
+            }
+
+            quizBar.setVisibility(View.VISIBLE);
+            quizMark.setVisibility(View.VISIBLE);
+
+            quizMark.setText( numStars + "/" + mQuiz.size() + " stars");
+            quizBar.setProgress( (numStars * 100) / mQuiz.size());
+
         }
+        
+
 
         Log.d(TAG, "updateViewedData: Finished updating the views");
         

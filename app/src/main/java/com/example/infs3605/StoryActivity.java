@@ -24,7 +24,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class StoryActivity extends AppCompatActivity {
 
-    private TextView storyTV;
+    private TextView storyTV, title;
     private int modId;
     private String modName, modDesc;
     private Story mSto;
@@ -52,6 +52,7 @@ public class StoryActivity extends AppCompatActivity {
         storyImage = findViewById(R.id.storyImage);
         backButton = findViewById(R.id.backButton);
         learningButton = findViewById(R.id.learningsButton);
+        title = findViewById(R.id.title);
 
         storyTV.setMovementMethod(new ScrollingMovementMethod());
 
@@ -73,9 +74,12 @@ public class StoryActivity extends AppCompatActivity {
             if (m.getModuleId() == modId){
                 mMod = m;
                 modDesc = m.getModuleDescription();
+                title.setText("The story of " + mMod.getModuleName());
             }
         }
-        setTitle(modName);
+//        setTitle(modName);
+//        getActionBar().hide();
+//        getSupportActionBar().hide();
 
         new MyStoryViewedTask().execute();
 

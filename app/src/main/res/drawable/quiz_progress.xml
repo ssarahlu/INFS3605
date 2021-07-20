@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item android:id="@android:id/background">
+        <shape>
+            <corners android:radius="5dip" />
+            <gradient
+                android:startColor="#66F2721C"
+                android:centerColor="#66F2721C"
+                android:endColor="#66F2721C"
+                />
+        </shape>
+    </item>
+
+
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <corners android:radius="5dip" />
+
+                <solid android:color="#F2721C" />
+            </shape>
+        </clip>
+
+        <color android:color="#F2721C" />
+    </item>
+
+</layer-list>

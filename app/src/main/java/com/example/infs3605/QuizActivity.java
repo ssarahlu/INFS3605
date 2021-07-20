@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -41,7 +42,7 @@ public class QuizActivity extends AppCompatActivity {
     private RadioButton opt1, opt2, opt3, opt4;
     private RadioGroup grp;
     private TextView question, position, fin;
-    private Button next, check, again;
+    private ImageButton next, check, again;
     private ImageButton cancel, returnHome;
     private ImageView img1, img2, img3, img4, imageComplete;
     private ArrayList<Quiz> mQuiz = new ArrayList<>();
@@ -54,6 +55,7 @@ public class QuizActivity extends AppCompatActivity {
     private static final String TAG = "QuizActivity";
     private int addedStars, mStars;
     private int firebaseStars;
+    private ProgressBar quizProgress;
 
 
     MyDatabase myDb;
@@ -68,7 +70,9 @@ public class QuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
-        setTitle("Quiz");
+
+//        getActionBar().hide();
+
 
         email = user.getEmail();
 
@@ -84,7 +88,7 @@ public class QuizActivity extends AppCompatActivity {
         opt3 = findViewById(R.id.opt3);
         opt4 = findViewById(R.id.opt4);
         question = findViewById(R.id.question);
-        again = findViewById(R.id.again);
+//        again = findViewById(R.id.again);
         next = findViewById(R.id.next);
         check = findViewById(R.id.check);
         cancel = findViewById(R.id.cancel);
@@ -94,12 +98,15 @@ public class QuizActivity extends AppCompatActivity {
         img4 = findViewById(R.id.img4);
         position = findViewById(R.id.position);
         grp = findViewById(R.id.grp);
-        fin = findViewById(R.id.finished);
+        quizProgress = findViewById(R.id.quizProgress);
+
         cancel.setVisibility(View.VISIBLE);
-        imageComplete = findViewById(R.id.imageComplete);
-        imageComplete.setVisibility(View.GONE);
-        returnHome = findViewById(R.id.returnHome);
-        returnHome.setVisibility(View.INVISIBLE);
+
+//        fin = findViewById(R.id.finished);
+//        imageComplete = findViewById(R.id.imageComplete);
+//        imageComplete.setVisibility(View.GONE);
+//        returnHome = findViewById(R.id.returnHome);
+//        returnHome.setVisibility(View.INVISIBLE);
 
         for (Quiz q: Quiz.getQuiz()){
             if (q.getModuleId() == modId){
@@ -120,6 +127,7 @@ public class QuizActivity extends AppCompatActivity {
 
         if (mQuiz != null) {
             i = 0;
+            quizProgress.setProgress(((i+1) * 100) / mQuiz.size());
             q = mQuiz.get(i);
             question.setText(q.getQuestion());
             opt1.setText(q.getOp1());
@@ -135,7 +143,7 @@ public class QuizActivity extends AppCompatActivity {
             img3.setImageResource(android.R.color.transparent);
             img4.setImageResource(android.R.color.transparent);
             check.setVisibility(View.VISIBLE);
-            again.setVisibility(View.GONE);
+//            again.setVisibility(View.GONE);
 
         } else {
             question.setText("Module quiz not available. Please come back when the app updates.");
@@ -150,11 +158,11 @@ public class QuizActivity extends AppCompatActivity {
                 img4.setImageResource(android.R.color.transparent);
                 boolean answered = checkResult();
                 if (answered == true) {
-                    again.setVisibility(View.GONE);
+//                    again.setVisibility(View.GONE);
                     check.setVisibility(View.GONE);
                     next.setVisibility(View.VISIBLE);
                 } else {
-                    again.setVisibility(View.GONE);
+//                    again.setVisibility(View.GONE);
                     check.setVisibility(View.VISIBLE);
                     next.setVisibility(View.GONE);
                 }
@@ -184,46 +192,46 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
-        returnHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-
-            }
-        });
-
-        again.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                fin.setText("");
-                if (mQuiz != null) {
-                    i = 0;
-                    stars = 0;
-                    q = mQuiz.get(i);
-                    question.setText(q.getQuestion());
-                    opt1.setText(q.getOp1());
-                    opt2.setText(q.getOp2());
-                    opt3.setText(q.getOp3());
-                    opt4.setText(q.getOp4());
-                    answer = q.getAnswer();
-                    quizId = q.getId();
-                    position.setText("Question " + i + 1 + "/" + mQuiz.size());
-                    next.setVisibility(View.GONE);
-                    img1.setImageResource(android.R.color.transparent);
-                    img2.setImageResource(android.R.color.transparent);
-                    img3.setImageResource(android.R.color.transparent);
-                    img4.setImageResource(android.R.color.transparent);
-                    check.setVisibility(View.VISIBLE);
-                    again.setVisibility(View.GONE);
-                    grp.setVisibility(View.VISIBLE);
-
-                } else {
-                    question.setText("Nothing has been added yet. Please come back when the app updates.");
-                }
-
-            }
-        });
+//        returnHome.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//                startActivity(intent);
+//
+//            }
+//        });
+//
+//        again.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                fin.setText("");
+//                if (mQuiz != null) {
+//                    i = 0;
+//                    stars = 0;
+//                    q = mQuiz.get(i);
+//                    question.setText(q.getQuestion());
+//                    opt1.setText(q.getOp1());
+//                    opt2.setText(q.getOp2());
+//                    opt3.setText(q.getOp3());
+//                    opt4.setText(q.getOp4());
+//                    answer = q.getAnswer();
+//                    quizId = q.getId();
+//                    position.setText("Question " + i + 1 + "/" + mQuiz.size());
+//                    next.setVisibility(View.GONE);
+//                    img1.setImageResource(android.R.color.transparent);
+//                    img2.setImageResource(android.R.color.transparent);
+//                    img3.setImageResource(android.R.color.transparent);
+//                    img4.setImageResource(android.R.color.transparent);
+//                    check.setVisibility(View.VISIBLE);
+//                    again.setVisibility(View.GONE);
+//                    grp.setVisibility(View.VISIBLE);
+//
+//                } else {
+//                    question.setText("Nothing has been added yet. Please come back when the app updates.");
+//                }
+//
+//            }
+//        });
 
 
     }
@@ -303,6 +311,7 @@ public class QuizActivity extends AppCompatActivity {
             img3.setImageResource(R.drawable.correct);
         } else if (answer.equals(opt4.getText().toString())) {
             img4.setImageResource(R.drawable.correct);
+
         } else {
             img1.setImageResource(android.R.color.transparent);
             img2.setImageResource(android.R.color.transparent);
@@ -330,10 +339,12 @@ public class QuizActivity extends AppCompatActivity {
             next.setVisibility(View.GONE);
             grp.setVisibility(View.GONE);
             check.setVisibility(View.GONE);
-            again.setVisibility(View.VISIBLE);
+//            again.setVisibility(View.VISIBLE);
             //displays stars earnt in the mini quiz
 
             i = mQuiz.size();
+
+            quizProgress.setProgress((i * 100) / mQuiz.size());
 
             new UpdateStarsTask().execute();
 
@@ -343,7 +354,7 @@ public class QuizActivity extends AppCompatActivity {
             Log.d(TAG, "onClick: line 170 displays index at " + i);
             next.setVisibility(View.VISIBLE);
             check.setVisibility(View.VISIBLE);
-            again.setVisibility(View.GONE);
+//            again.setVisibility(View.GONE);
             q = mQuiz.get(i);
             question.setText(q.getQuestion());
             opt1.setText(q.getOp1());
@@ -353,11 +364,14 @@ public class QuizActivity extends AppCompatActivity {
             answer = q.getAnswer();
             quizId = q.getId();
             position.setText("Question " + (i + 1) + "/" + mQuiz.size());
+            quizProgress.setProgress(((i + 1) * 100) / mQuiz.size());
+
+
         } else {
             i++;
             Log.d(TAG, "onClick: line 187 displays index at " + i);
             check.setVisibility(View.VISIBLE);
-            again.setVisibility(View.GONE);
+//            again.setVisibility(View.GONE);
             next.setVisibility(View.VISIBLE);
             q = mQuiz.get(i);
             question.setText(q.getQuestion());
@@ -368,6 +382,7 @@ public class QuizActivity extends AppCompatActivity {
             answer = q.getAnswer();
             quizId = q.getId();
             position.setText("Question " + (i + 1) + "/" + mQuiz.size());
+            quizProgress.setProgress(((i + 1) * 100) / mQuiz.size());
 
             if (i == (mQuiz.size() - 1)) {
                 i++;
@@ -403,11 +418,18 @@ public class QuizActivity extends AppCompatActivity {
 //            default:
 //                imgquest.setImageResource(R.drawable.tick);
 //        }
-        question.setText("You have finished this topic's knowledge check. Your result is " + stars + "/" + mQuiz.size() + "");
-        position.setText("Quiz complete!");
-        fin.setText(finished);
-        returnHome.setVisibility(View.VISIBLE);
-        imageComplete.setVisibility(View.VISIBLE);
+//        question.setText( "Quiz complete!" + " \n \n You have finished this topic's knowledge check. Your result is " + stars + "/" + mQuiz.size() + "");
+//        position.setText("");
+//        quizProgress.setVisibility(View.INVISIBLE);
+//        fin.setText(finished);
+//        returnHome.setVisibility(View.VISIBLE);
+//        imageComplete.setVisibility(View.VISIBLE);
+
+        Intent intent = new Intent(getApplicationContext(), QuizCompleteActivity.class);
+        intent.putExtra("result", "Your result is " + stars + "/" +  mQuiz.size());
+        intent.putExtra("finished", finished);
+        intent.putExtra("addedStars", String.valueOf(addedStars));
+        startActivity(intent);
 
     }
 
@@ -476,7 +498,7 @@ public class QuizActivity extends AppCompatActivity {
             //if my stars is maxed out
             if (mStars >= mQuiz.size()) {
                 addedStars = 0;
-                finished = "You have already achieved the maximum stars for this topic. You currently have a total of " + mStars + "/" + mQuiz.size() + " stars for this topic so you cannot earn any more stars.";
+                finished = "You have already achieved the maximum " + mStars + "/" + mQuiz.size() + " stars for this module.";
                 Log.d(TAG, "doInBackground: " + finished);
                 Log.d(TAG, "doInBackground: if one" );
 
@@ -492,10 +514,10 @@ public class QuizActivity extends AppCompatActivity {
 
                 //the addedStars == 1 statements are just so that i can change the text inside textview from star to starS - basically just for grammar
                 if (addedStars == 1) {
-                    finished = "You will get an additional " + addedStars + " star. Your new total is " + (addedStars + mStars) + "/" + mQuiz.size() + " stars for this topic";
+                    finished = "You will get an additional " + addedStars + " star \n \nYour new total is " + (addedStars + mStars) + "/" + mQuiz.size() + " stars for this module";
                     Log.d(TAG, "doInBackground: " + finished);
                 } else {
-                    finished = "You will get an additional " + addedStars + " stars. Your new total is " + (addedStars + mStars) + "/" + mQuiz.size() + " stars for this topic";
+                    finished = "You will get an additional " + addedStars + " stars \n \nYour new total is " + (addedStars + mStars) + "/" + mQuiz.size() + " stars for this module";
                     Log.d(TAG, "doInBackground: " + finished);
                 }
 
@@ -507,10 +529,10 @@ public class QuizActivity extends AppCompatActivity {
 
                 //the addedStars == 1 statements are just so that i can change the text inside textview from star to starS - basically just for grammar
                 if (addedStars == 1) {
-                    finished = "You have earned " + addedStars + " star. Your new total is " + (addedStars + mStars) + "/" + mQuiz.size() + " stars for this topic";
+                    finished = "You have earned " + addedStars + " star \n\nYour new total is " + (addedStars + mStars) + "/" + mQuiz.size() + " stars for this module";
                     Log.d(TAG, "doInBackground: " + finished);
                 } else {
-                    finished = "You have earned " + addedStars + " stars. Your new total is " + (addedStars + mStars) + "/" + mQuiz.size() + " stars for this topic";
+                    finished = "You have earned " + addedStars + " stars \n\nYour new total is " + (addedStars + mStars) + "/" + mQuiz.size() + " stars for this module";
                     Log.d(TAG, "doInBackground: " + finished);
                 }
 
@@ -522,10 +544,10 @@ public class QuizActivity extends AppCompatActivity {
 
                 //the addedStars == 1 statements are just so that i can change the text inside textview from star to starS - basically just for grammar
                 if (addedStars == 1) {
-                    finished = "You will get an additional " + addedStars + " star. Your new total is " + (addedStars + mStars) + "/" + mQuiz.size() + " stars for this topic";
+                    finished = "You will get an additional " + addedStars + " star \n\nYour new total is " + (addedStars + mStars) + "/" + mQuiz.size() + " stars for this module";
                     Log.d(TAG, "doInBackground: " + finished);
                 } else {
-                    finished = "You will get an additional " + addedStars + " stars. Your new total is " + (addedStars + mStars) + "/" + mQuiz.size() + " stars for this topic";
+                    finished = "You will get an additional " + addedStars + " stars \n\nYour new total is " + (addedStars + mStars) + "/" + mQuiz.size() + " stars for this module";
                     Log.d(TAG, "doInBackground: " + finished);
                 }
 
@@ -543,8 +565,8 @@ public class QuizActivity extends AppCompatActivity {
             Log.d(TAG, "onPostExecute: FINISHED");
 
             myDb.close();
-            updateUi();
             updateFirebase();
+            updateUi();
 
         }
 

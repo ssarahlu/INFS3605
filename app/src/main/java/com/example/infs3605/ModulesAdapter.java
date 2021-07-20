@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
+import com.bumptech.glide.Glide;
 import com.example.infs3605.Entities.Modules;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -44,10 +45,9 @@ public class ModulesAdapter extends RecyclerView.Adapter<ModulesAdapter.MyViewHo
 
 
     public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        //add textview for shit inside the cardview
 
-        public TextView module, moduleSubtitle, completed;
-        public ImageView tick;
+        public TextView module, moduleSubtitle;
+        public ImageView tick, modIV;
 
         private RecyclerViewClickListener mListener;
 
@@ -55,12 +55,10 @@ public class ModulesAdapter extends RecyclerView.Adapter<ModulesAdapter.MyViewHo
             super(v);
             mListener = listener;
             v.setOnClickListener(this);
-            //add find view by id for shit inside card view
-
             module = v.findViewById(R.id.module);
             moduleSubtitle = v.findViewById(R.id.moduleSubtitle);
             tick = v.findViewById(R.id.tick);
-            completed = v.findViewById(R.id.completed);
+            modIV = v.findViewById(R.id.modIV);
 
 
 
@@ -93,6 +91,7 @@ public class ModulesAdapter extends RecyclerView.Adapter<ModulesAdapter.MyViewHo
         mModule = mModules.get(position);
         holder.module.setText(mModule.getModuleName());
         holder.moduleSubtitle.setText(mModule.getModuleSubtitle());
+        Glide.with(this.context).load(mModule.getModuleBackgroundImage()).into(holder.modIV);
 
         int partsCompleted = 0;
 
@@ -111,11 +110,8 @@ public class ModulesAdapter extends RecyclerView.Adapter<ModulesAdapter.MyViewHo
 
         if (isVideoViewed == true && isStoryViewed == true && isLearningsViewed == true && isQuizViewed == true){
             holder.tick.setImageResource(R.drawable.viewed);
-            holder.completed.setText("");
 
         } else if (isVideoViewed == true || isStoryViewed == true || isLearningsViewed == true || isQuizViewed == true){
-            holder.tick.setImageResource(R.drawable.in_progress);
-
             if (isVideoViewed == true){
                 partsCompleted++;
             }
@@ -129,10 +125,15 @@ public class ModulesAdapter extends RecyclerView.Adapter<ModulesAdapter.MyViewHo
                 partsCompleted++;
             }
 
-            holder.completed.setText(partsCompleted + "/4");
+            if (partsCompleted == 1){
+                holder.tick.setImageResource(R.drawable.one_quarter);
+            } else if (partsCompleted == 2){
+                holder.tick.setImageResource(R.drawable.two_quarter);
+            } else if (partsCompleted == 3){
+                holder.tick.setImageResource(R.drawable.three_quarter);
 
-        } else {
-            holder.completed.setText("");
+            }
+
         }
 
 

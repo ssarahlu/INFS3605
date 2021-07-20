@@ -3,6 +3,7 @@ package com.example.infs3605;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.infs3605.Entities.Modules;
@@ -38,6 +40,7 @@ public class ModuleFragment extends Fragment {
     public static final String EXTRA_MESSAGE = "module_id";
     private int topicId;
     private ImageButton backButton;
+    private TextView modTitle;
 
 
     public ModuleFragment() {
@@ -53,7 +56,9 @@ public class ModuleFragment extends Fragment {
         mRecyclerView = view.findViewById(R.id.rvList);
         mRecyclerView.setHasFixedSize(true);
         backButton = view.findViewById(R.id.backButton);
+        modTitle = view.findViewById(R.id.modTitle);
 
+        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
 
         for (Topics t : Topics.getTopics()) {
             mTopics.add(t);
@@ -66,7 +71,8 @@ public class ModuleFragment extends Fragment {
             System.out.println(topicId);
             topic = mTopics.get(topicId);
 
-            getActivity().setTitle(topic.getTopicName());
+            modTitle.setText(topic.getTopicName());
+
 
             for (Modules m : Modules.getModules()) {
                 System.out.println("Hello");

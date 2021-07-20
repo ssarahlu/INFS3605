@@ -132,6 +132,17 @@
         app:layout_constraintTop_toBottomOf="@+id/learn"
         app:srcCompat="@drawable/arts_and_music" />
 
+    <ProgressBar
+        android:id="@+id/artProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="268dp"
+        android:layout_height="5dp"
+        android:layout_marginTop="48dp"
+        android:height="6dp"
+        android:progressDrawable="@drawable/arts_progress"
+        app:layout_constraintEnd_toEndOf="@+id/artProgress"
+        app:layout_constraintTop_toTopOf="@+id/artButton" />
+
     <TextView
         android:id="@+id/starTV"
         style="@style/some_id"

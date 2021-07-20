@@ -8,66 +8,63 @@
     android:weightSum="2"
     tools:context=".LearningsActivity">
 
-    <Button
+
+    <ImageButton
         android:id="@+id/check"
-        android:layout_width="278dp"
+        android:layout_width="162dp"
         android:layout_height="44dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:background="#00FFFFFF"
         android:elevation="4dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/take_the_quiz"
         android:text="Check your knowledge!"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/info"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.082" />
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
+        style="@style/title"
+        android:layout_width="342dp"
+        android:layout_height="36dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="72dp"
-        android:gravity="center_horizontal|center_vertical"
+        android:layout_marginTop="290dp"
+        android:gravity="left"
         android:text="This is title"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/image"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/image"
-        android:layout_width="278dp"
+        android:layout_width="340dp"
         android:layout_height="194dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="12dp"
-        android:scaleType="centerInside"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
-
+        android:layout_marginTop="80dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="@+id/position"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/finished" />
 
     <TextView
         android:id="@+id/info"
-        android:layout_width="277dp"
-        android:layout_height="249dp"
+        style="@style/story"
+        android:layout_width="342dp"
+        android:layout_height="248dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:gravity="center_horizontal|center_vertical"
+        android:layout_marginTop="16dp"
+        android:gravity="left"
         android:text="This is information"
-        android:textSize="19sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.672" />
+        app:layout_constraintStart_toStartOf="@+id/title"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <TextView
         android:id="@+id/position"
@@ -75,15 +72,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginBottom="20dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="33dp"
         android:gravity="center_horizontal|center_vertical"
         android:text="This is position"
-        app:layout_constraintBottom_toTopOf="@+id/title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/cancel"
@@ -91,26 +86,25 @@
         android:layout_height="20dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginRight="33dp"
         android:background="#00FFFFFF"
         android:scaleType="fitCenter"
         android:src="@drawable/cancel"
-        app:layout_constraintBottom_toTopOf="@+id/title"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.8"
         tools:src="@drawable/cancel" />
 
     <Button
         android:id="@+id/next"
+        style="@style/next"
         android:layout_width="210dp"
-        android:layout_height="60dp"
+        android:layout_height="53dp"
         android:layout_marginTop="155dp"
         android:layout_weight="1"
-        android:background="#2886E2"
+        android:background="#F2721C"
         android:text="NEXT"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -120,12 +114,12 @@
 
     <Button
         android:id="@+id/previous"
+        style="@style/back"
         android:layout_width="210dp"
-        android:layout_height="60dp"
+        android:layout_height="53dp"
         android:layout_weight="1"
-        android:background="#48C4EF"
+        android:background="#FF8C3F"
         android:text="BACK"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/next"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

@@ -34,7 +34,7 @@ import java.util.ArrayList;
 
 public class VideoActivity extends YouTubeBaseActivity {
 
-    private ImageView backgroundImage;
+//    private ImageView backgroundImage;
     private int modId;
     private ArrayList<Videos> mVideos = new ArrayList<>();
     private Videos mVideo;
@@ -44,7 +44,7 @@ public class VideoActivity extends YouTubeBaseActivity {
     private Modules mMod;
     private String modDesc;
     private ImageButton backButton;
-    private Button storyButton;
+    private ImageButton storyButton;
     MyDatabase myDb;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -61,8 +61,9 @@ public class VideoActivity extends YouTubeBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
+//        getActionBar().hide();
 
-        backgroundImage = findViewById(R.id.backgroundImage);
+//        backgroundImage = findViewById(R.id.backgroundImage);
         videoDesc = findViewById(R.id.videoDesc);
         backButton = findViewById(R.id.backButton);
         storyButton = findViewById(R.id.storyButton);
@@ -71,7 +72,7 @@ public class VideoActivity extends YouTubeBaseActivity {
         modId = Integer.parseInt(intent.getStringExtra("id"));
         modName = intent.getStringExtra("mod_name");
 
-        videoDescription =  "Here is a video of " +  modName + ". Please watch the video.";
+        videoDescription =  "Click play to watch a short video about " +  modName + ".";
         videoDesc.setText(videoDescription);
 
         email = user.getEmail();
@@ -81,7 +82,7 @@ public class VideoActivity extends YouTubeBaseActivity {
         for (Modules m : Modules.getModules()){
             if (m.getModuleId() == modId){
                 mMod = m;
-                Glide.with(this).load(m.getModuleBackgroundImage()).into(backgroundImage);
+//                Glide.with(this).load(m.getModuleBackgroundImage()).into(backgroundImage);
                 modDesc = m.getModuleDescription();
             }
         }

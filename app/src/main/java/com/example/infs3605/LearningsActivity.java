@@ -38,8 +38,8 @@ public class LearningsActivity extends AppCompatActivity {
     private ArrayList<Learnings> mLearnings = new ArrayList<>();
     private ImageView image;
     private TextView title, info, position;
-    private ImageButton cancel;
-    private Button next, previous, check;
+    private ImageButton cancel, check;
+    private Button next, previous;
     private ArrayList<Modules> mMod = new ArrayList<>();
     ConstraintSet constraintSet;
     ConstraintLayout constraintLayout;
@@ -92,7 +92,7 @@ public class LearningsActivity extends AppCompatActivity {
         if (mLearnings != null) {
             i = 0;
             learnings = mLearnings.get(i);
-            title.setText(modName.toUpperCase());
+            title.setText(modName);
             info.setText(learnings.getInformation());
             Glide.with(this).load(learnings.getImage()).into(image);
             position.setText(i + 1 + "/" + mLearnings.size());
@@ -160,11 +160,12 @@ public class LearningsActivity extends AppCompatActivity {
         //if users has finished learnring, the check knowledge button will be displayed so that they can take a mini quiz
         if (i >= mLearnings.size()) {
             next.setVisibility(View.GONE);
-            previous.setVisibility(View.VISIBLE);
+//            previous.setVisibility(View.VISIBLE);
+            previous.setVisibility(View.GONE);
             //sets components with data
             info.setText("You have finished your learning");
             check.setVisibility(View.VISIBLE);
-            image.setImageResource(R.drawable.finished_course_stars);
+            image.setImageResource(R.drawable.finished);
             position.setText("");
             i = mLearnings.size();
             Log.d(TAG, "onClick: line 167 displays index at " + i);
