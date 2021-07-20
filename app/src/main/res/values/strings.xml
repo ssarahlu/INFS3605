@@ -2,10 +2,9 @@
     <string name="app_name">INFS3605</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="account">
-
-Account
-</string>
+    <string name="account">Account</string>
 
     <string name="title_activity_maps">Map</string>
+
+    <string name="achievements">Achievements</string>
 </resources>

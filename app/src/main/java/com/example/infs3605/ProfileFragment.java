@@ -31,7 +31,7 @@ public class ProfileFragment extends Fragment {
 
     private TextView email, stars, animal, name;
     private int numStars, numLevel;
-    private ImageButton btSignOut, btLeaderboard, help, feedback;
+    private ImageButton btSignOut, btLeaderboard, help, feedback, rewardsButton;
     private ImageView avatar;
     private String emailString, animalLevelString;
     private static final String TAG = "ProfileFragment";
@@ -64,6 +64,7 @@ public class ProfileFragment extends Fragment {
         avatar = view.findViewById(R.id.avatar);
         help = view.findViewById(R.id.help);
         feedback = view.findViewById(R.id.feedback);
+        rewardsButton = view.findViewById(R.id.rewardsButton);
 
         emailString = user.getEmail();
         email.setText(emailString);
@@ -124,7 +125,10 @@ public class ProfileFragment extends Fragment {
                         logOut();
                     }
                 });
+
     }
+
+
     // Log out the user and prevent the user from accessing anything until logging in again
     public void logOut() {
         Intent intent = new Intent(getActivity().getApplicationContext(), LoginActivity.class);
