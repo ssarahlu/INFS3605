@@ -23,7 +23,7 @@
         android:id="@+id/tvThreadTitle"
         android:layout_width="315dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="What topic do you want to talk about?"
         android:inputType="textPersonName"
@@ -32,19 +32,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCreateThread" />
 
+    <EditText
+        android:id="@+id/tvThreadContent"
+        android:layout_width="315dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="top|left"
+        android:lines="10"
+        android:maxLines="15"
+        android:minLines="5"
+        app:layout_constraintEnd_toEndOf="@+id/tvThreadTitle"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvThreadTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvThreadTitle" />
+
     <Button
         android:id="@+id/btPost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
         android:text="Post"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvThreadTitle"
-        app:layout_constraintVertical_bias="0.156" />
+        app:layout_constraintTop_toBottomOf="@+id/tvThreadContent"
+        app:layout_constraintVertical_bias="0.162" />
 
     <TextView
         android:id="@+id/tvCreateThread"
