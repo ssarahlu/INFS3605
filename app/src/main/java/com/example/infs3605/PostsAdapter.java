@@ -59,7 +59,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         holder.tvName.setText(post.getAuthor());
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm aaa");
         String date = dateFormat.format(post.getPostTime());
-        holder.tvPostDate.setText("Last Post: " + date);
+        holder.tvPostDate.setText("" + date);
         int numStars = Integer.parseInt("" + post.getNumStars());
         int numLevel = Levels.getLevel(numStars);
         holder.ivUser.setImageResource(Levels.getAvatar(numLevel));

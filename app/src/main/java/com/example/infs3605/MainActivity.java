@@ -138,6 +138,10 @@ public class MainActivity extends AppCompatActivity {
 
                 s1 = "";
                 bottomNav.setSelectedItemId(R.id.page_2);
+            } else if (s1.equals("3")) {
+
+                s1 = "";
+                bottomNav.setSelectedItemId(R.id.page_3);
             } else if (s1.equals("5")) {
                 bottomNav.setSelectedItemId(R.id.page_5);
             }

@@ -4,15 +4,16 @@ import java.util.Date;
 
 public class DiscussionThread {
     private String threadID, title, author, authorID, post;
-    private Date lastPostTime;
+    private Date lastPostTime, postTime;
     private int numberOfReplies;
 
-    public DiscussionThread(String threadID, String title, String author, String authorID, Date lastPostTime, int numberOfReplies, String post) {
+    public DiscussionThread(String threadID, String title, String author, String authorID, Date lastPostTime, Date postTime, int numberOfReplies, String post) {
         this.threadID = threadID;
         this.title = title;
         this.author = author;
         this.authorID = authorID;
         this.lastPostTime = lastPostTime;
+        this.postTime = postTime;
         this.numberOfReplies = numberOfReplies;
         this.post = post;
     }
@@ -55,6 +56,14 @@ public class DiscussionThread {
 
     public void setLastPostTime(Date lastPostTime) {
         this.lastPostTime = lastPostTime;
+    }
+
+    public Date getPostTime() {
+        return postTime;
+    }
+
+    public void setPostTime(Date postTime) {
+        this.postTime = postTime;
     }
 
     public int getNumberOfReplies() {
