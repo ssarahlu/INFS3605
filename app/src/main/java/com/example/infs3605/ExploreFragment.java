@@ -155,7 +155,7 @@ public class ExploreFragment extends Fragment {
         tvAllSocials.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                launchAllSocialsActivity();
+                launchAllSocialsActivity(0);
             }
         });
 
@@ -165,8 +165,14 @@ public class ExploreFragment extends Fragment {
         socialLayoutManager = new GridLayoutManager(getActivity(), 3, GridLayoutManager.HORIZONTAL, false);
         socialRecyclerView.setLayoutManager(socialLayoutManager);
 
+        SocialAdapter.RecyclerViewClickListener socialListener = new SocialAdapter.RecyclerViewClickListener() {
+            @Override
+            public void onClick(View view, int socialId) {
+                launchAllSocialsActivity(socialId);
+            }
+        };
 
-        socialAdapter = new SocialAdapter(socialList);
+        socialAdapter = new SocialAdapter(socialList, socialListener);
         socialRecyclerView.setAdapter(socialAdapter);
 
         return view;
@@ -180,8 +186,9 @@ public class ExploreFragment extends Fragment {
 
     }
 
-    private void launchAllSocialsActivity() {
+    private void launchAllSocialsActivity(int socialId) {
         Intent intent = new Intent(getActivity().getApplicationContext(), AllSocialsActivity.class);
+        intent.putExtra("socialId",socialId);
         startActivity(intent);
 
     }
