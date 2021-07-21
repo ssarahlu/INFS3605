@@ -11,7 +11,6 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -58,7 +57,7 @@ public class ProfileFragment extends Fragment {
 
         btSignOut = view.findViewById(R.id.btSignOut);
         email = view.findViewById(R.id.email);
-        stars = view.findViewById(R.id.stars);
+        stars = view.findViewById(R.id.starsTV);
         animal = view.findViewById(R.id.animal);
         name = view.findViewById(R.id.name);
         avatar = view.findViewById(R.id.avatar);
@@ -110,6 +109,14 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), LeaderboardActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        rewardsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), RewardsActivity.class);
                 startActivity(intent);
             }
         });

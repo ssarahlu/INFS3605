@@ -5,15 +5,12 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -56,7 +53,7 @@ public class ModuleFragment extends Fragment {
         mRecyclerView = view.findViewById(R.id.rvList);
         mRecyclerView.setHasFixedSize(true);
         backButton = view.findViewById(R.id.backButton);
-        modTitle = view.findViewById(R.id.modTitle);
+        modTitle = view.findViewById(R.id.rewardsTitle);
 
         ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
 
