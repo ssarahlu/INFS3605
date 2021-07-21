@@ -113,7 +113,7 @@ public class DiscussionFragment extends Fragment {
                     thread.put("title", threadTitle.getText().toString());
                     thread.put("author", user.getDisplayName());
                     thread.put("authorID", user.getUid());
-                    thread.put("question", threadContent.getText().toString());
+                    thread.put("post", threadContent.getText().toString());
                     thread.put("lastPostTime", calendar.getTime());
                     thread.put("numberOfReplies", 0);
 
@@ -161,6 +161,7 @@ public class DiscussionFragment extends Fragment {
                                         documentSnapshot.getString("author"),
                                         documentSnapshot.getString("authorID"),
                                         documentSnapshot.getDate("lastPostTime"),
+                                        documentSnapshot.getDate("postTime"),
                                         Integer.parseInt(documentSnapshot.get("numberOfReplies").toString()),
                                         documentSnapshot.getString("post")));
 
@@ -171,13 +172,13 @@ public class DiscussionFragment extends Fragment {
 
                             DiscussionThreadAdapter.RecyclerViewClickListener discussionListener = new DiscussionThreadAdapter.RecyclerViewClickListener() {
                                 @Override
-                                public void onClick(View v, String threadID, String title, String author, String authorID, Date lastPost, String post) {
+                                public void onClick(View v, String threadID, String title, String author, String authorID, Date postTime, String post) {
                                     Intent intent = new Intent(getActivity(), PostsActivity.class);
                                     intent.putExtra("threadID", threadID);
                                     intent.putExtra("title", title);
                                     intent.putExtra("author", author);
                                     intent.putExtra("authorID", authorID);
-                                    intent.putExtra("lastPost", lastPost);
+                                    intent.putExtra("postTime", postTime);
                                     intent.putExtra("post", post);
                                     startActivity(intent);
 

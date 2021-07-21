@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".PostsActivity"></activity>
+        <activity android:name=".PostsActivity" />
+
         <activity android:name=".QuizCompleteActivity"
             android:theme="@style/AppTheme.NoActionBar"
             >

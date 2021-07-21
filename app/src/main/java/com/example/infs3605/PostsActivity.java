@@ -27,11 +27,13 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.SetOptions;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -52,7 +54,7 @@ public class PostsActivity extends AppCompatActivity {
     private PostsAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private RecyclerView mRecyclerView;
-    private ImageButton btAddPost;
+    private ImageButton btAddPost, btBack;
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
     private ImageView ivUser;
@@ -63,6 +65,7 @@ public class PostsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_posts);
+        getSupportActionBar().hide();
         Bundle bundle = getIntent().getExtras();
         ivUser = findViewById(R.id.ivUser);
         db.collection("profiles").document(bundle.getString("authorID")).get()
@@ -77,16 +80,28 @@ public class PostsActivity extends AppCompatActivity {
                     }
                 });
 
+
         tvTitle = findViewById(R.id.tvTitle);
         tvAuthor = findViewById(R.id.tvAuthor);
         tvLastPost = findViewById(R.id.tvLastPost);
         tvContent = findViewById(R.id.tvContent);
 
+        btBack = findViewById(R.id.backButton2);
+        btBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("id", "0");
+                intent.putExtra("Check", "3");
+                startActivity(intent);
+            }
+            });
+
         tvTitle.setText(bundle.getString("title"));
         tvAuthor.setText(bundle.getString("author"));
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm aaa");
-        String date = dateFormat.format(bundle.get("lastPost"));
-        tvLastPost.setText("Last post: " + date);
+        String date = dateFormat.format(bundle.get("postTime"));
+        tvLastPost.setText("" + date);
         tvContent.setText(bundle.getString("post"));
 
         mRecyclerView = findViewById(R.id.rvPosts);
@@ -121,16 +136,16 @@ public class PostsActivity extends AppCompatActivity {
                         public void onSuccess(DocumentSnapshot documentSnapshot) {
                             if (documentSnapshot.exists()) {
                                 int numStars = Integer.parseInt("" + documentSnapshot.get("stars"));
-                                Map<String, Object> thread = new HashMap<>();
-                                thread.put("post", tvAddPost.getText().toString());
-                                thread.put("author", user.getDisplayName());
-                                thread.put("thread", bundle.getString("title"));
-                                thread.put("threadID", bundle.getString("threadID"));
-                                thread.put("postDate", calendar.getTime());
-                                thread.put("stars", numStars);
+                                Map<String, Object> post = new HashMap<>();
+                                post.put("post", tvAddPost.getText().toString());
+                                post.put("author", user.getDisplayName());
+                                post.put("thread", bundle.getString("title"));
+                                post.put("threadID", bundle.getString("threadID"));
+                                post.put("postDate", calendar.getTime());
+                                post.put("stars", numStars);
 
                                 // Add the note to the Firestore database
-                                postRef.document().set(thread)
+                                postRef.document().set(post)
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void aVoid) {
@@ -144,7 +159,31 @@ public class PostsActivity extends AppCompatActivity {
                                                 Log.w(TAG, "Error writing document", e);
                                             }
                                         });
+                                Bundle bundle = getIntent().getExtras();
+                                String threadID = bundle.getString("threadID");
+                                db.collection("discussion_threads").document(threadID).get()
+                                        .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                            @Override
+                                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                                if(documentSnapshot.exists()){
+                                                    int numReplies = Integer.parseInt(documentSnapshot.get("numberOfReplies").toString()) + 1;
+                                                    Map<String, Object> thread = new HashMap<>();
+                                                    thread.put("lastPostTime", calendar.getTime());
+                                                    thread.put("numberOfReplies", numReplies);
+                                                    db.collection("discussion_threads").document(threadID)
+                                                            .set(thread, SetOptions.merge())
+                                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                                @Override
+                                                                public void onSuccess(Void unused) {
+                                                                Log.d(TAG, "thread details saved");
+                                                                }
+                                                            });
+
+                                                }
+                                            }
+                                        });
                                 setData();
+                                tvAddPost.getText().clear();
                             }
                         }
                     });

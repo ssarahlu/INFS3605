@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/tvTitle"
-        android:layout_width="130dp"
+        android:layout_width="293dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
@@ -53,15 +53,19 @@
         android:text="replies"
         android:textColor="#424242"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="44dp"
         android:layout_height="21dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginRight="64dp"
         app:layout_constraintBottom_toBottomOf="@+id/tvReplies"
-        app:layout_constraintEnd_toStartOf="@+id/tvReplies"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvReplies"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/forumicon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
