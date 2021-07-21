@@ -36,7 +36,7 @@ public class DiscussionThreadAdapter extends RecyclerView.Adapter<DiscussionThre
     }
 
     public interface RecyclerViewClickListener {
-        void onClick(View v,String threadID, String title, String author, String authorID, Date lastPost, String post);
+        void onClick(View v,String threadID, String title, String author, String authorID, Date postTime, String post);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -58,7 +58,7 @@ public class DiscussionThreadAdapter extends RecyclerView.Adapter<DiscussionThre
         @Override
         public void onClick(View v) {
             discussionThread = mDiscussionThreads.get(getAdapterPosition());
-            mListener.onClick(v,discussionThread.getThreadID(), discussionThread.getTitle(), discussionThread.getAuthor(), discussionThread.getAuthorID(), discussionThread.getLastPostTime(), discussionThread.getPost());
+            mListener.onClick(v,discussionThread.getThreadID(), discussionThread.getTitle(), discussionThread.getAuthor(), discussionThread.getAuthorID(),  discussionThread.getPostTime(), discussionThread.getPost());
 
         }
     }
@@ -80,7 +80,11 @@ public class DiscussionThreadAdapter extends RecyclerView.Adapter<DiscussionThre
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm aaa");
         String date = dateFormat.format(discussionThread.getLastPostTime());
         holder.tvLastPost.setText("Last Post: " + date);
-        holder.tvReplies.setText("" + (discussionThread.getNumberOfReplies()) + " Replies");
+        if(discussionThread.getNumberOfReplies() == 1) {
+            holder.tvReplies.setText("" + (discussionThread.getNumberOfReplies()) + " Reply");
+        } else {
+            holder.tvReplies.setText("" + (discussionThread.getNumberOfReplies()) + " Replies");
+        }
 
 
     }
