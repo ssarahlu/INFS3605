@@ -18,11 +18,12 @@ public class SocialAdapter extends RecyclerView.Adapter<SocialAdapter.ViewHolder
 
     private ArrayList<Social> mSocialList;
     private Social mSocial;
-
+    private RecyclerViewClickListener mListener;
     private Context mContext;
 
-    public SocialAdapter(ArrayList<Social> mSocialList) {
+    public SocialAdapter(ArrayList<Social> mSocialList, RecyclerViewClickListener listener) {
         this.mSocialList = mSocialList;
+        this.mListener = listener;
     }
 
 
@@ -31,9 +32,11 @@ public class SocialAdapter extends RecyclerView.Adapter<SocialAdapter.ViewHolder
     @Override
     public SocialAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.social_list_item,parent,false);
+        mContext = parent.getContext();
 
-        return new ViewHolder(view);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.social_list_item,parent,false);
+
+        return new ViewHolder(view, mListener);
     }
 
     @Override
@@ -47,19 +50,31 @@ public class SocialAdapter extends RecyclerView.Adapter<SocialAdapter.ViewHolder
 
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         public ImageView ivSocialImage;
 
+        private RecyclerViewClickListener mListener;
 
-        public ViewHolder(@NonNull View itemView) {
+
+        public ViewHolder(@NonNull View itemView, RecyclerViewClickListener listener) {
             super(itemView);
+
+            mListener = listener;
+            itemView.setOnClickListener(this);
 
             ivSocialImage = itemView.findViewById(R.id.ivSocialImage);
         }
 
+        @Override
+        public void onClick(View v) {
+            mListener.onClick(v, (Integer) v.getTag());
+        }
     }
 
+    public interface RecyclerViewClickListener {
+        void onClick(View view, int socialId);
+    }
 
     @Override
     public int getItemCount() {

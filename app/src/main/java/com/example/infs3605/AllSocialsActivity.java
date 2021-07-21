@@ -23,11 +23,17 @@ public class AllSocialsActivity extends AppCompatActivity {
 
     private ArrayList<Social> mList;
 
+    private int socialId;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_socials);
+
+        Intent intent = getIntent();
+
+        socialId = intent.getIntExtra("socialId",0);
 
         mList = Social.getSocialList();
 
@@ -36,6 +42,8 @@ public class AllSocialsActivity extends AppCompatActivity {
 
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
+
+        mRecyclerView.getLayoutManager().scrollToPosition(socialId);
 
         mAdapter = new AllSocialsAdapter(mList);
         mRecyclerView.setAdapter(mAdapter);
