@@ -48,6 +48,14 @@ public class Videos {
         ArrayList<Videos> videos = new ArrayList<>();
 
         videos.add(new Videos(0, "pCuuRRrfOXo", 0));
+        videos.add(new Videos(1, "0y3Ta5xcKV4", 1));
+        videos.add(new Videos(2, "kzs78j4IQBw", 2));
+        videos.add(new Videos(3, "Agt8BOALb-I", 3));
+        videos.add(new Videos(4, "tow2tR_ezL8", 4));
+        videos.add(new Videos(5, "tWvoTZxvEs8", 5));
+        videos.add(new Videos(6, "DpzDvpZ0hMg", 6));
+        videos.add(new Videos(7, "FrKGsnPVRww", 7));
+
         return videos;
     }
 
