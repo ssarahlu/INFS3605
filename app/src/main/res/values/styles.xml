@@ -389,4 +389,53 @@
 
     </style>
 
+    <style name="business">
+
+        <item name="android:textSize">
+            14sp
+        </item>
+
+        <item name="android:textColor">
+            #424242
+        </item>
+
+    </style>
+
+    <style name="reward">
+
+        <item name="android:textSize">
+            14sp
+        </item>
+
+        <item name="android:textColor">
+            #898989
+        </item>
+
+    </style>
+
+    <style name="redeemed">
+
+        <item name="android:textSize">
+            14sp
+        </item>
+
+        <item name="android:textColor">
+            #FF1B1B
+        </item>
+
+    </style>
+
+    <style name="user_stars">
+
+        <item name="android:textSize">
+            18sp
+        </item>
+
+        <item name="android:textColor">
+            #424242
+        </item>
+
+    </style>
+
+
 </resources>

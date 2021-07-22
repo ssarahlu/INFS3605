@@ -11,7 +11,6 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -31,7 +30,7 @@ public class ProfileFragment extends Fragment {
 
     private TextView email, stars, animal, name;
     private int numStars, numLevel;
-    private ImageButton btSignOut, btLeaderboard, help, feedback;
+    private ImageButton btSignOut, btLeaderboard, help, feedback, rewardsButton;
     private ImageView avatar;
     private String emailString, animalLevelString;
     private static final String TAG = "ProfileFragment";
@@ -58,12 +57,13 @@ public class ProfileFragment extends Fragment {
 
         btSignOut = view.findViewById(R.id.btSignOut);
         email = view.findViewById(R.id.email);
-        stars = view.findViewById(R.id.stars);
+        stars = view.findViewById(R.id.starsTV);
         animal = view.findViewById(R.id.animal);
         name = view.findViewById(R.id.name);
         avatar = view.findViewById(R.id.avatar);
         help = view.findViewById(R.id.help);
         feedback = view.findViewById(R.id.feedback);
+        rewardsButton = view.findViewById(R.id.rewardsButton);
 
         emailString = user.getEmail();
         email.setText(emailString);
@@ -113,6 +113,14 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        rewardsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), RewardsActivity.class);
+                startActivity(intent);
+            }
+        });
+
         return view;
     }
 
@@ -124,7 +132,10 @@ public class ProfileFragment extends Fragment {
                         logOut();
                     }
                 });
+
     }
+
+
     // Log out the user and prevent the user from accessing anything until logging in again
     public void logOut() {
         Intent intent = new Intent(getActivity().getApplicationContext(), LoginActivity.class);
