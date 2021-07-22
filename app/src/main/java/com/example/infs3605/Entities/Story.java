@@ -62,6 +62,12 @@ public class Story {
                 "\nThe tribes lived together on the land given to them by the Rainbow Serpent or Mother of Life and knew the land would always be theirs, and no one should ever take it from them.\n" +
                 "\n ", "https://www.kullillaart.com.au/assets/images/image12.jpg", 0));
 
+        story.add(new Story (7, "Long ago in the Dreamtime, when the animals were first on the Earth, where they were very much bigger than they are today, there was a time when there was no sun, only a moon and stars. \n" +
+                "\nOne day, Dinewan the emu and Brolga the beautiful dancing bird, were out on a large plain arguing and fighting. Brolga got so angry that she ran over to Dinewan's nest and grabbed one of her large eggs, which she threw up into the sky with all her might. It landed on a heap of firewood breaking, spilling the yellow yolk, which burst into flames. This lit up the whole world below to the astonishment of all the creatures as they had only been used to the semi-darkness and were dazzled by such brightness. \n" +
+                "\nA good spirit who lived in the sky saw how beautiful the Earth looked when it was lit up by this blaze. He thought it would be a good thing to make a fire every day; and he has done so ever since. All night the good spirit and his helpers collect wood and stack it up. When the stack is nearly big enough, the good spirit sends out the morning star to let them know on Earth that the fire will soon be lit. \n" +
+                "\nHowever, the spirits found that sending out the morning star was not enough because those who slept did not see it. The spirits decided they must have a noise made at the dawn of each new day to announce the arrival of the Sun, which would wake the sleepers - but what noise? \n" +
+                "\nThen one day the spirits heard the laughter of Goo-Goor-Gaga, the kookaburra ringing through the air. This was the noise the spirits were looking for. They asked Goo-Goor-Gaga that as the morning star faded and the day dawned he laugh his loudest to awaken all the sleepers before sunrise. Goo-Goor-Gaga agreed and has done so ever since - making the air ring with his early morning laughter. \n" +
+                "\n ", "https://www.kullillaart.com.au/assets/full/ARTP-GCARD-DKA-KBURRA.jpg?20200711031150", 7));
 
 
         return story;
