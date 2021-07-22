@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".DetailRewardsActivity">
+
+
+        <ImageView
+            android:id="@+id/rewardIV"
+            android:layout_width="411dp"
+            android:layout_height="246dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/social9" />
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="18.64dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="24dp"
+            android:background="#00FFFFFF"
+            android:scaleType="centerCrop"
+            android:src="@drawable/mod_back"
+            android:tint="#00FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/shopTV"
+            style="@style/business"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="18dp"
+            android:text="TextView"
+            android:textSize="22sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rewardIV" />
+
+        <TextView
+            android:id="@+id/rewardTV"
+            style="@style/rewarddetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="TextView"
+            app:layout_constraintStart_toStartOf="@+id/shopTV"
+            app:layout_constraintTop_toBottomOf="@+id/shopTV" />
+
+        <TextView
+            android:id="@+id/detailtitle"
+            style="@style/business"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="31dp"
+            android:text="Details"
+            android:textSize="22sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rewardTV" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+
+            android:layout_marginTop="31dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginRight="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rewardIV"
+            app:srcCompat="@drawable/stars" />
+
+        <TextView
+            android:id="@+id/starsTV"
+            style="@style/some_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+
+            android:layout_marginTop="37dp"
+            android:layout_marginEnd="9dp"
+            android:layout_marginRight="9dp"
+            android:text="10"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toStartOf="@+id/imageView7"
+            app:layout_constraintTop_toBottomOf="@+id/rewardIV" />
+
+        <TextView
+            android:id="@+id/detailTV"
+            style="@style/rewardinfo"
+            android:layout_width="376dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Anthony Walker is an award-winning visual artist of Queensland Aboriginal descent, a member of the Yiman and Gurreng Gurreng peoples. Through his work, he engages with the natural environment and seeks to raise awareness about the preservation of native flora and fauna.  Anthony's arts practice includes painting, printmaking, photography, design, and public art. His work has been critically acclaimed for its light-hearted design and blend of colour and movement. Notable achievements include: participating in Wesfarmers Indigenous Arts Leadership Program (National Gallery of Australia), undertaking a curatorial residency at the Museum of Contemporary Art (MCA - Sydney), winning the Gold Coast Aboriginal and Torres Strait Islander Art Award, and having a solo exhibition at Melbourne’s Koorie Heritage Trust Centre."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.058"
+            app:layout_constraintStart_toStartOf="@+id/detailtitle"
+            app:layout_constraintTop_toBottomOf="@+id/detailtitle" />
+
+        <ImageView
+            android:id="@+id/qrIV"
+            android:layout_width="202dp"
+            android:layout_height="202dp"
+            android:layout_marginTop="55dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detailTV"
+            app:srcCompat="@drawable/qr" />
+
+        <TextView
+            android:id="@+id/qrTV"
+            style="@style/qrcode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="15023361582234017"
+            app:layout_constraintStart_toStartOf="@+id/qrIV"
+            app:layout_constraintTop_toBottomOf="@+id/qrIV" />
+
+        <ImageButton
+            android:id="@+id/copy"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="13dp"
+            android:background="#00FFFFFF"
+            android:scaleType="fitCenter"
+            app:layout_constraintEnd_toEndOf="@+id/qrIV"
+            app:layout_constraintStart_toEndOf="@+id/qrTV"
+            app:layout_constraintTop_toBottomOf="@+id/qrIV"
+            app:srcCompat="@drawable/copy" />
+
+        <ImageButton
+            android:id="@+id/redeemButton"
+            android:layout_width="152dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="87dp"
+            android:layout_marginBottom="50dp"
+            android:background="#00FFFFFF"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/qrIV"
+            app:srcCompat="@drawable/redeem" />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </ScrollView>
+
+
+
+
+

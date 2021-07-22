@@ -88,12 +88,11 @@ public class RewardsActivity extends AppCompatActivity {
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        //TODO uncomment this when ready to do reward detail
         listener = new RewardsAdapter.RecyclerViewClickListener() {
             public void onClick(View view, int position) {
                 Rewards r = mRewards.get(position);
                 rewardId = r.getRewardId();
-//                launchRewardDetail();
+                launchRewardDetail();
 //                Toast.makeText(getApplicationContext(), r.getShop() + " is selected!", Toast.LENGTH_SHORT).show();
             }
         };
@@ -118,6 +117,16 @@ public class RewardsActivity extends AppCompatActivity {
 
     }
 
+    private void launchRewardDetail() {
+        Intent intent = new Intent(this, DetailRewardsActivity.class);
+        intent.putExtra("id", String.valueOf(rewardId));
+        System.out.println(rewardId);
+        intent.putExtra("email", email);
+        System.out.println(email);
+        startActivity(intent);
+
+    }
+
 
     //gets all the different account achievements of the user so that we can display the rewards accordingly
     //e.g. user will not be able to see the QR codes of rewards they haven't received yet
@@ -135,6 +144,7 @@ public class RewardsActivity extends AppCompatActivity {
         protected void onPostExecute(Void v) {
             super.onPostExecute(v);
             Log.d(TAG, "onPostExecute: FINISHED");
+            myDb.close();
 
         }
 
@@ -155,9 +165,9 @@ public class RewardsActivity extends AppCompatActivity {
                 }
             }
 
-            for (AccountAchievement a : mAccAchs) {
-                myDb.accountAchievementDao().insertSingle(a.getEmail(), a.getAchievementId(), a.isAchieved(), a.isRedeemed());
-            }
+//            for (AccountAchievement a : mAccAchs) {
+//                myDb.accountAchievementDao().insertSingle(a.getEmail(), a.getAchievementId(), a.isAchieved(), a.isRedeemed());
+//            }
 
             Log.d(TAG, "doInBackground: ASYNC TASK  ");
             return null;

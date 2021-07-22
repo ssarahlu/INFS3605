@@ -437,5 +437,41 @@
 
     </style>
 
+    <style name="rewarddetail">
+
+        <item name="android:textSize">
+            14sp
+        </item>
+
+        <item name="android:textColor">
+            #424242
+        </item>
+
+    </style>
+
+    <style name="rewardinfo">
+
+        <item name="android:textSize">
+            14sp
+        </item>
+
+        <item name="android:textColor">
+            #424242
+        </item>
+
+    </style>
+
+    <style name="qrcode">
+
+        <item name="android:textSize">
+            17sp
+        </item>
+
+        <item name="android:textColor">
+            #424242
+        </item>
+
+    </style>
+
 
 </resources>

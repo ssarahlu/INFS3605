@@ -17,6 +17,8 @@ import androidx.room.Room;
 import com.bumptech.glide.Glide;
 import com.example.infs3605.Entities.AccountAchievement;
 import com.example.infs3605.Entities.Rewards;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +37,9 @@ public class RewardsAdapter extends RecyclerView.Adapter<RewardsAdapter.MyViewHo
     private static final String TAG = "MyAdapter";
     private boolean achieved;
     private boolean redeemed;
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+
 
     public RewardsAdapter(ArrayList<Rewards> rewards, List<AccountAchievement> accountAchievements, RecyclerViewClickListener listener) {
         mRewards = rewards;
@@ -79,25 +84,33 @@ public class RewardsAdapter extends RecyclerView.Adapter<RewardsAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-
+        email = user.getEmail();
 
         mReward = mRewards.get(position);
 
         Glide.with(context).load(mReward.getUrl()).into(holder.image);
 
-        Log.d(TAG, "onBindViewHolder: " + mReward.getUrl());
         holder.starsTV.setText(mReward.getStars() + "");
-
 
         myDb = Room.databaseBuilder(context, MyDatabase.class, "my-db.db")
                 .allowMainThreadQueries()
                 .build();
-        redeemed = myDb.accountAchievementDao().getRedeemed(email, mRewards.get(position).getRewardId());
+
+        redeemed = myDb.accountAchievementDao().getRedeemed(email, mReward.getRewardId());
+        System.out.println(email);
+
+//        mAccAch = myDb.accountAchievementDao().getAch(email, mReward.getRewardId());
+
+//        System.out.println( mAccAch.getEmail() + " " + mAccAch.getAchievementId() +  " " + mAccAch.isAchieved() + " " + mAccAch.isRedeemed());
+
+
+        System.out.println( mReward.getShop() + " " + mReward.getRewardId() + " " + redeemed);
 
         if (redeemed == true){
             holder.redeemedTV.setText("Redeemed");
             holder.shopTV.setText(mReward.getShop());
             holder.offerTV.setText(mReward.getOffer());
+            Log.d(TAG, "onBindViewHolder: redeemed is true " + mReward.getShop() );
 
         } else {
             holder.redeemedTV.setText("");
@@ -110,13 +123,16 @@ public class RewardsAdapter extends RecyclerView.Adapter<RewardsAdapter.MyViewHo
 
             holder.shopTV.setText(mReward.getShop());
             holder.offerTV.setText(mReward.getOffer());
+            Log.d(TAG, "onBindViewHolder:  redeemed is false " + mReward.getShop());
 
         }
 
+//        myDb.close();
 
 
 
-        myDb.close();
+
+
 
     }
 
