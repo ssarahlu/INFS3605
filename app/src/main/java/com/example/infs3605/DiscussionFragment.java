@@ -136,6 +136,7 @@ public class DiscussionFragment extends Fragment {
                     thread.put("authorID", user.getUid());
                     thread.put("post", threadContent.getText().toString());
                     thread.put("lastPostTime", calendar.getTime());
+                    thread.put("postTime", calendar.getTime());
                     thread.put("numberOfReplies", 0);
 
                     // Add the note to the Firestore database
