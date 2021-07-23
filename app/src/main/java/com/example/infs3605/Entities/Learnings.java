@@ -15,12 +15,12 @@ public class Learnings {
 
     }
 
-    public Learnings(int learningId, String information, String image, int moduleId, String learningSubtitle) {
+    public Learnings(String learningSubtitle, int learningId, String information, String image, int moduleId) {
+        this.learningSubtitle = learningSubtitle;
         this.learningId = learningId;
         this.information = information;
         this.image = image;
         this.moduleId = moduleId;
-        this.learningSubtitle = learningSubtitle;
     }
 
     public int getLearningId() {
