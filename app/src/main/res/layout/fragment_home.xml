@@ -144,6 +144,18 @@
         app:layout_constraintTop_toTopOf="@+id/artButton" />
 
     <TextView
+        android:id="@+id/artProgress"
+        style="@style/progress_te"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="28dp"
+        android:text="Progress"
+        app:layout_constraintBottom_toBottomOf="@+id/artButton"
+        app:layout_constraintEnd_toEndOf="@+id/artButton" />
+
+    <TextView
         android:id="@+id/starTV"
         style="@style/some_id"
         android:layout_width="wrap_content"
@@ -166,8 +178,21 @@
         app:layout_constraintTop_toTopOf="@+id/background3"
         app:srcCompat="@drawable/stars" />
 
+
+
+    <ImageButton
+        android:id="@+id/spiritualityButton"
+        android:layout_width="361dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="9dp"
+        android:background="#00FFFFFF"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="@+id/artButton"
+        app:layout_constraintTop_toBottomOf="@+id/artButton"
+        app:srcCompat="@drawable/spirituality" />
+
     <TextView
-        android:id="@+id/artProgress"
+        android:id="@+id/spiritualityProgress"
         style="@style/progress_te"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -175,8 +200,91 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="28dp"
         android:text="Progress"
-        app:layout_constraintBottom_toBottomOf="@+id/artButton"
-        app:layout_constraintEnd_toEndOf="@+id/artButton" />
+        app:layout_constraintBottom_toBottomOf="@+id/spiritualityButton"
+        app:layout_constraintEnd_toEndOf="@+id/spiritualityButton" />
+
+
+    <ProgressBar
+        android:id="@+id/spiritPB"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="268dp"
+        android:layout_height="5dp"
+        android:layout_marginTop="48dp"
+        android:height="6dp"
+        android:progressDrawable="@drawable/spirit_progress"
+        app:layout_constraintEnd_toEndOf="@+id/spiritualityProgress"
+        app:layout_constraintTop_toTopOf="@+id/spiritualityButton" />
+
+    <ImageButton
+        android:id="@+id/ritualButton"
+        android:layout_width="361dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="9dp"
+        android:background="#00FFFFFF"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="@+id/spiritualityButton"
+        app:layout_constraintTop_toBottomOf="@+id/spiritualityButton"
+        app:srcCompat="@drawable/rituals" />
+
+    <TextView
+        android:id="@+id/ritualProgress"
+        style="@style/progress_te"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="28dp"
+        android:text="Progress"
+        app:layout_constraintBottom_toBottomOf="@+id/ritualButton"
+        app:layout_constraintEnd_toEndOf="@+id/ritualButton" />
+
+
+    <ProgressBar
+        android:id="@+id/ritualPB"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="268dp"
+        android:layout_height="5dp"
+        android:layout_marginTop="48dp"
+        android:height="6dp"
+        android:progressDrawable="@drawable/ritual_progress"
+        app:layout_constraintEnd_toEndOf="@+id/ritualProgress"
+        app:layout_constraintTop_toTopOf="@+id/ritualButton" />
+
+    <ImageButton
+        android:id="@+id/languageButton"
+        android:layout_width="361dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="9dp"
+        android:background="#00FFFFFF"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="@+id/ritualButton"
+        app:layout_constraintTop_toBottomOf="@+id/ritualButton"
+        app:srcCompat="@drawable/language" />
+
+    <TextView
+        android:id="@+id/languageProgress"
+        style="@style/progress_te"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="28dp"
+        android:text="Progress"
+        app:layout_constraintBottom_toBottomOf="@+id/languageButton"
+        app:layout_constraintEnd_toEndOf="@+id/languageButton" />
+
+
+    <ProgressBar
+        android:id="@+id/languagePB"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="268dp"
+        android:layout_height="5dp"
+        android:layout_marginTop="48dp"
+        android:height="6dp"
+        android:progressDrawable="@drawable/language_progress"
+        app:layout_constraintEnd_toEndOf="@+id/languageProgress"
+        app:layout_constraintTop_toTopOf="@+id/languageButton" />
+
 
     <TextView
         android:id="@+id/level"

@@ -7,4 +7,7 @@
     <string name="title_activity_maps">Map</string>
 
     <string name="achievements">Achievements</string>
+
+    <string name="feedback"> </string>
+
 </resources>

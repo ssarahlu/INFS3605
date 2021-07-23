@@ -44,8 +44,12 @@ public class HomeFragment extends Fragment {
     private String fname, hiString;
     private ImageView starImage;
     private boolean isVideoViewed, isStoryViewed, isLearningsViewed, isQuizViewed;
-    private int numArt, numSpirit, numRituals, numLang, artProg;
+    private int numArt, numSpirit, numRituals, numLang, artProg, spiritProg, langProg, ritProg;
     private ProgressBar starProgressBar, artProgressBar;
+
+    private TextView spiritualityProgress, ritualProgress, languageProgress;
+    private ImageButton spiritualityButton, ritualButton, languageButton;
+    private ProgressBar spiritPB, ritualPB, languagePB;
 
 //    private List<ProfileData> artProfileProgress = new ArrayList<>();
 //    private List<ProfileData> spiritualityProfileProgress = new ArrayList<>();
@@ -93,6 +97,20 @@ public class HomeFragment extends Fragment {
         background2 = view.findViewById(R.id.background2);
         background3 = view.findViewById(R.id.background3);
         artProgressBar = view.findViewById(R.id.artProgressBar);
+
+        spiritualityButton = view.findViewById(R.id.spiritualityButton);
+        spiritualityProgress = view.findViewById(R.id.spiritualityProgress);
+        spiritPB = view.findViewById(R.id.spiritPB);
+
+        ritualButton = view.findViewById(R.id.ritualButton);
+        ritualProgress = view.findViewById(R.id.ritualProgress);
+        ritualPB = view.findViewById(R.id.ritualPB);
+
+        languageButton = view.findViewById(R.id.languageButton);
+        languageProgress = view.findViewById(R.id.languageProgress);
+        languagePB = view.findViewById(R.id.languagePB);
+
+
 
         artProfileProgress = 0;
         spiritualityProfileProgress = 0;
@@ -195,6 +213,17 @@ public class HomeFragment extends Fragment {
                 background3.setVisibility(View.INVISIBLE);
                 artProgressBar.setVisibility(View.INVISIBLE);
 
+                spiritualityButton.setVisibility(View.INVISIBLE);
+                spiritPB.setVisibility(View.INVISIBLE);
+                spiritualityProgress.setVisibility(View.INVISIBLE);
+
+                ritualButton.setVisibility(View.INVISIBLE);
+                ritualProgress.setVisibility(View.INVISIBLE);
+                ritualPB.setVisibility(View.INVISIBLE);
+
+                languageProgress.setVisibility(View.INVISIBLE);
+                languageButton.setVisibility(View.INVISIBLE);
+                languagePB.setVisibility(View.INVISIBLE);
 
 
                 ModuleFragment fragment = new ModuleFragment();
@@ -209,6 +238,147 @@ public class HomeFragment extends Fragment {
         });
 
 
+        spiritualityButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(getActivity(), "Spirit selected", Toast.LENGTH_SHORT).show();
+
+                factTV.setVisibility(View.INVISIBLE);
+                artButton.setVisibility(View.INVISIBLE);
+                name.setVisibility(View.INVISIBLE);
+                didyouknow.setVisibility(View.INVISIBLE);
+                learn.setVisibility(View.INVISIBLE);
+                starTV.setVisibility(View.INVISIBLE);
+                starImage.setVisibility(View.INVISIBLE);
+                artProgress.setVisibility(View.INVISIBLE);
+                avatar.setVisibility(View.INVISIBLE);
+                levelTV.setVisibility(View.INVISIBLE);
+                level.setVisibility(View.INVISIBLE);
+                starProgressBar.setVisibility(View.INVISIBLE);
+                background.setVisibility(View.INVISIBLE);
+                background2.setVisibility(View.INVISIBLE);
+                background3.setVisibility(View.INVISIBLE);
+                artProgressBar.setVisibility(View.INVISIBLE);
+
+                spiritualityButton.setVisibility(View.INVISIBLE);
+                spiritPB.setVisibility(View.INVISIBLE);
+                spiritualityProgress.setVisibility(View.INVISIBLE);
+
+                ritualButton.setVisibility(View.INVISIBLE);
+                ritualProgress.setVisibility(View.INVISIBLE);
+                ritualPB.setVisibility(View.INVISIBLE);
+
+                languageProgress.setVisibility(View.INVISIBLE);
+                languageButton.setVisibility(View.INVISIBLE);
+                languagePB.setVisibility(View.INVISIBLE);
+
+
+                ModuleFragment fragment = new ModuleFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString(HomeFragment.TOPIC_ID, "1");
+                fragment.setArguments(bundle);
+
+                getParentFragmentManager().beginTransaction()
+                        .add(R.id.fragment_container, fragment).commit();
+
+            }
+        });
+
+
+        ritualButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(getActivity(), "Ritual selected", Toast.LENGTH_SHORT).show();
+
+                factTV.setVisibility(View.INVISIBLE);
+                artButton.setVisibility(View.INVISIBLE);
+                name.setVisibility(View.INVISIBLE);
+                didyouknow.setVisibility(View.INVISIBLE);
+                learn.setVisibility(View.INVISIBLE);
+                starTV.setVisibility(View.INVISIBLE);
+                starImage.setVisibility(View.INVISIBLE);
+                artProgress.setVisibility(View.INVISIBLE);
+                avatar.setVisibility(View.INVISIBLE);
+                levelTV.setVisibility(View.INVISIBLE);
+                level.setVisibility(View.INVISIBLE);
+                starProgressBar.setVisibility(View.INVISIBLE);
+                background.setVisibility(View.INVISIBLE);
+                background2.setVisibility(View.INVISIBLE);
+                background3.setVisibility(View.INVISIBLE);
+                artProgressBar.setVisibility(View.INVISIBLE);
+
+                spiritualityButton.setVisibility(View.INVISIBLE);
+                spiritPB.setVisibility(View.INVISIBLE);
+                spiritualityProgress.setVisibility(View.INVISIBLE);
+
+                ritualButton.setVisibility(View.INVISIBLE);
+                ritualProgress.setVisibility(View.INVISIBLE);
+                ritualPB.setVisibility(View.INVISIBLE);
+
+                languageProgress.setVisibility(View.INVISIBLE);
+                languageButton.setVisibility(View.INVISIBLE);
+                languagePB.setVisibility(View.INVISIBLE);
+
+
+                ModuleFragment fragment = new ModuleFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString(HomeFragment.TOPIC_ID, "2");
+                fragment.setArguments(bundle);
+
+                getParentFragmentManager().beginTransaction()
+                        .add(R.id.fragment_container, fragment).commit();
+
+            }
+        });
+
+        languageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(getActivity(), "Language selected", Toast.LENGTH_SHORT).show();
+
+                factTV.setVisibility(View.INVISIBLE);
+                artButton.setVisibility(View.INVISIBLE);
+                name.setVisibility(View.INVISIBLE);
+                didyouknow.setVisibility(View.INVISIBLE);
+                learn.setVisibility(View.INVISIBLE);
+                starTV.setVisibility(View.INVISIBLE);
+                starImage.setVisibility(View.INVISIBLE);
+                artProgress.setVisibility(View.INVISIBLE);
+                avatar.setVisibility(View.INVISIBLE);
+                levelTV.setVisibility(View.INVISIBLE);
+                level.setVisibility(View.INVISIBLE);
+                starProgressBar.setVisibility(View.INVISIBLE);
+                background.setVisibility(View.INVISIBLE);
+                background2.setVisibility(View.INVISIBLE);
+                background3.setVisibility(View.INVISIBLE);
+                artProgressBar.setVisibility(View.INVISIBLE);
+
+                spiritualityButton.setVisibility(View.INVISIBLE);
+                spiritPB.setVisibility(View.INVISIBLE);
+                spiritualityProgress.setVisibility(View.INVISIBLE);
+
+                ritualButton.setVisibility(View.INVISIBLE);
+                ritualProgress.setVisibility(View.INVISIBLE);
+                ritualPB.setVisibility(View.INVISIBLE);
+
+                languageProgress.setVisibility(View.INVISIBLE);
+                languageButton.setVisibility(View.INVISIBLE);
+                languagePB.setVisibility(View.INVISIBLE);
+
+
+                ModuleFragment fragment = new ModuleFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString(HomeFragment.TOPIC_ID, "3");
+                fragment.setArguments(bundle);
+
+                getParentFragmentManager().beginTransaction()
+                        .add(R.id.fragment_container, fragment).commit();
+
+            }
+        });
 
 
         return view;
@@ -233,10 +403,9 @@ public class HomeFragment extends Fragment {
             artProfileProgress = myDb.profileDataDao().countTopicProgress(email, 0, true, true, true, true);
             Log.d(TAG, "doInBackground: art profile progress" + artProfileProgress);
 
-            //TODO - UNCOMMENT THESE ONCE WE HAVE THE OTHER 4 MODULES DONE
-//            spiritualityProfileProgress = myDb.profileDataDao().countTopicProgress(email, 1, true, true, true, true);
-//            ritualsProfileProgress = myDb.profileDataDao().countTopicProgress(email, 2, true, true, true, true);
-//            languagesProfileProgress = myDb.profileDataDao().countTopicProgress(email, 3, true, true, true, true);
+            spiritualityProfileProgress = myDb.profileDataDao().countTopicProgress(email, 1, true, true, true, true);
+            ritualsProfileProgress = myDb.profileDataDao().countTopicProgress(email, 2, true, true, true, true);
+            languagesProfileProgress = myDb.profileDataDao().countTopicProgress(email, 3, true, true, true, true);
 
 
 
@@ -255,8 +424,19 @@ public class HomeFragment extends Fragment {
 
             artProgress.setText( artProfileProgress + "/"+ numArt + " courses");
             artProg = (artProfileProgress * 100) / numArt;
-
             artProgressBar.setProgress(artProg);
+
+            spiritualityProgress.setText( spiritualityProfileProgress + "/"+ numSpirit + " courses");
+            spiritProg = (spiritualityProfileProgress * 100) / numSpirit;
+            spiritPB.setProgress(spiritProg);
+
+            ritualProgress.setText( ritualsProfileProgress + "/"+ numRituals + " courses");
+            ritProg = (ritualsProfileProgress * 100) / numRituals;
+            ritualPB.setProgress(ritProg);
+
+            languageProgress.setText( languagesProfileProgress + "/"+ numLang + " courses");
+            langProg = (languagesProfileProgress * 100) / numLang;
+            languagePB.setProgress(langProg);
 
         }
 

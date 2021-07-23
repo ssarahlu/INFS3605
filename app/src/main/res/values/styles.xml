@@ -473,5 +473,9 @@
 
     </style>
 
+    <style name="RatingBar" parent="AppTheme">
+        <item name="colorControlActivated">@android:color/holo_orange_dark</item>
+        <item name="colorControlNormal">@android:color/holo_green_light</item>
+    </style>
 
 </resources>
