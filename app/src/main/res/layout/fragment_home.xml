@@ -54,7 +54,6 @@
         android:layout_marginEnd="25dp"
         android:layout_marginRight="25dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/apex"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -63,7 +62,6 @@
         style="@style/hey_george"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hey"
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.059"
@@ -78,7 +76,6 @@
         android:layout_height="72dp"
         android:layout_marginTop="22dp"
         android:gravity="center|left"
-        android:text="Fact"
         android:textAppearance="@style/did_you_know"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
@@ -151,7 +148,6 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="28dp"
-        android:text="Progress"
         app:layout_constraintBottom_toBottomOf="@+id/artButton"
         app:layout_constraintEnd_toEndOf="@+id/artButton" />
 
@@ -160,21 +156,20 @@
         style="@style/some_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginRight="6dp"
         android:layout_marginBottom="19dp"
-        android:text="999"
         app:layout_constraintBottom_toBottomOf="@+id/background3"
-        app:layout_constraintStart_toStartOf="@+id/background3" />
+        app:layout_constraintEnd_toStartOf="@+id/starImage" />
 
     <ImageView
         android:id="@+id/starImage"
         android:layout_width="27dp"
         android:layout_height="27dp"
-        android:layout_marginStart="6dp"
-        android:layout_marginLeft="6dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginLeft="34dp"
         android:layout_marginTop="9dp"
-        app:layout_constraintStart_toEndOf="@+id/starTV"
+        app:layout_constraintStart_toStartOf="@+id/background3"
         app:layout_constraintTop_toTopOf="@+id/background3"
         app:srcCompat="@drawable/stars" />
 
@@ -199,7 +194,6 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="28dp"
-        android:text="Progress"
         app:layout_constraintBottom_toBottomOf="@+id/spiritualityButton"
         app:layout_constraintEnd_toEndOf="@+id/spiritualityButton" />
 
@@ -234,7 +228,6 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="28dp"
-        android:text="Progress"
         app:layout_constraintBottom_toBottomOf="@+id/ritualButton"
         app:layout_constraintEnd_toEndOf="@+id/ritualButton" />
 
@@ -269,7 +262,6 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="28dp"
-        android:text="Progress"
         app:layout_constraintBottom_toBottomOf="@+id/languageButton"
         app:layout_constraintEnd_toEndOf="@+id/languageButton" />
 
@@ -292,7 +284,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Joey | Level 1"
         app:layout_constraintStart_toStartOf="@+id/name"
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
@@ -304,7 +295,6 @@
         android:layout_marginEnd="12dp"
         android:layout_marginRight="12dp"
         android:layout_marginBottom="19dp"
-        android:text="99% to Level 10"
         app:layout_constraintBottom_toBottomOf="@+id/background3"
         app:layout_constraintEnd_toEndOf="@+id/background3" />
 

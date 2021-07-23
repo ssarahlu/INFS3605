@@ -90,8 +90,10 @@ public class VideoActivity extends YouTubeBaseActivity {
 
         for (Videos v: Videos.getVideos()){
             if (v.getModuleId() == modId){
-                mVideos.add(v);
-                mVideo = mVideos.get(v.getModuleId());
+                mVideo = v;
+
+//                mVideos.add(v);
+//                mVideo = mVideos.get(v.getModuleId());
 
             }
         }
