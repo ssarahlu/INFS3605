@@ -125,8 +125,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/background_white"
         app:layout_constraintStart_toStartOf="@+id/background_white"
         app:layout_constraintTop_toTopOf="@+id/background_white"
-        app:layout_constraintVertical_bias="0.0"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintVertical_bias="0.0" />
 
 
     <TextView
@@ -138,7 +137,6 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="39dp"
-        android:text="Name"
         android:textColor="#424242"
         app:layout_constraintBottom_toBottomOf="@+id/background_white"
         app:layout_constraintStart_toEndOf="@+id/avatar"
@@ -152,7 +150,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="20dp"
-        android:text="TextView"
         android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="@+id/background_white"
         app:layout_constraintStart_toStartOf="@+id/name"
@@ -207,7 +204,6 @@
         android:layout_marginStart="76dp"
         android:layout_marginLeft="76dp"
         android:gravity="top"
-        android:text="email@email"
         android:textAppearance="@style/g_joukhadar"
         app:layout_constraintBottom_toBottomOf="@+id/emailBG"
         app:layout_constraintStart_toStartOf="@+id/emailBG"
@@ -222,7 +218,6 @@
         android:layout_marginStart="6dp"
         android:layout_marginLeft="6dp"
         android:layout_marginBottom="30dp"
-        android:text="999"
         android:textColor="#000000"
         android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="@+id/background_white"
