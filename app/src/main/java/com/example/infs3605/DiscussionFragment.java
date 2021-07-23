@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.infs3605.Entities.DiscussionThread;
@@ -50,7 +52,7 @@ public class DiscussionFragment extends Fragment {
     private DiscussionThreadAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private RecyclerView mRecyclerView;
-    private Button btAddThread;
+    private ImageButton btAddThread;
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
 
@@ -63,8 +65,26 @@ public class DiscussionFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_discussion, container, false);
 
+        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
         mRecyclerView = view.findViewById(R.id.rvDiscussionThreads);
         mRecyclerView.setHasFixedSize(false);
+
+
+        SearchView tvSearch = view.findViewById(R.id.tvSearch);
+
+        tvSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                mAdapter.getFilter().filter(s);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                mAdapter.getFilter().filter(s);
+                return false;
+            }
+        });
 
         setData();
 
@@ -78,6 +98,7 @@ public class DiscussionFragment extends Fragment {
         return view;
 
     }
+
 
     public void createNewNoteDialog() {
         dialogBuilder = new AlertDialog.Builder(getActivity());
