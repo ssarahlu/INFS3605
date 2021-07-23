@@ -69,6 +69,36 @@ public class Story {
                 "\nThen one day the spirits heard the laughter of Goo-Goor-Gaga, the kookaburra ringing through the air. This was the noise the spirits were looking for. They asked Goo-Goor-Gaga that as the morning star faded and the day dawned he laugh his loudest to awaken all the sleepers before sunrise. Goo-Goor-Gaga agreed and has done so ever since - making the air ring with his early morning laughter. \n" +
                 "\n ", "https://www.kullillaart.com.au/assets/full/ARTP-GCARD-DKA-KBURRA.jpg?20200711031150", 7));
 
+        story.add(new Story (6, "A long time ago, there lived a man named Wayambeh who was very stubborn and did not listen to his Elders. Every day he did what he wanted to do and did not obey any of the tribal rules. One day, the Elders told Wayambeh that it was time for him to marry a woman from his tribe, but Wayambeh refused to marry the woman who was selected for him. Instead, he grabbed his spear and marched off into the bush to hunt. \n" +
+                "\nWhile Wayambeh was hunting, he wrongfully entered another tribe’s territory – this tribe was known as the Spiny Lizards. He saw a woman from the Spiny Lizards who was digging for yams with a digging stick. He decided that she was the woman who he wanted to marry. Wayambeh crept up on the woman like a snake and snatched her from where she was digging. The woman’s name was Ula – she was the princess of the Spiny Lizards. Ula explained to Wayambeh that she was already married with a baby and that she could not marry him because she belonged to the Spiny Lizards. Wayambeh, however, did not listen to Ula, in the same way that he did not listen to his Elders. Instead, he stole Ula from her tribe, and returned to his tribe with her. \n" +
+                "\nThe Elders were very cross when they saw Wayambeh with Ula, \"You must return Ula to her tribe immediately\" they demanded. But Wayambeh was again disrespectful and disobedient - he did not return Ula. Wayambeh chose the two biggest shields that he had , one slung on his back and one on his front. As the spears came whizzing through the air, Wayamba drew his arms inside the shields and ducked his head down between them. Shower after shower of weapons they slung at him and they were getting closer so that his only chance to get away was to dive into the creek, and the tribe never saw him again. But in the water hole where he had dived, they saw a strange creature which had a plate fixed on it's back. When they tried to catch the creature, it drew in its head and limbs. So they said, \"It's Wayambeh.\" And this was the beginning of Wayambeh or Turtles, in the creek.", "https://lh3.googleusercontent.com/proxy/hAOcc1oZ0vo6roHPJ2322I6Bo1HAYn3SlL935g3ioqM0Mlg-twvYtCpm7nzdzJGlGxVqSZmYyT10U4CinmAT_leVWZrwlD0ALFTh4oZaIBdMtvb_lf3oqdx8VoeB59Bhj2gOCbJG9lIr", 6));
+
+        story.add(new Story (1, "Once upon a time, a long time ago, in the Dreamtime, lived a frog called Tiddalick.\n" +
+                "\nTiddalick was the largest frog in the entire world. One very warm morning, he woke up with feeling very, very thirsty and started to drink the fresh water. He drank and he drank and he kept drinking until all the fresh water in the entire billabong was gone!\n" +
+                "\nWhen the other animals arrived at the billabong to get their morning drink, they found it was all dried up. This made them very sad.\n" +
+                "\nThey knew Tiddalick the frog had drunk all the water. They knew they needed to come up with a plan to get the water back, but they didn’t know how. They thought and they thought and they thought until they realised that the best way to get the water back was to make Tiddalick laugh. If they could make him laugh then all the water would come spilling out of his mouth and back into the billabong!\n" +
+                "\nThe first animal to try and make him laugh was the echidna. She rolled herself up into a tight little ball and rolled down the bank of the billabong like a bowling ball! The kangeroo laughed and so did the emu, but Tiddalick didn’t laugh.The next animal to try and make Tiddalick laugh was the wombat. The wombat stood up on his hind legs and danced around in a circle until he fell over in the dirt! The Galah laughed and so did the goanna, but Tiddalick didn’t laugh.\n" +
+                "\nThe next animal to try and make Tiddalick laugh was the kookaburra. She perched herself on a branch close to Tiddalick and told her funniest story. It was so funny that she burst out laughing! But Tiddalick didn’t laugh. He just sat there with his big belly full of all the water.\n" +
+                "\nFinally, the snake decided to try and make Tiddalick laugh. She started to dance and dance, wriggling and squirming all over the ground until she eventually tied herself into a knot. The knot was so tight that she struggled and struggled to untie herself but was stuck! Tiddalick watched struggle around, trying to untie herself, and let out a small chuckle. That small chuckle turned into a rumbling in his tummy before it turned into a great big belly laugh! The water came gushing out of his mouth and filled the billabong back up once again.\n" +
+                "\nAll the animals jumped with joy as they took big, long, gulps of water to quench their thirst.", "https://lh3.googleusercontent.com/proxy/hAOcc1oZ0vo6roHPJ2322I6Bo1HAYn3SlL935g3ioqM0Mlg-twvYtCpm7nzdzJGlGxVqSZmYyT10U4CinmAT_leVWZrwlD0ALFTh4oZaIBdMtvb_lf3oqdx8VoeB59Bhj2gOCbJG9lIr", 1));
+
+        story.add(new Story (4, "To know me is to breathe with me.\n" +
+                "To breathe with me is to listen deeply.\n" +
+                "\nTo listen deeply is to connect.\n" +
+                "It’s the sound, the sound of deep calling to deep.\n" +
+                "\nDadirri, the deep inner spring inside us.\n" +
+                "We call on it and it calls on us.\n" +
+                "\nWe are river people.\n" +
+                "We cannot hurry the river.\n" +
+                "We need to move with the current and understand its ways.\n" +
+                "We wait for the rain to fill our rivers and water our thirsty.\n" +
+                "\nWe watch our bush foods, and wait for them to open before we gather them.\n" +
+                "\nWe wait for our young people as they grow.\n" +
+                "\nThe time for rebirth is now.\n" +
+                "If our culture is alive and strong and respected, it will grow.\n" +
+                "It will not die and our spirit will not die.\n" +
+                "I believe that the spirit of Dadirri that we have to offer will blossom and grow.\n" +
+                "\nNot just within ourselves, but within our whole nation.", "https://www.goodsams.org.au/wp-content/uploads/2019/12/aboriginal-art-503445_1920-940x330.jpg", 4));
 
         return story;
     }

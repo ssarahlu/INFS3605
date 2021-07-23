@@ -77,8 +77,12 @@ public class Modules {
         ArrayList<Modules> modules = new ArrayList<>();
 
         modules.add(new Modules(0, "The Rainbow Serpent", "The meaning of art","The Rainbow Serpent or Rainbow Snake is creator of human beings. It has life-giving powers that send conception (fertility) spirits to all the watercourses, such as billabongs, rivers, creeks and lagoons as it is in control of producing rainfall.", "https://www.kullillaart.com.au/assets/images/image12.jpg", 0));
-        modules.add(new Modules(1, "Test 2 The Rainbow Serpent", "2 The meaning of art","Test description 2",  "https://www.kullillaart.com.au/assets/images/image12.jpg", 0));
-        modules.add(new Modules(7, "Goo-Goor-Gaga the Kookaburra", "Music & Dance, Ceremonies","In this lesson we learn about the importance of music, dance, and ceremonies through the tale of Goo-Goor-Gaga the kookaburra. Goo-Goor-Gaga's helps the spirits by using his laughter to announce the arrival of the sun and the dawn of a new day.",  "https://www.kullillaart.com.au/assets/images/Kookaburra.jpg", 0));
+        modules.add(new Modules(1, "Tiddalik the Frog", "Corroborees, smoking ceremonies, body art","Tiddalik is a mischievous and very thirsty frog who appears in one of Australia's best known Creation Stories. It's the story of a frog whose greed results in all of the water in the creeks, lakes and rivers being depleted, resulting in the other animals working together to see it returned.\n" +
+                "\n" +
+                "In this module, you will also learn about the importance of traditional rituals and ceremonies.",  "https://www.kullillaart.com.au/assets/full/ARTP-GCARD-DKA-FROG.jpg?20200711031150", 2));
+        modules.add(new Modules(7, "Goo-Goor-Gaga the Kookaburra", "Music & Dance, Ceremonies","In this module you will learn about different First Nations languages through the tale of Wayambeh the very stubborn turtle.",  "https://www.kullillaart.com.au/assets/images/turtle.jpg", 0));
+        modules.add(new Modules(6, "Wayambeh the Turtle", "Walpiri language","In this module you will learn about the importance of First Nations language, specifically the Walpiri language, through the tale of Wayambeh the very stubborn turtle.",  "https://www.kullillaart.com.au/assets/images/Kookaburra.jpg", 3));
+        modules.add(new Modules(4, "Dadirri - Deep Listening", "Aboriginal meditation","In this lesson you will learn about tbe Aboriginal practice of deep listening, an almost spiritual skill, based on respect. Sometimes called 'dadirri', deep listening is inner, quiet, still awareness, and waiting.",  "https://www.amnesty.org.au/wp-content/uploads/2018/08/Header-Youth-Network-Dadirri.png", 1));
 
         return modules;
     }
