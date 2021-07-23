@@ -63,7 +63,7 @@ public class LearningsActivity extends AppCompatActivity {
         modName = intent.getStringExtra("mod_name");
 
         image = findViewById(R.id.image);
-//        title = findViewById(R.id.title);
+        title = findViewById(R.id.title);
         info = findViewById(R.id.info);
         cancel = findViewById(R.id.cancel);
         next = findViewById(R.id.next);
@@ -93,7 +93,9 @@ public class LearningsActivity extends AppCompatActivity {
         if (mLearnings != null) {
             i = 0;
             learnings = mLearnings.get(i);
-//            title.setText(modName);
+            title.setText(learnings.getLearningSubtitle());
+
+
             info.setText(Html.fromHtml(learnings.getInformation()));
             Glide.with(this).load(learnings.getImage()).into(image);
             position.setText(i + 1 + "/" + mLearnings.size());
@@ -191,6 +193,8 @@ public class LearningsActivity extends AppCompatActivity {
             Glide.with(this).load(learnings.getImage()).into(image);
             position.setText(i + 1 + "/" + mLearnings.size());
             image.setVisibility(View.VISIBLE);
+            title.setText(learnings.getLearningSubtitle());
+
 
             //button dynamic change
             constraintSet = new ConstraintSet();
@@ -208,6 +212,7 @@ public class LearningsActivity extends AppCompatActivity {
             previous.setVisibility(View.VISIBLE);
             check.setVisibility(View.GONE);
             learnings = mLearnings.get(i);
+            title.setText(learnings.getLearningSubtitle());
             info.setText(Html.fromHtml(learnings.getInformation()));
             Glide.with(this).load(learnings.getImage()).into(image);
             position.setText(i + 1 + "/" + mLearnings.size());
@@ -237,6 +242,7 @@ public class LearningsActivity extends AppCompatActivity {
             check.setVisibility(View.GONE);
             //sets components with data
             learnings = mLearnings.get(i);
+            title.setText(learnings.getLearningSubtitle());
             info.setText(Html.fromHtml(learnings.getInformation()));
             Glide.with(this).load(learnings.getImage()).into(image);
             position.setText(i + 1 + "/" + mLearnings.size());
@@ -263,6 +269,7 @@ public class LearningsActivity extends AppCompatActivity {
                 i = 0;
                 Log.d(TAG, "onClick: line 230 displays index at " + i);
                 learnings = mLearnings.get(i);
+                title.setText(learnings.getLearningSubtitle());
                 info.setText(Html.fromHtml(learnings.getInformation()));
                 Glide.with(this).load(learnings.getImage()).into(image);
                 position.setText(i + 1 + "/" + mLearnings.size());
@@ -280,6 +287,7 @@ public class LearningsActivity extends AppCompatActivity {
                 check.setVisibility(View.GONE);
                 learnings = mLearnings.get(i);
                 info.setText(Html.fromHtml(learnings.getInformation()));
+                title.setText(learnings.getLearningSubtitle());
                 Glide.with(this).load(learnings.getImage()).into(image);
                 position.setText(i + 1 + "/" + mLearnings.size());
                 image.setVisibility(View.VISIBLE);

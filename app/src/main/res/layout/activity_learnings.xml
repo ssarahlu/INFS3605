@@ -15,18 +15,17 @@
         android:layout_height="44dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
         android:background="#00FFFFFF"
         android:elevation="4dp"
         android:scaleType="centerCrop"
         android:src="@drawable/take_the_quiz"
         android:text="Check your knowledge!"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/info"
-        app:layout_constraintVertical_bias="0.082" />
+        app:layout_constraintTop_toBottomOf="@+id/info" />
 
     <ImageView
         android:id="@+id/image"
@@ -41,13 +40,26 @@
         app:srcCompat="@drawable/finished" />
 
     <TextView
+        android:id="@+id/title"
+        style="@style/title"
+        android:layout_width="342dp"
+        android:layout_height="36dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="290dp"
+        android:gravity="left"
+        android:text="This is title"
+        app:layout_constraintStart_toStartOf="@+id/image"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/info"
         style="@style/story"
         android:layout_width="342dp"
-        android:layout_height="278dp"
+        android:layout_height="248dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="65dp"
         android:gravity="left"
         android:text="This is information"
         app:layout_constraintStart_toStartOf="@+id/image"
