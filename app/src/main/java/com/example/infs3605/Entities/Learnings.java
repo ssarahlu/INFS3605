@@ -6,7 +6,7 @@ import com.example.infs3605.R;
 
 public class Learnings {
     private int learningId;
-    private String title;
+    private String learningSubtitle;
     private String information;
     private String image;
     private int moduleId;
@@ -15,9 +15,9 @@ public class Learnings {
 
     }
 
-    public Learnings(int learningId, String title, String information, String image, int moduleId) {
+    public Learnings(int learningId, String learningSubtitle, String information, String image, int moduleId) {
         this.learningId = learningId;
-        this.title = title;
+        this.learningSubtitle = learningSubtitle;
         this.information = information;
         this.image = image;
         this.moduleId = moduleId;
@@ -31,12 +31,12 @@ public class Learnings {
         this.learningId = learningId;
     }
 
-    public String getTitle() {
-        return title;
+    public String getLearningSubtitle() {
+        return learningSubtitle;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTitle(String learningSubtitle) {
+        this.learningSubtitle = learningSubtitle;
     }
 
     public String getInformation() {
