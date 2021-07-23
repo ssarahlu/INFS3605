@@ -227,7 +227,7 @@ public class PostsActivity extends AppCompatActivity {
 
     }
 
-    public void createNewNoteDialog(String postID) {
+    public void createDeleteDialog(String postID) {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
 
         Button btConfirm, btCancel;

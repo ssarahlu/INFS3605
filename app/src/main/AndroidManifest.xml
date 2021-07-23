@@ -17,11 +17,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TestActivity"></activity>
+        <activity android:name=".ModuleCommentsActivity"></activity>
+        <activity android:name=".TestActivity" />
         <activity
             android:name=".DetailRewardsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".RewardsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -72,7 +72,8 @@
         <activity
             android:name=".ModuleSelection"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
