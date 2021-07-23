@@ -53,10 +53,13 @@
             android:background="@drawable/radio_bg"
             android:buttonTint="#FF8C3F"
             android:checked="false"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="11sp"
+            app:autoSizeMaxTextSize="14sp"
             android:paddingLeft="12dp"
             android:paddingRight="20dp"
             android:text="Blah blah blah blah blah blahBlah blah blah blah blah blah"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
         <RadioButton
             android:id="@+id/opt2"
@@ -65,11 +68,14 @@
             android:layout_height="68dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/radio_bg"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="11sp"
+            app:autoSizeMaxTextSize="14sp"
             android:buttonTint="#FF8C3F"
             android:paddingLeft="12dp"
             android:paddingRight="20dp"
             android:text="RadioButton"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
         <RadioButton
             android:id="@+id/opt3"
@@ -78,12 +84,15 @@
             android:layout_height="68dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/radio_bg"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="11sp"
+            app:autoSizeMaxTextSize="14sp"
             android:buttonTint="#FF8C3F"
             android:includeFontPadding="false"
             android:paddingLeft="12dp"
             android:paddingRight="20dp"
             android:text="RadioButton"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
         <RadioButton
             android:id="@+id/opt4"
@@ -92,11 +101,14 @@
             android:layout_height="68dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/radio_bg"
+            app:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="11sp"
+            app:autoSizeMaxTextSize="14sp"
             android:buttonTint="#FF8C3F"
             android:paddingLeft="12dp"
             android:paddingRight="20dp"
             android:text="RadioButton"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
     </RadioGroup>
 
@@ -105,8 +117,8 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginTop="25dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginRight="7dp"
         android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="@+id/grp"
         app:layout_constraintTop_toTopOf="@+id/grp"
