@@ -17,7 +17,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.infs3605.Entities.DiscussionThread;
 import com.example.infs3605.Entities.Levels;
 import com.example.infs3605.Entities.Post;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,7 +26,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -40,7 +38,6 @@ import org.jetbrains.annotations.NotNull;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -55,8 +52,6 @@ public class PostsActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager mLayoutManager;
     private RecyclerView mRecyclerView;
     private ImageButton btAddPost, btBack;
-    private AlertDialog.Builder dialogBuilder;
-    private AlertDialog dialog;
     private ImageView ivUser;
     private TextView tvTitle, tvAuthor, tvLastPost, tvContent, tvNoPosts;
     private EditText tvAddPost;
@@ -80,16 +75,17 @@ public class PostsActivity extends AppCompatActivity {
                     }
                 });
 
-
         tvTitle = findViewById(R.id.tvTitle);
         tvAuthor = findViewById(R.id.tvAuthor);
-        tvLastPost = findViewById(R.id.tvLastPost);
+        tvLastPost = findViewById(R.id.tvPostTime);
         tvContent = findViewById(R.id.tvContent);
 
         btBack = findViewById(R.id.backButton2);
         btBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.putExtra("id", "0");
                 intent.putExtra("Check", "3");
@@ -139,6 +135,7 @@ public class PostsActivity extends AppCompatActivity {
                                 Map<String, Object> post = new HashMap<>();
                                 post.put("post", tvAddPost.getText().toString());
                                 post.put("author", user.getDisplayName());
+                                post.put("authorID", user.getUid());
                                 post.put("thread", bundle.getString("title"));
                                 post.put("threadID", bundle.getString("threadID"));
                                 post.put("postDate", calendar.getTime());
@@ -207,8 +204,9 @@ public class PostsActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "successful");
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                posts.add(new Post(document.getString("author"),
-                                        user.getUid(),
+                                posts.add(new Post(document.getId(),
+                                        document.getString("author"),
+                                        document.getString("authorID"),
                                         document.getString("post"),
                                         document.getDate("postDate"),
                                         Integer.parseInt("" + document.get("stars"))));
@@ -216,7 +214,7 @@ public class PostsActivity extends AppCompatActivity {
                             }
                             mLayoutManager = new LinearLayoutManager(getApplicationContext());
                             mRecyclerView.setLayoutManager(mLayoutManager);
-                            mAdapter = new PostsAdapter(posts);
+                            mAdapter = new PostsAdapter(posts, getApplicationContext());
                             mAdapter.sort();
                             mRecyclerView.setAdapter(mAdapter);
 
@@ -228,4 +226,67 @@ public class PostsActivity extends AppCompatActivity {
 
 
     }
+
+    public void createNewNoteDialog(String postID) {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+
+        Button btConfirm, btCancel;
+
+        final View addThreadPopup = getLayoutInflater().inflate(R.layout.delete_confirmation, null);
+
+        btConfirm = addThreadPopup.findViewById(R.id.btConfirm);
+        btCancel = addThreadPopup.findViewById(R.id.btCancel);
+
+        // Show the popup
+        dialogBuilder.setView(addThreadPopup);
+        AlertDialog dialog = dialogBuilder.create();
+        dialog.show();
+
+        // Set the save button to save the note
+        btConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                postRef.document(postID)
+                        .delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(PostsActivity.this, "Post Deleted", Toast.LENGTH_SHORT).show();
+                        Bundle bundle = getIntent().getExtras();
+                        String threadID = bundle.getString("threadID");
+                        db.collection("discussion_threads").document(threadID).get()
+                                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                    @Override
+                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                        if(documentSnapshot.exists()){
+                                            int numReplies = Integer.parseInt(documentSnapshot.get("numberOfReplies").toString()) - 1;
+                                            Map<String, Object> thread = new HashMap<>();
+                                            thread.put("numberOfReplies", numReplies);
+                                            db.collection("discussion_threads").document(threadID)
+                                                    .set(thread, SetOptions.merge())
+                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void unused) {
+                                                            Log.d(TAG, "thread details saved");
+                                                        }
+                                                    });
+
+                                        }
+                                    }
+                                });
+
+                    }
+                });
+                setData();
+                dialog.dismiss();
+            }
+        });
+
+        btCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+    }
+
 }
