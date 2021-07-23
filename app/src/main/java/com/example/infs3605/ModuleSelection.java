@@ -37,7 +37,7 @@ public class ModuleSelection extends AppCompatActivity {
     public static final String MODULE_ID = "module_id";
     private String modName, modDesc;
     private TextView moduleName, moduleDescription;
-    private ImageButton videoButton, storyButton, closeButton, quizButton, learningsButton;
+    private ImageButton videoButton, storyButton, closeButton, quizButton, learningsButton, commentButton;
     private int modId;
     private ImageView backgroundImage;
     private Modules mMod;
@@ -64,6 +64,7 @@ public class ModuleSelection extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_module_selection);
 
+
 //        getSupportActionBar().hide();
 //        getActionBar().hide();
 
@@ -72,11 +73,13 @@ public class ModuleSelection extends AppCompatActivity {
         modDesc = intent.getStringExtra("Description");
         modId = Integer.parseInt(intent.getStringExtra("id"));
 
+
         moduleName = findViewById(R.id.moduleName);
         moduleDescription = findViewById(R.id.moduleDescription);
         videoButton = findViewById(R.id.videoButton);
         storyButton = findViewById(R.id.storyButton);
         closeButton = findViewById(R.id.closeButton);
+        commentButton = findViewById(R.id.commentButton);
         backgroundImage = findViewById(R.id.backgroundImage);
         quizButton = findViewById(R.id.quizButton);
         learningsButton = findViewById(R.id.learningsButton);
@@ -179,6 +182,17 @@ public class ModuleSelection extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Back to list ", Toast.LENGTH_SHORT).show();
 
 
+            }
+        });
+
+        commentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ModuleCommentsActivity.class);
+                intent.putExtra("Module", modName);
+                intent.putExtra("Description", modDesc);
+                intent.putExtra("id", String.valueOf(modId));
+                startActivity(intent);
             }
         });
 

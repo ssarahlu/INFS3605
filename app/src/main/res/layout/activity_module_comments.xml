@@ -29,89 +29,52 @@
                 android:id="@+id/backButton2"
                 android:layout_width="16dp"
                 android:layout_height="20dp"
+                android:layout_marginTop="32dp"
                 android:background="#00FFFFFF"
                 android:scaleType="centerCrop"
                 android:src="@drawable/back"
-                app:layout_constraintBottom_toTopOf="@+id/ivUser"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.066"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tvTitle"
+                android:id="@+id/tvModuleTitle"
                 android:layout_width="292dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginLeft="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="20dp"
                 android:fontFamily="sans-serif"
                 android:text="Title"
+                android:textSize="18dp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/ivUser"
-                app:layout_constraintStart_toEndOf="@+id/ivUser"
-                app:layout_constraintTop_toTopOf="@+id/ivUser"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <EditText
-                android:id="@+id/tvContent"
-                android:layout_width="340dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@null"
-                android:ems="10"
-                android:focusable="false"
-                android:gravity="start|top"
-                android:inputType="textMultiLine"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/tvTitle"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/ivUser"
-                app:layout_constraintTop_toBottomOf="@+id/ivUser"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintStart_toStartOf="@+id/textView3"
+                app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-            <ImageView
-                android:id="@+id/ivUser"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-
-                android:layout_marginTop="52dp"
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="213dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="100dp"
+                android:layout_marginRight="100dp"
+                android:text="Comments"
+                android:textSize="25dp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.102"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
-
-            <TextView
-                android:id="@+id/tvPostTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginLeft="4dp"
-                android:layout_marginTop="4dp"
-                android:text="Last Post"
-                android:textColor="#424242"
-                android:textSize="12sp"
-                app:layout_constraintStart_toEndOf="@+id/ivUser"
-                app:layout_constraintTop_toBottomOf="@+id/tvAuthor" />
-
-            <TextView
-                android:id="@+id/tvAuthor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Author"
-                android:textColor="#424242"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="@+id/tvTitle"
-                app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout3"
-            android:layout_width="390dp"
-            android:layout_height="wrap_content"
+            android:layout_width="384dp"
+            android:layout_height="389dp"
             android:background="#F6F6F6"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -121,16 +84,16 @@
             app:layout_constraintVertical_bias="0.0">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvPosts"
-                android:layout_width="348dp"
-                android:layout_height="wrap_content"
+                android:id="@+id/rvComments"
+                android:layout_width="345dp"
+                android:layout_height="332dp"
                 android:paddingLeft="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.451"
+                app:layout_constraintHorizontal_bias="0.512"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.262">
+                app:layout_constraintVertical_bias="0.491">
 
             </androidx.recyclerview.widget.RecyclerView>
 
@@ -151,7 +114,7 @@
             ]]>
 
             <ImageButton
-                android:id="@+id/btAddPost"
+                android:id="@+id/btAddComment"
                 android:layout_width="42dp"
                 android:layout_height="32dp"
                 android:layout_marginStart="8dp"
@@ -170,7 +133,7 @@
                 android:layout_marginRight="20dp"
                 android:background="#F6F6F6"
                 android:gravity="top|left"
-                android:hint="Add reply here"
+                android:hint="Add comment here"
                 android:lines="3"
                 android:maxLines="10"
                 android:singleLine="false"

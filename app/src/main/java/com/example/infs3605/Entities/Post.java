@@ -3,16 +3,25 @@ package com.example.infs3605.Entities;
 import java.util.Date;
 
 public class Post {
-    private String author, authorID, post;
+    private String postID, author, authorID, post;
     private Date PostTime;
     private int numStars;
 
-    public Post(String author, String authorID, String post, Date postDate, int numStars) {
+    public Post(String postID, String author, String authorID, String post, Date postDate, int numStars) {
+        this.postID = postID;
         this.author = author;
         this.authorID = authorID;
         this.post = post;
         PostTime = postDate;
         this.numStars = numStars;
+    }
+
+    public String getPostID() {
+        return postID;
+    }
+
+    public void setPostID(String postID) {
+        this.postID = postID;
     }
 
     public String getAuthor() {
