@@ -1,17 +1,23 @@
 package com.example.infs3605;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.infs3605.Entities.Levels;
 import com.example.infs3605.Entities.Post;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -23,14 +29,17 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
     private Post post;
     private static final String TAG = "PostsAdapter";
     private Context context;
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-    public PostsAdapter(ArrayList<Post> posts) {
+    public PostsAdapter(ArrayList<Post> posts, Context context) {
         mPosts = posts;
+        this.context = context;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView tvName, tvPostDate, tvPost;
         private ImageView ivUser;
+        private ImageButton deleteButton;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -39,6 +48,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             tvPostDate = itemView.findViewById(R.id.tvPostDate);
             tvPost = itemView.findViewById(R.id.tvPost);
             ivUser = itemView.findViewById(R.id.ivUser);
+            deleteButton = itemView.findViewById(R.id.deleteButton);
 
         }
 
@@ -56,7 +66,22 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         post = mPosts.get(position);
 
-        holder.tvName.setText(post.getAuthor());
+        if (post.getAuthorID().equals(user.getUid())) {
+            holder.tvName.setTextColor(Color.parseColor("#71C453"));
+            holder.tvName.setText(post.getAuthor());
+            holder.deleteButton.setImageResource(R.drawable.ic_baseline_delete_24);
+            holder.deleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(context instanceof PostsActivity) {
+                        ((PostsActivity)context).createNewNoteDialog(mPosts.get(position).getPostID());
+                    }
+                }
+            });
+        } else {
+            holder.tvName.setText(post.getAuthor());
+        }
+
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm aaa");
         String date = dateFormat.format(post.getPostTime());
         holder.tvPostDate.setText("" + date);
