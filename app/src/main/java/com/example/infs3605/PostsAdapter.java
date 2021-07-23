@@ -1,7 +1,6 @@
 package com.example.infs3605;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -74,7 +72,10 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
                 @Override
                 public void onClick(View view) {
                     if(context instanceof PostsActivity) {
-                        ((PostsActivity)context).createNewNoteDialog(mPosts.get(position).getPostID());
+                        ((PostsActivity)context).createDeleteDialog(mPosts.get(position).getPostID());
+                    }
+                    if(context instanceof ModuleCommentsActivity) {
+                        ((ModuleCommentsActivity)context).createDeleteDialog(mPosts.get(position).getPostID());
                     }
                 }
             });
