@@ -17,6 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ModuleCommentsActivity"></activity>
         <activity android:name=".FeedbackActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".HelpCentreActivity"
