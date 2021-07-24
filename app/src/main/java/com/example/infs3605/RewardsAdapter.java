@@ -127,7 +127,7 @@ public class RewardsAdapter extends RecyclerView.Adapter<RewardsAdapter.MyViewHo
 
         }
 
-//        myDb.close();
+        myDb.close();
 
 
 
