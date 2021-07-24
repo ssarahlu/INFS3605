@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +25,8 @@ public class AllSocialsActivity extends AppCompatActivity {
 
     private ArrayList<Social> mList;
 
+    private ImageButton backButton;
+
     private int socialId;
 
 
@@ -34,6 +38,17 @@ public class AllSocialsActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         socialId = intent.getIntExtra("socialId",0);
+
+        backButton = findViewById(R.id.socialBackButton);
+
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                launchExploreFragment();
+            }
+        });
+
 
         mList = Social.getSocialList();
 
@@ -48,6 +63,14 @@ public class AllSocialsActivity extends AppCompatActivity {
         mAdapter = new AllSocialsAdapter(mList);
         mRecyclerView.setAdapter(mAdapter);
 
+    }
+
+    private void launchExploreFragment() {
+
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.putExtra("id", "0");
+        intent.putExtra("Check", "2");
+        startActivity(intent);
     }
 
 }
