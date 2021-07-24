@@ -6,8 +6,10 @@
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the "MyLocation" functionality.
     -->
+
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -59,9 +61,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".MapsActivity"
-            android:label="@string/title_activity_maps" />
         <activity android:name=".LeaderboardActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
@@ -70,13 +69,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AllEventsActivity" />
-        <activity android:name=".AllSocialsActivity" />
-        <activity android:name=".EventActivity" />
+        <activity
+            android:name=".AllEventsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AllSocialsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".EventActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".LearningsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MeditateActivity" />
+        <activity
+            android:name=".MeditateActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".StoryActivity"
             android:theme="@style/AppTheme.NoActionBar" />

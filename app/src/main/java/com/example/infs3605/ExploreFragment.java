@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.infs3605.Entities.Event;
 import com.example.infs3605.Entities.SavedEventData;
@@ -78,6 +80,7 @@ public class ExploreFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_explore, container, false);
 
+        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
 
         email = user.getEmail();
 
@@ -180,13 +183,14 @@ public class ExploreFragment extends Fragment {
 
 
     private void launchAllEventsActivity() {
-
+        
         Intent intent = new Intent(getActivity().getApplicationContext(), AllEventsActivity.class);
         startActivity(intent);
 
     }
 
     private void launchAllSocialsActivity(int socialId) {
+
         Intent intent = new Intent(getActivity().getApplicationContext(), AllSocialsActivity.class);
         intent.putExtra("socialId",socialId);
         startActivity(intent);
