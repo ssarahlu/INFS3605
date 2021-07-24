@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LeaderboardActivity">
@@ -10,6 +16,7 @@
         android:id="@+id/backButton"
         android:layout_width="68dp"
         android:layout_height="17dp"
+        android:layout_marginTop="25dp"
         android:background="#00FFFFFF"
         android:scaleType="centerCrop"
         android:src="@drawable/profile_back"
@@ -18,19 +25,20 @@
         app:layout_constraintHorizontal_bias="0.069"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
+        app:layout_constraintVertical_bias="0.021" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvLeaderBoard"
         android:layout_width="361dp"
-        android:layout_height="410dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:paddingLeft="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvLeaderboard"
-        app:layout_constraintVertical_bias="0.184" />
+        app:layout_constraintVertical_bias="0.125" />
 
     <TextView
         android:id="@+id/tvLeaderboard"
@@ -39,7 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="196dp"
+        android:layout_marginTop="200dp"
         android:text="Leaderboard"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvChampions" />
@@ -51,26 +59,38 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:text="Champions"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backButton" />
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvLeaderBoard2"
         android:layout_width="343dp"
         android:layout_height="156dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@+id/tvLeaderboard"
         app:layout_constraintEnd_toEndOf="@+id/rvLeaderBoard"
-        app:layout_constraintStart_toStartOf="@+id/rvLeaderBoard"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvChampions"
         app:layout_constraintTop_toBottomOf="@+id/tvChampions"
-        app:layout_constraintVertical_bias="0.259" />
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/title"
+        android:layout_width="125dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.083"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/backButton"
+        app:srcCompat="@drawable/leaderboard_title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

@@ -123,7 +123,7 @@ public class QuizActivity extends AppCompatActivity {
             }
 
         }
-        setTitle(modName);
+//        setTitle(modName);
 
         if (mQuiz != null) {
             i = 0;

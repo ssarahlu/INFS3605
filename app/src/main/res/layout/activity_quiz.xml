@@ -9,7 +9,7 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="361dp"
+        android:layout_width="365dp"
         android:layout_height="545dp"
         android:layout_marginTop="120dp"
         android:scaleType="centerCrop"
@@ -33,7 +33,7 @@
     <RadioGroup
         android:id="@+id/grp"
         style="@style/answer"
-        android:layout_width="346dp"
+        android:layout_width="350dp"
         android:layout_height="311dp"
         android:layout_marginTop="210dp"
         android:visibility="visible"
@@ -53,10 +53,13 @@
             android:background="@drawable/radio_bg"
             android:buttonTint="#FF8C3F"
             android:checked="false"
-            android:paddingLeft="12dp"
-            android:paddingRight="20dp"
-            android:text="Blah blah blah blah blah blahBlah blah blah blah blah blah"
-            android:textSize="16sp" />
+            android:paddingLeft="8dp"
+            android:paddingRight="22dp"
+            android:text="Smoking ceremonies are used to acknowledge ancestors, ward off evil spirits, and heal and cleanse the place and the participants."
+            android:textSize="14sp"
+            app:autoSizeMaxTextSize="14sp"
+            app:autoSizeMinTextSize="11sp"
+            app:autoSizeTextType="uniform" />
 
         <RadioButton
             android:id="@+id/opt2"
@@ -66,10 +69,13 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/radio_bg"
             android:buttonTint="#FF8C3F"
-            android:paddingLeft="12dp"
-            android:paddingRight="20dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="22dp"
             android:text="RadioButton"
-            android:textSize="16sp" />
+            android:textSize="14sp"
+            app:autoSizeMaxTextSize="14sp"
+            app:autoSizeMinTextSize="11sp"
+            app:autoSizeTextType="uniform" />
 
         <RadioButton
             android:id="@+id/opt3"
@@ -80,10 +86,13 @@
             android:background="@drawable/radio_bg"
             android:buttonTint="#FF8C3F"
             android:includeFontPadding="false"
-            android:paddingLeft="12dp"
-            android:paddingRight="20dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="22dp"
             android:text="RadioButton"
-            android:textSize="16sp" />
+            android:textSize="14sp"
+            app:autoSizeMaxTextSize="14sp"
+            app:autoSizeMinTextSize="11sp"
+            app:autoSizeTextType="uniform" />
 
         <RadioButton
             android:id="@+id/opt4"
@@ -92,11 +101,12 @@
             android:layout_height="68dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/radio_bg"
+
             android:buttonTint="#FF8C3F"
-            android:paddingLeft="12dp"
-            android:paddingRight="20dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="22dp"
             android:text="RadioButton"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
     </RadioGroup>
 
@@ -105,8 +115,8 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginTop="25dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginRight="7dp"
         android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="@+id/grp"
         app:layout_constraintTop_toTopOf="@+id/grp"

@@ -113,6 +113,14 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), HelpCentreActivity.class);
+                startActivity(intent);
+            }
+        });
+
         rewardsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -120,6 +128,15 @@ public class ProfileFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        feedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), FeedbackActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         return view;
     }
