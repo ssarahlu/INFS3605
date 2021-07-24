@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -60,7 +61,7 @@ public class PostsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_posts);
-        getSupportActionBar().hide();
+
         Bundle bundle = getIntent().getExtras();
         ivUser = findViewById(R.id.ivUser);
         db.collection("profiles").document(bundle.getString("authorID")).get()
@@ -112,6 +113,8 @@ public class PostsActivity extends AppCompatActivity {
                 addPost();
             }
         });
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
 
     }

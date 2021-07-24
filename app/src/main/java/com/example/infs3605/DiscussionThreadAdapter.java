@@ -132,12 +132,7 @@ public class DiscussionThreadAdapter extends RecyclerView.Adapter<DiscussionThre
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm aaa");
         String date = dateFormat.format(discussionThread.getPostTime());
         holder.tvPostTime.setText("Posted: " + date);
-        if(discussionThread.getNumberOfReplies() == 1) {
-            holder.tvReplies.setText("" + (discussionThread.getNumberOfReplies()) + " Reply");
-        } else {
-            holder.tvReplies.setText("" + (discussionThread.getNumberOfReplies()) + " Replies");
-        }
-
+        holder.tvReplies.setText("" + (discussionThread.getNumberOfReplies()) + "");
 
     }
 

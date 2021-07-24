@@ -336,9 +336,10 @@ public class QuizActivity extends AppCompatActivity {
             new GetStarsTask().execute();
 //            tr = new TopicResult(topicId, email, stars, true);
 //            new UpdateStarsTask().execute();
-            next.setVisibility(View.GONE);
-            grp.setVisibility(View.GONE);
-            check.setVisibility(View.GONE);
+//            next.setVisibility(View.GONE);
+//            grp.setVisibility(View.GONE);
+//            check.setVisibility(View.GONE);
+//            question.setVisibility(View.GONE);
 //            again.setVisibility(View.VISIBLE);
             //displays stars earnt in the mini quiz
 

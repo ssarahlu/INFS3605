@@ -478,4 +478,126 @@
         <item name="colorControlNormal">@android:color/holo_green_light</item>
     </style>
 
+    <style name="replies">
+
+        <item name="android:textSize">
+            13sp
+        </item>
+
+        <item name="android:textColor">
+            #A5A5A5
+        </item>
+
+    </style>
+
+    <style name="discussion_title">
+
+        <item name="android:textSize">
+            15sp
+        </item>
+
+        <item name="android:textColor">
+            #454545
+        </item>
+
+    </style>
+
+    <style name="discussion_author">
+
+        <item name="android:textSize">
+            13sp
+        </item>
+
+        <item name="android:textColor">
+            #454545
+        </item>
+
+    </style>
+
+    <style name="discussion_last_post">
+
+        <item name="android:textSize">
+            13sp
+        </item>
+
+        <item name="android:textColor">
+            #454545
+        </item>
+
+    </style>
+
+    <style name="where_to_bu">
+
+        <item name="android:textSize">
+            18sp
+        </item>
+
+        <item name="android:textColor">
+            #454545
+        </item>
+
+    </style>
+
+    <style name="joe_mama">
+
+        <item name="android:textSize">
+            14sp
+        </item>
+
+        <item name="android:textColor">
+            #454545
+        </item>
+
+    </style>
+
+    <style name="a_m_">
+
+        <item name="android:textSize">
+            12sp
+        </item>
+
+        <item name="android:textColor">
+            #454545
+        </item>
+
+    </style>
+
+    <style name="hi_riley">
+
+        <item name="android:textSize">
+            13sp
+        </item>
+
+        <item name="android:textColor">
+            #454545
+        </item>
+
+    </style>
+
+    <style name="hi_all_i_m_">
+
+        <item name="android:textSize">
+            14sp
+        </item>
+
+        <item name="android:textColor">
+            #454545
+        </item>
+
+    </style>
+
+    <style name="seymour_but">
+
+        <item name="android:textSize">
+            13sp
+        </item>
+
+        <item name="android:textColor">
+            #000000
+        </item>
+
+    </style>
+
+
+
 </resources>
