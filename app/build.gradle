@@ -73,5 +73,8 @@ dependencies {
     //googl mep
     implementation 'com.google.android.gms:play-services-location:18.0.0'
 
+    implementation'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:1.0.1'
+
+
 
 }

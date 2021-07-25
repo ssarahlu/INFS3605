@@ -168,11 +168,17 @@
 
                 </androidx.recyclerview.widget.RecyclerView>
 
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </RelativeLayout>
 
+
     </androidx.core.widget.NestedScrollView>
+
+
+
 
 <!--    <EditText-->
 <!--        android:id="@+id/tvAddPost"-->

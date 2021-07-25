@@ -47,6 +47,7 @@
         <activity android:name=".PostsActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:fitsSystemWindows="false"
+            android:windowSoftInputMode="adjustResize"
             />
         <activity
             android:name=".QuizCompleteActivity"
