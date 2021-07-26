@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +42,8 @@ public class ExploreFragment extends Fragment {
 
     private List<SavedEventData> savedEventList;
 
+    private ImageView ivSavedEventsTitle;
+
 
     //not saved
     private RecyclerView eventRecyclerView;
@@ -54,6 +57,7 @@ public class ExploreFragment extends Fragment {
     private String email;
 
     private TextView tvAllEvents;
+    private ImageView ivEventsTitle;
 
 
     //social
@@ -65,6 +69,8 @@ public class ExploreFragment extends Fragment {
 
     //to be changed to instagram API
     private ArrayList<Social> socialList;
+
+    private ImageView ivSocialTitle;
 
 
 
@@ -102,6 +108,7 @@ public class ExploreFragment extends Fragment {
 
 
 
+        ivSavedEventsTitle = view.findViewById(R.id.ivSavedEventsTitle);
         savedEventRecyclerView = view.findViewById(R.id.rvSavedEvents);
         savedEventRecyclerView.setHasFixedSize(true);
 
@@ -122,6 +129,7 @@ public class ExploreFragment extends Fragment {
         //not saved
 
         tvAllEvents = view.findViewById(R.id.tvAllEvents);
+        ivEventsTitle = view.findViewById(R.id.ivEventsTitle);
 
         tvAllEvents.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,6 +162,7 @@ public class ExploreFragment extends Fragment {
         socialList = Social.getSocialList();
 
         tvAllSocials = view.findViewById(R.id.tvAllSocials);
+        ivSocialTitle = view.findViewById(R.id.ivSocialTitle);
 
         tvAllSocials.setOnClickListener(new View.OnClickListener() {
             @Override
