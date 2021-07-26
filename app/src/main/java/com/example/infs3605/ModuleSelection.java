@@ -49,6 +49,8 @@ public class ModuleSelection extends AppCompatActivity {
     private TextView quizMark;
     private int numStars;
     private ArrayList<Quiz> mQuiz = new ArrayList<>();
+
+    private ImageButton meditateBtn;
     
     private static final String TAG = "TopicQuestionActivity";
     MyDatabase myDb;
@@ -56,7 +58,9 @@ public class ModuleSelection extends AppCompatActivity {
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private String email;
     
-    private boolean isVideoViewed, isStoryViewed, isLearningsViewed, isQuizViewed; 
+    private boolean isVideoViewed, isStoryViewed, isLearningsViewed, isQuizViewed;
+
+    private int meditationModuleId = 4;
 
 
     @Override
@@ -95,6 +99,10 @@ public class ModuleSelection extends AppCompatActivity {
         learningsViewed.setVisibility(View.INVISIBLE);
         quizBar.setVisibility(View.INVISIBLE);
         quizMark.setVisibility(View.INVISIBLE);
+
+        meditateBtn = findViewById(R.id.meditateButton);
+
+        meditateBtn.setVisibility(View.INVISIBLE);
 
 
         moduleName.setText(modName);
@@ -192,6 +200,26 @@ public class ModuleSelection extends AppCompatActivity {
                 intent.putExtra("Module", modName);
                 intent.putExtra("Description", modDesc);
                 intent.putExtra("id", String.valueOf(modId));
+                startActivity(intent);
+            }
+        });
+
+        //set meditate button visibility
+        if (mMod.getModuleId() == meditationModuleId) {
+            meditateBtn.setVisibility(View.VISIBLE);
+            Log.d(TAG, "onCreate: in if statement for button visibility " + mMod.getModuleId());
+
+        } else {
+            meditateBtn.setVisibility(View.INVISIBLE);
+            Log.d(TAG, "onCreate: Else statement for btn visibility");
+
+        }
+
+        //meditate button listener
+        meditateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MeditateIntroActivity.class);
                 startActivity(intent);
             }
         });
