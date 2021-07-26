@@ -55,6 +55,10 @@ public class Videos {
         videos.add(new Videos(5, "tWvoTZxvEs8", 5));
         videos.add(new Videos(6, "DpzDvpZ0hMg", 6));
         videos.add(new Videos(7, "FrKGsnPVRww", 7));
+        videos.add(new Videos(8, "lDl5QwAR8DI", 8));
+        videos.add(new Videos(9, "OHCJuGlN91s", 9));
+        videos.add(new Videos(10, "1MFMpLdKCIM", 10));
+        videos.add(new Videos(11, "xDJrnldb08o", 11));
 
         return videos;
     }
