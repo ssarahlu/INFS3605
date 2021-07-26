@@ -28,25 +28,11 @@ public class SavedEventAdapter extends RecyclerView.Adapter<SavedEventAdapter.Vi
     private RecyclerViewClickListener mListener;
     private Context context;
 
-    SavedEventDatabase myDb;
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    private String email;
-
-    private String mEmail;
-    private int mId;
-    private String mImage;
-    private String mName;
-    private String mDate;
-    private String mLink;
-
 
     public SavedEventAdapter(List<SavedEventData> savedEventList, RecyclerViewClickListener listener) {
         mEventList = savedEventList;
         mListener = listener;
     }
-
-
 
 
     public interface RecyclerViewClickListener {

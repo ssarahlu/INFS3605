@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -37,7 +38,7 @@ public class LearningsActivity extends AppCompatActivity {
     private static int i = 0;
     private Learnings learnings;
     private ArrayList<Learnings> mLearnings = new ArrayList<>();
-    private ImageView image;
+    private ImageView image, learningsComplete;
     private TextView title, info, position;
     private ImageButton cancel, check;
     private Button next, previous;
@@ -70,6 +71,9 @@ public class LearningsActivity extends AppCompatActivity {
         previous = findViewById(R.id.previous);
         position = findViewById(R.id.position);
         check = findViewById(R.id.check);
+        learningsComplete = findViewById(R.id.learningsComplete);
+
+        learningsComplete.setVisibility(View.GONE);
 
         //gets the width of the screen
         DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -103,6 +107,7 @@ public class LearningsActivity extends AppCompatActivity {
 
             //changes button so that only the next button is visible when the user is on the first information object
             next.setVisibility(View.VISIBLE);
+            learningsComplete.setVisibility(View.GONE);
             previous.setVisibility(View.GONE);
             check.setVisibility(View.GONE);
             image.setVisibility(View.VISIBLE);
@@ -166,9 +171,12 @@ public class LearningsActivity extends AppCompatActivity {
 //            previous.setVisibility(View.VISIBLE);
             previous.setVisibility(View.GONE);
             //sets components with data
-            info.setText("You have finished your learning");
+            info.setText("");
+            title.setText("");
             check.setVisibility(View.VISIBLE);
-            image.setImageResource(R.drawable.finished);
+            image.setVisibility(View.INVISIBLE);
+            learningsComplete.setVisibility(View.VISIBLE);
+
             position.setText("");
             i = mLearnings.size();
             Log.d(TAG, "onClick: line 167 displays index at " + i);
@@ -194,6 +202,7 @@ public class LearningsActivity extends AppCompatActivity {
             position.setText(i + 1 + "/" + mLearnings.size());
             image.setVisibility(View.VISIBLE);
             title.setText(learnings.getLearningSubtitle());
+            learningsComplete.setVisibility(View.GONE);
 
 
             //button dynamic change
@@ -211,6 +220,7 @@ public class LearningsActivity extends AppCompatActivity {
             Log.d(TAG, "onClick: line 187 displays index at " + i);
             previous.setVisibility(View.VISIBLE);
             check.setVisibility(View.GONE);
+            learningsComplete.setVisibility(View.GONE);
             learnings = mLearnings.get(i);
             title.setText(learnings.getLearningSubtitle());
             info.setText(Html.fromHtml(learnings.getInformation()));
@@ -240,6 +250,7 @@ public class LearningsActivity extends AppCompatActivity {
             Log.d(TAG, "onClick: line 210 displays index at " + i);
             previous.setVisibility(View.VISIBLE);
             check.setVisibility(View.GONE);
+            learningsComplete.setVisibility(View.GONE);
             //sets components with data
             learnings = mLearnings.get(i);
             title.setText(learnings.getLearningSubtitle());
@@ -265,6 +276,7 @@ public class LearningsActivity extends AppCompatActivity {
             Log.d(TAG, "onClick: line 230 sets index at " + i);
             if (i <= 0) { //on first page
                 previous.setVisibility(View.GONE);
+                learningsComplete.setVisibility(View.GONE);
                 check.setVisibility(View.GONE);
                 i = 0;
                 Log.d(TAG, "onClick: line 230 displays index at " + i);
@@ -284,6 +296,7 @@ public class LearningsActivity extends AppCompatActivity {
             } else {
                 Log.d(TAG, "onClick: line 245 displays index at " + i);
                 previous.setVisibility(View.VISIBLE);
+                learningsComplete.setVisibility(View.GONE);
                 check.setVisibility(View.GONE);
                 learnings = mLearnings.get(i);
                 info.setText(Html.fromHtml(learnings.getInformation()));

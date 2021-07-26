@@ -23,20 +23,20 @@
 
     <TextView
         android:id="@+id/tvName"
-        style="@style/leaderboardname"
-        android:layout_width="130dp"
+        style="@style/seymour_but"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginLeft="12dp"
         android:layout_marginTop="4dp"
         android:fontFamily="sans-serif"
         android:text="Name"
-        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/ivUser"
         app:layout_constraintTop_toTopOf="@+id/ivUser" />
 
     <TextView
         android:id="@+id/tvPostDate"
+        style="@style/a_m_"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -50,30 +50,31 @@
 
     <EditText
         android:id="@+id/tvPost"
-        android:layout_width="303dp"
+        style="@style/hi_all_i_m_"
+        android:layout_width="342dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="20dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:focusable="false"
         android:background="@null"
+        android:ems="10"
+        android:focusable="false"
+        android:gravity="start|top"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivUser"
         app:layout_constraintVertical_bias="1.0" />
 
     <ImageButton
         android:id="@+id/deleteButton"
-        android:layout_width="43dp"
-        android:layout_height="43dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_width="15dp"
+        android:layout_height="18dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
         android:background="#FFFFFF"
+        android:scaleType="centerCrop"
+        android:src="@drawable/delete"
         app:layout_constraintBottom_toBottomOf="@+id/tvName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvName" />

@@ -15,7 +15,7 @@
         android:layout_height="44dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:background="#00FFFFFF"
         android:elevation="4dp"
         android:scaleType="centerCrop"
@@ -25,7 +25,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/info" />
+        app:layout_constraintTop_toBottomOf="@+id/learningsComplete" />
 
     <ImageView
         android:id="@+id/image"
@@ -36,8 +36,7 @@
         android:layout_marginTop="80dp"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="@+id/position"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/finished" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/title"
@@ -125,5 +124,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/info"
         app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/learningsComplete"
+        android:layout_width="349dp"
+        android:layout_height="418dp"
+        android:layout_marginTop="124dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/learnings_completed" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

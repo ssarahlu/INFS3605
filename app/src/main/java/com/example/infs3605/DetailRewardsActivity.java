@@ -119,6 +119,8 @@ public class DetailRewardsActivity extends AppCompatActivity {
                 qrTV.setVisibility(View.GONE);
                 redeemButton.setVisibility(View.GONE);
 
+                new UpdateRedemption().execute();
+
             }
         });
 

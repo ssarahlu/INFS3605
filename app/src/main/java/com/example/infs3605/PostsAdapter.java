@@ -63,8 +63,10 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         post = mPosts.get(position);
+        holder.deleteButton.setVisibility(View.GONE);
 
         if (post.getAuthorID().equals(user.getUid())) {
+            holder.deleteButton.setVisibility(View.VISIBLE);
             holder.tvName.setTextColor(Color.parseColor("#71C453"));
             holder.tvName.setText(post.getAuthor());
             holder.deleteButton.setImageResource(R.drawable.ic_baseline_delete_24);
