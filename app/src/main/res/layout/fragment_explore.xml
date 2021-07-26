@@ -8,7 +8,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/ivExploreActionBar"
         android:layout_width="420dp"
         android:layout_height="68dp"
         android:layout_alignParentTop="true"
@@ -21,16 +21,17 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="385dp"
-        android:layout_height="588dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_marginBottom="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4">
+        app:layout_constraintTop_toBottomOf="@+id/ivExploreActionBar">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -38,8 +39,8 @@
                 android:id="@+id/ivSavedEventsTitle"
                 android:layout_width="102dp"
                 android:layout_height="22dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="24dp"
                 android:scaleType="fitCenter"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -50,7 +51,7 @@
                 style="@style/explore_events"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginTop="16dp"
                 android:textFontWeight="600"
                 app:layout_constraintStart_toStartOf="parent"
@@ -60,10 +61,12 @@
                 android:id="@+id/rvSavedEvents"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/tvSavedEventsTitle"
-                app:layout_constraintTop_toBottomOf="@+id/tvSavedEventsTitle" >
+                app:layout_constraintStart_toStartOf="@+id/ivSavedEventsTitle"
+                app:layout_constraintTop_toBottomOf="@+id/ivSavedEventsTitle">
 
             </androidx.recyclerview.widget.RecyclerView>
 
@@ -72,7 +75,7 @@
                 style="@style/explore_events"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginTop="25dp"
                 android:textFontWeight="600"
                 app:layout_constraintStart_toStartOf="parent"
@@ -82,17 +85,19 @@
                 android:id="@+id/rvEvents"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tvEventsTitle"
-                app:layout_constraintTop_toBottomOf="@+id/tvEventsTitle" />
+                app:layout_constraintTop_toBottomOf="@+id/ivEventsTitle" />
 
             <TextView
                 android:id="@+id/tvSocialTitle"
                 style="@style/explore_events"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginTop="25dp"
                 android:textFontWeight="600"
                 app:layout_constraintStart_toStartOf="parent"
@@ -103,12 +108,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
                 android:layout_marginBottom="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tvSocialTitle"
-                app:layout_constraintTop_toBottomOf="@+id/tvSocialTitle" />
+                app:layout_constraintTop_toBottomOf="@+id/ivSocialTitle" />
 
             <TextView
                 android:id="@+id/tvAllEvents"
@@ -119,7 +124,7 @@
                 android:layout_marginRight="8dp"
                 android:text="See all"
                 app:layout_constraintEnd_toEndOf="@+id/rvEvents"
-                app:layout_constraintTop_toTopOf="@+id/tvEventsTitle" />
+                app:layout_constraintTop_toTopOf="@+id/ivEventsTitle" />
 
             <TextView
                 android:id="@+id/tvAllSocials"
@@ -130,14 +135,14 @@
                 android:layout_marginRight="8dp"
                 android:text="See all"
                 app:layout_constraintEnd_toEndOf="@+id/rvSocial"
-                app:layout_constraintTop_toTopOf="@+id/tvSocialTitle" />
+                app:layout_constraintTop_toTopOf="@+id/ivSocialTitle" />
 
             <ImageView
                 android:id="@+id/ivEventsTitle"
                 android:layout_width="55dp"
                 android:layout_height="23dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="25dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="24dp"
                 android:scaleType="fitCenter"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rvSavedEvents"
@@ -147,7 +152,7 @@
                 android:id="@+id/ivSocialTitle"
                 android:layout_width="50dp"
                 android:layout_height="22dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
                 android:layout_marginTop="25dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rvEvents"

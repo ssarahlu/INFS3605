@@ -138,7 +138,7 @@ public class Event {
                 "State Library of Queensland, Stanley Place, South Brisbane QLD")));
         eventList.add((new Event(6,
                 "INDIGOV15%20%281%29.png?itok=CsM0YU4T",
-                "2021 Developing Northern Australia Conference","16 Aug 2021 to 18 Aug 2021",
+                "Developing Northern Australia","16 Aug 2021 to 18 Aug 2021",
                 "2021-developing-northern-australia-conference",
                 "The Developing Northern Australia Conference provides a platform to unite leaders, decision makers, industry representatives and community members working to advance our northern regions.\n" +
                         "\n" +

@@ -7,7 +7,7 @@
     tools:context=".AllEventsActivity">
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/ivExploreActionBar"
         android:layout_width="411dp"
         android:layout_height="66dp"
         android:layout_alignParentLeft="true"
@@ -37,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/ivExploreActionBar"
         tools:layout_editor_absoluteX="90dp" />
 
     <TextView
