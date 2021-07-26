@@ -636,6 +636,81 @@
     </style>
 
 
+    <!-- styles.xml -->
+    <style name="explore_events">
+
+        <item name="android:textSize">
+            17sp
+        </item>
+
+        <item name="android:textColor">
+            #3F3F3F
+        </item>
+
+        <item name="fontWeight">600</item>
+
+    </style>
+
+    <style name="see_all">
+
+        <item name="android:textSize">
+            14sp
+        </item>
+
+        <item name="android:textColor">
+            #A5A5A5
+        </item>
+
+    </style>
+
+
+    <style name="social_description">
+
+        <item name="android:textSize">
+            13sp
+        </item>
+
+        <item name="android:textColor">
+            #3F3F3F
+        </item>
+
+    </style>
+
+    <style name="account_social">
+
+        <item name="android:textSize">
+            17sp
+        </item>
+
+        <item name="android:textColor">
+            #3F3F3F
+        </item>
+
+    </style>
+
+    <style name="event_title">
+
+        <item name="android:textSize">
+            13sp
+        </item>
+
+        <item name="android:textColor">
+            #424242
+        </item>
+
+    </style>
+
+    <style name="date_events">
+
+        <item name="android:textSize">
+            11sp
+        </item>
+
+        <item name="android:textColor">
+            #424242
+        </item>
+
+    </style>
 
 
 </resources>

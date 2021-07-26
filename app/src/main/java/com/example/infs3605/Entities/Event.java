@@ -84,7 +84,7 @@ public class Event {
 
         eventList.add(new Event(1,
                 "National%20Aboriginal%20and%20Torres%20Strait%20Islander%20Children%27s%20Day.jpg?itok=k9KobBbH",
-                "National Aboriginal and Torres Strait Islander Children's Day","4 Aug 2021",
+                "National Children's Day","4 Aug 2021",
                 "national-aboriginal-and-torres-strait-islander-childrens-day",
                 "The Children's Day 2021 theme highlights the importance of supporting strong family and community connections to help Indigenous children achieve strong spiritual and cultural wellbeing and to form proud cultural identities.\n" +
                         "\n" +
