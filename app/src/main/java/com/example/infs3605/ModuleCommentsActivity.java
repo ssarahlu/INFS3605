@@ -63,7 +63,6 @@ public class ModuleCommentsActivity extends AppCompatActivity {
 
         tvTitle = findViewById(R.id.tvModuleTitle);
         tvTitle.setText(bundle.getString("Module"));
-        Toast.makeText(this, "" + bundle.getString("id"), Toast.LENGTH_SHORT).show();
 
 
         btBack = findViewById(R.id.backButton2);

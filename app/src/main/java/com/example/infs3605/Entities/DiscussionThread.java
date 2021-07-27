@@ -3,11 +3,12 @@ package com.example.infs3605.Entities;
 import java.util.Date;
 
 public class DiscussionThread {
-    private String threadID, title, author, authorID, post;
+    private String threadID, title, author, authorID, post, fnpReplied;
     private Date lastPostTime, postTime;
     private int numberOfReplies;
+    private Boolean arts, culture, values;
 
-    public DiscussionThread(String threadID, String title, String author, String authorID, Date lastPostTime, Date postTime, int numberOfReplies, String post) {
+    public DiscussionThread(String threadID, String title, String author, String authorID, Date lastPostTime, Date postTime, int numberOfReplies, String post, Boolean arts, Boolean culture, Boolean values, String fnpReplied) {
         this.threadID = threadID;
         this.title = title;
         this.author = author;
@@ -16,6 +17,11 @@ public class DiscussionThread {
         this.postTime = postTime;
         this.numberOfReplies = numberOfReplies;
         this.post = post;
+        this.arts = arts;
+        this.culture = culture;
+        this.values = values;
+        this.fnpReplied = fnpReplied;
+
     }
 
     public String getThreadID() {
@@ -80,5 +86,37 @@ public class DiscussionThread {
 
     public void setPost(String post) {
         this.post = post;
+    }
+
+    public Boolean getArts() {
+        return arts;
+    }
+
+    public void setArts(Boolean arts) {
+        this.arts = arts;
+    }
+
+    public Boolean getCulture() {
+        return culture;
+    }
+
+    public void setCulture(Boolean culture) {
+        this.culture = culture;
+    }
+
+    public Boolean getValues() {
+        return values;
+    }
+
+    public void setValues(Boolean values) {
+        this.values = values;
+    }
+
+    public String getFnpReplied() {
+        return fnpReplied;
+    }
+
+    public void setFnpReplied(String fnpReplied) {
+        this.fnpReplied = fnpReplied;
     }
 }
