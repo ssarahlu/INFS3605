@@ -48,6 +48,9 @@ public class RewardsActivity extends AppCompatActivity {
     private int mStars;
     private int achievementId;
 
+    private int[] starSaved = new int [1];
+//    private ArrayList<Integer> starSavedAR = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +60,6 @@ public class RewardsActivity extends AppCompatActivity {
         mRecyclerView.setHasFixedSize(true);
         backButton = findViewById(R.id.backButton);
         userStars = findViewById(R.id.userStars);
-
-        new GetAccountAchievements().execute();
 
         for (Rewards r : Rewards.getRewards()){
             mRewards.add(r);
@@ -79,9 +80,15 @@ public class RewardsActivity extends AppCompatActivity {
 
                             userStars.setText(mStars + "");
 
+                            starSaved[0] = mStars;
+
+
                         }
                     }
                 });
+
+        new GetAccountAchievements().execute();
+
 
         new InsertAccountAchievements().execute();
 
@@ -120,9 +127,9 @@ public class RewardsActivity extends AppCompatActivity {
     private void launchRewardDetail() {
         Intent intent = new Intent(this, DetailRewardsActivity.class);
         intent.putExtra("id", String.valueOf(rewardId));
-        System.out.println(rewardId);
+        Log.d(TAG, "launchRewardDetail: " + rewardId);
         intent.putExtra("email", email);
-        System.out.println(email);
+        Log.d(TAG, "launchRewardDetail: " + email);
         startActivity(intent);
 
     }
@@ -158,16 +165,43 @@ public class RewardsActivity extends AppCompatActivity {
                     .build();
 
             for (Rewards r : mRewards) {
-                if (r.getStars() < mStars) {
+                Log.d(TAG, "doInBackground: r.getStars " + r.getStars() + " " +  starSaved[0]);
+
+                if (r.getStars() < starSaved[0]) {
+                    Log.d(TAG, "doInBackground:  in if statement to check stars ");
                     achievementId = r.getRewardId();
                     mAccAchs.add(new AccountAchievement(email, achievementId, true, false));
                     myDb.accountAchievementDao().insertSingle(email, achievementId, true, false);
+
+                    Log.d(TAG, "doInBackground: insert single " + email + achievementId );
                 }
             }
 
-//            for (AccountAchievement a : mAccAchs) {
-//                myDb.accountAchievementDao().insertSingle(a.getEmail(), a.getAchievementId(), a.isAchieved(), a.isRedeemed());
-//            }
+//            userRef.get()
+//                    .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+//                        @Override
+//                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+//                            if (documentSnapshot.exists()){
+//
+//                                mStars = Integer.parseInt("" + documentSnapshot.get("stars"));
+//
+//                                for (Rewards r : mRewards) {
+//                                    Log.d(TAG, "doInBackground: r.getStars " + r.getStars() + " " +  mStars);
+//
+//                                    if (r.getStars() < mStars) {
+//                                        Log.d(TAG, "doInBackground:  in if statement to check stars ");
+//                                        achievementId = r.getRewardId();
+//                                        mAccAchs.add(new AccountAchievement(email, achievementId, true, false));
+//                                        myDb.accountAchievementDao().insertSingle(email, achievementId, true, false);
+//
+//                                        Log.d(TAG, "doInBackground: insert single " + email + achievementId );
+//                                    }
+//                                }
+//
+//                            }
+//                        }
+//                    });
+
 
             Log.d(TAG, "doInBackground: ASYNC TASK  ");
             return null;

@@ -61,8 +61,8 @@ public class ModuleCommentsActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         Bundle bundle = getIntent().getExtras();
 
-        tvTitle = findViewById(R.id.tvModuleTitle);
-        tvTitle.setText(bundle.getString("Module"));
+//        tvTitle = findViewById(R.id.tvModuleTitle);
+//        tvTitle.setText(bundle.getString("Module"));
 
 
         btBack = findViewById(R.id.backButton2);

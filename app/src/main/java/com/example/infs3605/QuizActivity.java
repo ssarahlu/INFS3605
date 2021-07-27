@@ -248,6 +248,8 @@ public class QuizActivity extends AppCompatActivity {
                 img1.setImageResource(R.drawable.wrong);
                 displayTick();
                 correct = false;
+                mpWrong.start();
+
             }
             return true;
         } else if (opt2.isChecked()) {

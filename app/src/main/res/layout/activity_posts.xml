@@ -146,10 +146,12 @@
 
                 <ImageButton
                     android:id="@+id/btAddPost"
-                    android:layout_width="42dp"
-                    android:layout_height="32dp"
-                    android:layout_marginBottom="48dp"
+                    android:layout_width="16dp"
+                    android:layout_height="15dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginBottom="56dp"
                     android:background="#FFFFFF"
+                    android:scaleType="centerCrop"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/tvAddPost"
                     app:srcCompat="@drawable/vector" />
