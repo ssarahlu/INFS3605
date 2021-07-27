@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#f6f6f6"
     tools:context=".AllEventsActivity">
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/ivExploreActionBar"
         android:layout_width="411dp"
         android:layout_height="66dp"
         android:layout_alignParentLeft="true"
@@ -37,18 +38,11 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivExploreActionBar"
+        app:layout_constraintVertical_bias="0.243"
         tools:layout_editor_absoluteX="90dp" />
 
-    <TextView
-        android:id="@+id/eventsTitle"
-        style="@style/rituals_and"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="21dp"
-        android:text="Events"
-        app:layout_constraintStart_toEndOf="@+id/backButton"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

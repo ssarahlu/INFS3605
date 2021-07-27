@@ -21,9 +21,8 @@
         android:id="@+id/btnBack"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="23dp"
         android:background="@drawable/back"
         android:text="back"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,16 +44,13 @@
 
             <TextView
                 android:id="@+id/tvEventName"
+                style="@style/event_detail_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="18dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
                 android:text="tvEventName"
-                android:textColor="#000"
-                android:textSize="25dp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/btnSearch"
                 app:layout_constraintStart_toStartOf="parent"
@@ -63,36 +59,32 @@
 
             <TextView
                 android:id="@+id/tvEventDate"
+                style="@style/date_detail"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="tvEventDate"
-                android:textColor="#4C4C4C"
-                android:textSize="15dp"
                 app:layout_constraintEnd_toEndOf="@+id/tvEventName"
                 app:layout_constraintStart_toStartOf="@+id/tvEventName"
                 app:layout_constraintTop_toBottomOf="@+id/tvEventName" />
 
             <TextView
                 android:id="@+id/tvEventLoc"
+                style="@style/location_detail"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
+                android:layout_marginTop="9dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:text="tvEventDate"
-                android:textColor="#4C4C4C"
-                android:textSize="15dp"
+                android:text="tvEventDate tvEventDate tvEventDate tvEventDate tvEventDate tvEventDatetvEventDate tvEventDate tvEventDatetvEventDate  "
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/ivLocIcon"
-                app:layout_constraintTop_toTopOf="@+id/ivLocIcon" />
+                app:layout_constraintTop_toBottomOf="@+id/tvEventDate" />
 
             <ImageButton
                 android:id="@+id/btnSave"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="18dp"
                 android:background="@drawable/unsaved_icon"
                 android:text="Save"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -101,24 +93,22 @@
 
             <TextView
                 android:id="@+id/tvDescTitle"
+                style="@style/details_events"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Description"
-                android:textColor="#000"
-                android:textSize="15dp"
+                android:layout_marginTop="32dp"
+                android:text="Details"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/tvEventDate"
                 app:layout_constraintTop_toBottomOf="@+id/tvEventLoc" />
 
             <TextView
                 android:id="@+id/tvLocTitle"
+                style="@style/details_events"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="32dp"
                 android:text="Location"
-                android:textColor="#000"
-                android:textSize="15dp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/tvEventDesc"
                 app:layout_constraintTop_toBottomOf="@+id/tvEventDesc" />
@@ -138,11 +128,11 @@
 
             <TextView
                 android:id="@+id/tvEventDesc"
+                style="@style/event_detail"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
                 android:text="TextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tvDescTitle"
@@ -150,23 +140,24 @@
 
             <ImageButton
                 android:id="@+id/btnSearch"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:background="@drawable/search_icon"
+                android:background="@drawable/search"
                 android:text="Button"
                 app:layout_constraintEnd_toStartOf="@+id/btnSave"
                 app:layout_constraintTop_toTopOf="@+id/tvEventName" />
 
             <ImageView
                 android:id="@+id/ivLocIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_width="17dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="14dp"
                 android:src="@drawable/location"
                 app:layout_constraintStart_toStartOf="@+id/tvEventDate"
-                app:layout_constraintTop_toBottomOf="@+id/tvEventDate" />
+                app:layout_constraintTop_toBottomOf="@+id/tvEventDate"
+                app:srcCompat="@drawable/map_pin"
+                tools:srcCompat="@drawable/map_pin" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

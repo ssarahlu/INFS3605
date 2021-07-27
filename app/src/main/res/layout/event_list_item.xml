@@ -2,19 +2,23 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="1dp">
+    android:layout_marginStart="0dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
         android:layout_width="300dp"
         android:layout_height="180dp"
-        app:cardCornerRadius="5dp"
-        app:cardMaxElevation="2dp"
-        app:cardElevation="1dp"
+        app:cardCornerRadius="8dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="2dp"
+
         android:layout_centerInParent="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
+            android:background="?android:attr/selectableItemBackground"
             android:layout_height="match_parent">
 
             <ImageView
@@ -27,32 +31,32 @@
 
             <TextView
                 android:id="@+id/tvEventListName"
+                style="@style/event_title"
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:text="Yes We Can"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/ivEventListImage"
                 android:layout_alignLeft="@id/ivEventListImage"
-                android:gravity="center"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="5dp"
-                android:textColor="#000"
+                android:layout_marginLeft="9dp"
+                android:layout_marginTop="8dp"
                 android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="10sp"
-                android:autoSizeMaxTextSize="20sp"/>
+                android:gravity="left"
+                android:text="Yes We Can"
+                android:textFontWeight="600" />
 
 
             <TextView
                 android:id="@+id/tvEventListDate"
+                style="@style/date_events"
                 android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:text="No we cannot"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/tvEventListName"
                 android:layout_alignLeft="@id/tvEventListName"
-                android:gravity="center"
-                android:textColor="#A9000000"
-                android:autoSizeTextType="uniform"
+                android:autoSizeMaxTextSize="20sp"
                 android:autoSizeMinTextSize="10sp"
-                android:autoSizeMaxTextSize="20sp"/>
+                android:autoSizeTextType="uniform"
+                android:gravity="center"
+                android:text="No we cannot"
+                android:textColor="#A9000000" />
 
 
         </RelativeLayout>

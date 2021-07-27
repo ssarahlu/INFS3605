@@ -128,6 +128,27 @@ public class Quiz {
         quiz.add(new Quiz(29, "What is the Wiradjuri word for deep listening?", "Winhangadhurinya", "Dadirri", "Meditation", "None of the above", "Winhangadhurinya", 4));
         quiz.add(new Quiz(30, "What is the best word to describe Dadirri to non-Indigenous people?", "Awareness", "Respect", "Contemplation", "Meditation", "Contemplation", 4));
         quiz.add(new Quiz(31, "How can an individual practise Dadirri?", "By listening to music", "By going outside and listening to the surrounding nature", "By closing your eyes", "By taking a nap", "By going outside and listening to the surrounding nature", 4));
+
+        quiz.add(new Quiz(32, "Why is the community an important aspect of First Nations People's families?", "It is actually not that important", "Community reserves the right to oust you if you look different", "The community is an extension of family", "Because without community there is no family", "The community is an extension of family", 8));
+        quiz.add(new Quiz(33, "What is a 'Walkabout'?", "A quick walk around the block", "A quick walk around the burbs", "A period of time which an adolescent male lives away from their social group", "A long walk around the burb", "A period of time which an adolescent male lives away from their social group", 8));
+        quiz.add(new Quiz(34, "What is a common way of marking the transition from childhood to adulthood in First Nations People culture?", "When they reach the age of 18", "Through a rite of passage", "When they find a new home", "When they find a mate", "Through a rite of passage", 8));
+        quiz.add(new Quiz(35, "What are 'bora' celebrations", "A celebration of the community coming together", "When boys prepare for their next stages of life", "A gathering of different families as one whole community", "When the older males of the community prepare boys for their next stages of life", "When the older males of the community prepare boys for their next stages of life", 8));
+
+        quiz.add(new Quiz(36, "Who created the first human beings?", "The great spirit, Baiame", "The sky spirit, Baiame", "The sky spirit, Balam", "The water spirit, Balam", "The sky spirit, Baiame", 9));
+        quiz.add(new Quiz(37, "How does one enter Heaven in First Nations People's culture?", "There is no heaven", "Doing good deeds", "Carrying out the right rituals during life", "To live with honour", "There is no heaven", 9));
+        quiz.add(new Quiz(38, "How does one enter 'Land of the Dead' in First Nations People's culture?", "There is no 'Land of the Dead'", "Doing good deeds", "Carrying out the right rituals during life", "To live with honour", "Carrying out the right rituals during life", 9));
+        quiz.add(new Quiz(39, "What is death seen as?", "A transitioning phase between adolescence and adulthood", "A transition rite ensuring the continuance of the cycle of life", "A person's relationship with his good deeds", "A person's disconnection with his community", "A transition rite ensuring the continuance of the cycle of life", 9));
+
+        quiz.add(new Quiz(40, "How many seasons are there in the Nyoongar calendar?", "3", "4", "5", "6", "6", 10));
+        quiz.add(new Quiz(41, "What is the key message of The Birth of the Butterflies", "Bravery is rewarded as the brave caterpillars become beautiful butterflies after their journey", "Not all things are as ugly as they seem as even butterflies come from caterpillars", "Not to be afraid of setbacks as life gives us an opportunity to transform and find new beauty as we retreat into our homes and cocoons", "Only cockatoos could die in the dreamtime", "Not to be afraid of setbacks as life gives us an opportunity to transform and find new beauty as we retreat into our homes and cocoons", 10));
+        quiz.add(new Quiz(42, "What is 'The Dreaming'?", "The images you see as you sleep", "A spiritual world that accompanies our physical one", "Something that is not true", "A goal that one aspires to achieve", "A spiritual world that accompanies our physical one", 10));
+        quiz.add(new Quiz(43, "What is one way the First Nations People honour their creators?", "Sing songs about them", "Live their best life with no regrets", "Notice the things around them as signs from their creator", "Give frequent offerings", "Notice the things around them as signs from their creator", 10));
+
+        quiz.add(new Quiz(44, "What animal was Warreem Boofey", "Wombat", "Kangaroo", "Investor", "He was not featured", "He was not featured", 11));
+        quiz.add(new Quiz(45, "What animal was Warreen", "Wombat", "Kangaroo", "Investor", "He was not featured", "Wombat", 11));
+        quiz.add(new Quiz(46, "What is Aboriginal art about?", "Collective expression", "Self expression", "Collective shared experiences", "Looking good", "Collective shared experiences", 11));
+        quiz.add(new Quiz(47, "What type of corroborees excluded outsiders?", "First Nations gathering", "Non-sacred corroborees", "New Years Eve", "Sacred corroborees", "Sacred corroborees", 11));
+
         return quiz;
     }
 
