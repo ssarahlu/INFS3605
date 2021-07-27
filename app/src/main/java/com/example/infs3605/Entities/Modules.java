@@ -92,7 +92,7 @@ public class Modules {
                 "\nIn this module, you will dive further into Indigenous perspectives on death and the afterlife. We will also cover the concept of Eternal Dreaming.", "https://www.kullillaart.com.au/assets/images/Southern%20Cross%201.jpg", 1));
         modules.add(new Modules(10, "The Birth of the Butterflies", "Noyoongar Seasonal Calendar", "Long ago in the Dreamtime when the world was very young, all the birds and animals spoke the same language. All lived forever - no one ever died so none of the creatures knew about death.\n" +
                 "\nIn this module, you will learn more about the First Nations People's spiritual beliefs on death.", "https://dreamtimecreative.com.au/wp-content/uploads/2019/06/CACYP0001-Artwork-Final-uai-258x182.jpg", 1));
-        modules.add(new Modules(11, "Mirram The Kangaroo and Warreen The Wombat", "Songlines and Aboriginal art", "Many years ago, Mirram the kangaroo and Warreen the wombat were both men. They were very friendly, and hunted and lived together in the same camping-ground. A disagreement between the two lead to the wombat having a flat forehaed and the kangaroo jumping in the open space with a tail.\n" +
+        modules.add(new Modules(11, "Mirram and Warreen", "Songlines and Aboriginal art", "Many years ago, Mirram the kangaroo and Warreen the wombat were both men. They were very friendly, and hunted and lived together in the same camping-ground.\n" +
                 "\nIn this module we will learn about songlines (also called 'dreaming tracks') and discuss the differences between Aboriginal and western art.", "https://mk0zeqasupac6pr2dyn5.kinstacdn.com/wp-content/uploads/2019/02/EB395.jpg", 0));
 
         return modules;
