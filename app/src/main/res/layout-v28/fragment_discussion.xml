@@ -5,51 +5,68 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="false"
-    tools:context=".LeaderboardActivity">
+    tools:context=".MainActivity">
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout5"
-        android:layout_width="match_parent"
-        android:layout_height="123dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:background="#00FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout6"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/imageView14"
-            android:layout_width="wrap_content"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/discussion_forum_header" />
+            app:layout_constraintTop_toBottomOf="@+id/tvSearch"
+            app:layout_constraintVertical_bias="0.112" />
 
         <SearchView
             android:id="@+id/tvSearch"
-            android:layout_width="350dp"
-            android:layout_height="39dp"
-            android:layout_marginBottom="18dp"
+            android:layout_width="370dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
             android:background="@drawable/searchbar"
             android:iconifiedByDefault="false"
             android:queryBackground="@android:color/transparent"
             android:queryHint="Search"
             android:showAsAction="collapseActionView|ifRoom"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintHorizontal_bias="0.39"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:text="Discussion Forum"
+            android:textColor="#F2721C"
+            android:textSize="19dp"
+            app:layout_constraintStart_toStartOf="@+id/tvSearch"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout6"
-        android:layout_width="0dp"
-        android:layout_height="592dp"
+        android:layout_width="375dp"
+        android:layout_height="598dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.333"
@@ -58,21 +75,19 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvDiscussionThreads"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_width="351dp"
+            android:layout_height="505dp"
             android:layout_marginStart="12dp"
             android:layout_marginLeft="12dp"
-            android:layout_marginTop="5dp"
             android:layout_marginEnd="12dp"
             android:layout_marginRight="12dp"
-            android:layout_marginBottom="60dp"
             android:paddingLeft="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.042" />
+            app:layout_constraintVertical_bias="0.113" />
 
         <ImageButton
             android:id="@+id/btAddThread"

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -96,6 +97,11 @@ public class PostsActivity extends AppCompatActivity {
 
         tvTitle.setText(bundle.getString("title"));
         tvAuthor.setText(bundle.getString("author"));
+        if (bundle.getString("authorID").equals(user.getUid())) {
+            tvAuthor.setTextColor(Color.parseColor("#71C453"));
+        } else {
+            tvAuthor.setTextColor(Color.parseColor("#000000"));
+        }
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm aaa");
         String date = dateFormat.format(bundle.get("postTime"));
         tvLastPost.setText("" + date);

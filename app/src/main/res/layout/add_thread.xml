@@ -36,11 +36,52 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
+    <ToggleButton
+        android:id="@+id/arts"
+        android:layout_width="64dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/arts_selector"
+        android:checked="false"
+        android:textOff="@string/feedback"
+        android:textOn="@string/feedback"
+        app:layout_constraintStart_toStartOf="@+id/tvThreadTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tvThreadTitle" />
+
+    <ToggleButton
+        android:id="@+id/values"
+        android:layout_width="70dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/values_selector"
+        android:checked="false"
+        android:text=" "
+        android:textOff="@string/feedback"
+        android:textOn="@string/feedback"
+        app:layout_constraintStart_toEndOf="@+id/culture"
+        app:layout_constraintTop_toBottomOf="@+id/tvThreadTitle" />
+
+    <ToggleButton
+        android:id="@+id/culture"
+        android:layout_width="70dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/culture_selector"
+        android:checked="false"
+        android:textOff="@string/feedback"
+        android:textOn="@string/feedback"
+        app:layout_constraintStart_toEndOf="@+id/arts"
+        app:layout_constraintTop_toBottomOf="@+id/tvThreadTitle" />
+
     <EditText
         android:id="@+id/tvThreadContent"
         android:layout_width="365dp"
         android:layout_height="280dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/feedback_text_bg"
         android:gravity="left"
         android:inputType="textMultiLine"
@@ -53,7 +94,6 @@
         android:scrollbars="vertical"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/tvThreadTitle"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tvThreadTitle"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -100,8 +140,19 @@
         style="@style/thread_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:text="Body"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/tvThreadTitle"
+        app:layout_constraintTop_toBottomOf="@+id/arts" />
+
+    <TextView
+        android:id="@+id/textView6"
+        style="@style/thread_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Topic Area(s)"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/tvThreadTitle"
         app:layout_constraintTop_toBottomOf="@+id/tvThreadTitle" />

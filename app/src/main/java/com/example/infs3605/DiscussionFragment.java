@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.collection.LongSparseArray;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,12 +21,14 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.SearchView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.example.infs3605.Entities.DiscussionThread;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
@@ -55,6 +58,7 @@ public class DiscussionFragment extends Fragment {
     private ImageButton btAddThread;
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
+    private String searchQuery;
 
     public DiscussionFragment() {
         // Required empty public constructor
@@ -69,22 +73,118 @@ public class DiscussionFragment extends Fragment {
         mRecyclerView = view.findViewById(R.id.rvDiscussionThreads);
         mRecyclerView.setHasFixedSize(false);
 
+        TabLayout tabLayout;
+        tabLayout = view.findViewById(R.id.tab_layout);
+        tabLayout.addTab(tabLayout.newTab().setText("General"));
+        tabLayout.addTab(tabLayout.newTab().setText("Arts"));
+        tabLayout.addTab(tabLayout.newTab().setText("Culture"));
+        tabLayout.addTab(tabLayout.newTab().setText("Values"));
+        tabLayout.selectTab(tabLayout.getTabAt(0));
 
         SearchView tvSearch = view.findViewById(R.id.tvSearch);
 
-        tvSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        if (!tabLayout.isSelected()) {
+            tvSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String s) {
+                    mAdapter.getFilter().filter(s);
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    mAdapter.getFilter().filter(newText);
+                    return false;
+                }
+            });
+        }
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
-            public boolean onQueryTextSubmit(String s) {
-                mAdapter.getFilter().filter(s);
-                return false;
+            public void onTabSelected(TabLayout.Tab tab) {
+                int position = tab.getPosition();
+                if (position == 0) {
+                    mAdapter.getFilter().filter("clear");
+                    searchQuery = "clear";
+                } else if (position == 1) {
+                    mAdapter.getFilter().filter("arts");
+                    searchQuery = "arts";
+                } else if (position == 2) {
+                    mAdapter.getFilter().filter("culture");
+                    searchQuery = "culture";
+                } else if (position == 3) {
+                    mAdapter.getFilter().filter("values");
+                    searchQuery = "values";
+                }
+
+                tvSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                    @Override
+                    public boolean onQueryTextSubmit(String s) {
+                        mAdapter.getFilter().filter(s);
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onQueryTextChange(String newText) {
+                        mAdapter.getFilter().filter(newText);
+                        if(newText.equals("")) {
+                            mAdapter.getFilter().filter("clear");
+                            mAdapter.getFilter().filter(searchQuery);
+                        }
+                        return false;
+                    }
+                });
+
+
+
             }
 
             @Override
-            public boolean onQueryTextChange(String s) {
-                mAdapter.getFilter().filter(s);
-                return false;
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            mAdapter.getFilter().filter("clear");
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            int position = tab.getPosition();
+                if (position == 0) {
+                    mAdapter.getFilter().filter("clear");
+                    searchQuery = "clear";
+                } else if (position == 1) {
+                    mAdapter.getFilter().filter("arts");
+                    searchQuery = "arts";
+                } else if (position == 2) {
+                    mAdapter.getFilter().filter("culture");
+                    searchQuery = "culture";
+                } else if (position == 3) {
+                    mAdapter.getFilter().filter("values");
+                    searchQuery = "values";
+                }
+
+                tvSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                    @Override
+                    public boolean onQueryTextSubmit(String s) {
+                        mAdapter.getFilter().filter(s);
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onQueryTextChange(String newText) {
+                        mAdapter.getFilter().filter(newText);
+                        if(newText.equals("")) {
+                            mAdapter.getFilter().filter("clear");
+                            mAdapter.getFilter().filter(searchQuery);
+                        }
+                        return false;
+                    }
+                });
+
             }
         });
+
+
 
         setData();
 
@@ -105,11 +205,17 @@ public class DiscussionFragment extends Fragment {
         EditText threadTitle, threadContent;
         Button btPost;
         ImageButton btCancel;
+        ToggleButton arts, culture, values;
         final View addThreadPopup = getLayoutInflater().inflate(R.layout.add_thread, null);
         threadTitle = addThreadPopup.findViewById(R.id.tvThreadTitle);
         threadContent = addThreadPopup.findViewById(R.id.tvThreadContent);
         btPost = addThreadPopup.findViewById(R.id.btPost);
         btCancel = addThreadPopup.findViewById(R.id.closeButton);
+        arts = addThreadPopup.findViewById(R.id.arts);
+        culture = addThreadPopup.findViewById(R.id.culture);
+        values = addThreadPopup.findViewById(R.id.values);
+
+
 
         // Show the popup
         dialogBuilder.setView(addThreadPopup);
@@ -127,35 +233,62 @@ public class DiscussionFragment extends Fragment {
                     Toast.makeText(getActivity(), "Please enter all fields", Toast.LENGTH_SHORT).show();
                 } else {
 
-                    Calendar calendar = Calendar.getInstance();
+                    if (arts.isChecked() == false && culture.isChecked() == false && values.isChecked() == false) {
+                        Toast.makeText(getActivity(), "Please select at least one Topic Area", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Calendar calendar = Calendar.getInstance();
 
-                    // Store the note under an author and for a specific module
-                    Map<String, Object> thread = new HashMap<>();
-                    thread.put("title", threadTitle.getText().toString());
-                    thread.put("author", user.getDisplayName());
-                    thread.put("authorID", user.getUid());
-                    thread.put("post", threadContent.getText().toString());
-                    thread.put("lastPostTime", calendar.getTime());
-                    thread.put("postTime", calendar.getTime());
-                    thread.put("numberOfReplies", 0);
+                        // Store the note under an author and for a specific module
+                        Map<String, Object> thread = new HashMap<>();
+                        thread.put("title", threadTitle.getText().toString());
+                        thread.put("author", user.getDisplayName());
+                        thread.put("authorID", user.getUid());
+                        thread.put("post", threadContent.getText().toString());
+                        thread.put("lastPostTime", calendar.getTime());
+                        thread.put("postTime", calendar.getTime());
+                        thread.put("numberOfReplies", 0);
+                        thread.put("fnpReplied", "");
 
-                    // Add the note to the Firestore database
-                    discussionThreadRef.document().set(thread)
-                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-                                    Log.d(TAG, "Thread Document successfully written!");
-                                }
-                            })
-                            .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Log.w(TAG, "Error writing document", e);
-                                }
-                            });
-                    // Close the popup
-                    dialog.dismiss();
-                    setData();
+                        if (arts.isChecked() == true) {
+                            thread.put("arts", true);
+                        } else {
+                            thread.put("arts", false);
+                        }
+
+                        if (culture.isChecked() == true) {
+                            thread.put("culture", true);
+
+                        } else {
+                            thread.put("culture", false);
+                        }
+
+                        if (values.isChecked() == true) {
+                            thread.put("values", true);
+
+                        } else {
+                            thread.put("values", false);
+                        }
+
+
+
+                        // Add the note to the Firestore database
+                        discussionThreadRef.document().set(thread)
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        Log.d(TAG, "Thread Document successfully written!");
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.w(TAG, "Error writing document", e);
+                                    }
+                                });
+                        // Close the popup
+                        dialog.dismiss();
+                        setData();
+                    }
                 }
             }
         });
@@ -185,7 +318,11 @@ public class DiscussionFragment extends Fragment {
                                         documentSnapshot.getDate("lastPostTime"),
                                         documentSnapshot.getDate("postTime"),
                                         Integer.parseInt(documentSnapshot.get("numberOfReplies").toString()),
-                                        documentSnapshot.getString("post")));
+                                        documentSnapshot.getString("post"),
+                                        documentSnapshot.getBoolean("arts"),
+                                        documentSnapshot.getBoolean("culture"),
+                                        documentSnapshot.getBoolean("values"),
+                                        documentSnapshot.getString("fnpReplied")));
 
                             }
 
