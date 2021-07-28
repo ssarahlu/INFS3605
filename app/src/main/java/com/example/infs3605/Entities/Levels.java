@@ -7,8 +7,16 @@ public class Levels {
     private static int avatar;
 
     public static int getLevel(int stars){
+        //for aboriginal person
+        if (stars == -200){
+            level = -200;
 
-        if (stars < 5){
+            //for tsi person
+        } else if (stars == -100){
+            level = -100;
+
+            //for user
+        } else if (stars < 5){
             level = 1;
         } else {
             level = (int) (stars/5) + 1;
@@ -20,6 +28,13 @@ public class Levels {
     public static String getAnimal(int level){
 
         switch (level){
+            case -200:
+                animal = "";
+                break;
+            case -100:
+                animal = "";
+                break;
+
             case 1:
                 animal = "Grub";
                 break;
@@ -64,6 +79,13 @@ public class Levels {
     public static int getAvatar(int level){
 
         switch (level){
+            case -200:
+                avatar = R.drawable.aboriginal_flag_avatar;
+                break;
+            case -100:
+                avatar = R.drawable.tsi_flag_avatar;
+                break;
+
             case 1:
                 avatar = R.drawable.grub;
                 break;

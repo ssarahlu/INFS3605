@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.infs3605.Entities.DiscussionThread;
 import com.example.infs3605.Entities.Levels;
 import com.example.infs3605.Entities.Post;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -55,9 +56,12 @@ public class PostsActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager mLayoutManager;
     private RecyclerView mRecyclerView;
     private ImageButton btAddPost, btBack;
-    private ImageView ivUser;
+    private ImageView ivUser, repliedIV;
     private TextView tvTitle, tvAuthor, tvLastPost, tvContent, tvNoPosts;
     private EditText tvAddPost;
+    private String fnpReplied;
+
+    private DiscussionThread discussionThread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +99,22 @@ public class PostsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
             });
+
+        fnpReplied = bundle.getString("fnpReplied");
+        repliedIV = findViewById(R.id.repliedIV);
+
+        if(fnpReplied.equals("aboriginal")) {
+            repliedIV.setImageResource(R.drawable.replied_aboriginal);
+
+        } else if (fnpReplied.equals("ts_islander")) {
+            repliedIV.setImageResource(R.drawable.replied_tsi);
+
+        } else if (fnpReplied.equals("both")) {
+            repliedIV.setImageResource(R.drawable.replied_by_both);
+
+        } else {
+            repliedIV.setImageResource(0);
+        }
 
         tvTitle.setText(bundle.getString("title"));
         tvAuthor.setText(bundle.getString("author"));

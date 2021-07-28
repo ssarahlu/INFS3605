@@ -335,7 +335,7 @@ public class DiscussionFragment extends Fragment {
 
                             DiscussionThreadAdapter.RecyclerViewClickListener discussionListener = new DiscussionThreadAdapter.RecyclerViewClickListener() {
                                 @Override
-                                public void onClick(View v, String threadID, String title, String author, String authorID, Date postTime, String post) {
+                                public void onClick(View v, String threadID, String title, String author, String authorID, Date postTime, String post, String fnpReplied) {
                                     Intent intent = new Intent(getActivity(), PostsActivity.class);
                                     intent.putExtra("threadID", threadID);
                                     intent.putExtra("title", title);
@@ -343,6 +343,7 @@ public class DiscussionFragment extends Fragment {
                                     intent.putExtra("authorID", authorID);
                                     intent.putExtra("postTime", postTime);
                                     intent.putExtra("post", post);
+                                    intent.putExtra("fnpReplied", fnpReplied);
                                     startActivity(intent);
 
                                 }

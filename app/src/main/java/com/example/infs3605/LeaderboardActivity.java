@@ -73,6 +73,9 @@ public class LeaderboardActivity extends AppCompatActivity {
                                 String levelAnimalIcon = "" ;
                                 int level = 1;
 
+                                int userStars = Integer.parseInt(documentSnapshot.get("stars").toString());
+
+                                if (userStars >= 0){
                                     profiles.add(new Profile(documentSnapshot.get("email").toString(),
                                             documentSnapshot.get("name").toString(),
                                             documentSnapshot.getString("fname"),
@@ -81,6 +84,8 @@ public class LeaderboardActivity extends AppCompatActivity {
                                             levelAnimalIcon,
                                             Integer.parseInt(documentSnapshot.get("stars").toString()),
                                             level));
+                                }
+
 
                             }
 
