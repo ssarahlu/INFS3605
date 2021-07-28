@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -221,6 +222,9 @@ public class DiscussionFragment extends Fragment {
         dialogBuilder.setView(addThreadPopup);
         dialog = dialogBuilder.create();
         dialog.show();
+
+        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+
 
         // Set the save button to save the note
         btPost.setOnClickListener(new View.OnClickListener() {
