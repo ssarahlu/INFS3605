@@ -138,6 +138,7 @@
         android:background="@drawable/feedback_text_bg"
         android:gravity="left"
         android:hint="Please enter your feedback here"
+        android:maxLines="20"
         android:paddingStart="10dp"
         android:paddingTop="10dp"
         android:paddingEnd="10dp"
