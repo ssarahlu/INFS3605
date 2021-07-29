@@ -62,7 +62,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
-                    android:layout_marginLeft="12dp"
                     android:layout_marginTop="72dp"
                     android:fontFamily="sans-serif"
                     android:text="Title"
@@ -75,7 +74,7 @@
                     style="@style/hi_all_i_m_"
                     android:layout_width="358dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="18dp"
+                    android:layout_marginTop="24dp"
                     android:background="@null"
                     android:ems="10"
                     android:focusable="false"
@@ -90,7 +89,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
-                    android:layout_marginLeft="12dp"
                     android:text="Last Post"
                     android:textColor="#424242"
                     android:textSize="12sp"
@@ -146,10 +144,12 @@
 
                 <ImageButton
                     android:id="@+id/btAddPost"
-                    android:layout_width="42dp"
-                    android:layout_height="32dp"
-                    android:layout_marginBottom="48dp"
+                    android:layout_width="16dp"
+                    android:layout_height="15dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginBottom="56dp"
                     android:background="#FFFFFF"
+                    android:scaleType="centerCrop"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/tvAddPost"
                     app:srcCompat="@drawable/vector" />
@@ -168,6 +168,15 @@
 
                 </androidx.recyclerview.widget.RecyclerView>
 
+                <ImageView
+                    android:id="@+id/repliedIV"
+                    android:layout_width="131dp"
+                    android:layout_height="14dp"
+                    android:layout_marginTop="2dp"
+                    android:scaleType="fitStart"
+                    app:layout_constraintStart_toStartOf="@+id/tvPostTime"
+                    app:layout_constraintTop_toBottomOf="@+id/tvPostTime"
+                    app:srcCompat="@drawable/replied_aboriginal" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

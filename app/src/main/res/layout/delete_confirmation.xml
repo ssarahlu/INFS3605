@@ -2,46 +2,39 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="250dp">
+    android:layout_width="314dp"
+    android:layout_height="148dp"
+    android:background="@drawable/dialog_shape"
+    android:backgroundTint="#00FFFFFF">
 
-
-    <TextView
-        android:id="@+id/deleteConfirmation"
-        android:layout_width="302dp"
-        android:layout_height="71dp"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="Delete post?"
-        android:textSize="26sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btConfirm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        android:text="Yes"
-        app:layout_constraintEnd_toEndOf="@+id/deleteConfirmation"
-        app:layout_constraintTop_toBottomOf="@+id/deleteConfirmation" />
+        android:layout_width="157dp"
+        android:layout_height="39dp"
+        android:background="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/btCancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="10dp"
-        android:text="No"
-        app:layout_constraintBottom_toBottomOf="@+id/btConfirm"
-        app:layout_constraintStart_toStartOf="@+id/deleteConfirmation"
-        app:layout_constraintTop_toTopOf="@+id/btConfirm"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_width="157dp"
+        android:layout_height="39dp"
+        android:background="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView17"
+        android:layout_width="314dp"
+        android:layout_height="148dp"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/delete_confirmation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

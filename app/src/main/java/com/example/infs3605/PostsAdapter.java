@@ -2,6 +2,7 @@ package com.example.infs3605;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.infs3605.Entities.Levels;
@@ -28,6 +30,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
     private static final String TAG = "PostsAdapter";
     private Context context;
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
 
     public PostsAdapter(ArrayList<Post> posts, Context context) {
         mPosts = posts;
@@ -62,6 +65,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
         post = mPosts.get(position);
         holder.deleteButton.setVisibility(View.GONE);
 
@@ -69,15 +73,20 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             holder.deleteButton.setVisibility(View.VISIBLE);
             holder.tvName.setTextColor(Color.parseColor("#71C453"));
             holder.tvName.setText(post.getAuthor());
-            holder.deleteButton.setImageResource(R.drawable.ic_baseline_delete_24);
+            holder.deleteButton.setImageResource(R.drawable.delete_bin);
             holder.deleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     if(context instanceof PostsActivity) {
+
                         ((PostsActivity)context).createDeleteDialog(mPosts.get(position).getPostID());
+
                     }
+
                     if(context instanceof ModuleCommentsActivity) {
+
                         ((ModuleCommentsActivity)context).createDeleteDialog(mPosts.get(position).getPostID());
+
                     }
                 }
             });
@@ -87,7 +96,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm aaa");
         String date = dateFormat.format(post.getPostTime());
-        holder.tvPostDate.setText("" + date);
+        holder.tvPostDate.setText("Posted: " + date);
         int numStars = Integer.parseInt("" + post.getNumStars());
         int numLevel = Levels.getLevel(numStars);
         holder.ivUser.setImageResource(Levels.getAvatar(numLevel));

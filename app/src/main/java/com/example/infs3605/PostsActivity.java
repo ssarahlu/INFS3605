@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.infs3605.Entities.DiscussionThread;
 import com.example.infs3605.Entities.Levels;
 import com.example.infs3605.Entities.Post;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -53,9 +56,12 @@ public class PostsActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager mLayoutManager;
     private RecyclerView mRecyclerView;
     private ImageButton btAddPost, btBack;
-    private ImageView ivUser;
+    private ImageView ivUser, repliedIV;
     private TextView tvTitle, tvAuthor, tvLastPost, tvContent, tvNoPosts;
     private EditText tvAddPost;
+    private String fnpReplied;
+
+    private DiscussionThread discussionThread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,8 +100,29 @@ public class PostsActivity extends AppCompatActivity {
             }
             });
 
+        fnpReplied = bundle.getString("fnpReplied");
+        repliedIV = findViewById(R.id.repliedIV);
+
+        if(fnpReplied.equals("aboriginal")) {
+            repliedIV.setImageResource(R.drawable.replied_aboriginal);
+
+        } else if (fnpReplied.equals("ts_islander")) {
+            repliedIV.setImageResource(R.drawable.replied_tsi);
+
+        } else if (fnpReplied.equals("both")) {
+            repliedIV.setImageResource(R.drawable.replied_by_both);
+
+        } else {
+            repliedIV.setImageResource(0);
+        }
+
         tvTitle.setText(bundle.getString("title"));
         tvAuthor.setText(bundle.getString("author"));
+        if (bundle.getString("authorID").equals(user.getUid())) {
+            tvAuthor.setTextColor(Color.parseColor("#71C453"));
+        } else {
+            tvAuthor.setTextColor(Color.parseColor("#000000"));
+        }
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm aaa");
         String date = dateFormat.format(bundle.get("postTime"));
         tvLastPost.setText("" + date);
@@ -244,6 +271,7 @@ public class PostsActivity extends AppCompatActivity {
         dialogBuilder.setView(addThreadPopup);
         AlertDialog dialog = dialogBuilder.create();
         dialog.show();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         // Set the save button to save the note
         btConfirm.setOnClickListener(new View.OnClickListener() {

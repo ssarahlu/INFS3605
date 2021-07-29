@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -46,13 +47,31 @@ public class DiscussionThreadAdapter extends RecyclerView.Adapter<DiscussionThre
             protected FilterResults performFiltering(CharSequence constraint) {
                 String charString = constraint.toString();
                 // If no input, use the default Array List
-                if(charString.isEmpty()) {
+                if(charString.equals("clear")||charString.isEmpty()) {
                     mDiscussionThreadsFiltered = mDiscussionThreads;
                     // Use a for loop to go through the Movies Array List
                 } else {
                     ArrayList<DiscussionThread> filteredList = new ArrayList<>();
                     for(DiscussionThread discussionThread : mDiscussionThreadsFiltered) {
-                        // If the String contains any characters that are in the Movie Title (all converted to lower case), add the movie to the filtered List
+                        switch(charString) {
+                            case "arts":
+                                if(discussionThread.getArts()) {
+                                    filteredList.add(discussionThread);
+                                }
+                                break;
+                            case "culture":
+                                if(discussionThread.getCulture()) {
+                                    filteredList.add(discussionThread);
+                                }
+                                break;
+                            case "values":
+                                if(discussionThread.getValues()) {
+                                    filteredList.add(discussionThread);
+                                }
+                                break;
+
+                        }
+
                         if(discussionThread.getTitle().toLowerCase().contains(charString.toLowerCase())) {
                             filteredList.add(discussionThread);
                             // Filter for Genre as well
@@ -81,11 +100,12 @@ public class DiscussionThreadAdapter extends RecyclerView.Adapter<DiscussionThre
     }
 
     public interface RecyclerViewClickListener {
-        void onClick(View v,String threadID, String title, String author, String authorID, Date postTime, String post);
+        void onClick(View v, String threadID, String title, String author, String authorID, Date postTime, String discussionThreadPost, String post);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private TextView tvTitle, tvAuthor, tvPostTime, tvReplies;
+        private TextView tvTitle, tvAuthor, tvPostTime, tvReplies, tvFNPReplied;
+        private ImageView fnpReplied, fnpReplied2;
 
         private RecyclerViewClickListener mListener;
 
@@ -95,6 +115,9 @@ public class DiscussionThreadAdapter extends RecyclerView.Adapter<DiscussionThre
             tvAuthor = itemView.findViewById(R.id.tvAuthor);
             tvPostTime = itemView.findViewById(R.id.tvPostTime);
             tvReplies = itemView.findViewById(R.id.tvReplies);
+            fnpReplied = itemView.findViewById(R.id.fnpReplied);
+            fnpReplied2 = itemView.findViewById(R.id.fnpReplied2);
+//            tvFNPReplied = itemView.findViewById(R.id.tvFNPReplied);
 
             mListener = listener;
             itemView.setOnClickListener(this);
@@ -105,7 +128,7 @@ public class DiscussionThreadAdapter extends RecyclerView.Adapter<DiscussionThre
         @Override
         public void onClick(View v) {
             discussionThread = mDiscussionThreadsFiltered.get(getAdapterPosition());
-            mListener.onClick(v,discussionThread.getThreadID(), discussionThread.getTitle(), discussionThread.getAuthor(), discussionThread.getAuthorID(),  discussionThread.getPostTime(), discussionThread.getPost());
+            mListener.onClick(v,discussionThread.getThreadID(), discussionThread.getTitle(), discussionThread.getAuthor(), discussionThread.getAuthorID(),  discussionThread.getPostTime(), discussionThread.getPost(), discussionThread.getFnpReplied());
 
         }
     }
@@ -123,12 +146,36 @@ public class DiscussionThreadAdapter extends RecyclerView.Adapter<DiscussionThre
         discussionThread = mDiscussionThreadsFiltered.get(position);
 
         holder.tvTitle.setText(discussionThread.getTitle());
-        if (discussionThread.getAuthorID().equals(user.getUid())){
+        holder.tvAuthor.setText(discussionThread.getAuthor());
+
+        if (discussionThread.getAuthorID().equals(user.getUid())) {
             holder.tvAuthor.setTextColor(Color.parseColor("#71C453"));
-            holder.tvAuthor.setText(discussionThread.getAuthor());
         } else {
-            holder.tvAuthor.setText(discussionThread.getAuthor());
+            holder.tvAuthor.setTextColor(Color.parseColor("#000000"));
         }
+
+
+        if(discussionThread.getFnpReplied().equals("aboriginal")) {
+            holder.fnpReplied.setImageResource(R.drawable.aboriginal_flag);
+//            holder.tvFNPReplied.setText("First Nations Person has responded");
+//            holder.tvFNPReplied.setTextColor(Color.parseColor("#2196F3"));
+
+        } else if (discussionThread.getFnpReplied().equals("ts_islander")) {
+            holder.fnpReplied.setImageResource(R.drawable.torres_strait_flag);
+//            holder.tvFNPReplied.setText("First Nations Person has responded");
+//            holder.tvFNPReplied.setTextColor(Color.parseColor("#2196F3"));
+        } else if (discussionThread.getFnpReplied().equals("both")) {
+            holder.fnpReplied.setImageResource(R.drawable.torres_strait_flag);
+            holder.fnpReplied2.setImageResource(R.drawable.aboriginal_flag);
+//            holder.tvFNPReplied.setText("First Nations People have responded");
+//            holder.tvFNPReplied.setTextColor(Color.parseColor("#2196F3"));
+        } else {
+            holder.fnpReplied.setImageResource(0);
+            holder.fnpReplied2.setImageResource(0);
+//            holder.tvFNPReplied.setText("");
+        }
+
+
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm aaa");
         String date = dateFormat.format(discussionThread.getPostTime());
         holder.tvPostTime.setText("Posted: " + date);

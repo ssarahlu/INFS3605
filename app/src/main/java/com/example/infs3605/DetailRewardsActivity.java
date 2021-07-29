@@ -3,6 +3,7 @@ package com.example.infs3605;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+import android.accounts.Account;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -45,6 +46,7 @@ public class DetailRewardsActivity extends AppCompatActivity {
     MyDatabase myDb;
 
     private List<AccountAchievement> mAccAchs = new ArrayList<>();
+    private List<AccountAchievement> allAchs = new ArrayList<>();
     private ArrayList<Rewards> mRewards = new ArrayList<>();
     private Rewards reward;
 
@@ -64,6 +66,7 @@ public class DetailRewardsActivity extends AppCompatActivity {
         email = intent.getStringExtra("email");
         mRewards = Rewards.getRewards();
 
+        System.out.println(" on create email " + email);
 
         shopTV = findViewById(R.id.shopTV);
         rewardTV = findViewById(R.id.rewardTV);
@@ -112,6 +115,7 @@ public class DetailRewardsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 new UpdateRedemption().execute();
+
                 Toast.makeText(getApplicationContext(), "Your reward has been redeemed!", Toast.LENGTH_SHORT).show();
                 qrIV.setImageResource(R.drawable.redeem_success);
 
@@ -153,7 +157,8 @@ public class DetailRewardsActivity extends AppCompatActivity {
         protected Void doInBackground(Void... voids) {
             myDb = Room.databaseBuilder(getApplicationContext(), MyDatabase.class, "my-db.db")
                     .build();
-//            mAccAchs = myDb.accountAchievementDao().getAccAch(email);
+            mAccAchs = myDb.accountAchievementDao().getAccAch(email);
+            allAchs = myDb.accountAchievementDao().getAccAchs();
             redeemed = myDb.accountAchievementDao().getRedeemed(email, rewardId);
             Log.d(TAG, "doInBackground: redeemed " + redeemed);
 
@@ -224,6 +229,19 @@ public class DetailRewardsActivity extends AppCompatActivity {
                 });
 
 
+        System.out.println( " print mAccAchs " + mAccAchs);
+
+        for (AccountAchievement a : mAccAchs){
+            Log.d(TAG, "for loop:  mAccAchs " + a.getAchievementId()  + " " + a.isRedeemed() + a.getEmail() );
+
+        }
+
+        System.out.println( " print all " + allAchs);
+
+        for (AccountAchievement a : allAchs){
+            Log.d(TAG, "for loop:  mAccAchs " + a.getAchievementId()  + " " + a.isRedeemed() + a.getEmail() );
+
+        }
 
 
     }
@@ -235,6 +253,8 @@ public class DetailRewardsActivity extends AppCompatActivity {
             myDb = Room.databaseBuilder(getApplicationContext(), MyDatabase.class, "my-db.db")
                     .build();
             myDb.accountAchievementDao().updateRedeemed(true, email, rewardId);
+
+            allAchs = myDb.accountAchievementDao().getAccAchs();
             Log.d(TAG, "doInBackground: ASYNC TASK  ");
             return null;
         }
@@ -243,6 +263,10 @@ public class DetailRewardsActivity extends AppCompatActivity {
         protected void onPostExecute(Void v) {
             super.onPostExecute(v);
             Log.d(TAG, "onPostExecute: FINISHED");
+//            updateUi();
+
+            Log.d(TAG, "onPostExecute: print all " + allAchs.size() + allAchs);
+
             myDb.close();
 
         }
