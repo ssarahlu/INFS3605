@@ -208,8 +208,6 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(getActivity(), "Art selected", Toast.LENGTH_SHORT).show();
-
                 factTV.setVisibility(View.INVISIBLE);
                 artButton.setVisibility(View.INVISIBLE);
                 name.setVisibility(View.INVISIBLE);
@@ -258,8 +256,6 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(getActivity(), "Spirit selected", Toast.LENGTH_SHORT).show();
-
                 factTV.setVisibility(View.INVISIBLE);
                 artButton.setVisibility(View.INVISIBLE);
                 name.setVisibility(View.INVISIBLE);
@@ -306,8 +302,6 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(getActivity(), "Ritual selected", Toast.LENGTH_SHORT).show();
-
                 factTV.setVisibility(View.INVISIBLE);
                 artButton.setVisibility(View.INVISIBLE);
                 name.setVisibility(View.INVISIBLE);
@@ -352,8 +346,6 @@ public class HomeFragment extends Fragment {
         languageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Toast.makeText(getActivity(), "Language selected", Toast.LENGTH_SHORT).show();
 
                 factTV.setVisibility(View.INVISIBLE);
                 artButton.setVisibility(View.INVISIBLE);
