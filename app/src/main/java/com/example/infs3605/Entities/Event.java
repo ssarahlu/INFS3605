@@ -84,7 +84,7 @@ public class Event {
 
         eventList.add(new Event(1,
                 "National%20Aboriginal%20and%20Torres%20Strait%20Islander%20Children%27s%20Day.jpg?itok=k9KobBbH",
-                "National Children's Day","4 Aug 2021",
+                "National Children's Day","4 Aug 2021, 12:00 p.m. - 5:00 p.m.",
                 "national-aboriginal-and-torres-strait-islander-childrens-day",
                 "The Children's Day 2021 theme highlights the importance of supporting strong family and community connections to help Indigenous children achieve strong spiritual and cultural wellbeing and to form proud cultural identities.\n" +
                         "\n" +
@@ -92,7 +92,7 @@ public class Event {
                 "Indigenous Business Australia, Goulburn Street, Sydney NSW"));
         eventList.add(new Event(2,
                 "NIMA.JPG?itok=omlsyPup",
-                "National Indigenous Music Awards","7 Aug 2021",
+                "National Indigenous Music Awards","7 Aug 2021, 9:00 a.m. - 12:00 p.m.",
                 "national-indigenous-music-awards-0",
                 "Join us for an amazing line up of some of the countries leading musicians to celebrate live the achievements of Australia's First Nation Musicians.\n" +
                         "\n" +
@@ -104,7 +104,7 @@ public class Event {
                 "Darwin Amphitheatre, Geranium Street, The Gardens NT"));
         eventList.add(new Event(3,
                 "Grace-Rosendale-Seed-Pods-1400.jpg?itok=RkP8iPQw",
-                "Piinpi: Contemporary Indigenous Fashion","20 Feb 2021 to 8 Aug 2021",
+                "Piinpi: Contemporary Indigenous Fashion","20 Feb 2021 to 8 Aug 2021, 12:00 p.m. - 3:00 p.m.",
                 "piinpi-contemporary-indigenous-fashion",
                 "Featuring the work of around 60 Indigenous artists and designers from the inner city to remote desert art centres, Piinpi: Contemporary Indigenous Fashion celebrates Australia’s leading First Nations creatives.\n" +
                         "\n" +
@@ -116,7 +116,7 @@ public class Event {
                 "National Museum of Australia, Lawson Crescent, Acton ACT"));
         eventList.add(new Event(4,
                 "DAAF%232-min.jpg?itok=_b6eOAO9",
-                "Darwin Aboriginal Art Fair","6 Aug 2021 to 11 Aug 2021",
+                "Darwin Aboriginal Art Fair","6 Aug 2021 to 11 Aug 2021, 12:00 p.m. - 6:00 p.m.",
                 "darwin-aboriginal-art-fair-0",
                 "The Digital Fair will be open to the public from 10am ACST on Friday, 6 August, through to 5pm ACST on Wednesday, 11 August.\n" +
                         "\n" +
@@ -126,7 +126,7 @@ public class Event {
                 "Sydney Harbour Bridge, Sydney Harbour Bridge, Sydney NSW"));
         eventList.add((new Event(5,
                 "20210105_SLQ_Shirts_0916lr.jpg?itok=Fe93D4Wt",
-                "Deadly Threads: Where did you get that shirt?","16 Apr 2021 to 11 Aug 2021",
+                "Deadly Threads: Where did you get that shirt?","16 Apr 2021 to 11 Aug 2021 4:00 p.m. - 5:00 p.m.",
                 "deadly-threads-where-did-you-get-shirt",
                 "Deadly Threads is a showcase examining Indigenous shirts – born from protests in the 1970s and evolving as permanent mainstays in wardrobes across Australia.  \n" +
                         "\n" +
@@ -138,7 +138,7 @@ public class Event {
                 "State Library of Queensland, Stanley Place, South Brisbane QLD")));
         eventList.add((new Event(6,
                 "INDIGOV15%20%281%29.png?itok=CsM0YU4T",
-                "Developing Northern Australia","16 Aug 2021 to 18 Aug 2021",
+                "Developing Northern Australia","16 Aug 2021 to 18 Aug 2021, 3:00 p.m. - 5:00 p.m.",
                 "2021-developing-northern-australia-conference",
                 "The Developing Northern Australia Conference provides a platform to unite leaders, decision makers, industry representatives and community members working to advance our northern regions.\n" +
                         "\n" +
@@ -148,7 +148,7 @@ public class Event {
                 "Darwin Convention Centre, Stokes Hill Road, Darwin City NT")));
         eventList.add((new Event(7,
                 "Untitled%20design%20%283%29_0.png?itok=rQEhcZvG",
-                "Cairns Indigenous Art Fair","17 Aug 2021 to 22 Aug 2021",
+                "Cairns Indigenous Art Fair","17 Aug 2021 to 22 Aug 2021 10:00 a.m. - 4:00 p.m.",
                 "cairns-indigenous-art-fair-1",
                 "The Cairns Indigenous Art Fair will go ahead this August!\n" +
                         "\n" +
@@ -160,7 +160,7 @@ public class Event {
                 "Cairns QLD")));
         eventList.add((new Event(8,
                 "ILF%202021%20-%20thumbnail.jpg?itok=Sbn-FZ-Z",
-                "Indigenous Literacy Day","1 Sep 2021",
+                "Indigenous Literacy Day","1 Sep 2021, 3:00 p.m. - 4:00 p.m.",
                 "event/indigenous-literacy-day-0",
                 "In 2021, we are extending this incredible celebration to a full day of events and activities. Mark Wednesday 1 September in your calendar and we'll be releasing an event program shortly.\n" +
                         "\n" +

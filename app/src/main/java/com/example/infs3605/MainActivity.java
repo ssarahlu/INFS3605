@@ -52,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
                     fragmentTransaction3.commit();
 
                     break;
+
+                /*
                 case R.id.page_4:
                     Toast.makeText(MainActivity.this, "Meditate", Toast.LENGTH_SHORT).show();
                     MeditateFragment meditateFragment = new MeditateFragment();
@@ -59,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
                     fragmentTransaction4.replace(R.id.fragment_container, meditateFragment, "FragmentName");
                     fragmentTransaction4.commit();
                     break;
+
+                 */
 
                 case R.id.page_5:
                     Toast.makeText(MainActivity.this, "Profile", Toast.LENGTH_SHORT).show();

@@ -6,4 +6,90 @@
     android:layout_height="match_parent"
     tools:context=".MeditateIntroActivity">
 
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/back"
+        android:text="back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivMeditateTitle"
+        android:layout_width="153dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25"
+        app:srcCompat="@drawable/meditate_title" />
+
+    <ImageView
+        android:id="@+id/ivMeditateDesc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/ivMeditateTitle"
+        app:layout_constraintTop_toBottomOf="@+id/ivMeditateTitle"
+        app:srcCompat="@drawable/meditate_desc" />
+
+
+    <ImageButton
+        android:id="@+id/btnMedIconOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:background="#FBFBFB"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/ivMeditateDesc"
+        app:layout_constraintTop_toBottomOf="@+id/ivMeditateDesc"
+        app:layout_constraintVertical_bias="0.182"
+        app:srcCompat="@drawable/meditate1" />
+
+    <ImageButton
+        android:id="@+id/btnMedIconTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:background="#FBFBFB"
+        app:layout_constraintEnd_toEndOf="@+id/ivMeditateDesc"
+        app:layout_constraintStart_toEndOf="@+id/btnMedIconOne"
+        app:layout_constraintTop_toTopOf="@+id/btnMedIconOne"
+        app:srcCompat="@drawable/meditate2" />
+
+    <ImageButton
+        android:id="@+id/btnMedIconThree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:background="#FBFBFB"
+        app:layout_constraintStart_toStartOf="@+id/ivMeditateDesc"
+        app:layout_constraintTop_toBottomOf="@+id/btnMedIconOne"
+        app:srcCompat="@drawable/meditate3" />
+
+    <ImageButton
+        android:id="@+id/btnMedIconFour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:background="#FBFBFB"
+        app:layout_constraintEnd_toEndOf="@+id/ivMeditateDesc"
+        app:layout_constraintStart_toEndOf="@+id/btnMedIconThree"
+        app:layout_constraintTop_toBottomOf="@+id/btnMedIconOne"
+        app:srcCompat="@drawable/meditate4" />
+
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

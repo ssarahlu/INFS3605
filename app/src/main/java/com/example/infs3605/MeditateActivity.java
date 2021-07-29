@@ -1,38 +1,33 @@
 package com.example.infs3605;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.ColorMatrixColorFilter;
-import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.infs3605.Entities.MeditationGuide;
+public class MeditateActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-import java.util.ArrayList;
-
-public class MeditateActivity extends AppCompatActivity {
-
-    public static final String EXTRA_MESSAGE = "time";
+    private int tone;
     private int time;
-    private TextView tvCountdown, tvMeditationText;
-    private ImageButton btnStart, btnPause, btnReset, btnClose;
+    private TextView tvCountdown;
+    private ImageView ivMedBackground, ivDropdownBackground;
+    private ImageButton btnStart, btnPause, btnClose;
 
-    private ArrayList<MeditationGuide> meditationGuide;
-    private long quoteChangeInterval;
-    private int quoteCounter;
+    private Spinner dropDownTimer;
+    private static final String[] dropDownOptions = {"1 minute",
+            "2 minutes","3 minutes", "4 minutes",
+            "5 minutes","6 minutes", "7 minutes",
+            "8 minutes","9 minutes","10 minutes"};
+
 
     private CountDownTimer mCountDownTimer;
     private long mTimeLeftInMillis;
@@ -45,20 +40,42 @@ public class MeditateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_meditate);
 
         Intent intent = getIntent();
-        time = intent.getIntExtra("Time",0);
+        tone = intent.getIntExtra("Tone",0);
 
 
-
-        mTimeLeftInMillis = time * 60000;
-        meditationGuide = MeditationGuide.getMeditationGuide();
-        quoteChangeInterval = time * 60 / 12;
 
         tvCountdown = findViewById(R.id.tvCountdown);
-        tvMeditationText = findViewById(R.id.tvMeditationText);
+
+        ivMedBackground = findViewById(R.id.ivMedBackground);
+        ivDropdownBackground = findViewById(R.id.ivDropdownBackground);
+
         btnStart = findViewById(R.id.btnStart);
         btnPause = findViewById(R.id.btnPause);
-        btnReset = findViewById(R.id.btnReset);
         btnClose = findViewById(R.id.btnClose);
+
+        dropDownTimer = findViewById(R.id.dropDownTimer);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(MeditateActivity.this,
+                android.R.layout.simple_spinner_item,dropDownOptions);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        dropDownTimer.setAdapter(adapter);
+        dropDownTimer.setOnItemSelectedListener(this);
+
+        switch (tone) {
+            case 1:
+                ivMedBackground.setImageResource(R.drawable.meditation_bg_one);
+                break;
+            case 2:
+                ivMedBackground.setImageResource(R.drawable.meditation_bg_two);
+                break;
+            case 3:
+                ivMedBackground.setImageResource(R.drawable.meditation_bg_three);
+                break;
+            case 4:
+                ivMedBackground.setImageResource(R.drawable.meditation_bg_four);
+                break;
+        }
 
 
 
@@ -76,27 +93,38 @@ public class MeditateActivity extends AppCompatActivity {
             }
         });
 
-        btnReset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resetTimer();
-            }
-        });
-
         btnClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                launchMeditateFragment();
+
+                resetMusic();
+                launchMeditateIntroActivity();
             }
         });
 
-        startTimer();
     }
 
-    private void launchMeditateFragment() {
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        intent.putExtra("id", "0");
-        intent.putExtra("Check", "4");
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View v, int position, long id) {
+        setTime(position + 1);
+        resetMusic();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+        // TODO Auto-generated method stub
+    }
+
+    private void setTime(int time) {
+        this.time = time;
+        mTimeLeftInMillis = time * 60000;
+
+
+    }
+
+
+    private void launchMeditateIntroActivity() {
+        Intent intent = new Intent(MeditateActivity.this, MeditateIntroActivity.class);
         startActivity(intent);
     }
 
@@ -104,7 +132,9 @@ public class MeditateActivity extends AppCompatActivity {
 
         btnStart.setVisibility(View.INVISIBLE);
         btnPause.setVisibility(View.VISIBLE);
-        btnReset.setVisibility(View.INVISIBLE);
+        dropDownTimer.setVisibility(View.INVISIBLE);
+        ivDropdownBackground.setVisibility(View.INVISIBLE);
+
 
         playMusic();
 
@@ -114,17 +144,15 @@ public class MeditateActivity extends AppCompatActivity {
                 mTimeLeftInMillis = millisUntilFinished;
                 updateCountDownText();
 
-                if ((mTimeLeftInMillis + 1000) / 1000 % quoteChangeInterval == 0) {
-                    updateMeditationText();
-                }
             }
 
             @Override
             public void onFinish() {
                 resetMusic();
-                btnStart.setVisibility(View.INVISIBLE);
+                btnStart.setVisibility(View.VISIBLE);
                 btnPause.setVisibility(View.INVISIBLE);
-                btnReset.setVisibility(View.VISIBLE);
+                dropDownTimer.setVisibility(View.VISIBLE);
+                ivDropdownBackground.setVisibility(View.VISIBLE);
             }
         }.start();
 
@@ -136,23 +164,10 @@ public class MeditateActivity extends AppCompatActivity {
         pauseMusic();
         btnStart.setVisibility(View.VISIBLE);
         btnPause.setVisibility(View.INVISIBLE);
-        btnReset.setVisibility(View.VISIBLE);
+        dropDownTimer.setVisibility(View.VISIBLE);
+        ivDropdownBackground.setVisibility(View.VISIBLE);
     }
 
-    private void resetTimer() {
-        mTimeLeftInMillis = time * 60000;
-        resetMusic();
-        updateCountDownText();
-        quoteCounter = 0;
-        btnStart.setVisibility(View.VISIBLE);
-    }
-
-    private void updateMeditationText() {
-        tvMeditationText.setText(meditationGuide.get(quoteCounter++).getGuideText());
-        if (quoteCounter == 11) {
-            quoteCounter = 0;
-        }
-    }
 
     private void updateCountDownText() {
         int minutes = (int) (mTimeLeftInMillis / 1000) / 60;
@@ -166,8 +181,24 @@ public class MeditateActivity extends AppCompatActivity {
 
     public void playMusic() {
         if (player == null) {
-            player = MediaPlayer.create(this, R.raw.music);
-            player.setLooping(true);
+            switch (tone) {
+                case 1:
+                    player = MediaPlayer.create(this, R.raw.music1);
+                    player.setLooping(true);
+                    break;
+                case 2:
+                    player = MediaPlayer.create(this, R.raw.music2);
+                    player.setLooping(true);
+                    break;
+                case 3:
+                    player = MediaPlayer.create(this, R.raw.music3);
+                    player.setLooping(true);
+                    break;
+                case 4:
+                    player = MediaPlayer.create(this, R.raw.music4);
+                    player.setLooping(true);
+                    break;
+            }
         }
 
         player.start();

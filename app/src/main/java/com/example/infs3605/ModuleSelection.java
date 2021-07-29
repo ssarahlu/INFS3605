@@ -104,6 +104,14 @@ public class ModuleSelection extends AppCompatActivity {
 
         meditateBtn.setVisibility(View.INVISIBLE);
 
+        meditateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),MeditateIntroActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         moduleName.setText(modName);
         moduleDescription.setText(modDesc);
