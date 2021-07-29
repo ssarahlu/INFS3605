@@ -159,7 +159,7 @@
                 android:paddingTop="8dp"
                 android:paddingRight="8dp"
                 android:paddingBottom="8dp"
-                android:singleLine="true"
+                android:singleLine="false"
 
 
                 app:layout_constraintBottom_toBottomOf="parent"
