@@ -116,7 +116,7 @@ public class DetailRewardsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 new UpdateRedemption().execute();
 
-                Toast.makeText(getApplicationContext(), "Your reward has been redeemed!", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "Your reward has been redeemed!", Toast.LENGTH_SHORT).show();
                 qrIV.setImageResource(R.drawable.redeem_success);
 
                 copy.setVisibility(View.GONE);

@@ -599,7 +599,7 @@ public class QuizActivity extends AppCompatActivity {
                                     .addOnFailureListener(new OnFailureListener() {
                                         @Override
                                         public void onFailure(@NonNull Exception e) {
-                                            Toast.makeText(QuizActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(QuizActivity.this, "Error - stars did not save", Toast.LENGTH_SHORT).show();
                                             Log.d(TAG, e.toString());
                                         }
                                     });

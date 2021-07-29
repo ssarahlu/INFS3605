@@ -30,14 +30,12 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.page_1:
-                    Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
                     HomeFragment homeFragment = new HomeFragment();
                     FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction1.replace(R.id.fragment_container, homeFragment, "FragmentName");
                     fragmentTransaction1.commit();
                     break;
                 case R.id.page_2:
-                    Toast.makeText(MainActivity.this, "Explore", Toast.LENGTH_SHORT).show();
                     ExploreFragment exploreFragment = new ExploreFragment();
                     FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction2.replace(R.id.fragment_container, exploreFragment, "FragmentName");
@@ -45,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
                     break;
                 case R.id.page_3:
-                    Toast.makeText(MainActivity.this, "Discussion", Toast.LENGTH_SHORT).show();
                     DiscussionFragment discussionFragment = new DiscussionFragment();
                     FragmentTransaction fragmentTransaction3 = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction3.replace(R.id.fragment_container, discussionFragment, "FragmentName");
@@ -64,14 +61,11 @@ public class MainActivity extends AppCompatActivity {
 
                  */
 
-                case R.id.page_5:
-                    Toast.makeText(MainActivity.this, "Profile", Toast.LENGTH_SHORT).show();
+                case R.id.page_4:
                     ProfileFragment profileFragment = new ProfileFragment();
                     FragmentTransaction fragmentTransaction5 = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction5.replace(R.id.fragment_container, profileFragment, "FragmentName");
                     fragmentTransaction5.commit();
-
-                    System.out.println("switch ");
 
                     break;
             }
@@ -104,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
                         Log.d(TAG, e.toString());
 
                     }
@@ -132,11 +125,10 @@ public class MainActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction()
                         .add(R.id.fragment_container, fragment).commit();
 
-                //or default
-            } else if (s1.equals("4")) {
-
-                s1 = "";
-                bottomNav.setSelectedItemId(R.id.page_4);
+//            } else if (s1.equals("4")) {
+//
+//                s1 = "";
+//                bottomNav.setSelectedItemId(R.id.page_4);
             } else if (s1.equals("2")) {
 
                 s1 = "";
@@ -146,11 +138,11 @@ public class MainActivity extends AppCompatActivity {
                 s1 = "";
                 bottomNav.setSelectedItemId(R.id.page_3);
             } else if (s1.equals("5")) {
-                bottomNav.setSelectedItemId(R.id.page_5);
+                bottomNav.setSelectedItemId(R.id.page_4);
             }
 
         } else {
-
+            //or default
             HomeFragment hf = new HomeFragment();
             FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
             fragmentTransaction1.replace(R.id.fragment_container, hf, "FragmentName");
@@ -170,7 +162,6 @@ public class MainActivity extends AppCompatActivity {
 
         String fname = nameArr[0];
         String lname = nameArr[1];
-
 
 
         // Create a Hash Map with the desired values

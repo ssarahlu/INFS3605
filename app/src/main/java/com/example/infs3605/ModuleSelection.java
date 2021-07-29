@@ -143,7 +143,6 @@ public class ModuleSelection extends AppCompatActivity {
                 intent.putExtra("id", String.valueOf(modId));
                 intent.putExtra("mod_name", modName);
                 startActivity(intent);
-                Toast.makeText(getApplicationContext(), "Video selected", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -156,7 +155,6 @@ public class ModuleSelection extends AppCompatActivity {
                 intent.putExtra("id", String.valueOf(modId));
                 intent.putExtra("mod_name", modName);
                 startActivity(intent);
-                Toast.makeText(getApplicationContext(), "Story selected", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -168,7 +166,6 @@ public class ModuleSelection extends AppCompatActivity {
                 intent.putExtra("id", String.valueOf(modId));
                 intent.putExtra("mod_name", modName);
                 startActivity(intent);
-                Toast.makeText(getApplicationContext(), "Learnings selected", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -180,7 +177,6 @@ public class ModuleSelection extends AppCompatActivity {
                 intent.putExtra("id", String.valueOf(modId));
                 intent.putExtra("mod_name", modName);
                 startActivity(intent);
-                Toast.makeText(getApplicationContext(), "Quiz selected", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -191,11 +187,7 @@ public class ModuleSelection extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.putExtra("id", String.valueOf(topicIdFK));
                 intent.putExtra("Check", "1");
-
-                System.out.println(topicIdFK);
                 startActivity(intent);
-
-                Toast.makeText(getApplicationContext(), "Back to list ", Toast.LENGTH_SHORT).show();
 
 
             }

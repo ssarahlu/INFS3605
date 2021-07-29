@@ -145,7 +145,7 @@ public class EventActivity extends FragmentActivity implements OnMapReadyCallbac
                     }
 
                     btnSave.setBackgroundResource(R.drawable.saved_icon);
-                    Toast.makeText(getApplicationContext(),"Event saved",Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(),"Event saved",Toast.LENGTH_SHORT).show();
                 } else if (myDb.savedEventDataDao().getSavedEvent(mEmail,mId) != null) {
                     myDb.savedEventDataDao().deleteEvent(mEmail,mId);
 
@@ -159,7 +159,7 @@ public class EventActivity extends FragmentActivity implements OnMapReadyCallbac
                     }
 
                     btnSave.setBackgroundResource(R.drawable.unsaved_icon);
-                    Toast.makeText(getApplicationContext(),"Event unsaved",Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(),"Event unsaved",Toast.LENGTH_SHORT).show();
                 }
 
 

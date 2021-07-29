@@ -92,7 +92,7 @@ public class Event {
                 "Indigenous Business Australia, Goulburn Street, Sydney NSW"));
         eventList.add(new Event(2,
                 "NIMA.JPG?itok=omlsyPup",
-                "National Indigenous Music Awards","7 Aug 2021, 9:00 a.m. - 12:00 p.m.",
+                "National Indigenous Music Awards","7 Aug 2021, 6:00 p.m. - 11:00 p.m.",
                 "national-indigenous-music-awards-0",
                 "Join us for an amazing line up of some of the countries leading musicians to celebrate live the achievements of Australia's First Nation Musicians.\n" +
                         "\n" +

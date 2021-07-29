@@ -157,7 +157,7 @@ public class LearningsActivity extends AppCompatActivity {
                 intent.putExtra("id", String.valueOf(modId));
                 intent.putExtra("mod_name", modName);
                 startActivity(intent);
-                Toast.makeText(getApplicationContext(), "Quiz selected", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "Quiz selected", Toast.LENGTH_SHORT).show();
             }
 
         });

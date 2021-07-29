@@ -19,8 +19,9 @@ public class MeditateActivity extends AppCompatActivity implements AdapterView.O
     private int tone;
     private int time;
     private TextView tvCountdown;
-    private ImageView ivMedBackground, ivDropdownBackground;
+    private ImageView ivMedBackground, ivDropdownBackground, ivMedQuote;
     private ImageButton btnStart, btnPause, btnClose;
+    private int randomQuote;
 
     private Spinner dropDownTimer;
     private static final String[] dropDownOptions = {"1 minute",
@@ -48,6 +49,7 @@ public class MeditateActivity extends AppCompatActivity implements AdapterView.O
 
         ivMedBackground = findViewById(R.id.ivMedBackground);
         ivDropdownBackground = findViewById(R.id.ivDropdownBackground);
+        ivMedQuote = findViewById(R.id.ivMedQuote);
 
         btnStart = findViewById(R.id.btnStart);
         btnPause = findViewById(R.id.btnPause);
@@ -76,6 +78,35 @@ public class MeditateActivity extends AppCompatActivity implements AdapterView.O
                 ivMedBackground.setImageResource(R.drawable.meditation_bg_four);
                 break;
         }
+
+        randomQuote = (int)(Math.random() * 5) + 1;
+
+        if (randomQuote == 1){
+            ivMedQuote.setImageResource(R.drawable.med_quote);
+        }
+
+        switch (randomQuote) {
+            case 1:
+                ivMedQuote.setImageResource(R.drawable.med_quote);
+                break;
+            case 2:
+                ivMedQuote.setImageResource(R.drawable.med_quote_two);
+                break;
+            case 3:
+                ivMedQuote.setImageResource(R.drawable.med_quote_three);
+                break;
+            case 4:
+                ivMedQuote.setImageResource(R.drawable.med_quote_four);
+                break;
+            case 5:
+                ivMedQuote.setImageResource(R.drawable.med_quote_five);
+                break;
+            default:
+                ivMedQuote.setImageResource(R.drawable.med_quote);
+                break;
+        }
+
+
 
 
 

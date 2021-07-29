@@ -21,8 +21,8 @@ public class MeditateIntroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_meditate_intro);
 
         btnBack = findViewById(R.id.btnBack);
-        ivMeditateTitle = findViewById(R.id.ivMeditateTitle);
-        ivMeditateDesc = findViewById(R.id.ivMeditateDesc);
+//        ivMeditateTitle = findViewById(R.id.ivMeditateTitle);
+//        ivMeditateDesc = findViewById(R.id.ivMeditateDesc);
         btnMedIconOne = findViewById(R.id.btnMedIconOne);
         btnMedIconTwo = findViewById(R.id.btnMedIconTwo);
         btnMedIconThree = findViewById(R.id.btnMedIconThree);

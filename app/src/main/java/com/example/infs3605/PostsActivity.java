@@ -177,7 +177,7 @@ public class PostsActivity extends AppCompatActivity {
                                             @Override
                                             public void onSuccess(Void aVoid) {
                                                 Log.d(TAG, "Post Document successfully written!");
-                                                Toast.makeText(PostsActivity.this, "Post added!", Toast.LENGTH_SHORT).show();
+//                                                Toast.makeText(PostsActivity.this, "Post added!", Toast.LENGTH_SHORT).show();
                                             }
                                         })
                                         .addOnFailureListener(new OnFailureListener() {
@@ -281,7 +281,7 @@ public class PostsActivity extends AppCompatActivity {
                         .delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-                        Toast.makeText(PostsActivity.this, "Post Deleted", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(PostsActivity.this, "Post Deleted", Toast.LENGTH_SHORT).show();
                         Bundle bundle = getIntent().getExtras();
                         String threadID = bundle.getString("threadID");
                         db.collection("discussion_threads").document(threadID).get()

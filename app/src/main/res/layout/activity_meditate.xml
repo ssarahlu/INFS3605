@@ -35,26 +35,26 @@
 
     <ImageButton
         android:id="@+id/btnPause"
-        android:layout_width="51dp"
-        android:layout_height="51dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginTop="64dp"
         android:adjustViewBounds="true"
-        android:background="@drawable/pause1"
-        android:visibility="invisible"
+        android:background="@drawable/pause_btn"
         android:text="Button"
         android:tint="#00FFFFFF"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/ivMedQuote"
         app:layout_constraintStart_toStartOf="@+id/ivMedQuote"
         app:layout_constraintTop_toBottomOf="@+id/ivMedQuote"
-        tools:visibility="visible"/>
+        tools:visibility="visible" />
 
     <ImageButton
         android:id="@+id/btnStart"
-        android:layout_width="51dp"
-        android:layout_height="51dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginTop="64dp"
         android:adjustViewBounds="true"
-        android:background="@drawable/play1"
+        android:background="@drawable/play_btn"
         app:layout_constraintEnd_toEndOf="@+id/ivMedQuote"
         app:layout_constraintStart_toStartOf="@+id/ivMedQuote"
         app:layout_constraintTop_toBottomOf="@+id/ivMedQuote" />
@@ -73,8 +73,8 @@
 
     <ImageView
         android:id="@+id/ivMedQuote"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="333dp"
+        android:layout_height="168dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:adjustViewBounds="true"
@@ -87,8 +87,8 @@
 
     <ImageView
         android:id="@+id/ivDropdownBackground"
-        android:layout_width="130dp"
-        android:layout_height="30dp"
+        android:layout_width="153dp"
+        android:layout_height="36dp"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="@+id/ivMedBackground"
         app:layout_constraintEnd_toEndOf="parent"
@@ -99,10 +99,12 @@
 
     <Spinner
         android:id="@+id/dropDownTimer"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="153dp"
+        android:layout_height="36dp"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
+        android:paddingStart="5dp"
+        android:paddingLeft="5dp"
         app:layout_constraintBottom_toBottomOf="@+id/ivDropdownBackground"
         app:layout_constraintEnd_toEndOf="@+id/ivDropdownBackground"
         app:layout_constraintStart_toStartOf="@+id/ivDropdownBackground"

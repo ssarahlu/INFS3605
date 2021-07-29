@@ -51,10 +51,9 @@
     <EditText
         android:id="@+id/tvPost"
         style="@style/hi_all_i_m_"
-        android:layout_width="342dp"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="20dp"
         android:background="@null"

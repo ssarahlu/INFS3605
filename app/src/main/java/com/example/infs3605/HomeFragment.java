@@ -42,7 +42,7 @@ public class HomeFragment extends Fragment {
     private ImageView avatar, background, background2, background3;
     public static final String TOPIC_ID = "topic_id";
     private String fname, hiString;
-    private ImageView starImage;
+    private ImageView starImage, learnIV, dykIV;
     private boolean isVideoViewed, isStoryViewed, isLearningsViewed, isQuizViewed;
     private int numArt, numSpirit, numRituals, numLang, artProg, spiritProg, langProg, ritProg;
     private ProgressBar starProgressBar, artProgressBar;
@@ -97,6 +97,8 @@ public class HomeFragment extends Fragment {
         background2 = view.findViewById(R.id.background2);
         background3 = view.findViewById(R.id.background3);
         artProgressBar = view.findViewById(R.id.artProgressBar);
+        learnIV = view.findViewById(R.id.learnIV);
+        dykIV = view.findViewById(R.id.dykIV);
 
         spiritualityButton = view.findViewById(R.id.spiritualityButton);
         spiritualityProgress = view.findViewById(R.id.spiritualityProgress);
@@ -129,18 +131,31 @@ public class HomeFragment extends Fragment {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()){
-                            fname = ("" + documentSnapshot.get("fname"));
-                            hiString = "Hey " + fname;
-                            name.setText(hiString);
 
-                            firebaseStars = Integer.parseInt("" + documentSnapshot.get("stars"));
-                            starTV.setText(firebaseStars + "");
+                            if (documentSnapshot.get("fname") != null){
+                                fname = ("" + documentSnapshot.get("fname"));
+                                hiString = "Hey " + fname;
+                                name.setText(hiString);
+                            } else {
+                                hiString = "Hey! ";
+                                name.setText(hiString);
+                            }
+
+                            if (documentSnapshot.get("stars") != null){
+                                firebaseStars = Integer.parseInt("" + documentSnapshot.get("stars"));
+                                starTV.setText(firebaseStars + "");
+                            } else {
+                                starTV.setText("0");
+                                numStars = 0;
+                            }
+
+
 
                             numStars = Integer.parseInt("" + documentSnapshot.get("stars"));
                             numLevel = Levels.getLevel(numStars);
 
                             animalLevelString = "<b>" + Levels.getAnimal(numLevel) + "</b> " + " | Level " + numLevel;
-                            level.setText(Html.fromHtml(animalLevelString));
+                            level.setText(Html.fromHtml(animalLevelString, 63));
 
                             avatar.setImageResource(Levels.getAvatar(numLevel));
 
@@ -183,7 +198,6 @@ public class HomeFragment extends Fragment {
 
         if (mFacts != null){
             factNumber = (int)(Math.random() * mFacts.size() - 1) + 1;
-            System.out.println( "my random number is " + factNumber);
             fact = mFacts.get(factNumber);
             System.out.println(fact);
             factTV.setText(fact.getFact());
@@ -212,6 +226,8 @@ public class HomeFragment extends Fragment {
                 background2.setVisibility(View.INVISIBLE);
                 background3.setVisibility(View.INVISIBLE);
                 artProgressBar.setVisibility(View.INVISIBLE);
+                dykIV.setVisibility(View.INVISIBLE);
+                learnIV.setVisibility(View.INVISIBLE);
 
                 spiritualityButton.setVisibility(View.INVISIBLE);
                 spiritPB.setVisibility(View.INVISIBLE);

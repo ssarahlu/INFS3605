@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.infs3605.Entities.Modules;
 import com.example.infs3605.Entities.Topics;
@@ -99,7 +98,6 @@ public class ModuleFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity().getApplicationContext(), MainActivity.class);
                 startActivity(intent);
-                Toast.makeText(getActivity().getApplicationContext(), "Back to home ", Toast.LENGTH_SHORT).show();
             }
         });
 

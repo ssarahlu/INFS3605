@@ -126,7 +126,7 @@ public class ModuleCommentsActivity extends AppCompatActivity {
                                             @Override
                                             public void onSuccess(Void aVoid) {
                                                 Log.d(TAG, "Post Document successfully written!");
-                                                Toast.makeText(ModuleCommentsActivity.this, "Post added!", Toast.LENGTH_SHORT).show();
+//                                                Toast.makeText(ModuleCommentsActivity.this, "Post added!", Toast.LENGTH_SHORT).show();
                                             }
                                         })
                                         .addOnFailureListener(new OnFailureListener() {
@@ -207,7 +207,7 @@ public class ModuleCommentsActivity extends AppCompatActivity {
                         .delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-                        Toast.makeText(ModuleCommentsActivity.this, "Post Deleted", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(ModuleCommentsActivity.this, "Post Deleted", Toast.LENGTH_SHORT).show();
 
 
                     }

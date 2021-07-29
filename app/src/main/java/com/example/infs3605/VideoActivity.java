@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.room.Room;
 
@@ -123,7 +122,6 @@ public class VideoActivity extends YouTubeBaseActivity {
                 intent.putExtra("id", String.valueOf(modId));
                 intent.putExtra("mod_name", modName);
                 startActivity(intent);
-                Toast.makeText(getApplicationContext(), "Story selected", Toast.LENGTH_SHORT).show();
             }
         });
 
