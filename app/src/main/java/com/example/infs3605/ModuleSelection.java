@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.infs3605.Entities.Modules;
 import com.example.infs3605.Entities.Profile;
 import com.example.infs3605.Entities.ProfileData;
@@ -29,6 +30,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+
+import jp.wasabeef.glide.transformations.BlurTransformation;
 
 //page where user can view description, choose video, read story, look at learnings and quiz
 public class ModuleSelection extends AppCompatActivity {
@@ -121,7 +124,10 @@ public class ModuleSelection extends AppCompatActivity {
         for (Modules m : Modules.getModules()){
             if (m.getModuleId() == modId){
                 mMod = m;
-                Glide.with(this).load(m.getModuleBackgroundImage()).into(backgroundImage);
+                Glide.with(this).load(m.getModuleBackgroundImage())
+                        .apply(RequestOptions.bitmapTransform(new BlurTransformation(22, 1)))
+                        .into(backgroundImage);
+
             }
 
         }

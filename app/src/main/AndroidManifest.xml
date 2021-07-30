@@ -17,6 +17,9 @@
         android:roundIcon="@mipmap/logo_orange"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".SplashAcknowledgementActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
         <activity
             android:name=".MeditateIntroActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -34,9 +37,7 @@
         </activity>
         <activity
             android:name=".ModuleCommentsActivity"
-            android:windowSoftInputMode="adjustResize"
-            />
-
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".FeedbackActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -52,7 +53,6 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".PostsActivity"
-            android:fitsSystemWindows="false"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize" />
         <activity

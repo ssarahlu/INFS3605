@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -82,6 +83,16 @@ public class PostsActivity extends AppCompatActivity {
                     }
                 });
 
+        tvAddPost = findViewById(R.id.tvAddPost);
+
+        tvAddPost.setOnTouchListener(new View.OnTouchListener(){
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                // your code here....
+                setDataOnKeyboardOpen();
+                return false;
+            }
+        });
+
         tvTitle = findViewById(R.id.tvTitle);
         tvAuthor = findViewById(R.id.tvAuthor);
         tvLastPost = findViewById(R.id.tvPostTime);
@@ -148,6 +159,7 @@ public class PostsActivity extends AppCompatActivity {
 
     public void addPost() {
         tvAddPost = findViewById(R.id.tvAddPost);
+
         String title = tvAddPost.getText().toString();
         Bundle bundle = getIntent().getExtras();
         if (title.matches("")) {
@@ -209,7 +221,7 @@ public class PostsActivity extends AppCompatActivity {
                                                 }
                                             }
                                         });
-                                setData();
+                                setDataAfterPost();
                                 tvAddPost.getText().clear();
                             }
                         }
@@ -219,6 +231,77 @@ public class PostsActivity extends AppCompatActivity {
 
 
         }
+    }
+
+    public void setDataAfterPost() {
+        ArrayList<Post> posts = new ArrayList<>();
+        Bundle bundle = getIntent().getExtras();
+        String threadID = bundle.getString("threadID");
+        Query threadPosts = postRef.whereEqualTo("threadID", threadID);
+
+        threadPosts.get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "successful");
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                posts.add(new Post(document.getId(),
+                                        document.getString("author"),
+                                        document.getString("authorID"),
+                                        document.getString("post"),
+                                        document.getDate("postDate"),
+                                        Integer.parseInt("" + document.get("stars"))));
+
+                            }
+                            mLayoutManager = new LinearLayoutManager(getApplicationContext());
+                            mRecyclerView.setLayoutManager(mLayoutManager);
+                            mAdapter = new PostsAdapter(posts, getApplicationContext());
+                            mAdapter.sort();
+                            mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                            mRecyclerView.setAdapter(mAdapter);
+
+                        }
+                    }
+                });
+
+
+
+
+    }
+
+    public void setDataOnKeyboardOpen() {
+        ArrayList<Post> posts = new ArrayList<>();
+        Bundle bundle = getIntent().getExtras();
+        String threadID = bundle.getString("threadID");
+        Query threadPosts = postRef.whereEqualTo("threadID", threadID);
+
+        threadPosts.get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "successful");
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                posts.add(new Post(document.getId(),
+                                        document.getString("author"),
+                                        document.getString("authorID"),
+                                        document.getString("post"),
+                                        document.getDate("postDate"),
+                                        Integer.parseInt("" + document.get("stars"))));
+
+                            }
+                            mLayoutManager = new LinearLayoutManager(getApplicationContext());
+                            mRecyclerView.setLayoutManager(mLayoutManager);
+                            mAdapter = new PostsAdapter(posts, getApplicationContext());
+                            mAdapter.sort();
+                            mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                            mRecyclerView.setAdapter(mAdapter);
+
+                        }
+                    }
+                });
+
     }
 
     public void setData() {
@@ -251,9 +334,6 @@ public class PostsActivity extends AppCompatActivity {
                         }
                     }
                 });
-
-
-
 
     }
 

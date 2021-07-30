@@ -291,7 +291,7 @@ public class DiscussionFragment extends Fragment {
                                 });
                         // Close the popup
                         dialog.dismiss();
-                        setData();
+                        setDataAfterPost();
                     }
                 }
             }
@@ -303,6 +303,64 @@ public class DiscussionFragment extends Fragment {
                 dialog.dismiss();
             }
         });
+    }
+
+    public void setDataAfterPost(){
+        ArrayList<DiscussionThread> discussionThreads = new ArrayList<>();
+        discussionThreadRef.get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    // Gets all profiles, and loads the data into the Profiles Array List
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
+
+                                discussionThreads.add(new DiscussionThread(documentSnapshot.getId(),
+                                        documentSnapshot.getString("title"),
+                                        documentSnapshot.getString("author"),
+                                        documentSnapshot.getString("authorID"),
+                                        documentSnapshot.getDate("lastPostTime"),
+                                        documentSnapshot.getDate("postTime"),
+                                        Integer.parseInt(documentSnapshot.get("numberOfReplies").toString()),
+                                        documentSnapshot.getString("post"),
+                                        documentSnapshot.getBoolean("arts"),
+                                        documentSnapshot.getBoolean("culture"),
+                                        documentSnapshot.getBoolean("values"),
+                                        documentSnapshot.getString("fnpReplied")));
+
+                            }
+
+                            mLayoutManager = new LinearLayoutManager(getActivity());
+                            mRecyclerView.setLayoutManager(mLayoutManager);
+
+                            DiscussionThreadAdapter.RecyclerViewClickListener discussionListener = new DiscussionThreadAdapter.RecyclerViewClickListener() {
+                                @Override
+                                public void onClick(View v, String threadID, String title, String author, String authorID, Date postTime, String post, String fnpReplied) {
+                                    Intent intent = new Intent(getActivity(), PostsActivity.class);
+                                    intent.putExtra("threadID", threadID);
+                                    intent.putExtra("title", title);
+                                    intent.putExtra("author", author);
+                                    intent.putExtra("authorID", authorID);
+                                    intent.putExtra("postTime", postTime);
+                                    intent.putExtra("post", post);
+                                    intent.putExtra("fnpReplied", fnpReplied);
+                                    startActivity(intent);
+
+                                }
+                            };
+
+                            mAdapter = new DiscussionThreadAdapter(discussionThreads, discussionListener);
+                            mAdapter.sort();
+                            mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                            mRecyclerView.setAdapter(mAdapter);
+
+                        }
+
+                    }
+
+                });
+
+
     }
 
     public void setData(){
@@ -361,4 +419,6 @@ public class DiscussionFragment extends Fragment {
 
 
     }
+
+
 }

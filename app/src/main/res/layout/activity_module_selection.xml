@@ -12,7 +12,7 @@
         android:layout_height="732dp"
         android:background="#000000"
         android:scaleType="centerCrop"
-        android:tint="#BF000000"
+        android:tint="#B3191919"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -24,24 +24,28 @@
     <TextView
         android:id="@+id/moduleName"
         style="@style/sub_mod"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_width="358dp"
+        android:layout_height="39dp"
+        android:layout_marginBottom="15dp"
         android:text="Module Name"
         android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="@+id/moduleDescription"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="18sp"
+        android:autoSizeMaxTextSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/moduleDescription"
+        app:layout_constraintStart_toStartOf="@+id/moduleDescription" />
 
     <TextView
         android:id="@+id/moduleDescription"
         style="@style/in_this_les"
-        android:layout_width="361dp"
-        android:layout_height="127dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="358dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginBottom="48dp"
         android:text="Description"
         android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="@+id/videoButton"
-        app:layout_constraintTop_toBottomOf="@+id/moduleName" />
+        app:layout_constraintBottom_toTopOf="@+id/videoButton"
+        app:layout_constraintStart_toStartOf="@+id/videoButton" />
 
     <ImageButton
         android:id="@+id/videoButton"

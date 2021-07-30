@@ -57,6 +57,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="20dp"
         android:background="@null"
+        android:inputType="textMultiLine|textNoSuggestions"
         android:ems="10"
         android:focusable="false"
         android:gravity="start|top"

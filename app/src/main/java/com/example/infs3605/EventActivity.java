@@ -90,9 +90,9 @@ public class EventActivity extends FragmentActivity implements OnMapReadyCallbac
             }
         }
 
-        String imageBaseUrl = "https://www.indigenous.gov.au/sites/default/files/styles/indig_thumbnail/public/";
+//        String imageBaseUrl = "https://www.indigenous.gov.au/sites/default/files/styles/indig_thumbnail/public/";
 
-        Glide.with(getApplicationContext()).load(imageBaseUrl + mEvent.getEventImage()).into(ivEventImage);
+        Glide.with(getApplicationContext()).load( mEvent.getEventImage()).into(ivEventImage);
         tvEventName.setText(mEvent.getEventName());
         tvEventDate.setText(mEvent.getEventDate());
         tvEventDesc.setText(mEvent.getEventDesc());
@@ -228,10 +228,10 @@ public class EventActivity extends FragmentActivity implements OnMapReadyCallbac
     }
 
     private void searchEvent(int eventId) {
-        String eventBaseUrl = "https://www.indigenous.gov.au/news-and-media/event/";
+//        String eventBaseUrl = "https://www.indigenous.gov.au/news-and-media/event/";
         String eventUrl = mEventList.get(eventId).getEventLink();
 
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(eventBaseUrl + eventUrl));
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse( eventUrl));
         startActivity(intent);
     }
 

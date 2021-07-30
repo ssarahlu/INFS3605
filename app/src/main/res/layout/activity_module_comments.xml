@@ -87,21 +87,21 @@
 
     <ScrollView
         android:id="@+id/scrollView3"
-        android:layout_width="431dp"
+        android:layout_width="426dp"
         android:layout_height="0dp"
-        android:layout_marginTop="66dp"
         android:background="#F6F6F6"
         android:fitsSystemWindows="true"
+        app:layout_constraintBottom_toTopOf="@id/constraintLayout4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/constraintLayout2"
-        tools:context=".PostsActivity">
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+        tools:context=".ModuleCommentsActivity">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="#F6F6F6"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -114,9 +114,10 @@
                 android:id="@+id/rvComments"
                 android:layout_width="415dp"
                 android:layout_height="0dp"
+                android:layout_marginEnd="8dp"
                 android:clipToPadding="false"
                 android:overScrollMode="always"
-                android:paddingBottom="200dp"
+                android:paddingBottom="50dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -144,7 +145,7 @@
             android:id="@+id/btAddComment"
             android:layout_width="16dp"
             android:layout_height="15dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="12dp"
             android:background="#FFFFFF"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="@+id/tvAddPost"

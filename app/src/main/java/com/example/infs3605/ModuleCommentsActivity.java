@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -67,6 +68,16 @@ public class ModuleCommentsActivity extends AppCompatActivity {
 //        tvTitle.setText(bundle.getString("Module"));
 
 
+        tvAddComment = findViewById(R.id.tvAddPost);
+
+        tvAddComment.setOnTouchListener(new View.OnTouchListener(){
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                // your code here....
+                setDataOnKeyboardOpen();
+                return false;
+            }
+        });
+
         btBack = findViewById(R.id.backButton2);
         btBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,6 +105,40 @@ public class ModuleCommentsActivity extends AppCompatActivity {
             }
         });
 
+
+    }
+
+    public void setDataOnKeyboardOpen() {
+        ArrayList<Post> comments = new ArrayList<>();
+        Bundle bundle = getIntent().getExtras();
+        String threadID = bundle.getString("id");
+        Query threadPosts = commentRef.whereEqualTo("moduleID", threadID);
+
+        threadPosts.get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "successful");
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                comments.add(new Post(document.getId(),
+                                        document.getString("author"),
+                                        document.getString("authorID"),
+                                        document.getString("comment"),
+                                        document.getDate("postDate"),
+                                        Integer.parseInt("" + document.get("stars"))));
+
+                            }
+                            mLayoutManager = new LinearLayoutManager(getApplicationContext());
+                            mRecyclerView.setLayoutManager(mLayoutManager);
+                            mAdapter = new PostsAdapter(comments, getApplicationContext());
+                            mAdapter.sort();
+                            mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                            mRecyclerView.setAdapter(mAdapter);
+
+                        }
+                    }
+                });
 
     }
 
@@ -137,8 +182,8 @@ public class ModuleCommentsActivity extends AppCompatActivity {
                                                 Log.w(TAG, "Error writing document", e);
                                             }
                                         });
-                               
-                                setData();
+
+                                setDataAfterPost();
                                 tvAddComment.getText().clear();
                             }
                         }
@@ -148,6 +193,40 @@ public class ModuleCommentsActivity extends AppCompatActivity {
 
 
         }
+    }
+
+    public void setDataAfterPost() {
+        ArrayList<Post> comments = new ArrayList<>();
+        Bundle bundle = getIntent().getExtras();
+        String threadID = bundle.getString("id");
+        Query threadPosts = commentRef.whereEqualTo("moduleID", threadID);
+
+        threadPosts.get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "successful");
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                comments.add(new Post(document.getId(),
+                                        document.getString("author"),
+                                        document.getString("authorID"),
+                                        document.getString("comment"),
+                                        document.getDate("postDate"),
+                                        Integer.parseInt("" + document.get("stars"))));
+
+                            }
+                            mLayoutManager = new LinearLayoutManager(getApplicationContext());
+                            mRecyclerView.setLayoutManager(mLayoutManager);
+                            mAdapter = new PostsAdapter(comments, getApplicationContext());
+                            mAdapter.sort();
+                            mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                            mRecyclerView.setAdapter(mAdapter);
+
+                        }
+                    }
+                });
+
     }
 
     public void setData() {
@@ -180,9 +259,6 @@ public class ModuleCommentsActivity extends AppCompatActivity {
                         }
                     }
                 });
-
-
-
 
     }
 

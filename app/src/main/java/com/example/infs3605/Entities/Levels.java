@@ -18,6 +18,8 @@ public class Levels {
             //for user
         } else if (stars < 5){
             level = 1;
+        } else if (stars > 50 && stars <= 200){
+            level = 10;
         } else {
             level = (int) (stars/5) + 1;
         }
@@ -29,10 +31,10 @@ public class Levels {
 
         switch (level){
             case -200:
-                animal = "";
+                animal = "Aboriginal Profile";
                 break;
             case -100:
-                animal = "";
+                animal = "Torres Strait Islander Profile";
                 break;
 
             case 1:
