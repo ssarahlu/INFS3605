@@ -60,6 +60,9 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="65dp"
         android:gravity="left"
+        android:autoSizeMaxTextSize="15sp"
+        android:autoSizeMinTextSize="10sp"
+        android:autoSizeTextType="uniform"
         android:text="This is information"
         app:layout_constraintStart_toStartOf="@+id/image"
         app:layout_constraintTop_toBottomOf="@+id/image" />
