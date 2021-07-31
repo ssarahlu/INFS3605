@@ -103,7 +103,6 @@ public class StoryActivity extends AppCompatActivity {
                 intent.putExtra("id", String.valueOf(modId));
                 intent.putExtra("mod_name", modName);
                 startActivity(intent);
-                Toast.makeText(getApplicationContext(), "Story selected", Toast.LENGTH_SHORT).show();
 
             }
         });

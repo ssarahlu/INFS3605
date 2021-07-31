@@ -36,17 +36,18 @@ public class MainActivity extends AppCompatActivity {
                     fragmentTransaction1.commit();
                     break;
                 case R.id.page_2:
-                    ExploreFragment exploreFragment = new ExploreFragment();
-                    FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction2.replace(R.id.fragment_container, exploreFragment, "FragmentName");
-                    fragmentTransaction2.commit();
-
-                    break;
-                case R.id.page_3:
                     DiscussionFragment discussionFragment = new DiscussionFragment();
                     FragmentTransaction fragmentTransaction3 = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction3.replace(R.id.fragment_container, discussionFragment, "FragmentName");
                     fragmentTransaction3.commit();
+
+                    break;
+                case R.id.page_3:
+
+                    ExploreFragment exploreFragment = new ExploreFragment();
+                    FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction2.replace(R.id.fragment_container, exploreFragment, "FragmentName");
+                    fragmentTransaction2.commit();
 
                     break;
 
@@ -132,11 +133,11 @@ public class MainActivity extends AppCompatActivity {
             } else if (s1.equals("2")) {
 
                 s1 = "";
-                bottomNav.setSelectedItemId(R.id.page_2);
+                bottomNav.setSelectedItemId(R.id.page_3);
             } else if (s1.equals("3")) {
 
                 s1 = "";
-                bottomNav.setSelectedItemId(R.id.page_3);
+                bottomNav.setSelectedItemId(R.id.page_2);
             } else if (s1.equals("5")) {
                 bottomNav.setSelectedItemId(R.id.page_4);
             }

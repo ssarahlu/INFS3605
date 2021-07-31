@@ -8,15 +8,16 @@
     <item
         android:id="@+id/page_2"
         android:enabled="true"
-        android:icon="@drawable/social_inactive"
-        android:title="Explore"/>
+        android:icon="@drawable/forum_inactive"
+        android:title="Forum"
+/>
 
     <item
         android:id="@+id/page_3"
         android:enabled="true"
 
-        android:icon="@drawable/forum_inactive"
-        android:title="Forum" />
+        android:icon="@drawable/social_inactive"
+        android:title="Explore" />
 
 
     <item
