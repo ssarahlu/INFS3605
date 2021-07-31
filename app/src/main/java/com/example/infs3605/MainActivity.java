@@ -159,9 +159,18 @@ public class MainActivity extends AppCompatActivity {
         String email = user.getEmail();
         int stars = 0;
         String[] nameArr = user.getDisplayName().split(" ");
+        String fname, lname;
 
-        String fname = nameArr[0];
-        String lname = nameArr[1];
+        if (nameArr.length > 1){
+             fname = nameArr[0];
+             lname = nameArr[1];
+        } else {
+            fname = nameArr[0];
+            lname = " ";
+
+        }
+
+
 
 
         // Create a Hash Map with the desired values

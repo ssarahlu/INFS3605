@@ -240,6 +240,7 @@ public class HomeFragment extends Fragment {
                 languagePB.setVisibility(View.INVISIBLE);
 
 
+
                 ModuleFragment fragment = new ModuleFragment();
                 Bundle bundle = new Bundle();
                 bundle.putString(HomeFragment.TOPIC_ID, "0");
@@ -272,7 +273,8 @@ public class HomeFragment extends Fragment {
                 background2.setVisibility(View.INVISIBLE);
                 background3.setVisibility(View.INVISIBLE);
                 artProgressBar.setVisibility(View.INVISIBLE);
-
+                dykIV.setVisibility(View.INVISIBLE);
+                learnIV.setVisibility(View.INVISIBLE);
                 spiritualityButton.setVisibility(View.INVISIBLE);
                 spiritPB.setVisibility(View.INVISIBLE);
                 spiritualityProgress.setVisibility(View.INVISIBLE);
@@ -318,7 +320,8 @@ public class HomeFragment extends Fragment {
                 background2.setVisibility(View.INVISIBLE);
                 background3.setVisibility(View.INVISIBLE);
                 artProgressBar.setVisibility(View.INVISIBLE);
-
+                dykIV.setVisibility(View.INVISIBLE);
+                learnIV.setVisibility(View.INVISIBLE);
                 spiritualityButton.setVisibility(View.INVISIBLE);
                 spiritPB.setVisibility(View.INVISIBLE);
                 spiritualityProgress.setVisibility(View.INVISIBLE);
@@ -363,7 +366,8 @@ public class HomeFragment extends Fragment {
                 background2.setVisibility(View.INVISIBLE);
                 background3.setVisibility(View.INVISIBLE);
                 artProgressBar.setVisibility(View.INVISIBLE);
-
+                dykIV.setVisibility(View.INVISIBLE);
+                learnIV.setVisibility(View.INVISIBLE);
                 spiritualityButton.setVisibility(View.INVISIBLE);
                 spiritPB.setVisibility(View.INVISIBLE);
                 spiritualityProgress.setVisibility(View.INVISIBLE);

@@ -108,9 +108,10 @@
         <TextView
             android:id="@+id/detailTV"
             style="@style/rewardinfo"
-            android:layout_width="376dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="18dp"
             android:text="Anthony Walker is an award-winning visual artist of Queensland Aboriginal descent, a member of the Yiman and Gurreng Gurreng peoples. Through his work, he engages with the natural environment and seeks to raise awareness about the preservation of native flora and fauna.  Anthony's arts practice includes painting, printmaking, photography, design, and public art. His work has been critically acclaimed for its light-hearted design and blend of colour and movement. Notable achievements include: participating in Wesfarmers Indigenous Arts Leadership Program (National Gallery of Australia), undertaking a curatorial residency at the Museum of Contemporary Art (MCA - Sydney), winning the Gold Coast Aboriginal and Torres Strait Islander Art Award, and having a solo exhibition at Melbourne’s Koorie Heritage Trust Centre."
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.058"

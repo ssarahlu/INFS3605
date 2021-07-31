@@ -8,6 +8,7 @@
     android:layout_height="match_parent"
     android:background="#F6f6f6">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
         android:layout_width="0dp"
@@ -15,6 +16,7 @@
         android:background="#FFFFFF"
         android:fitsSystemWindows="false"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -37,20 +39,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:layout_marginTop="72dp"
             android:fontFamily="sans-serif"
             android:text="Title"
             android:textFontWeight="500"
             app:layout_constraintStart_toEndOf="@+id/ivUser"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/ivUser" />
 
         <EditText
             android:id="@+id/tvContent"
             style="@style/hi_all_i_m_"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="26dp"
             android:layout_marginTop="28dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="26dp"
             android:layout_marginBottom="18dp"
             android:background="@null"
             android:ems="10"
@@ -59,7 +61,7 @@
             android:inputType="textMultiLine|textNoSuggestions"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/ivUser"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvPostTime" />
 
         <TextView
@@ -76,11 +78,10 @@
 
         <ImageView
             android:id="@+id/ivUser"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
 
             android:layout_marginStart="26dp"
-            android:layout_marginLeft="26dp"
             android:layout_marginTop="28dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/backButton2"
@@ -111,7 +112,6 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
     <ScrollView
         android:id="@+id/scrollView3"
