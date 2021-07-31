@@ -8,26 +8,25 @@
     <androidx.cardview.widget.CardView
         android:layout_width="300dp"
         android:layout_height="180dp"
-        app:cardCornerRadius="8dp"
-        android:layout_marginRight="12dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="2dp"
+        android:layout_centerVertical="false"
         android:layout_marginTop="2dp"
-
-        android:layout_centerInParent="true">
+        android:layout_marginEnd="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="2dp"
+        app:cardCornerRadius="8dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:background="?android:attr/selectableItemBackground"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="?android:attr/selectableItemBackground">
 
             <ImageView
                 android:id="@+id/ivEventListImage"
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
-                android:scaleType="centerCrop"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/med_background"/>
+                android:scaleType="centerCrop"
+                android:src="@drawable/med_background" />
 
             <TextView
                 android:id="@+id/tvEventListName"
@@ -60,7 +59,6 @@
 
 
         </RelativeLayout>
-
 
 
     </androidx.cardview.widget.CardView>

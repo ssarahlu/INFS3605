@@ -149,14 +149,19 @@ public class Social {
                         "This logo depicts a snake with various Aboriginal artistic styles from different language groups displayed on its body. The snake represents the unity of Aboriginal Peoples all over Australia and our deep connections to Country and other living/non-living presences. Different stories and cultural perspectives can be found within each artistic style that pertains to different Aboriginal language groups.\n" +
                         "#aboriginal #aboriginalart #indigenous #indigenousart")));
 
+        socialList.add((new Social (13, R.drawable.wanyara_icon, "wanyara.aus", R.drawable.social15, "Not many Australians know a famous Aboriginal person but there is one right there on the $50 note. David Unaipon (1872 - 1967) was a Ngarrindjeri man, a preacher, inventor and writer. Among his patents was a helicopter design based on the principle of the boomerang.\n" +
+                "\n" +
+                "#famouspeople #australian #learnmore #proudculture #aboriginal #history")));
 
-        socialList.add((new Social(13,R.drawable.dylanbarnes_icon,"dylan.barnes.art", R.drawable.social8,
+
+        socialList.add((new Social(14,R.drawable.dylanbarnes_icon,"dylan.barnes.art", R.drawable.social8,
                 "\"Dungal Wambadar\"\n" +
                         "(Support Lights) (40cm x 40cm)\n" +
                         "\n" +
                         "I did this artwork as a commission piece for a friend in August 2020. I wanted this piece to capture how important our family, friends, partners, and community members are in supporting us and our growth. The central pillar represents the individual (us) and the various layers of emotion, intellect, spirituality, and knowledge that we possess. The beams of light that surround our pillars are our central support networks that protect and guide us wherever we may be.\n" +
                         "\n" +
                         "(August 2020)")));
+
 
         return socialList;
     }

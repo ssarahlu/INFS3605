@@ -187,23 +187,9 @@
         tools:src="@drawable/cancel" />
 
     <ImageButton
-        android:id="@+id/next"
-        android:layout_width="180dp"
-        android:layout_height="44dp"
-        android:background="#00FFFFFF"
-        android:scaleType="centerCrop"
-        android:src="@drawable/quiz_next"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.887"
-        tools:src="@drawable/quiz_next" />
-
-    <ImageButton
         android:id="@+id/check"
         android:layout_width="180dp"
-        android:layout_height="44dp"
+        android:layout_height="50dp"
         android:background="#00FFFFFF"
         android:scaleType="centerCrop"
         android:src="@drawable/check"
@@ -226,6 +212,20 @@
     <!--        app:layout_constraintEnd_toEndOf="parent"-->
     <!--        app:layout_constraintHorizontal_bias="0.0"-->
     <!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+    <ImageButton
+        android:id="@+id/next"
+        android:layout_width="180dp"
+        android:layout_height="50dp"
+        android:background="#00FFFFFF"
+        android:scaleType="centerCrop"
+        android:src="@drawable/quiz_next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.887"
+        tools:src="@drawable/quiz_next" />
 
     <TextView
         android:id="@+id/position"

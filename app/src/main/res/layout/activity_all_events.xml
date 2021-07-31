@@ -25,12 +25,13 @@
         android:id="@+id/backButton"
         android:layout_width="18.64dp"
         android:layout_height="20dp"
-        android:layout_marginStart="22dp"
         android:layout_marginTop="22dp"
         android:background="#00FFFFFF"
         android:scaleType="centerCrop"
         android:src="@drawable/mod_back"
         android:tint="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.045"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

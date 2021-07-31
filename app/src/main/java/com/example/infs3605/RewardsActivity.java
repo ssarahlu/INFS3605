@@ -161,46 +161,46 @@ public class RewardsActivity extends AppCompatActivity {
     private class InsertAccountAchievements extends AsyncTask<Void, Void, Void> {
         @Override
         protected Void doInBackground(Void... voids) {
-            myDb = Room.databaseBuilder(getApplicationContext(), MyDatabase.class, "my-db.db")
+            myDb = Room.databaseBuilder(getApplicationContext(), MyDatabase.class, "my-db.db").allowMainThreadQueries()
                     .build();
 
-            for (Rewards r : mRewards) {
-                Log.d(TAG, "doInBackground: r.getStars " + r.getStars() + " " +  starSaved[0]);
+//            for (Rewards r : mRewards) {
+//                Log.d(TAG, "doInBackground: r.getStars " + r.getStars() + " " +  starSaved[0]);
+//
+//                if (r.getStars() < starSaved[0]) {
+//                    Log.d(TAG, "doInBackground:  in if statement to check stars ");
+//                    achievementId = r.getRewardId();
+//                    mAccAchs.add(new AccountAchievement(email, achievementId, true, false));
+//                    myDb.accountAchievementDao().insertSingle(email, achievementId, true, false);
+//
+//                    Log.d(TAG, "doInBackground: insert single " + email + achievementId );
+//                }
+//            }
 
-                if (r.getStars() < starSaved[0]) {
-                    Log.d(TAG, "doInBackground:  in if statement to check stars ");
-                    achievementId = r.getRewardId();
-                    mAccAchs.add(new AccountAchievement(email, achievementId, true, false));
-                    myDb.accountAchievementDao().insertSingle(email, achievementId, true, false);
+            userRef.get()
+                    .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                        @Override
+                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                            if (documentSnapshot.exists()){
 
-                    Log.d(TAG, "doInBackground: insert single " + email + achievementId );
-                }
-            }
+                                mStars = Integer.parseInt("" + documentSnapshot.get("stars"));
 
-//            userRef.get()
-//                    .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-//                        @Override
-//                        public void onSuccess(DocumentSnapshot documentSnapshot) {
-//                            if (documentSnapshot.exists()){
-//
-//                                mStars = Integer.parseInt("" + documentSnapshot.get("stars"));
-//
-//                                for (Rewards r : mRewards) {
-//                                    Log.d(TAG, "doInBackground: r.getStars " + r.getStars() + " " +  mStars);
-//
-//                                    if (r.getStars() < mStars) {
-//                                        Log.d(TAG, "doInBackground:  in if statement to check stars ");
-//                                        achievementId = r.getRewardId();
-//                                        mAccAchs.add(new AccountAchievement(email, achievementId, true, false));
-//                                        myDb.accountAchievementDao().insertSingle(email, achievementId, true, false);
-//
-//                                        Log.d(TAG, "doInBackground: insert single " + email + achievementId );
-//                                    }
-//                                }
-//
-//                            }
-//                        }
-//                    });
+                                for (Rewards r : mRewards) {
+                                    Log.d(TAG, "doInBackground: r.getStars " + r.getStars() + " " +  mStars);
+
+                                    if (r.getStars() < mStars) {
+                                        Log.d(TAG, "doInBackground:  in if statement to check stars ");
+                                        achievementId = r.getRewardId();
+                                        mAccAchs.add(new AccountAchievement(email, achievementId, true, false));
+                                        myDb.accountAchievementDao().insertSingle(email, achievementId, true, false);
+
+                                        Log.d(TAG, "doInBackground: insert single " + email + achievementId );
+                                    }
+                                }
+
+                            }
+                        }
+                    });
 
 
             Log.d(TAG, "doInBackground: ASYNC TASK  ");

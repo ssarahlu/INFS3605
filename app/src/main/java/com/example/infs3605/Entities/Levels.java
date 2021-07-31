@@ -18,9 +18,13 @@ public class Levels {
             //for user
         } else if (stars < 5){
             level = 1;
-        } else if (stars > 50 && stars <= 200){
+//        } else if (stars > 50 && stars <= 200){
+//            level = 10;
+        } else if (stars >= 50){
             level = 10;
-        } else {
+        }
+
+        else {
             level = (int) (stars/5) + 1;
         }
         return level ;

@@ -6,29 +6,39 @@
     android:layout_height="match_parent"
     android:background="#f6f6f6">
 
-
-    <ImageView
-        android:id="@+id/ivExploreActionBar"
-        android:layout_width="411dp"
-        android:layout_height="66dp"
-        android:layout_alignParentTop="true"
-        android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/module_header"
-        tools:srcCompat="@drawable/module_header" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ivExploreActionBar"
+            android:layout_width="411dp"
+            android:layout_height="66dp"
+            android:layout_alignParentTop="true"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/module_header" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="377dp"
+        android:layout_width="370dp"
         android:layout_height="601dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="4dp"
         android:layout_marginBottom="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivExploreActionBar">
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout1">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -40,8 +50,8 @@
                 android:id="@+id/ivSavedEventsTitle"
                 android:layout_width="102dp"
                 android:layout_height="22dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="18dp"
                 android:scaleType="fitCenter"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -63,8 +73,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/ivSavedEventsTitle"
                 app:layout_constraintTop_toBottomOf="@+id/ivSavedEventsTitle">
@@ -87,8 +96,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="12dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tvEventsTitle"
                 app:layout_constraintTop_toBottomOf="@+id/ivEventsTitle" />
@@ -109,7 +117,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="12dp"
                 android:layout_marginBottom="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -142,7 +150,7 @@
                 android:id="@+id/ivEventsTitle"
                 android:layout_width="55dp"
                 android:layout_height="23dp"
-                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="24dp"
                 android:scaleType="fitCenter"
                 app:layout_constraintStart_toStartOf="parent"
