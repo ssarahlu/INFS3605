@@ -44,7 +44,6 @@
         <activity
             android:name=".HelpCentreActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".TestActivity" />
         <activity
             android:name=".DetailRewardsActivity"
             android:theme="@style/AppTheme.NoActionBar" />

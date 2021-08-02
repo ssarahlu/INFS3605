@@ -74,8 +74,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.ViewHolder> 
 
         mEvent = mEventList.get(position);
 
-//        String imageBaseUrl = "https://www.indigenous.gov.au/sites/default/files/styles/indig_thumbnail/public/";
-
         Glide.with(context).load( mEvent.getEventImage()).into(holder.ivEventImage);
         holder.tvEventName.setText(mEvent.getEventName());
         holder.tvEventDate.setText(mEvent.getEventDate());
