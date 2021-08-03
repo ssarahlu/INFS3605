@@ -16,8 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.infs3605.Entities.Levels;
 import com.example.infs3605.Entities.Post;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -30,6 +33,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
     private static final String TAG = "PostsAdapter";
     private Context context;
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
 
     public PostsAdapter(ArrayList<Post> posts, Context context) {
@@ -99,8 +103,20 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         holder.tvPostDate.setText("Posted: " + date);
         int numStars = Integer.parseInt("" + post.getNumStars());
         int numLevel = Levels.getLevel(numStars);
-        holder.ivUser.setImageResource(Levels.getAvatar(numLevel));
+//        holder.ivUser.setImageResource(Levels.getAvatar(numLevel));
         holder.tvPost.setText(post.getPost());
+
+        db.collection("profiles").document(post.getAuthorID()).get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()) {
+                            int numStars = Integer.parseInt("" + documentSnapshot.get("stars"));
+                            int numLevel = Levels.getLevel(numStars);
+                            holder.ivUser.setImageResource(Levels.getAvatar(numLevel));
+                        }
+                    }
+                });
 
 
 
