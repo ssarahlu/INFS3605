@@ -71,9 +71,6 @@ public class QuizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
-//        getActionBar().hide();
-
-
         email = user.getEmail();
 
         Intent intent = getIntent();
@@ -88,7 +85,6 @@ public class QuizActivity extends AppCompatActivity {
         opt3 = findViewById(R.id.opt3);
         opt4 = findViewById(R.id.opt4);
         question = findViewById(R.id.question);
-//        again = findViewById(R.id.again);
         next = findViewById(R.id.next);
         check = findViewById(R.id.check);
         cancel = findViewById(R.id.cancel);
@@ -101,12 +97,6 @@ public class QuizActivity extends AppCompatActivity {
         quizProgress = findViewById(R.id.quizProgress);
 
         cancel.setVisibility(View.VISIBLE);
-
-//        fin = findViewById(R.id.finished);
-//        imageComplete = findViewById(R.id.imageComplete);
-//        imageComplete.setVisibility(View.GONE);
-//        returnHome = findViewById(R.id.returnHome);
-//        returnHome.setVisibility(View.INVISIBLE);
 
         for (Quiz q: Quiz.getQuiz()){
             if (q.getModuleId() == modId){
@@ -123,7 +113,6 @@ public class QuizActivity extends AppCompatActivity {
             }
 
         }
-//        setTitle(modName);
 
         if (mQuiz != null) {
             i = 0;
@@ -143,7 +132,6 @@ public class QuizActivity extends AppCompatActivity {
             img3.setImageResource(android.R.color.transparent);
             img4.setImageResource(android.R.color.transparent);
             check.setVisibility(View.VISIBLE);
-//            again.setVisibility(View.GONE);
 
         } else {
             question.setText("Module quiz not available. Please come back when the app updates.");
@@ -158,11 +146,9 @@ public class QuizActivity extends AppCompatActivity {
                 img4.setImageResource(android.R.color.transparent);
                 boolean answered = checkResult();
                 if (answered == true) {
-//                    again.setVisibility(View.GONE);
                     check.setVisibility(View.GONE);
                     next.setVisibility(View.VISIBLE);
                 } else {
-//                    again.setVisibility(View.GONE);
                     check.setVisibility(View.VISIBLE);
                     next.setVisibility(View.GONE);
                 }
@@ -191,47 +177,6 @@ public class QuizActivity extends AppCompatActivity {
 
             }
         });
-
-//        returnHome.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//                startActivity(intent);
-//
-//            }
-//        });
-//
-//        again.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                fin.setText("");
-//                if (mQuiz != null) {
-//                    i = 0;
-//                    stars = 0;
-//                    q = mQuiz.get(i);
-//                    question.setText(q.getQuestion());
-//                    opt1.setText(q.getOp1());
-//                    opt2.setText(q.getOp2());
-//                    opt3.setText(q.getOp3());
-//                    opt4.setText(q.getOp4());
-//                    answer = q.getAnswer();
-//                    quizId = q.getId();
-//                    position.setText("Question " + i + 1 + "/" + mQuiz.size());
-//                    next.setVisibility(View.GONE);
-//                    img1.setImageResource(android.R.color.transparent);
-//                    img2.setImageResource(android.R.color.transparent);
-//                    img3.setImageResource(android.R.color.transparent);
-//                    img4.setImageResource(android.R.color.transparent);
-//                    check.setVisibility(View.VISIBLE);
-//                    again.setVisibility(View.GONE);
-//                    grp.setVisibility(View.VISIBLE);
-//
-//                } else {
-//                    question.setText("Nothing has been added yet. Please come back when the app updates.");
-//                }
-//
-//            }
-//        });
 
 
     }
@@ -336,14 +281,6 @@ public class QuizActivity extends AppCompatActivity {
         if (i >= mQuiz.size()) {
             new MyQuizViewedTask().execute();
             new GetStarsTask().execute();
-//            tr = new TopicResult(topicId, email, stars, true);
-//            new UpdateStarsTask().execute();
-//            next.setVisibility(View.GONE);
-//            grp.setVisibility(View.GONE);
-//            check.setVisibility(View.GONE);
-//            question.setVisibility(View.GONE);
-//            again.setVisibility(View.VISIBLE);
-            //displays stars earnt in the mini quiz
 
             i = mQuiz.size();
 
@@ -357,7 +294,6 @@ public class QuizActivity extends AppCompatActivity {
             Log.d(TAG, "onClick: line 170 displays index at " + i);
             next.setVisibility(View.VISIBLE);
             check.setVisibility(View.VISIBLE);
-//            again.setVisibility(View.GONE);
             q = mQuiz.get(i);
             question.setText(q.getQuestion());
             opt1.setText(q.getOp1());
@@ -374,7 +310,6 @@ public class QuizActivity extends AppCompatActivity {
             i++;
             Log.d(TAG, "onClick: line 187 displays index at " + i);
             check.setVisibility(View.VISIBLE);
-//            again.setVisibility(View.GONE);
             next.setVisibility(View.VISIBLE);
             q = mQuiz.get(i);
             question.setText(q.getQuestion());
@@ -396,38 +331,6 @@ public class QuizActivity extends AppCompatActivity {
 
 
     private void updateUi() {
-//        switch (stars) {
-//            case 1:
-//                imgquest.setImageResource(R.drawable.one_star);
-//                break;
-//            case 2:
-//                imgquest.setImageResource(R.drawable.two_star);
-//                break;
-//            case 3:
-//                imgquest.setImageResource(R.drawable.three_star);
-//                break;
-//            case 4:
-//                imgquest.setImageResource(R.drawable.four_star);
-//                break;
-//            case 5:
-//                imgquest.setImageResource(R.drawable.five_star);
-//                break;
-//            case 6:
-//                imgquest.setImageResource(R.drawable.six_star);
-//                break;
-//            case 0:
-//                imgquest.setImageResource(R.drawable.no_star);
-//                break;
-//            default:
-//                imgquest.setImageResource(R.drawable.tick);
-//        }
-//        question.setText( "Quiz complete!" + " \n \n You have finished this topic's knowledge check. Your result is " + stars + "/" + mQuiz.size() + "");
-//        position.setText("");
-//        quizProgress.setVisibility(View.INVISIBLE);
-//        fin.setText(finished);
-//        returnHome.setVisibility(View.VISIBLE);
-//        imageComplete.setVisibility(View.VISIBLE);
-
         Intent intent = new Intent(getApplicationContext(), QuizCompleteActivity.class);
         intent.putExtra("result", "Your result is " + stars + "/" +  mQuiz.size());
         intent.putExtra("finished", finished);

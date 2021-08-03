@@ -36,24 +36,5 @@ public interface SavedEventDataDao {
     @Delete
     void removeEvent(SavedEventData savedEvent);
 
-    /*
-    Probs redundant stuff
-
-    @Query("SELECT eventId FROM SavedEventData WHERE email == :email")
-    List<Integer> getSavedEventId(String email);
-
-    @Query("SELECT eventImage FROM SavedEventData WHERE email == :email")
-    List<String> getSavedEventImages(String email);
-
-    @Query("SELECT eventName FROM SavedEventData WHERE email == :email")
-    List<String> getSavedEventNames(String email);
-
-    @Query("SELECT eventDate FROM SavedEventData WHERE email == :email")
-    List<String> getSavedEventDates(String email);
-
-    @Query("SELECT eventLink FROM SavedEventData WHERE email == :email")
-    List<String> getSavedEventLinks(String email);
-
-     */
 
 }

@@ -71,10 +71,6 @@ public class ModuleSelection extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_module_selection);
 
-
-//        getSupportActionBar().hide();
-//        getActionBar().hide();
-
         Intent intent = getIntent();
         modName = intent.getStringExtra("Module");
         modDesc = intent.getStringExtra("Description");
@@ -300,8 +296,6 @@ public class ModuleSelection extends AppCompatActivity {
             quizBar.setProgress( (numStars * 100) / mQuiz.size());
 
         }
-        
-
 
         Log.d(TAG, "updateViewedData: Finished updating the views");
         

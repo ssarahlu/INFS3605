@@ -53,8 +53,6 @@ public class ModuleCommentsActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager mLayoutManager;
     private RecyclerView mRecyclerView;
     private ImageButton btAddPost, btBack;
-    private ImageView ivUser;
-    private TextView tvTitle, tvAuthor, tvLastPost, tvContent, tvNoPosts;
     private EditText tvAddComment;
 
     @Override
@@ -64,15 +62,10 @@ public class ModuleCommentsActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         Bundle bundle = getIntent().getExtras();
 
-//        tvTitle = findViewById(R.id.tvModuleTitle);
-//        tvTitle.setText(bundle.getString("Module"));
-
-
         tvAddComment = findViewById(R.id.tvAddPost);
 
         tvAddComment.setOnTouchListener(new View.OnTouchListener(){
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                // your code here....
                 setDataOnKeyboardOpen();
                 return false;
             }
@@ -286,7 +279,6 @@ public class ModuleCommentsActivity extends AppCompatActivity {
                         .delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-//                        Toast.makeText(ModuleCommentsActivity.this, "Post Deleted", Toast.LENGTH_SHORT).show();
 
 
                     }

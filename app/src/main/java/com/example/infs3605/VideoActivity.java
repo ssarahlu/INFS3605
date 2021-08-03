@@ -60,9 +60,6 @@ public class VideoActivity extends YouTubeBaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
-//        getActionBar().hide();
-
-//        backgroundImage = findViewById(R.id.backgroundImage);
         videoDesc = findViewById(R.id.videoDesc);
         backButton = findViewById(R.id.backButton);
         storyButton = findViewById(R.id.storyButton);
@@ -90,9 +87,6 @@ public class VideoActivity extends YouTubeBaseActivity {
         for (Videos v: Videos.getVideos()){
             if (v.getModuleId() == modId){
                 mVideo = v;
-
-//                mVideos.add(v);
-//                mVideo = mVideos.get(v.getModuleId());
 
             }
         }

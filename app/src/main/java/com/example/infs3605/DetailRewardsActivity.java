@@ -262,9 +262,6 @@ public class DetailRewardsActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void v) {
             super.onPostExecute(v);
-            Log.d(TAG, "onPostExecute: FINISHED");
-//            updateUi();
-
             Log.d(TAG, "onPostExecute: print all " + allAchs.size() + allAchs);
 
             myDb.close();

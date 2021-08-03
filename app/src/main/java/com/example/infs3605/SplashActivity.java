@@ -11,12 +11,8 @@ import android.widget.ImageView;
 
 public class SplashActivity extends AppCompatActivity {
     private static int SPLASH_TIME_OUT = 3000;
-    private static int ACK_TIME_OUT = 8000;
 
     private ImageView ack, logo, title;
-    private ImageSwitcher imageSwitcher;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +35,7 @@ public class SplashActivity extends AppCompatActivity {
                 overridePendingTransition(0, 0);
                 finish();
             }
-        }, 3000);
+        }, SPLASH_TIME_OUT);
 
 
 

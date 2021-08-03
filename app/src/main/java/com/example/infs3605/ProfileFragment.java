@@ -49,10 +49,6 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        //profile = view.findViewById(R.id.profile);
-
-        //profile.setText("Profile Screen");
-
         ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
 
         btSignOut = view.findViewById(R.id.btSignOut);
@@ -67,9 +63,7 @@ public class ProfileFragment extends Fragment {
 
         emailString = user.getEmail();
         email.setText(emailString);
-//        name.setText(user.getDisplayName());
 
-        //to set the Hey <name>
         userRef.get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override

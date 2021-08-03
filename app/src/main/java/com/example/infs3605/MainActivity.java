@@ -40,34 +40,20 @@ public class MainActivity extends AppCompatActivity {
                     FragmentTransaction fragmentTransaction3 = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction3.replace(R.id.fragment_container, discussionFragment, "FragmentName");
                     fragmentTransaction3.commit();
-
                     break;
-                case R.id.page_3:
 
+                case R.id.page_3:
                     ExploreFragment exploreFragment = new ExploreFragment();
                     FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction2.replace(R.id.fragment_container, exploreFragment, "FragmentName");
                     fragmentTransaction2.commit();
-
                     break;
-
-                /*
-                case R.id.page_4:
-                    Toast.makeText(MainActivity.this, "Meditate", Toast.LENGTH_SHORT).show();
-                    MeditateFragment meditateFragment = new MeditateFragment();
-                    FragmentTransaction fragmentTransaction4 = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction4.replace(R.id.fragment_container, meditateFragment, "FragmentName");
-                    fragmentTransaction4.commit();
-                    break;
-
-                 */
 
                 case R.id.page_4:
                     ProfileFragment profileFragment = new ProfileFragment();
                     FragmentTransaction fragmentTransaction5 = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction5.replace(R.id.fragment_container, profileFragment, "FragmentName");
                     fragmentTransaction5.commit();
-
                     break;
             }
             return true;
@@ -126,10 +112,6 @@ public class MainActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction()
                         .add(R.id.fragment_container, fragment).commit();
 
-//            } else if (s1.equals("4")) {
-//
-//                s1 = "";
-//                bottomNav.setSelectedItemId(R.id.page_4);
             } else if (s1.equals("2")) {
 
                 s1 = "";
@@ -171,9 +153,6 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-
-
-
         // Create a Hash Map with the desired values
         Map<String, Object> profile = new HashMap<>();
         profile.put("name", name);
@@ -199,13 +178,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-
-
-
-
-
     }
-
 
 }
 

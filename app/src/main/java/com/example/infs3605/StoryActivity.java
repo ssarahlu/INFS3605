@@ -77,9 +77,6 @@ public class StoryActivity extends AppCompatActivity {
                 title.setText("The story of " + mMod.getModuleName());
             }
         }
-//        setTitle(modName);
-//        getActionBar().hide();
-//        getSupportActionBar().hide();
 
         new MyStoryViewedTask().execute();
 

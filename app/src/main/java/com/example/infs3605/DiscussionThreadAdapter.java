@@ -117,7 +117,6 @@ public class DiscussionThreadAdapter extends RecyclerView.Adapter<DiscussionThre
             tvReplies = itemView.findViewById(R.id.tvReplies);
             fnpReplied = itemView.findViewById(R.id.fnpReplied);
             fnpReplied2 = itemView.findViewById(R.id.fnpReplied2);
-//            tvFNPReplied = itemView.findViewById(R.id.tvFNPReplied);
 
             mListener = listener;
             itemView.setOnClickListener(this);
@@ -157,22 +156,14 @@ public class DiscussionThreadAdapter extends RecyclerView.Adapter<DiscussionThre
 
         if(discussionThread.getFnpReplied().equals("aboriginal")) {
             holder.fnpReplied.setImageResource(R.drawable.aboriginal_flag);
-//            holder.tvFNPReplied.setText("First Nations Person has responded");
-//            holder.tvFNPReplied.setTextColor(Color.parseColor("#2196F3"));
-
         } else if (discussionThread.getFnpReplied().equals("ts_islander")) {
             holder.fnpReplied.setImageResource(R.drawable.torres_strait_flag);
-//            holder.tvFNPReplied.setText("First Nations Person has responded");
-//            holder.tvFNPReplied.setTextColor(Color.parseColor("#2196F3"));
         } else if (discussionThread.getFnpReplied().equals("both")) {
             holder.fnpReplied.setImageResource(R.drawable.torres_strait_flag);
             holder.fnpReplied2.setImageResource(R.drawable.aboriginal_flag);
-//            holder.tvFNPReplied.setText("First Nations People have responded");
-//            holder.tvFNPReplied.setTextColor(Color.parseColor("#2196F3"));
         } else {
             holder.fnpReplied.setImageResource(0);
             holder.fnpReplied2.setImageResource(0);
-//            holder.tvFNPReplied.setText("");
         }
 
 

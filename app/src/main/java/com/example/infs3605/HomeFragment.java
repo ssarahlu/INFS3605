@@ -51,11 +51,6 @@ public class HomeFragment extends Fragment {
     private ImageButton spiritualityButton, ritualButton, languageButton;
     private ProgressBar spiritPB, ritualPB, languagePB;
 
-//    private List<ProfileData> artProfileProgress = new ArrayList<>();
-//    private List<ProfileData> spiritualityProfileProgress = new ArrayList<>();
-//    private List<ProfileData> ritualsProfileProgress = new ArrayList<>();
-//    private List<ProfileData> languagesProfileProgress = new ArrayList<>();
-
     private int artProfileProgress, spiritualityProfileProgress, ritualsProfileProgress, languagesProfileProgress;
     private List<ProfileData> list = new ArrayList<>();
 
@@ -148,7 +143,6 @@ public class HomeFragment extends Fragment {
                                 starTV.setText("0");
                                 numStars = 0;
                             }
-
 
 
                             numStars = Integer.parseInt("" + documentSnapshot.get("stars"));
@@ -410,16 +404,10 @@ public class HomeFragment extends Fragment {
             myDb = Room.databaseBuilder(getActivity().getApplicationContext(), MyDatabase.class, "my-db.db")
                     .build();
 
-            Log.d(TAG, "doInBackground: " + email);
-
             artProfileProgress = myDb.profileDataDao().countTopicProgress(email, 0, true, true, true, true);
-            Log.d(TAG, "doInBackground: art profile progress" + artProfileProgress);
-
             spiritualityProfileProgress = myDb.profileDataDao().countTopicProgress(email, 1, true, true, true, true);
             ritualsProfileProgress = myDb.profileDataDao().countTopicProgress(email, 2, true, true, true, true);
             languagesProfileProgress = myDb.profileDataDao().countTopicProgress(email, 3, true, true, true, true);
-
-
 
             return null;
         }

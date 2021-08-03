@@ -25,9 +25,7 @@ public interface ProfileDataDao {
     @Query("SELECT * FROM ProfileData WHERE email == :email AND topicId == :topicId")
     List<ProfileData> getTopicUserData(String email, int topicId);
 
-
     @Query("SELECT COUNT(*) FROM ProfileData WHERE email == :email AND topicId == :topicId AND videoViewed == :videoViewed AND storyViewed == :storyViewed AND learningsViewed == :learningsViewed AND quizViewed == :quizViewed")
-//    @Query("SELECT COUNT(*) FROM ProfileData WHERE email == :email AND topicId == :topicId AND :videoViewed AND :storyViewed AND :learningsViewed AND :quizViewed")
     int countTopicProgress(String email, int topicId, boolean videoViewed, boolean storyViewed, boolean learningsViewed, boolean quizViewed);
 
     //get one module data for user

@@ -8,8 +8,7 @@ import android.os.Handler;
 import android.widget.ImageView;
 
 public class SplashAcknowledgementActivity extends AppCompatActivity {
-    private static int SPLASH_TIME_OUT = 4000;
-    private ImageView ack, logo, title;
+    private static int SPLASH_TIME_OUT = 5000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -97,14 +97,6 @@ public class RewardsAdapter extends RecyclerView.Adapter<RewardsAdapter.MyViewHo
                 .build();
 
         redeemed = myDb.accountAchievementDao().getRedeemed(email, mReward.getRewardId());
-//        System.out.println(email);
-
-//        mAccAch = myDb.accountAchievementDao().getAch(email, mReward.getRewardId());
-
-//        System.out.println( mAccAch.getEmail() + " " + mAccAch.getAchievementId() +  " " + mAccAch.isAchieved() + " " + mAccAch.isRedeemed());
-
-
-        System.out.println( mReward.getShop() + " " + mReward.getRewardId() + " " + redeemed);
 
         if (redeemed == true){
             holder.redeemedTV.setText("Redeemed");

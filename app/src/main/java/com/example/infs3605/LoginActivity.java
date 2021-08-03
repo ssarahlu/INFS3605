@@ -34,7 +34,6 @@ public class LoginActivity extends AppCompatActivity {
                     AuthUI.getInstance()
                             .createSignInIntentBuilder()
                             .setLogo(R.mipmap.logo_orange)
-//                            .setTheme(R.style.LoginTheme)
                             .setAvailableProviders(providers)
                             .build(), RC_SIGN_IN);
 

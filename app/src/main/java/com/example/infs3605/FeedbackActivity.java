@@ -62,8 +62,6 @@ public class FeedbackActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Toast.makeText(getApplicationContext(), "Feedback Submitted", Toast.LENGTH_SHORT).show();
-
                 Map<String, Object> feedback = new HashMap<>();
                 feedback.put("author", user.getEmail());
                 feedback.put("authorID", user.getUid());

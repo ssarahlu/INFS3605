@@ -90,8 +90,6 @@ public class EventActivity extends FragmentActivity implements OnMapReadyCallbac
             }
         }
 
-//        String imageBaseUrl = "https://www.indigenous.gov.au/sites/default/files/styles/indig_thumbnail/public/";
-
         Glide.with(getApplicationContext()).load( mEvent.getEventImage()).into(ivEventImage);
         tvEventName.setText(mEvent.getEventName());
         tvEventDate.setText(mEvent.getEventDate());
@@ -145,7 +143,6 @@ public class EventActivity extends FragmentActivity implements OnMapReadyCallbac
                     }
 
                     btnSave.setBackgroundResource(R.drawable.saved_icon);
-//                    Toast.makeText(getApplicationContext(),"Event saved",Toast.LENGTH_SHORT).show();
                 } else if (myDb.savedEventDataDao().getSavedEvent(mEmail,mId) != null) {
                     myDb.savedEventDataDao().deleteEvent(mEmail,mId);
 
@@ -228,7 +225,6 @@ public class EventActivity extends FragmentActivity implements OnMapReadyCallbac
     }
 
     private void searchEvent(int eventId) {
-//        String eventBaseUrl = "https://www.indigenous.gov.au/news-and-media/event/";
         String eventUrl = mEventList.get(eventId).getEventLink();
 
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse( eventUrl));

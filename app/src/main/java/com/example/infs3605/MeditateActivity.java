@@ -29,7 +29,6 @@ public class MeditateActivity extends AppCompatActivity implements AdapterView.O
             "5 minutes","6 minutes", "7 minutes",
             "8 minutes","9 minutes","10 minutes"};
 
-
     private CountDownTimer mCountDownTimer;
     private long mTimeLeftInMillis;
 
@@ -42,8 +41,6 @@ public class MeditateActivity extends AppCompatActivity implements AdapterView.O
 
         Intent intent = getIntent();
         tone = intent.getIntExtra("Tone",0);
-
-
 
         tvCountdown = findViewById(R.id.tvCountdown);
 

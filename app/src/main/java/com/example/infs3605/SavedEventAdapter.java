@@ -52,23 +52,7 @@ public class SavedEventAdapter extends RecyclerView.Adapter<SavedEventAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-
-        /*
-        email = user.getEmail();
-
-
-        myDb = Room.databaseBuilder(context, SavedEventDatabase.class, "myDb")
-                .allowMainThreadQueries()
-                .build();
-
-         */
-
         mEvent = mEventList.get(position);
-
-        //System.out.println(mEventList.size());
-
-
-//        String imageBaseUrl = "https://www.indigenous.gov.au/sites/default/files/styles/indig_thumbnail/public/";
 
         Glide.with(context).load( mEvent.getEventImage()).into(holder.ivEventImage);
         holder.tvEventName.setText(mEvent.getEventName());

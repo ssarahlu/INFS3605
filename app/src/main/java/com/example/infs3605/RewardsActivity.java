@@ -100,7 +100,6 @@ public class RewardsActivity extends AppCompatActivity {
                 Rewards r = mRewards.get(position);
                 rewardId = r.getRewardId();
                 launchRewardDetail();
-//                Toast.makeText(getApplicationContext(), r.getShop() + " is selected!", Toast.LENGTH_SHORT).show();
             }
         };
 
@@ -163,19 +162,6 @@ public class RewardsActivity extends AppCompatActivity {
         protected Void doInBackground(Void... voids) {
             myDb = Room.databaseBuilder(getApplicationContext(), MyDatabase.class, "my-db.db").allowMainThreadQueries()
                     .build();
-
-//            for (Rewards r : mRewards) {
-//                Log.d(TAG, "doInBackground: r.getStars " + r.getStars() + " " +  starSaved[0]);
-//
-//                if (r.getStars() < starSaved[0]) {
-//                    Log.d(TAG, "doInBackground:  in if statement to check stars ");
-//                    achievementId = r.getRewardId();
-//                    mAccAchs.add(new AccountAchievement(email, achievementId, true, false));
-//                    myDb.accountAchievementDao().insertSingle(email, achievementId, true, false);
-//
-//                    Log.d(TAG, "doInBackground: insert single " + email + achievementId );
-//                }
-//            }
 
             userRef.get()
                     .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {

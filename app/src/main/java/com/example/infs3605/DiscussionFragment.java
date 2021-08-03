@@ -351,7 +351,7 @@ public class DiscussionFragment extends Fragment {
 
                             mAdapter = new DiscussionThreadAdapter(discussionThreads, discussionListener);
                             mAdapter.sort();
-                            mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
+                            mRecyclerView.scrollToPosition(0);
                             mRecyclerView.setAdapter(mAdapter);
 
                         }

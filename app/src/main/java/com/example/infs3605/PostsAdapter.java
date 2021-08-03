@@ -103,7 +103,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         holder.tvPostDate.setText("Posted: " + date);
         int numStars = Integer.parseInt("" + post.getNumStars());
         int numLevel = Levels.getLevel(numStars);
-//        holder.ivUser.setImageResource(Levels.getAvatar(numLevel));
+        holder.ivUser.setImageResource(Levels.getAvatar(numLevel));
         holder.tvPost.setText(post.getPost());
 
         db.collection("profiles").document(post.getAuthorID()).get()

@@ -67,8 +67,6 @@ public class LeaderboardActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
-//                               //email, String displayName, String fname, String lname,
-//                               String levelAnimal, String levelAnimalIcon, int stars, int level
                                 String levelAnimal = "";
                                 String levelAnimalIcon = "" ;
                                 int level = 1;
